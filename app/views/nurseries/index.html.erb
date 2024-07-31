@@ -1,0 +1,11 @@
+<h1>Vivai</h1>
+
+<ul>
+  <% @nurseries.each do |nursery| %>
+    <li>
+      <%= link_to nursery.name, nurseries_path(nursery) %>
+      <p><%= nursery.location %></p>
+      <p><%= nursery.description %></p>
+    </li>
+  <% end %>
+</ul>

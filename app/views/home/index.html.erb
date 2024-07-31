@@ -6,20 +6,24 @@
 <div class="container text-center my-5">
   <div class="row mb-3">
     <div class="col">
-      <div href="#" class="home-link">Le mie Piante</div>
+      <div class="nav-item">
+        <%= link_to 'Esplora le piante', infoplants_path, class: 'nav-link' %>
+      </div>
       <div class="home-divider-thin"></div>
     </div>
   </div>
   <div class="row mb-3">
     <div class="col">
-      <div href="#" class="home-link">Esplora</div>
+      <div class="nav-item">
+        <%= link_to 'le mie piante(al momento non funziona)', myplants_path, class: 'nav-link' %>
+      </div>
       <div class="home-divider-thin"></div>
     </div>
   </div>
   <div class="row mb-3">
     <div class="col">
-      <div class="home-link">
-      <%= link_to 'Vivai', vivai_path, class: 'home-link', aria: { current: 'page' } %>
+      <div class="nav-item">
+        <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
       </div>
       <div class="home-divider-thin"></div>
     </div>

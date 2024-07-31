@@ -11,12 +11,22 @@
     <a class="navbar-brand" href="#">
         <img src="<%= asset_path 'logo.jpeg' %>" alt="Logo">
     </a>
+    
+    <%= link_to root_path, class: 'nav-link' do %>
+      <%= image_tag 'logo.jpeg', alt: 'Home', style: 'width: 30px; height: auto;', class: 'nav-icon' %>
+    <% end %>
+
+
+
     <div class="navbar-nav nav-buttons"> 
       <div class="nav-item">
-        <%= link_to 'Home', home_path, class: 'nav-link' %>
+        <%= link_to 'Home', root_path, class: 'nav-link' %>
       </div>
       <div class="nav-item">
-        <%= link_to 'Vivai', vivai_path, class: 'nav-link' %>
+        <%= link_to 'Piante', infoplants_path, class: 'nav-link' %>
+      </div>
+      <div class="nav-item">
+        <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
       </div>
       <div class="nav-item">
         <%= link_to 'Login', '#', class: 'nav-link' %>

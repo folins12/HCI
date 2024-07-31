@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Nursery.create(name: 'Vivaio Verde', location: 'Milano', description: 'Specializzato in piante tropicali.')
+Nursery.create(name: 'Vivaio Fiorito', location: 'Roma', description: 'Offre una vasta gamma di fiori e arbusti.')
