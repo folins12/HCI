@@ -6837,3 +6837,71 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 552ms (Views: 552.2ms | Allocations: 20487)
 
 
+Started GET "/" for ::1 at 2024-07-31 19:27:28 +0200
+  [1m[35m (8.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 849.7ms | Allocations: 27958)
+  Rendered finestra_modale/_login.html.erb (Duration: 13.1ms | Allocations: 4867)
+  Rendered layout layouts/application.html.erb (Duration: 903.4ms | Allocations: 41754)
+Completed 500 Internal Server Error in 961ms (ActiveRecord: 0.0ms | Allocations: 45244)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `login_path' for #<ActionView::Base:0x000000000089d0>):
+     9:         </button>
+    10:       </div>
+    11:       <div class="modal-body">
+    12:         <%= form_with(url: login_path, local: true) do |form| %>
+    13:           <div class="form-group">
+    14:             <%= form.label :email, class: "form-label" %>
+    15:             <%= form.email_field :email, class: "form-control" %>
+  
+app/views/finestra_modale/_login.html.erb:12
+app/views/layouts/application.html.erb:39
+Started GET "/" for ::1 at 2024-07-31 19:30:53 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 1654)
+  Rendered finestra_modale/_login.html.erb (Duration: 67.2ms | Allocations: 5604)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 124.4ms | Allocations: 11552)
+Completed 200 OK in 134ms (Views: 132.9ms | Allocations: 12000)
+
+
+Started GET "/" for ::1 at 2024-07-31 19:32:04 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.0ms | Allocations: 1532)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.4ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 835.0ms | Allocations: 19429)
+Completed 200 OK in 841ms (Views: 841.0ms | Allocations: 19711)
+
+
+Started GET "/" for ::1 at 2024-07-31 19:33:14 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 1554)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.5ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 673.6ms | Allocations: 16970)
+Completed 200 OK in 683ms (Views: 681.9ms | Allocations: 17225)
+
+
+Started GET "/" for ::1 at 2024-07-31 19:33:51 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1545)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.1ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 817.9ms | Allocations: 17977)
+Completed 200 OK in 830ms (Views: 830.0ms | Allocations: 18232)
+
+

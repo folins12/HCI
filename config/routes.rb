@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   get 'nurseries', to: 'nurseries#index'
   resources :nurseries, only: [:index, :show]
+
+  post 'login', to: 'sessions#create'
   
 end
