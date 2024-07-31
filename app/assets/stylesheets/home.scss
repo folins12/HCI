@@ -1,87 +1,105 @@
 /* app/assets/stylesheets/application.scss */
 
+
 .banner-home {
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), image-url('home.jpg');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), image-url('home.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .content {
-  text-align: center;
-  color: #fff;
+    text-align: center;
+    color: #fff;
 }
 
 .content h1 {
-  font-size: 120px;
-  margin: 0;
-  color: #ffffff;
-  transition: 0.3s;
+    font-size: 120px;
+    margin: 0;
+    color: #ffffff;
+    transition: transform 0.3s;
+    margin-bottom: 10%;
 }
 
 .content h1:hover {
-  transform: scale(1.2);
-  transition: 0.3s;
+    transform: scale(1.2);
+    transition: transform 0.3s;
+}
+
+@media (max-width: 1400px) {
+    .content h1 {
+        font-size: 90px;
+    }
+}
+@media (max-width: 1080px) {
+    .content h1 {
+        font-size: 60px;
+    }
+}
+@media (max-width: 700px) {
+    .content h1 {
+        font-size: 40px;
+    }
 }
 
 /* Styles for the sections below the banner */
 
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centers the sections horizontally */
-  padding: 40px;
-  margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the sections horizontally */
+    margin-top: 80px;
 }
 
 .section {
-  margin-bottom: 40px;
-  width: 150%;
+    margin-bottom: 40px;
+    width: 150%;
 }
 
 .section-link {
-  text-decoration: none;
-  color: inherit;
-  display: block; /* Ensures the entire section is clickable */
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ensures the entire section is clickable */
 }
 
 .section-title {
-  color: #1e3b32;
-  font-size: 2rem;
-  text-align: center;
-  margin-bottom: 20px;
+    color: #1e3b32;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .section-content {
-  display: flex;
-  align-items: center;
-  gap: 20px; /* Add space between the image and description */
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Add space between the image and description */
 }
 
 .section-image {
-  width: 150px;
-  height: auto;
-  margin: 0; /* Ensure no extra margin */
+    width: 150px;
+    height: auto;
+    margin: 0; /* Ensure no extra margin */
 }
 
 .section-description {
-  flex: 1;
-  color: #333;
-  margin: 0; /* Ensure no extra margin */
-  text-align: left; /* Align text to the left */
+    flex: 1;
+    color: #000000;
+    margin: 0; /* Ensure no extra margin */
+    text-align: left; /* Align text to the left */
 }
 
 /* Divider style */
 
 .home-divider-thin {
-  width: 100%;
-  height: 2px;
-  background-color: #1e3b32;
-  border-radius: 1px;
-  margin: 0 auto 40px;
-  margin-top: 20px;
+    width: 100%;
+    height: 2px;
+    background-color: #1e3b32;
+    border-radius: 1px;
+    margin: 0 auto 40px;
+    margin-top: 20px;
 }
