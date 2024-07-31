@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'myplants', to: 'myplants#index'
 
   get 'infoplants', to: 'infoplants#index'
+  get 'infoplants/show'
   #resources :infoplants
 
   get 'nurseries', to: 'nurseries#index'
