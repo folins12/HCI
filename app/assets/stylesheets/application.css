@@ -19,8 +19,9 @@
 /* CSS GENERALI */
 
 body {
-  background-color: #9cff88;
+  background-color: #7d9777;
   color: white;
+  font-family: "EB Garamond", serif;
 }
 
 a.btn-outline-light {
@@ -35,7 +36,7 @@ a.btn-outline-light:hover {
 
 /* INIZIO NAVBAR */
 .navbar-custom {
-  background-color: #28a745; /* Verde principale per la navbar */
+  background-color: #134509; /* Verde principale per la navbar */
   padding: 10px 20px; /* Aggiungi padding sopra e sotto la navbar */
   height: 80px; /* Imposta un'altezza fissa per la navbar */
   display: flex; /* Usa flexbox per centrare il contenuto verticalmente */
@@ -51,12 +52,12 @@ a.btn-outline-light:hover {
   display: flex; /* Usa flexbox per centrare l'immagine verticalmente */
   align-items: center; /* Allinea l'immagine verticalmente al centro */
   margin-right: auto; /* Allinea il brand a sinistra */
-  border: 1px solid #1e7e34; /* Bordo verde scuro intorno all'immagine */
+  border: 1px solid #134509; /* Bordo verde scuro intorno all'immagine */
   border-radius: 5px; /* Bordo arrotondato per il bordo */
 }
 
 .navbar-brand img {
-  height: 70px; /* Imposta un'altezza fissa per l'immagine del logo */
+  height: 90px; /* Imposta un'altezza fissa per l'immagine del logo */
   width: auto; /* Mantieni le proporzioni dell'immagine */
 }
 
@@ -99,54 +100,4 @@ a.btn-outline-light:hover {
 }
 
 /* FINE NAVBAR */
-
-/* INIZIO HOME */
-
-.home-title {
-  color: #1e3b32; /* Verde molto scuro */
-  font-size: 2.5rem; /* Dimensione font grande per il titolo */
-  text-align: center; /* Centra il testo */
-  margin-bottom: 4%; /* Spazio sotto il titolo */
-  margin-top: 4%;
-}
-
-.home-divider {
-  width: 60%; /* Margini laterali di 20%, quindi 60% larghezza totale */
-  height: 3px; /* Spessore della linea */
-  background-color: #1e3b32; /* Verde molto scuro */
-  border-radius: 1.5px; /* Arrotonda le estremità */
-  margin: 0 auto 40px; /* Centra la linea e aggiunge spazio sotto */
-  margin-top: 3%;
-}
-
-.home-link {
-  color: #1e3b32; /* Verde molto scuro per i link */
-  font-size: 1.2rem; /* Dimensione font per i link */
-  display: block; /* Assicura che i link occupino tutta la larghezza del contenitore */
-  text-align: center; /* Centra il testo dei link */
-  text-decoration: none; /* Rimuove la sottolineatura */
-  margin-bottom: 3%; /* Spazio sotto ogni link */
-  margin-top: 3%;
-  background-color: transparent; /* Assicura che il background rimanga trasparente */
-}
-
-.home-link:hover {
-  color: #1e3b32; /* Mantieni il testo verde scuro al passaggio del mouse */
-  cursor:auto;
-}
-
-.home-link:active {
-  color: white; /* Cambia il colore del testo in bianco quando viene cliccato */
-}
-
-.home-divider-thin {
-  width: 60%; /* Margini laterali di 20%, quindi 60% larghezza totale */
-  height: 2px; /* Spessore della linea più sottile */
-  background-color: #1e3b32; /* Verde molto scuro */
-  border-radius: 1px; /* Arrotonda leggermente le estremità */
-  margin: 0 auto 3%; /* Centra la linea e aggiunge spazio sotto */
-}
-
-/* FINE HOME */
-
 

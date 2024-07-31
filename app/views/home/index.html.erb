@@ -1,31 +1,41 @@
-<div class="text-center my-5">
-  <h1 class="display-3 home-title">HOME</h1>
-  <div class="home-divider"></div>
+<!-- app/views/home/index.html.erb -->
+<div class="banner-home">
+  <div class="content">
+    <h1> PLANTTRACKER </h1>
+  </div>
 </div>
 
-<div class="container text-center my-5">
-  <div class="row mb-3">
-    <div class="col">
-      <div class="nav-item">
-        <%= link_to 'Esplora le piante', infoplants_path, class: 'nav-link' %>
+<div class="container">
+  <div class="section">
+    <%= link_to infoplants_path, class: 'section-link' do %>
+      <h2 class="section-title">Explore All The Plants</h2>
+      <div class="section-content">
+        <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+        <p class="section-description">Discover a wide variety of plants and learn about their characteristics.</p>
       </div>
-      <div class="home-divider-thin"></div>
-    </div>
+    <% end %>
+    <div class="home-divider-thin"></div>
   </div>
-  <div class="row mb-3">
-    <div class="col">
-      <div class="nav-item">
-        <%= link_to 'le mie piante(al momento non funziona)', myplants_path, class: 'nav-link' %>
+
+  <div class="section">
+    <%= link_to myplants_path, class: 'section-link' do %>
+      <h2 class="section-title">My Plants</h2>
+      <div class="section-content">
+        <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+        <p class="section-description">Manage your personal collection of plants.</p>
       </div>
-      <div class="home-divider-thin"></div>
-    </div>
+    <% end %>
+    <div class="home-divider-thin"></div>
   </div>
-  <div class="row mb-3">
-    <div class="col">
-      <div class="nav-item">
-        <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
+
+  <div class="section">
+    <%= link_to nurseries_path, class: 'section-link' do %>
+      <h2 class="section-title">Nurseries</h2>
+      <div class="section-content">
+        <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+        <p class="section-description">Find nurseries near you where you can buy plants and gardening supplies.</p>
       </div>
-      <div class="home-divider-thin"></div>
-    </div>
+    <% end %>
+    <div class="home-divider-thin"></div>
   </div>
 </div>
