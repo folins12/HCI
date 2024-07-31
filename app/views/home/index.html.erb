@@ -1,23 +1,27 @@
-
-
 <div class="text-center my-5">
-  <h1 class="display-3">FINTA HOME DI PLANTTRACKER!</h1>
+  <h1 class="display-3 home-title">HOME</h1>
+  <div class="home-divider"></div>
 </div>
 
 <div class="container text-center my-5">
   <div class="row mb-3">
     <div class="col">
-      <a href="#" class="btn btn-outline-light btn-lg btn-block">Mie Piante</a>
+      <div href="#" class="home-link">Le mie Piante</div>
+      <div class="home-divider-thin"></div>
     </div>
   </div>
   <div class="row mb-3">
     <div class="col">
-      <a href="#" class="btn btn-outline-light btn-lg btn-block">Esplora le Piante</a>
+      <div href="#" class="home-link">Esplora</div>
+      <div class="home-divider-thin"></div>
     </div>
   </div>
   <div class="row mb-3">
-    <div class="nav-item">
-      <%= link_to 'Vivai', vivai_path, class: 'nav-link active', aria: { current: 'page' } %>
+    <div class="col">
+      <div class="home-link">
+      <%= link_to 'Vivai', vivai_path, class: 'home-link', aria: { current: 'page' } %>
+      </div>
+      <div class="home-divider-thin"></div>
     </div>
   </div>
 </div>

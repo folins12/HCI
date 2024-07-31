@@ -14,21 +14,139 @@
  *= require_self
  */
 
- @import "bootstrap";
+ @import "bootstrap/scss/bootstrap";
+
+/* CSS GENERALI */
+
+body {
+  background-color: #9cff88;
+  color: white;
+}
+
+a.btn-outline-light {
+  color: white;
+  border-color: white;
+}
+
+a.btn-outline-light:hover {
+  background-color: white;
+  color: #343a40;
+}
+
+/* INIZIO NAVBAR */
+.navbar-custom {
+  background-color: #28a745; /* Verde principale per la navbar */
+  padding: 10px 20px; /* Aggiungi padding sopra e sotto la navbar */
+  height: 80px; /* Imposta un'altezza fissa per la navbar */
+  display: flex; /* Usa flexbox per centrare il contenuto verticalmente */
+  align-items: center; /* Allinea il contenuto verticalmente al centro */
+  width: 100%; /* Assicurati che la navbar occupi tutta la larghezza della pagina */
+  position: fixed; /* Fissa la navbar in cima alla pagina */
+  top: 0; /* Posiziona la navbar in cima */
+  left: 0; /* Assicurati che la navbar inizi dal bordo sinistro */
+  z-index: 1000; /* Assicurati che la navbar sia sopra altri elementi */
+}
+
+.navbar-brand {
+  display: flex; /* Usa flexbox per centrare l'immagine verticalmente */
+  align-items: center; /* Allinea l'immagine verticalmente al centro */
+  margin-right: auto; /* Allinea il brand a sinistra */
+  border: 1px solid #1e7e34; /* Bordo verde scuro intorno all'immagine */
+  border-radius: 5px; /* Bordo arrotondato per il bordo */
+}
+
+.navbar-brand img {
+  height: 70px; /* Imposta un'altezza fissa per l'immagine del logo */
+  width: auto; /* Mantieni le proporzioni dell'immagine */
+}
+
+.navbar-nav {
+  display: flex; /* Usa flexbox per allineare orizzontalmente */
+  flex-direction: row; /* Imposta la direzione orizzontale */
+  margin-left: auto; /* Allinea i bottoni a destra */
+}
+
+.nav-buttons {
+  display: flex; /* Usa flexbox per allineare orizzontalmente */
+  flex-direction: row; /* Imposta la direzione orizzontale */
+  margin-right: 4%; /* Spazio a destra dei bottoni */
+}
+
+.nav-link {
+  color: #ffffff !important; /* Colore del testo bianco per i link */
+  padding: 24px 40px; /* Aggiungi padding ai bottoni per maggiore spazio */
+  border-radius: 15px; /* Bordo arrotondato per il bottone */
+  text-transform: uppercase; /* Maiuscole per il testo */
+  margin-right: 10%; /* Distanza tra i bottoni */
+  background-color: #218838; /* Colore verde scuro per i bottoni */
+  display: flex; /* Usa flexbox per centrare il testo */
+  align-items: center; /* Allinea il testo verticalmente */
+  justify-content: center; /* Allinea il testo orizzontalmente */
+  text-decoration: none; /* Rimuovi sottolineatura */
+}
+
+.nav-link:hover {
+  background-color: #1e7e34; /* Colore verde ancora più scuro per hover */
+}
+
+.navbar-toggler {
+  border: none; /* Rimuovi il bordo del toggler */
+}
+
+/* Aggiungi padding alla parte superiore del contenuto per evitare che venga nascosto sotto la navbar fissa */
+.content {
+  padding-top: 80px; /* Aggiusta questo valore se necessario */
+}
+
+/* FINE NAVBAR */
+
+/* INIZIO HOME */
+
+.home-title {
+  color: #1e3b32; /* Verde molto scuro */
+  font-size: 2.5rem; /* Dimensione font grande per il titolo */
+  text-align: center; /* Centra il testo */
+  margin-bottom: 4%; /* Spazio sotto il titolo */
+  margin-top: 4%;
+}
+
+.home-divider {
+  width: 60%; /* Margini laterali di 20%, quindi 60% larghezza totale */
+  height: 3px; /* Spessore della linea */
+  background-color: #1e3b32; /* Verde molto scuro */
+  border-radius: 1.5px; /* Arrotonda le estremità */
+  margin: 0 auto 40px; /* Centra la linea e aggiunge spazio sotto */
+  margin-top: 3%;
+}
+
+.home-link {
+  color: #1e3b32; /* Verde molto scuro per i link */
+  font-size: 1.2rem; /* Dimensione font per i link */
+  display: block; /* Assicura che i link occupino tutta la larghezza del contenitore */
+  text-align: center; /* Centra il testo dei link */
+  text-decoration: none; /* Rimuove la sottolineatura */
+  margin-bottom: 3%; /* Spazio sotto ogni link */
+  margin-top: 3%;
+  background-color: transparent; /* Assicura che il background rimanga trasparente */
+}
+
+.home-link:hover {
+  color: #1e3b32; /* Mantieni il testo verde scuro al passaggio del mouse */
+  cursor:auto;
+}
+
+.home-link:active {
+  color: white; /* Cambia il colore del testo in bianco quando viene cliccato */
+}
+
+.home-divider-thin {
+  width: 60%; /* Margini laterali di 20%, quindi 60% larghezza totale */
+  height: 2px; /* Spessore della linea più sottile */
+  background-color: #1e3b32; /* Verde molto scuro */
+  border-radius: 1px; /* Arrotonda leggermente le estremità */
+  margin: 0 auto 3%; /* Centra la linea e aggiunge spazio sotto */
+}
+
+/* FINE HOME */
 
 
- body {
-    background-color: #343a40; 
-    color: white;
-  }
-  
-  a.btn-outline-light {
-    color: white;
-    border-color: white;
-  }
-  
-  a.btn-outline-light:hover {
-    background-color: white;
-    color: #343a40;
-  }
-  

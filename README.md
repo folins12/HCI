@@ -1,13 +1,24 @@
 # README
 
-per fare un href:
-aggiungere la route in route.rb esemio:
-```root 'home#index'```
-```get 'vivai', to: 'vivai#index'```
-```get 'piante', to: 'piante#index'```
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-per l'href:
-```<%= link_to 'Torna alla Home Page', root_path %>```
-```<%= link_to 'Vai alla sezione piante', piante_path %>```
+Things you may want to cover:
 
-e va aggiunto il controllore
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
