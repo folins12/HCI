@@ -76,8 +76,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; /* Aggiungi spazio tra il banner e la prima sezione */
-    padding-bottom: 20px; /* Aggiungi spazio tra l'ultima sezione e il footer */
+    margin-top: 20px; 
+    padding-bottom: 20px; 
 }
 
 .container {
@@ -183,7 +183,6 @@
     margin-right: 12px;
 }
 
-/* Aggiungi un po' di margine intorno alle sezioni di contenuto del footer */
 .footer footer > * {
     margin: 0 10px;
 }
