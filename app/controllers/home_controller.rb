@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def index
-    #codice
+    #
+  end
+  def about
+    #
   end
 end

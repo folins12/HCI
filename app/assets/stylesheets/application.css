@@ -12,190 +12,211 @@
  *
  *= require_tree .
  *= require_self
- */
+*/
+
 
  @import "bootstrap/scss/bootstrap";
 
-/* CSS GENERALI */
+ /* CSS GENERALI */
+ html, body {
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   overflow-x: hidden;
+ }
+ 
+ body {
+   background-color: #dbdbdb;
+   color: rgb(0, 0, 0);
+   font-family: "EB Garamond", serif;
+ }
+ 
+ a.btn-outline-light {
+   color: white;
+   border-color: white;
+ }
+ 
+ a.btn-outline-light:hover {
+   background-color: white;
+   color: #343a40;
+ }
+ 
+ /* INIZIO NAVBAR */
+ .navbar-custom {
+   background-color: #134509;
+   padding: 10px 20px;
+   height: 80px;
+   display: flex;
+   align-items: center;
+   width: 100%;
+   position: fixed;
+   top: 0;
+   left: 0;
+   z-index: 1000;
+ }
+ 
+ .navbar-brand {
+   display: flex;
+   align-items: center;
+   margin-right: auto;
+   border: 1px solid #134509;
+   border-radius: 5px;
+ }
+ 
+ .navbar-brand img {
+   height: 90px;
+   width: auto;
+ }
+ 
+ .navbar-nav {
+   display: flex;
+   flex-direction: row;
+   margin-left: auto;
+ }
+ 
+ .nav-buttons {
+   display: flex;
+   flex-direction: row;
+   margin-right: 4%;
+ }
+ 
+ .nav-link {
+   color: #ffffff !important;
+   padding: 24px 40px;
+   border-radius: 15px;
+   text-transform: uppercase;
+   margin-right: 10%;
+   background-color: #218838;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+ }
+ 
+ .nav-link:hover {
+   background-color: #1e7e34;
+ }
+ 
+ .navbar-toggler {
+   border: none;
+ }
+ 
+ /* Aggiungi padding alla parte superiore del contenuto per evitare che venga nascosto sotto la navbar fissa */
+ .content {
+   padding-top: 0;
+ }
+ 
+ /* FINE NAVBAR */
+ 
+ /* INIZIO FINESTRA MODALE */
+ .modal-dialog {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   margin-top: -60%;
+   z-index: 1050;
+ }
+ 
+ .modal-content {
+   border-radius: 12px;
+   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+   overflow: hidden;
+   background-color: #ffffff;
+   width: 40%;
+   height: auto;
+   max-height: 80vh;
+ }
+ 
+ .modal-header {
+   border-bottom: none;
+   position: relative;
+   padding: 1rem;
+ }
+ 
+ .modal-header .close {
+   position: absolute;
+   top: 0;
+   right: 0;
+   font-size: 2rem;
+   color: #1e7e34;
+   background: none;
+   border: none;
+   padding: 0.5rem;
+ }
+ 
+ .modal-title {
+   font-size: 3rem;
+   font-family: 'Roboto', sans-serif;
+   font-weight: bold;
+   color: #1e7e34;
+   text-align: center;
+   margin-bottom: 1rem;
+ }
+ 
+ .modal-body {
+   text-align: center;
+ }
+ 
+ .form-control {
+   border-radius: 10px;
+   padding: 1.5rem;
+   font-size: 1.5rem;
+   margin-bottom: 1.5rem;
+   color: #1e7e34;
+   border: 1px solid #1e7e34;
+ }
+ 
+ .form-group label {
+   color: #1e7e34;
+   font-size: 1.5rem;
+   margin-bottom: 1%;
+ }
+ 
+ .btn-primary {
+   margin-top: 2rem;
+   background-color: #1e7e34;
+   border-color: #1e7e34;
+   color: #ffffff;
+   font-size: 1.5rem;
+   padding: 1rem 2rem;
+   margin-bottom: 5%;
+   border-radius: 10px;
+ }
+ 
+ .btn-primary:hover {
+   background-color: #155d27;
+   border-color: #155d27;
+ }
+ 
+ .modal-backdrop {
+   background-color: rgba(0, 0, 0, 0.8);
+ }
+ 
+ .modal-backdrop.show {
+   backdrop-filter: blur(5px);
+   opacity: 1;
+ }
+ 
+ /* FINE FINESTRA MODALE */
 
-body {
-  background-color: #314f2cc9;
-  color: white;
-  font-family: "EB Garamond", serif;
+
+/* Other styles... */
+
+/* Specific rules to prevent hover effects on sections in home page */
+.section-link, .section-link:hover, .section-link:focus {
+  background-color: inherit;
+  text-decoration: none;
 }
 
-a.btn-outline-light {
-  color: white;
-  border-color: white;
+.section, .section:hover, .section:focus, 
+.section-title, .section-title:hover, .section-title:focus, 
+.section-content, .section-content:hover, .section-content:focus, 
+.section-image, .section-image:hover, .section-image:focus, 
+.section-description, .section-description:hover, .section-description:focus {
+  background-color: inherit;
+  text-decoration: none;
 }
 
-a.btn-outline-light:hover {
-  background-color: white;
-  color: #343a40;
-}
-
-/* INIZIO NAVBAR */
-.navbar-custom {
-  background-color: #134509; /* Verde principale per la navbar */
-  padding: 10px 20px; /* Aggiungi padding sopra e sotto la navbar */
-  height: 80px; /* Imposta un'altezza fissa per la navbar */
-  display: flex; /* Usa flexbox per centrare il contenuto verticalmente */
-  align-items: center; /* Allinea il contenuto verticalmente al centro */
-  width: 100%; /* Assicurati che la navbar occupi tutta la larghezza della pagina */
-  position: fixed; /* Fissa la navbar in cima alla pagina */
-  top: 0; /* Posiziona la navbar in cima */
-  left: 0; /* Assicurati che la navbar inizi dal bordo sinistro */
-  z-index: 1000; /* Assicurati che la navbar sia sopra altri elementi */
-}
-
-.navbar-brand {
-  display: flex; /* Usa flexbox per centrare l'immagine verticalmente */
-  align-items: center; /* Allinea l'immagine verticalmente al centro */
-  margin-right: auto; /* Allinea il brand a sinistra */
-  border: 1px solid #134509; /* Bordo verde scuro intorno all'immagine */
-  border-radius: 5px; /* Bordo arrotondato per il bordo */
-}
-
-.navbar-brand img {
-  height: 90px; /* Imposta un'altezza fissa per l'immagine del logo */
-  width: auto; /* Mantieni le proporzioni dell'immagine */
-}
-
-.navbar-nav {
-  display: flex; /* Usa flexbox per allineare orizzontalmente */
-  flex-direction: row; /* Imposta la direzione orizzontale */
-  margin-left: auto; /* Allinea i bottoni a destra */
-}
-
-.nav-buttons {
-  display: flex; /* Usa flexbox per allineare orizzontalmente */
-  flex-direction: row; /* Imposta la direzione orizzontale */
-  margin-right: 4%; /* Spazio a destra dei bottoni */
-}
-
-.nav-link {
-  color: #ffffff !important; /* Colore del testo bianco per i link */
-  padding: 24px 40px; /* Aggiungi padding ai bottoni per maggiore spazio */
-  border-radius: 15px; /* Bordo arrotondato per il bottone */
-  text-transform: uppercase; /* Maiuscole per il testo */
-  margin-right: 10%; /* Distanza tra i bottoni */
-  background-color: #218838; /* Colore verde scuro per i bottoni */
-  display: flex; /* Usa flexbox per centrare il testo */
-  align-items: center; /* Allinea il testo verticalmente */
-  justify-content: center; /* Allinea il testo orizzontalmente */
-  text-decoration: none; /* Rimuovi sottolineatura */
-}
-
-.nav-link:hover {
-  background-color: #1e7e34; /* Colore verde ancora più scuro per hover */
-}
-
-.navbar-toggler {
-  border: none; /* Rimuovi il bordo del toggler */
-}
-
-/* Aggiungi padding alla parte superiore del contenuto per evitare che venga nascosto sotto la navbar fissa */
-.content {
-  padding-top: 80px; /* Aggiusta questo valore se necessario */
-}
-
-/* FINE NAVBAR */
-
-/* INIZIO FINESTRA MODALE */
-
-/* Modale Personalizzato */
-.modal-dialog {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin-top: -60%; /* Margine superiore negativo per la modale */
-  z-index: 1050;
-}
-
-.modal-content {
-  border-radius: 12px; /* Angoli arrotondati */
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Ombra più leggera */
-  overflow: hidden;
-  background-color: #ffffff; /* Sfondo bianco per la modale */
-  width: 40%; /* Riduci la larghezza della modale */
-  height: auto; /* Adatta l'altezza in base al contenuto */
-  max-height: 80vh; /* Imposta un'altezza massima per evitare overflow */
-}
-
-.modal-header {
-  border-bottom: none;
-  position: relative; /* Per posizionare il pulsante di chiusura */
-  padding: 1rem; /* Aggiungi spazio intorno alla header */
-}
-
-.modal-header .close {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-size: 2rem; /* Dimensione del carattere per la 'x' */
-  color: #1e7e34; /* Colore della 'x' */
-  background: none; /* Rimuovi il background del pulsante */
-  border: none; /* Rimuovi il bordo del pulsante */
-  padding: 0.5rem; /* Spazio intorno alla 'x' */
-}
-
-.modal-title {
-  font-size: 3rem; /* Dimensione del font per il titolo, raddoppiato */
-  font-family: 'Roboto', sans-serif; /* Font moderno e dinamico */
-  font-weight: bold; /* Testo in grassetto */
-  color: #1e7e34; /* Colore del titolo */
-  text-align: center; /* Centra il titolo */
-  margin-bottom: 1rem; /* Spazio inferiore per il titolo */
-  margin-bottom:3%;
-}
-
-.modal-body {
-  text-align: center; /* Centro il testo e i form all'interno della modale */
-}
-
-.form-control {
-  border-radius: 10px; /* Bordi tondeggianti per le caselle di input */
-  padding: 1.5rem; /* Spazio all'interno delle caselle di input, aumentato */
-  font-size: 1.5rem; /* Dimensione del carattere per il testo dell'input, raddoppiato */
-  margin-bottom: 1.5rem; /* Spazio inferiore tra le caselle di input */
-  color: #1e7e34; /* Colore del testo all'interno delle caselle di input */
-  border: 1px solid #1e7e34; /* Bordo verde scuro per le caselle di input */
-}
-
-.form-group label {
-  color: #1e7e34; /* Colore del testo delle etichette */
-  font-size: 1.5rem; /* Dimensione del carattere per le etichette */
-  margin-bottom:1%;
-}
-
-.btn-primary {
-  margin-top: 2rem; /* Spazio superiore tra il pulsante e l'ultima casella di input, aumentato */
-  background-color: #1e7e34; /* Colore del pulsante */
-  border-color: #1e7e34; /* Colore del bordo del pulsante */
-  color: #ffffff; /* Colore del testo del pulsante */
-  font-size: 1.5rem; /* Dimensione del carattere per il pulsante, raddoppiato */
-  padding: 1rem 2rem; /* Aumenta lo spazio interno del pulsante */
-  margin-bottom:5%;
-  border-radius: 10px;
-}
-
-.btn-primary:hover {
-  background-color: #155d27; /* Colore del pulsante al passaggio del mouse */
-  border-color: #155d27; /* Colore del bordo del pulsante al passaggio del mouse */
-}
-
-/* Modale Backdrop */
-.modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.8); /* Sfondo scuro e opaco */
-}
-
-/* Modale Backdrop quando visibile */
-.modal-backdrop.show {
-  backdrop-filter: blur(5px); 
-  opacity: 1; /* Assicurati che il backdrop sia completamente opaco */
-}
-
-
-/* FINE FINESTRA MODALE */
-
+/* Other styles... */
