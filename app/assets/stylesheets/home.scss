@@ -65,19 +65,29 @@
     height: 100%;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    opacity: 0.6; 
+}
+
+/* Dark Overlay */
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity to make it darker or lighter */
+    z-index: 1;
 }
 
 /* Content Sections */
 .content-sections {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px; 
-    padding-bottom: 20px; 
+    margin-top: 20px; /* Aggiungi spazio tra il banner e la prima sezione */
+    padding-bottom: 20px; /* Aggiungi spazio tra l'ultima sezione e il footer */
 }
 
 .container {
@@ -99,10 +109,11 @@
 }
 
 .section-title {
-    color: #1e3b32;
+    color: #ffffff;
     font-size: 2rem;
     text-align: center;
     margin-bottom: 20px;
+    font-style: italic;
 }
 
 .section-content {
@@ -122,8 +133,8 @@
 
 .section-description {
     flex: 1;
-    color: #000000;
-    font-size: 1.5em;
+    color: #ffffff;
+    font-size: 1.7em;
     margin: 0;
     text-align: center;
     max-width: 80%;
@@ -133,7 +144,7 @@
 .home-divider-thin {
     width: 80%;
     height: 2px;
-    background-color: #1e3b32;
+    background-color: #00ffae;
     border-radius: 1px;
     margin: 0 auto 40px;
     margin-top: 20px;
@@ -183,6 +194,7 @@
     margin-right: 12px;
 }
 
+/* Aggiungi un po' di margine intorno alle sezioni di contenuto del footer */
 .footer footer > * {
     margin: 0 10px;
 }

@@ -9675,3 +9675,295 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 935ms (Views: 934.7ms | ActiveRecord: 0.0ms | Allocations: 24628)
 
 
+Started GET "/" for ::1 at 2024-08-01 17:16:34 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2133)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.8ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1558.8ms | Allocations: 25874)
+Completed 200 OK in 1562ms (Views: 1561.5ms | ActiveRecord: 0.0ms | Allocations: 26129)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:16:58 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 2133)
+  Rendered finestra_modale/_login.html.erb (Duration: 5.1ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1129.2ms | Allocations: 23834)
+Completed 200 OK in 1137ms (Views: 1131.8ms | ActiveRecord: 0.0ms | Allocations: 24090)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:17:22 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 16.4ms | Allocations: 2147)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.0ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1180.7ms | Allocations: 23015)
+Completed 200 OK in 1183ms (Views: 1181.7ms | ActiveRecord: 0.0ms | Allocations: 23271)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:17:37 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 2134)
+  Rendered finestra_modale/_login.html.erb (Duration: 7.9ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1167.8ms | Allocations: 23982)
+Completed 200 OK in 1169ms (Views: 1168.7ms | ActiveRecord: 0.0ms | Allocations: 24238)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:17:50 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 23.2ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.5ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1049.8ms | Allocations: 23922)
+Completed 200 OK in 1054ms (Views: 1052.8ms | ActiveRecord: 0.0ms | Allocations: 24177)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:18:07 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2133)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.7ms | Allocations: 2380)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 8364)
+Completed 200 OK in 15ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 8620)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:18:53 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.0ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1176.1ms | Allocations: 23016)
+Completed 200 OK in 1182ms (Views: 1181.7ms | Allocations: 23271)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:20:38 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 35.9ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 5.2ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1259.7ms | Allocations: 24023)
+Completed 200 OK in 1262ms (Views: 1260.6ms | Allocations: 24278)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:20:52 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2133)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.0ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 993.1ms | Allocations: 23850)
+Completed 200 OK in 996ms (Views: 994.3ms | Allocations: 24105)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:21:11 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 17.3ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.1ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1240.7ms | Allocations: 24914)
+Completed 200 OK in 1243ms (Views: 1242.7ms | Allocations: 25170)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:21:23 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 25.5ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.5ms | Allocations: 2275)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 998.5ms | Allocations: 23948)
+Completed 200 OK in 1002ms (Views: 1000.6ms | Allocations: 24203)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:22:04 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 16.3ms | Allocations: 2500)
+  Rendered finestra_modale/_login.html.erb (Duration: 6.4ms | Allocations: 2608)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 92.8ms | Allocations: 9432)
+Completed 200 OK in 118ms (Views: 116.6ms | Allocations: 10447)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:22:26 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 37.0ms | Allocations: 2137)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.8ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 957.2ms | Allocations: 22520)
+Completed 200 OK in 961ms (Views: 960.1ms | Allocations: 22776)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:22:59 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 17.6ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.4ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 990.8ms | Allocations: 23379)
+Completed 200 OK in 1006ms (Views: 1003.3ms | Allocations: 23634)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:23:56 +0200
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1955.7ms | Allocations: 30367)
+  Rendered finestra_modale/_login.html.erb (Duration: 23.2ms | Allocations: 4255)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1997.2ms | Allocations: 39201)
+Completed 200 OK in 2041ms (Views: 2010.8ms | ActiveRecord: 0.0ms | Allocations: 41721)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:27:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.8ms | Allocations: 2487)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.3ms | Allocations: 2505)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1030.0ms | Allocations: 27218)
+Completed 200 OK in 1036ms (Views: 1034.9ms | ActiveRecord: 0.0ms | Allocations: 28218)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:28:34 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.6ms | Allocations: 2543)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.5ms | Allocations: 2502)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 860.3ms | Allocations: 25000)
+Completed 200 OK in 870ms (Views: 867.6ms | ActiveRecord: 0.0ms | Allocations: 25992)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:29:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 2131)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.6ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 980.3ms | Allocations: 23952)
+Completed 200 OK in 986ms (Views: 984.3ms | ActiveRecord: 0.0ms | Allocations: 24208)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:29:34 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 29.4ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 9.5ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1032.7ms | Allocations: 23466)
+Completed 200 OK in 1035ms (Views: 1034.8ms | ActiveRecord: 0.0ms | Allocations: 23726)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:30:36 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 22.8ms | Allocations: 2134)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.5ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 944.8ms | Allocations: 25415)
+Completed 200 OK in 950ms (Views: 949.1ms | Allocations: 25670)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:31:03 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2133)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.0ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1004.2ms | Allocations: 24915)
+Completed 200 OK in 1007ms (Views: 1006.1ms | Allocations: 25170)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:31:37 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.6ms | Allocations: 2127)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.8ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 974.3ms | Allocations: 23047)
+Completed 200 OK in 997ms (Views: 987.6ms | Allocations: 23302)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:32:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 2134)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.4ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 963.7ms | Allocations: 24062)
+Completed 200 OK in 966ms (Views: 964.9ms | Allocations: 24317)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:32:41 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 31.3ms | Allocations: 2149)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.6ms | Allocations: 2273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1101.3ms | Allocations: 22995)
+Completed 200 OK in 1103ms (Views: 1102.4ms | Allocations: 23250)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-01 17:33:05 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:12
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 70.2ms | Allocations: 5437)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.4ms | Allocations: 2285)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 87.9ms | Allocations: 11730)
+Completed 200 OK in 109ms (Views: 104.7ms | ActiveRecord: 7.0ms | Allocations: 12773)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:33:08 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 2141)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.5ms | Allocations: 2382)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 8381)
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.0ms | Allocations: 8637)
+
+
