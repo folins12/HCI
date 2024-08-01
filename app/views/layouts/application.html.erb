@@ -23,14 +23,13 @@
         <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
       </div>
       <div class="nav-item">
-        <a href="#" class="nav-link" data-toggle="modal" data-target="#loginModal">Login</a>
+        <%= link_to 'Login', login_path, class: 'nav-link' %>
       </div>
     </div>
   </nav>
   <div class="container mt-4 content">
     <%= yield %>
   </div>
-  <%= render 'finestra_modale/login' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 </body>
 </html>

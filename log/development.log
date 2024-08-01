@@ -9967,3 +9967,618 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.0ms | Allocations: 8637)
 
 
+Started GET "/" for ::1 at 2024-08-01 19:13:44 +0200
+  [1m[35m (10.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 834.6ms | Allocations: 32913)
+  Rendered finestra_modale/_login.html.erb (Duration: 38.8ms | Allocations: 5873)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 905.1ms | Allocations: 43321)
+Completed 200 OK in 925ms (Views: 909.4ms | ActiveRecord: 0.0ms | Allocations: 46868)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-01 19:15:52 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 222)
+  Rendered finestra_modale/_login.html.erb (Duration: 1.1ms | Allocations: 2344)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 6577)
+Completed 200 OK in 31ms (Views: 19.3ms | ActiveRecord: 0.0ms | Allocations: 7343)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-01 19:15:53 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:12
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 36.0ms | Allocations: 4646)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.3ms | Allocations: 2285)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.1ms | Allocations: 10936)
+Completed 200 OK in 75ms (Views: 53.2ms | ActiveRecord: 3.0ms | Allocations: 12023)
+
+
+Started GET "/" for ::1 at 2024-08-01 19:15:57 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2135)
+  Rendered finestra_modale/_login.html.erb (Duration: 10.6ms | Allocations: 2381)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | Allocations: 8373)
+Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.0ms | Allocations: 8634)
+
+
+Started GET "/" for ::1 at 2024-08-01 19:31:31 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 57.6ms | Allocations: 2546)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 927.7ms | Allocations: 17668)
+Completed 200 OK in 958ms (Views: 949.3ms | Allocations: 18672)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:31:35 +0200
+  
+ActionController::RoutingError (uninitialized constant LoginController):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:33:02 +0200
+Processing by LoginController#index as HTML
+Completed 406 Not Acceptable in 2ms (Allocations: 1748)
+
+
+  
+ActionController::MissingExactTemplate (LoginController#index is missing a template for request formats: text/html):
+  
+actionpack (6.1.7.8) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (6.1.7.8) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (6.1.7.8) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (6.1.7.8) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (6.1.7.8) lib/abstract_controller/base.rb:228:in `process_action'
+actionpack (6.1.7.8) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:117:in `block in run_callbacks'
+actiontext (6.1.7.8) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (6.1.7.8) lib/action_text/engine.rb:59:in `block (4 levels) in <class:Engine>'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:126:in `instance_exec'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:126:in `block in run_callbacks'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:137:in `run_callbacks'
+actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.7.8) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.7.8) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.7.8) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.7.8) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.7.8) lib/abstract_controller/base.rb:165:in `process'
+actionview (6.1.7.8) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.7.8) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.7.8) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.9) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.9) lib/rack/etag.rb:27:in `call'
+rack (2.2.9) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.9) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.9) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.9) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (6.1.7.8) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/method_override.rb:24:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
+puma (5.6.8) lib/puma/configuration.rb:252:in `call'
+puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.8) lib/puma/server.rb:443:in `process_client'
+puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/login" for ::1 at 2024-08-01 19:34:07 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 187)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | Allocations: 4743)
+Completed 200 OK in 38ms (Views: 37.7ms | Allocations: 5808)
+
+
+Started GET "/logo.jpg" for ::1 at 2024-08-01 19:34:07 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpg"):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:36:00 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 186)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 4580)
+Completed 200 OK in 19ms (Views: 18.1ms | Allocations: 5568)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:36:00 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:36:01 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 4143)
+Completed 200 OK in 32ms (Views: 26.0ms | Allocations: 4400)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:36:02 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/register" for ::1 at 2024-08-01 19:36:59 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 183)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.8ms | Allocations: 4247)
+Completed 200 OK in 44ms (Views: 43.2ms | Allocations: 5008)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:36:59 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/register" for ::1 at 2024-08-01 19:39:08 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 185)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.8ms | Allocations: 4595)
+Completed 200 OK in 25ms (Views: 23.9ms | Allocations: 5595)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:39:08 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:39:10 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 185)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.4ms | Allocations: 4287)
+Completed 200 OK in 22ms (Views: 20.9ms | Allocations: 5046)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:39:11 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:41:34 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 589.4ms | Allocations: 13911)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 615.4ms | Allocations: 17271)
+Completed 200 OK in 625ms (Views: 624.2ms | Allocations: 18263)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:41:34 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/register" for ::1 at 2024-08-01 19:41:38 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 2012)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.9ms | Allocations: 5174)
+Completed 200 OK in 44ms (Views: 41.7ms | Allocations: 5934)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:41:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:41:41 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1856)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 5018)
+Completed 200 OK in 10ms (Views: 9.3ms | Allocations: 5275)
+
+
+Started GET "/logo.jpeg" for ::1 at 2024-08-01 19:41:41 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/logo.jpeg"):
+  
+Started GET "/login" for ::1 at 2024-08-01 19:44:23 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2430)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.7ms | Allocations: 5725)
+Completed 200 OK in 37ms (Views: 36.0ms | Allocations: 6719)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:45:50 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 491.0ms | Allocations: 14603)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 493.5ms | Allocations: 17476)
+Completed 200 OK in 494ms (Views: 494.0ms | Allocations: 17732)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:46:38 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 506.2ms | Allocations: 13188)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 513.1ms | Allocations: 16061)
+Completed 200 OK in 515ms (Views: 514.5ms | Allocations: 16318)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:46:58 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 741.5ms | Allocations: 14223)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 745.3ms | Allocations: 17096)
+Completed 200 OK in 748ms (Views: 747.3ms | Allocations: 17351)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:47:20 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 654.0ms | Allocations: 13708)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 668.7ms | Allocations: 16581)
+Completed 200 OK in 671ms (Views: 669.4ms | Allocations: 16837)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:48:01 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 624.6ms | Allocations: 14179)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 631.4ms | Allocations: 17052)
+Completed 200 OK in 633ms (Views: 632.2ms | Allocations: 17307)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:49:02 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 712.0ms | Allocations: 15667)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 724.0ms | Allocations: 18540)
+Completed 200 OK in 752ms (Views: 751.6ms | Allocations: 18796)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:49:50 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 848.8ms | Allocations: 14210)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 873.7ms | Allocations: 17083)
+Completed 200 OK in 886ms (Views: 884.6ms | Allocations: 17338)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:50:06 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 531.8ms | Allocations: 15585)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 545.7ms | Allocations: 18458)
+Completed 200 OK in 548ms (Views: 547.1ms | Allocations: 18714)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:50:42 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 557.4ms | Allocations: 13109)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 563.8ms | Allocations: 15982)
+Completed 200 OK in 569ms (Views: 568.2ms | Allocations: 16237)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:50:59 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 639.5ms | Allocations: 13784)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 643.4ms | Allocations: 16657)
+Completed 200 OK in 645ms (Views: 644.4ms | Allocations: 16912)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:51:16 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 630.6ms | Allocations: 13834)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 638.2ms | Allocations: 16707)
+Completed 200 OK in 640ms (Views: 639.3ms | Allocations: 16963)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:52:32 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 648.1ms | Allocations: 14071)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 651.0ms | Allocations: 16944)
+Completed 200 OK in 652ms (Views: 651.6ms | Allocations: 17200)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:52:46 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 549.8ms | Allocations: 15063)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 557.7ms | Allocations: 17936)
+Completed 200 OK in 559ms (Views: 558.2ms | Allocations: 18191)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:53:32 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 645.0ms | Allocations: 14159)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 660.5ms | Allocations: 17032)
+Completed 200 OK in 664ms (Views: 663.4ms | Allocations: 17287)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:54:02 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 579.2ms | Allocations: 14652)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 584.1ms | Allocations: 17525)
+Completed 200 OK in 589ms (Views: 588.2ms | Allocations: 17780)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:54:19 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 513.6ms | Allocations: 14106)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 519.9ms | Allocations: 16979)
+Completed 200 OK in 521ms (Views: 521.0ms | Allocations: 17235)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:54:59 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 706.6ms | Allocations: 14560)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 709.3ms | Allocations: 17433)
+Completed 200 OK in 710ms (Views: 709.8ms | Allocations: 17689)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:55:18 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 432.1ms | Allocations: 14122)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 435.9ms | Allocations: 16995)
+Completed 200 OK in 437ms (Views: 436.4ms | Allocations: 17250)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:55:54 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 542.8ms | Allocations: 13292)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 545.2ms | Allocations: 16165)
+Completed 200 OK in 546ms (Views: 545.4ms | Allocations: 16420)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:56:20 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 535.2ms | Allocations: 14758)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 538.0ms | Allocations: 17631)
+Completed 200 OK in 540ms (Views: 539.3ms | Allocations: 17887)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:56:38 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 656.3ms | Allocations: 13652)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 670.0ms | Allocations: 16525)
+Completed 200 OK in 677ms (Views: 676.9ms | Allocations: 16781)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:56:55 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 515.4ms | Allocations: 14635)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 521.9ms | Allocations: 17508)
+Completed 200 OK in 524ms (Views: 523.9ms | Allocations: 17764)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:57:01 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2247)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 5217)
+Completed 200 OK in 21ms (Views: 20.9ms | Allocations: 5472)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:57:16 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 2869)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 5742)
+Completed 200 OK in 67ms (Views: 66.7ms | Allocations: 5997)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:58:05 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 569.5ms | Allocations: 15637)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 597.6ms | Allocations: 18511)
+Completed 200 OK in 602ms (Views: 601.4ms | Allocations: 18768)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:58:22 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 698.9ms | Allocations: 15070)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 704.4ms | Allocations: 17943)
+Completed 200 OK in 728ms (Views: 727.4ms | Allocations: 18198)
+
+
+Started GET "/register" for ::1 at 2024-08-01 19:58:27 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2427)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 5405)
+Completed 200 OK in 15ms (Views: 14.8ms | Allocations: 6164)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:58:37 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2250)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 5228)
+Completed 200 OK in 13ms (Views: 12.7ms | Allocations: 5484)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:59:03 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 492.8ms | Allocations: 14131)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 495.9ms | Allocations: 17004)
+Completed 200 OK in 501ms (Views: 499.6ms | Allocations: 17259)
+
+
+Started GET "/register" for ::1 at 2024-08-01 19:59:06 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2258)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 70.3ms | Allocations: 5228)
+Completed 200 OK in 73ms (Views: 71.9ms | Allocations: 5486)
+
+
+Started GET "/register" for ::1 at 2024-08-01 19:59:51 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 671.6ms | Allocations: 13724)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 674.0ms | Allocations: 16597)
+Completed 200 OK in 675ms (Views: 674.5ms | Allocations: 16852)
+
+
+Started GET "/login" for ::1 at 2024-08-01 19:59:54 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 28.1ms | Allocations: 2247)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 5217)
+Completed 200 OK in 35ms (Views: 33.0ms | Allocations: 5472)
+
+
+Started GET "/register" for ::1 at 2024-08-01 19:59:58 +0200
+Processing by RegisterController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering register/index.html.erb within layouts/application
+  Rendered register/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 2247)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 5217)
+Completed 200 OK in 72ms (Views: 71.5ms | Allocations: 5472)
+
+

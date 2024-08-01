@@ -110,94 +110,6 @@
  /* FINE NAVBAR */
  
  /* INIZIO FINESTRA MODALE */
- .modal-dialog {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   min-height: 100vh;
-   margin-top: -60%;
-   z-index: 1050;
- }
- 
- .modal-content {
-   border-radius: 12px;
-   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-   overflow: hidden;
-   background-color: #ffffff;
-   width: 40%;
-   height: auto;
-   max-height: 80vh;
- }
- 
- .modal-header {
-   border-bottom: none;
-   position: relative;
-   padding: 1rem;
- }
- 
- .modal-header .close {
-   position: absolute;
-   top: 0;
-   right: 0;
-   font-size: 2rem;
-   color: #1e7e34;
-   background: none;
-   border: none;
-   padding: 0.5rem;
- }
- 
- .modal-title {
-   font-size: 3rem;
-   font-family: 'Roboto', sans-serif;
-   font-weight: bold;
-   color: #1e7e34;
-   text-align: center;
-   margin-bottom: 1rem;
- }
- 
- .modal-body {
-   text-align: center;
- }
- 
- .form-control {
-   border-radius: 10px;
-   padding: 1.5rem;
-   font-size: 1.5rem;
-   margin-bottom: 1.5rem;
-   color: #1e7e34;
-   border: 1px solid #1e7e34;
- }
- 
- .form-group label {
-   color: #1e7e34;
-   font-size: 1.5rem;
-   margin-bottom: 1%;
- }
- 
- .btn-primary {
-   margin-top: 2rem;
-   background-color: #1e7e34;
-   border-color: #1e7e34;
-   color: #ffffff;
-   font-size: 1.5rem;
-   padding: 1rem 2rem;
-   margin-bottom: 5%;
-   border-radius: 10px;
- }
- 
- .btn-primary:hover {
-   background-color: #155d27;
-   border-color: #155d27;
- }
- 
- .modal-backdrop {
-   background-color: rgba(0, 0, 0, 0.8);
- }
- 
- .modal-backdrop.show {
-   backdrop-filter: blur(5px);
-   opacity: 1;
- }
  
  /* FINE FINESTRA MODALE */
 
@@ -217,3 +129,69 @@
   background-color: inherit;
   text-decoration: none;
 }
+
+/* INIZIO FORM */
+
+body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      height: 70%;
+      width: 50%;
+    }
+    .logo {
+      margin-bottom: 3%;
+    }
+    .logo img {
+      max-width: 100px;
+    }
+    .input-group {
+      width: 300px;
+      margin-left: 2%;
+      margin-right:2%;
+      margin-bottom:5%;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #006400;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .input-group input:focus {
+      outline: none;
+      border-color: #004d00;
+    }
+    .button {
+      width:40%;
+      height:30%;
+      background-color: #006400;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 25px;
+      margin-top: 5%;
+      margin-bottom: 5%;
+    }
+    .button:hover {
+      background-color: #004d00;
+    }
+    .link {
+      color: #006400;
+      text-decoration: none;
+    }
+/* FINE FORM */

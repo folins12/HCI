@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'nurseries', to: 'nurseries#index'
   resources :nurseries, only: [:index, :show]
 
-  post 'login', to: 'sessions#create'
+  get 'login', to: 'login#index'
+
+  get 'register', to: 'register#index'
 
 end
