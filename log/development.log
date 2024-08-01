@@ -9309,3 +9309,234 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 19ms (Views: 18.3ms | Allocations: 8577)
 
 
+Started GET "/" for ::1 at 2024-08-01 15:45:07 +0200
+  [1m[35m (4.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3783.2ms | Allocations: 33198)
+  Rendered finestra_modale/_login.html.erb (Duration: 47.6ms | Allocations: 4149)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3933.9ms | Allocations: 46580)
+Completed 200 OK in 3999ms (Views: 3957.9ms | ActiveRecord: 0.0ms | Allocations: 49100)
+
+
+Started GET "/" for ::1 at 2024-08-01 15:51:12 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 36.6ms | Allocations: 2457)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.5ms | Allocations: 2284)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 97.1ms | Allocations: 8646)
+Completed 200 OK in 103ms (Views: 100.7ms | Allocations: 8907)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-01 15:51:20 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 222)
+  Rendered finestra_modale/_login.html.erb (Duration: 9.7ms | Allocations: 2344)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 56.2ms | Allocations: 6572)
+Completed 200 OK in 66ms (Views: 63.9ms | Allocations: 7340)
+
+
+Started GET "/" for ::1 at 2024-08-01 15:51:23 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 1583)
+  Rendered finestra_modale/_login.html.erb (Duration: 17.6ms | Allocations: 2381)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 58.7ms | Allocations: 7835)
+Completed 200 OK in 88ms (Views: 64.5ms | Allocations: 8096)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:23:42 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 1959)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.9ms | Allocations: 2505)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 838.1ms | Allocations: 23414)
+Completed 200 OK in 849ms (Views: 845.1ms | Allocations: 24408)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:24:15 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1952)
+  Rendered finestra_modale/_login.html.erb (Duration: 3.9ms | Allocations: 2608)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 8883)
+Completed 200 OK in 30ms (Views: 29.1ms | Allocations: 9875)
+
+
+Started GET "/about" for ::1 at 2024-08-01 16:24:54 +0200
+Processing by HomeController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/about.html.erb within layouts/application
+  Rendered home/about.html.erb within layouts/application (Duration: 3.8ms | Allocations: 109)
+  Rendered finestra_modale/_login.html.erb (Duration: 5.5ms | Allocations: 2610)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 7146)
+Completed 200 OK in 80ms (Views: 54.2ms | Allocations: 8156)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:25:20 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 25.9ms | Allocations: 1951)
+  Rendered finestra_modale/_login.html.erb (Duration: 8.6ms | Allocations: 2608)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 71.5ms | Allocations: 8844)
+Completed 200 OK in 94ms (Views: 89.4ms | Allocations: 9831)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:32:00 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 1569)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.9ms | Allocations: 2274)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1078.0ms | Allocations: 21987)
+Completed 200 OK in 1081ms (Views: 1080.0ms | Allocations: 22248)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:32:39 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1961)
+  Rendered finestra_modale/_login.html.erb (Duration: 0.7ms | Allocations: 97)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.1ms | Allocations: 6455)
+Completed 200 OK in 48ms (Views: 46.5ms | Allocations: 7448)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:34:08 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.3ms | Allocations: 1978)
+  Rendered finestra_modale/_login.html.erb (Duration: 6.4ms | Allocations: 2611)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.1ms | Allocations: 8876)
+Completed 200 OK in 50ms (Views: 47.5ms | Allocations: 9869)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-01 16:53:26 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 217)
+  Rendered finestra_modale/_login.html.erb (Duration: 4.6ms | Allocations: 2506)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1065.7ms | Allocations: 22765)
+Completed 200 OK in 1074ms (Views: 1069.5ms | Allocations: 23757)
+
+
+Started GET "/" for ::1 at 2024-08-01 16:53:29 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 134.1ms | Allocations: 6052)
+  Rendered layout layouts/application.html.erb (Duration: 135.5ms | Allocations: 6116)
+Completed 500 Internal Server Error in 140ms (Allocations: 6851)
+
+
+  
+ActionView::Template::Error (The asset "video.mp4" is not present in the asset pipeline.
+):
+     7: <!-- Video Background -->
+     8: <div class="video-background">
+     9:   <video autoplay muted loop id="bg-video">
+    10:     <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    11:   </video>
+    12: </div>
+    13: 
+  
+app/views/home/index.html.erb:10
+Started GET "/" for ::1 at 2024-08-01 16:54:39 +0200
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4943.0ms | Allocations: 48007)
+  Rendered layout layouts/application.html.erb (Duration: 4947.5ms | Allocations: 48076)
+Completed 500 Internal Server Error in 4982ms (ActiveRecord: 0.0ms | Allocations: 50564)
+
+
+  
+ActionView::Template::Error (Asset `video.mp4` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link video.mp4
+
+and restart your server):
+     7: <!-- Video Background -->
+     8: <div class="video-background">
+     9:   <video autoplay muted loop id="bg-video">
+    10:     <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    11:   </video>
+    12: </div>
+    13: 
+  
+app/views/home/index.html.erb:10
+Started GET "/" for ::1 at 2024-08-01 16:54:45 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 21.6ms | Allocations: 4108)
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 4173)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.0ms | Allocations: 4470)
+
+
+  
+ActionView::Template::Error (Asset `video.mp4` was not declared to be precompiled in production.
+Declare links to your assets in `app/assets/config/manifest.js`.
+
+  //= link video.mp4
+
+and restart your server):
+     7: <!-- Video Background -->
+     8: <div class="video-background">
+     9:   <video autoplay muted loop id="bg-video">
+    10:     <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    11:   </video>
+    12: </div>
+    13: 
+  
+app/views/home/index.html.erb:10
+Started GET "/" for ::1 at 2024-08-01 16:56:34 +0200
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 231.6ms | Allocations: 26296)
+  Rendered finestra_modale/_login.html.erb (Duration: 54.3ms | Allocations: 4149)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 387.6ms | Allocations: 40744)
+Completed 200 OK in 417ms (Views: 403.3ms | ActiveRecord: 0.0ms | Allocations: 43264)
+
+
+Started GET "/" for ::1 at 2024-08-01 17:06:56 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 25.1ms | Allocations: 2498)
+  Rendered finestra_modale/_login.html.erb (Duration: 2.8ms | Allocations: 2507)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2608.5ms | Allocations: 25375)
+Completed 200 OK in 2618ms (Views: 2615.3ms | Allocations: 26376)
+
+

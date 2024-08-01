@@ -1,15 +1,15 @@
 .banner-home {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), image-url('home.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('home.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-top: 0; /* Assicurati che non ci sia margine superiore */
-    padding-top: 0; /* Assicurati che non ci sia padding superiore */
+    margin-top: 0;
+    padding-top: 0;
 }
 
 .content {
@@ -46,24 +46,56 @@
     }
 }
 
-/* Styles for the sections below the banner */
+/* Video Background */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Copre tutta la schermata */
+    overflow: hidden;
+    z-index: -1;
+}
+
+#bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    opacity: 0.5; /* Adjust to darken the video */
+}
+
+/* Content Sections */
+.content-sections {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Aggiungi spazio tra il banner e la prima sezione */
+    padding-bottom: 20px; /* Aggiungi spazio tra l'ultima sezione e il footer */
+}
 
 .container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers the sections horizontally */
+    align-items: center;
     margin-top: 80px;
 }
 
 .section {
     margin-bottom: 40px;
-    width: 150%;
+    width: 80%;
 }
 
 .section-link {
     text-decoration: none;
     color: inherit;
-    display: block; /* Ensures the entire section is clickable */
+    display: block;
 }
 
 .section-title {
@@ -76,26 +108,29 @@
 .section-content {
     display: flex;
     align-items: center;
-    gap: 20px; /* Add space between the image and description */
+    gap: 20px;
+    flex-direction: column;
+    text-align: center;
 }
 
 .section-image {
-    width: 150px;
+    width: 100%;
+    max-width: 300px;
     height: auto;
-    margin: 0; /* Ensure no extra margin */
+    margin: 0 auto;
 }
 
 .section-description {
     flex: 1;
     color: #000000;
-    margin: 0; /* Ensure no extra margin */
-    text-align: left; /* Align text to the left */
+    font-size: 1.25em;
+    margin: 0;
+    text-align: center;
 }
 
 /* Divider style */
-
 .home-divider-thin {
-    width: 100%;
+    width: 80%;
     height: 2px;
     background-color: #1e3b32;
     border-radius: 1px;
@@ -104,14 +139,13 @@
 }
 
 /* Footer styles */
-
 .footer {
     width: 100%;
     height: 20vh;
     background-color: #1e3b32;
     color: #fff;
     text-align: center;
-    padding: 40px 0; /* Aumenta il padding per aumentare l'altezza del contenuto */
+    padding: 40px 0;
     position: relative;
     bottom: 0;
     left: 0;
@@ -123,18 +157,18 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%; /* Assicura che il footer interno occupi tutta l'altezza disponibile */
+    height: 100%;
 }
 
 .footer .copyright {
-    margin-bottom: 20px; /* Aumenta lo spazio sotto il copyright */
-    font-size: 20px; /* Aumenta la dimensione del carattere */
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
 .footer .social {
     display: flex;
-    gap: 40px; /* Aumenta lo spazio tra le icone social */
-    font-size: 24px; /* Aumenta la dimensione del carattere */
+    gap: 40px;
+    font-size: 24px;
 }
 
 .footer .social a {
@@ -145,7 +179,7 @@
 }
 
 .footer .social a i {
-    margin-right: 12px; /* Aumenta lo spazio tra l'icona e il testo */
+    margin-right: 12px;
 }
 
 /* Aggiungi un po' di margine intorno alle sezioni di contenuto del footer */
@@ -153,15 +187,13 @@
     margin: 0 10px;
 }
 
-
-
 .about-container {
     margin-top: 4%;
     padding: 20px;
-    background-color: #f4f4f4; /* Colore di sfondo leggero per contrasto */
-    border-radius: 10px; /* Arrotondare gli angoli */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Aggiungere un'ombra leggera */
-    max-width: 800px; /* Limita la larghezza massima */
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -170,13 +202,13 @@
 .about-container h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    color: #1e3b32; /* Colore del titolo */
+    color: #1e3b32;
 }
 
 .about-container p {
     font-size: 1.25em;
-    line-height: 1.6; /* Aumentare l'interlinea per migliorare la leggibilità */
-    color: #333; /* Colore del testo */
+    line-height: 1.6;
+    color: #333;
     padding: 10px;
 }
 
