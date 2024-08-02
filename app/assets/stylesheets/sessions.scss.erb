@@ -1,0 +1,91 @@
+.background {
+    background-image: url('<%= asset_path("sfondo.jpeg") %>');  /* Percorso dell'immagine di sfondo */
+    background-size: cover; /* Adatta l'immagine per coprire l'intero sfondo */
+    background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
+    background-position: center; /* Centra l'immagine */
+    width: 100%;
+    height: 100vh; /* Altezza della finestra del browser */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* INIZIO FORM */
+.formcontainer {
+    border: 3px solid #006400; /* Bordo verde scuro */
+    border-radius: 15px;
+    padding: 20px; /* Padding per creare spazio all'interno del container */
+    margin: 0 auto; /* Centratura orizzontale */
+    width: 40%; /* Adatta la larghezza del container ai contenuti */
+    height: auto; /* Adatta l'altezza al contenuto */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white; /* Aggiunto sfondo bianco per il container */
+    opacity: 0.95; /* Leggera trasparenza per vedere lo sfondo */
+}
+
+.logo {
+    margin-bottom: 3%; 
+}
+
+.logo img {
+    max-width: 200px; 
+}
+
+.input-group {
+    width: 100%; /* Aumentata la larghezza dell'input group */
+    margin: 2% 0; /* Margine verticale */
+    display: flex;
+    justify-content: center;
+}
+
+.input-group input {
+    width: 400px; /* Aumentata ulteriormente la larghezza dell'input */
+    padding: 15px; 
+    border: 4px solid #006400; 
+    border-radius: 10px; 
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #004d00;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    width: 50%; /* Regolata la larghezza del bottone */
+    background-color: #006400;
+    color: white;
+    border: none;
+    padding: 20px; /* Padding verticale per centrare il testo */
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 30px; 
+    margin-top: 2%; 
+    margin-bottom: 5%; 
+    text-align: center; 
+    display: flex; /* Aggiunto display flex per centrare il testo */
+    align-items: center; /* Centrare verticalmente il testo */
+    justify-content: center; /* Centrare orizzontalmente il testo */
+}
+
+.button:hover {
+    background-color: #004d00;
+}
+
+.link {
+    color: #006400;
+    text-decoration: none;
+    font-size: 25px;
+    margin-bottom: 10%;
+    text-align: center; /* Centra il testo della scritta cliccabile */
+}
