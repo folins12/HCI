@@ -11080,701 +11080,1209 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 911ms (Views: 910.4ms | Allocations: 23320)
 
 
-Started GET "/" for ::1 at 2024-08-02 12:11:42 +0200
-  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-08-02 11:08:02 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 1346.5ms | Allocations: 35339)
+  Rendered home/index.html.erb within layouts/application (Duration: 27.0ms | Allocations: 2133)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 1384.8ms | Allocations: 39873)
-Completed 200 OK in 1425ms (Views: 1403.3ms | ActiveRecord: 0.0ms | Allocations: 43420)
+  Rendered layout layouts/application.html.erb (Duration: 1068.0ms | Allocations: 18355)
+Completed 200 OK in 1077ms (Views: 1076.2ms | Allocations: 18611)
 
 
-Started GET "/login" for ::1 at 2024-08-02 12:12:00 +0200
+Started GET "/" for ::1 at 2024-08-02 11:08:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 950.8ms | Allocations: 18277)
+Completed 200 OK in 952ms (Views: 951.9ms | Allocations: 18533)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:11:00 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 24.1ms | Allocations: 2131)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1041.5ms | Allocations: 17188)
+Completed 200 OK in 1053ms (Views: 1052.2ms | Allocations: 17444)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:11:15 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 6565)
+Completed 200 OK in 29ms (Views: 29.1ms | Allocations: 6821)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:12:58 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 2128)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 889.9ms | Allocations: 17356)
+Completed 200 OK in 892ms (Views: 891.0ms | Allocations: 17611)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:23:45 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 25.0ms | Allocations: 2546)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1081.1ms | Allocations: 18957)
+Completed 200 OK in 1119ms (Views: 1114.5ms | Allocations: 19950)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:24:28 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2545)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 984.2ms | Allocations: 18460)
+Completed 200 OK in 1002ms (Views: 1001.4ms | Allocations: 19454)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:25:05 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2129)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1090.9ms | Allocations: 18714)
+Completed 200 OK in 1101ms (Views: 1100.3ms | Allocations: 18970)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:25:30 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.8ms | Allocations: 2131)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 964.4ms | Allocations: 17649)
+Completed 200 OK in 966ms (Views: 965.7ms | Allocations: 17904)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:27:14 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.0ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 833.8ms | Allocations: 18210)
+Completed 200 OK in 842ms (Views: 841.4ms | Allocations: 18465)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:27:37 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 2127)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 952.4ms | Allocations: 18219)
+Completed 200 OK in 959ms (Views: 958.7ms | Allocations: 18476)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:27:49 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1015.8ms | Allocations: 17706)
+Completed 200 OK in 1018ms (Views: 1016.8ms | Allocations: 17962)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:28:00 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1559.1ms | Allocations: 17190)
+Completed 200 OK in 1562ms (Views: 1560.8ms | Allocations: 17445)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:28:15 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 21.4ms | Allocations: 2130)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 983.9ms | Allocations: 17287)
+Completed 200 OK in 987ms (Views: 986.1ms | Allocations: 17542)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:28:27 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.9ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 971.8ms | Allocations: 16937)
+Completed 200 OK in 974ms (Views: 973.1ms | Allocations: 17192)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:28:40 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2131)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1007.6ms | Allocations: 16933)
+Completed 200 OK in 1009ms (Views: 1008.4ms | Allocations: 17188)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:29:09 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 2157)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 892.7ms | Allocations: 17176)
+Completed 200 OK in 895ms (Views: 895.1ms | Allocations: 17432)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:29:31 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 20.2ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 959.3ms | Allocations: 17769)
+Completed 200 OK in 966ms (Views: 965.9ms | Allocations: 18025)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:29:50 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 985.1ms | Allocations: 19120)
+Completed 200 OK in 987ms (Views: 986.9ms | Allocations: 19375)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:30:00 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 965.1ms | Allocations: 18783)
+Completed 200 OK in 968ms (Views: 966.4ms | Allocations: 19039)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:30:10 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 17.3ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1107.4ms | Allocations: 16753)
+Completed 200 OK in 1121ms (Views: 1120.3ms | Allocations: 17010)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:30:31 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 897.5ms | Allocations: 17946)
+Completed 200 OK in 899ms (Views: 898.2ms | Allocations: 18203)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:49:54 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2549)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 9d3a65004aa9c28709f2
+Version: webpack 4.47.0
+Time: 2621ms
+Built at: 08/02/2024 11:50:05 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-1ee85f29da43759a8b18.js   8.96 KiB  application  [emitted] [immutable]  application
+js/application-1ee85f29da43759a8b18.js.map   3.53 KiB  application  [emitted] [dev]        application
+         js/navbar-a8906b9ab6cafce6a33d.js   8.93 KiB       navbar  [emitted] [immutable]  navbar
+     js/navbar-a8906b9ab6cafce6a33d.js.map   3.52 KiB       navbar  [emitted] [dev]        navbar
+                             manifest.json  668 bytes               [emitted]              
+Entrypoint application = js/application-1ee85f29da43759a8b18.js js/application-1ee85f29da43759a8b18.js.map
+Entrypoint navbar = js/navbar-a8906b9ab6cafce6a33d.js js/navbar-a8906b9ab6cafce6a33d.js.map
+[./app/javascript/packs/application.js] 5.07 KiB {application} [built] [failed] [1 error]
+[./app/javascript/packs/navbar.js] 5.07 KiB {navbar} [built] [failed] [1 error]
+
+ERROR in ./app/javascript/packs/navbar.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find package '@babel/plugin-proposal-private-methods' imported from /home/biar/Documents/GitHub/PlantTracker-labAssi/babel-virtual-resolve-base.js
+    at new NodeError (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:195:5)
+    at packageResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:899:9)
+    at moduleResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:939:18)
+    at defaultResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1017:15)
+    at resolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1030:12)
+    at tryImportMetaResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:142:45)
+    at resolveStandardizedNameForImport (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:164:19)
+    at resolveStandardizedName (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:173:22)
+    at loadPlugin (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:52:20)
+    at loadPlugin.next (<anonymous>)
+    at createDescriptor (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:140:16)
+    at createDescriptor.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:261:32)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:44:11
+    at Array.forEach (<anonymous>)
+    at Function.async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:43:15)
+    at Function.all (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:216:13)
+    at Generator.next (<anonymous>)
+    at createDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:102:41)
+    at createDescriptors.next (<anonymous>)
+    at createPluginDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:99:17)
+    at createPluginDescriptors.next (<anonymous>)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/gensync-utils/functional.js:39:27
+    at Generator.next (<anonymous>)
+    at mergeChainOpts (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:349:34)
+    at mergeChainOpts.next (<anonymous>)
+    at chainWalker (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:316:14)
+    at chainWalker.next (<anonymous>)
+    at loadFileChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:191:24)
+    at loadFileChain.next (<anonymous>)
+    at buildRootChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:77:27)
+    at buildRootChain.next (<anonymous>)
+    at loadPrivatePartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:72:62)
+    at loadPrivatePartialConfig.next (<anonymous>)
+    at loadPartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:115:25)
+    at loadPartialConfig.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:269:25)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:93:9
+    at new Promise (<anonymous>)
+    at async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:47:12)
+    at loadPartialConfigAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/index.js:34:85)
+    at Object.<anonymous> (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:126:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:3:103)
+    at _next (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:194)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:364
+    at new Promise (<anonymous>)
+
+ERROR in ./app/javascript/packs/application.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find package '@babel/plugin-proposal-private-methods' imported from /home/biar/Documents/GitHub/PlantTracker-labAssi/babel-virtual-resolve-base.js
+    at new NodeError (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:195:5)
+    at packageResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:899:9)
+    at moduleResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:939:18)
+    at defaultResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1017:15)
+    at resolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1030:12)
+    at tryImportMetaResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:142:45)
+    at resolveStandardizedNameForImport (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:164:19)
+    at resolveStandardizedName (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:173:22)
+    at loadPlugin (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:52:20)
+    at loadPlugin.next (<anonymous>)
+    at createDescriptor (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:140:16)
+    at createDescriptor.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:261:32)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:44:11
+    at Array.forEach (<anonymous>)
+    at Function.async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:43:15)
+    at Function.all (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:216:13)
+    at Generator.next (<anonymous>)
+    at createDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:102:41)
+    at createDescriptors.next (<anonymous>)
+    at createPluginDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:99:17)
+    at createPluginDescriptors.next (<anonymous>)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/gensync-utils/functional.js:39:27
+    at Generator.next (<anonymous>)
+    at mergeChainOpts (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:349:34)
+    at mergeChainOpts.next (<anonymous>)
+    at chainWalker (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:316:14)
+    at chainWalker.next (<anonymous>)
+    at loadFileChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:191:24)
+    at loadFileChain.next (<anonymous>)
+    at buildRootChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:77:27)
+    at buildRootChain.next (<anonymous>)
+    at loadPrivatePartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:72:62)
+    at loadPrivatePartialConfig.next (<anonymous>)
+    at loadPartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:115:25)
+    at loadPartialConfig.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:269:25)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:93:9
+    at new Promise (<anonymous>)
+    at async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:47:12)
+    at loadPartialConfigAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/index.js:34:85)
+    at Object.<anonymous> (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:126:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:3:103)
+    at _next (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:194)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:364
+    at new Promise (<anonymous>)
+
+  Rendered layout layouts/application.html.erb (Duration: 11337.5ms | Allocations: 21510)
+Completed 200 OK in 11346ms (Views: 11345.0ms | Allocations: 22503)
+
+
+Started GET "/" for ::1 at 2024-08-02 11:51:38 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2545)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 76.8ms | Allocations: 8623)
+Completed 200 OK in 89ms (Views: 88.0ms | Allocations: 9617)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:00:01 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 2536)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 798.3ms | Allocations: 22247)
+Completed 200 OK in 817ms (Views: 811.2ms | Allocations: 23234)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:03:54 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 2568)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 833.8ms | Allocations: 20906)
+Completed 200 OK in 840ms (Views: 837.4ms | Allocations: 21899)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:07:27 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 24.4ms | Allocations: 2136)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 842.3ms | Allocations: 19196)
+Completed 200 OK in 844ms (Views: 843.2ms | Allocations: 19453)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:07:39 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1553.3ms | Allocations: 19604)
+Completed 200 OK in 1555ms (Views: 1554.1ms | Allocations: 19860)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:10:01 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 2563)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1061.5ms | Allocations: 19682)
+Completed 200 OK in 1064ms (Views: 1063.4ms | Allocations: 20674)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:10:59 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2137)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 897.7ms | Allocations: 19791)
+Completed 200 OK in 900ms (Views: 898.5ms | Allocations: 20049)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:11:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1692.4ms | Allocations: 19298)
+Completed 200 OK in 1701ms (Views: 1700.4ms | Allocations: 19554)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:11:48 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 17.1ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 986.4ms | Allocations: 19809)
+Completed 200 OK in 988ms (Views: 987.6ms | Allocations: 20065)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:12:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 994.8ms | Allocations: 18959)
+Completed 200 OK in 1000ms (Views: 999.3ms | Allocations: 19215)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:13:11 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.5ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 875.9ms | Allocations: 18776)
+Completed 200 OK in 883ms (Views: 882.0ms | Allocations: 19032)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:16:05 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2143)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 9d3a65004aa9c28709f2
+Version: webpack 4.47.0
+Time: 2325ms
+Built at: 08/02/2024 12:16:14 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-1ee85f29da43759a8b18.js   8.96 KiB  application  [emitted] [immutable]  application
+js/application-1ee85f29da43759a8b18.js.map   3.53 KiB  application  [emitted] [dev]        application
+         js/navbar-a8906b9ab6cafce6a33d.js   8.93 KiB       navbar  [emitted] [immutable]  navbar
+     js/navbar-a8906b9ab6cafce6a33d.js.map   3.52 KiB       navbar  [emitted] [dev]        navbar
+                             manifest.json  668 bytes               [emitted]              
+Entrypoint application = js/application-1ee85f29da43759a8b18.js js/application-1ee85f29da43759a8b18.js.map
+Entrypoint navbar = js/navbar-a8906b9ab6cafce6a33d.js js/navbar-a8906b9ab6cafce6a33d.js.map
+[./app/javascript/packs/application.js] 5.07 KiB {application} [built] [failed] [1 error]
+[./app/javascript/packs/navbar.js] 5.07 KiB {navbar} [built] [failed] [1 error]
+
+ERROR in ./app/javascript/packs/application.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find package '@babel/plugin-proposal-private-methods' imported from /home/biar/Documents/GitHub/PlantTracker-labAssi/babel-virtual-resolve-base.js
+    at new NodeError (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:195:5)
+    at packageResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:899:9)
+    at moduleResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:939:18)
+    at defaultResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1017:15)
+    at resolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1030:12)
+    at tryImportMetaResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:142:45)
+    at resolveStandardizedNameForImport (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:164:19)
+    at resolveStandardizedName (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:173:22)
+    at loadPlugin (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:52:20)
+    at loadPlugin.next (<anonymous>)
+    at createDescriptor (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:140:16)
+    at createDescriptor.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:261:32)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:44:11
+    at Array.forEach (<anonymous>)
+    at Function.async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:43:15)
+    at Function.all (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:216:13)
+    at Generator.next (<anonymous>)
+    at createDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:102:41)
+    at createDescriptors.next (<anonymous>)
+    at createPluginDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:99:17)
+    at createPluginDescriptors.next (<anonymous>)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/gensync-utils/functional.js:39:27
+    at Generator.next (<anonymous>)
+    at mergeChainOpts (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:349:34)
+    at mergeChainOpts.next (<anonymous>)
+    at chainWalker (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:316:14)
+    at chainWalker.next (<anonymous>)
+    at loadFileChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:191:24)
+    at loadFileChain.next (<anonymous>)
+    at buildRootChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:77:27)
+    at buildRootChain.next (<anonymous>)
+    at loadPrivatePartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:72:62)
+    at loadPrivatePartialConfig.next (<anonymous>)
+    at loadPartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:115:25)
+    at loadPartialConfig.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:269:25)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:93:9
+    at new Promise (<anonymous>)
+    at async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:47:12)
+    at loadPartialConfigAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/index.js:34:85)
+    at Object.<anonymous> (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:126:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:3:103)
+    at _next (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:194)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:364
+    at new Promise (<anonymous>)
+
+ERROR in ./app/javascript/packs/navbar.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find package '@babel/plugin-proposal-private-methods' imported from /home/biar/Documents/GitHub/PlantTracker-labAssi/babel-virtual-resolve-base.js
+    at new NodeError (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:195:5)
+    at packageResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:899:9)
+    at moduleResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:939:18)
+    at defaultResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1017:15)
+    at resolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1030:12)
+    at tryImportMetaResolve (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:142:45)
+    at resolveStandardizedNameForImport (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:164:19)
+    at resolveStandardizedName (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:173:22)
+    at loadPlugin (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:52:20)
+    at loadPlugin.next (<anonymous>)
+    at createDescriptor (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:140:16)
+    at createDescriptor.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:261:32)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:44:11
+    at Array.forEach (<anonymous>)
+    at Function.async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:43:15)
+    at Function.all (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:216:13)
+    at Generator.next (<anonymous>)
+    at createDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:102:41)
+    at createDescriptors.next (<anonymous>)
+    at createPluginDescriptors (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:99:17)
+    at createPluginDescriptors.next (<anonymous>)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/gensync-utils/functional.js:39:27
+    at Generator.next (<anonymous>)
+    at mergeChainOpts (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:349:34)
+    at mergeChainOpts.next (<anonymous>)
+    at chainWalker (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:316:14)
+    at chainWalker.next (<anonymous>)
+    at loadFileChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:191:24)
+    at loadFileChain.next (<anonymous>)
+    at buildRootChain (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:77:27)
+    at buildRootChain.next (<anonymous>)
+    at loadPrivatePartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:72:62)
+    at loadPrivatePartialConfig.next (<anonymous>)
+    at loadPartialConfig (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:115:25)
+    at loadPartialConfig.next (<anonymous>)
+    at step (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:269:25)
+    at evaluateAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:93:9
+    at new Promise (<anonymous>)
+    at async (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:47:12)
+    at loadPartialConfigAsync (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/index.js:34:85)
+    at Object.<anonymous> (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:126:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:3:103)
+    at _next (/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:194)
+    at /home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:364
+    at new Promise (<anonymous>)
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 9552.7ms | Allocations: 20129)
+Completed 200 OK in 9555ms (Views: 9554.1ms | Allocations: 20384)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:17:39 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 7658)
+Completed 200 OK in 29ms (Views: 27.2ms | Allocations: 7914)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:18:14 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 989.9ms | Allocations: 19400)
+Completed 200 OK in 993ms (Views: 991.7ms | Allocations: 19656)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:18:56 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 29.0ms | Allocations: 2155)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 960.1ms | Allocations: 19850)
+Completed 200 OK in 964ms (Views: 963.6ms | Allocations: 20106)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:19:24 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 33.8ms | Allocations: 2147)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 830.5ms | Allocations: 20395)
+Completed 200 OK in 836ms (Views: 835.4ms | Allocations: 20661)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:19:46 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 955.8ms | Allocations: 18457)
+Completed 200 OK in 958ms (Views: 957.8ms | Allocations: 18713)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:20:19 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1091.7ms | Allocations: 18489)
+Completed 200 OK in 1096ms (Views: 1095.4ms | Allocations: 18746)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:20:55 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 955.4ms | Allocations: 19763)
+Completed 200 OK in 958ms (Views: 957.6ms | Allocations: 20019)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:21:33 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 826.2ms | Allocations: 18783)
+Completed 200 OK in 827ms (Views: 827.0ms | Allocations: 19040)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:21:59 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 884.9ms | Allocations: 18834)
+Completed 200 OK in 887ms (Views: 885.7ms | Allocations: 19091)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:22:17 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 27.2ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1067.5ms | Allocations: 20713)
+Completed 200 OK in 1069ms (Views: 1068.4ms | Allocations: 20970)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:22:26 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 928.2ms | Allocations: 20231)
+Completed 200 OK in 929ms (Views: 928.9ms | Allocations: 20488)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:22:37 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 926.2ms | Allocations: 19693)
+Completed 200 OK in 928ms (Views: 927.6ms | Allocations: 19949)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:22:49 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2128)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 940.6ms | Allocations: 20238)
+Completed 200 OK in 943ms (Views: 942.2ms | Allocations: 20493)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:23:03 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 34.0ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1339.8ms | Allocations: 19740)
+Completed 200 OK in 1350ms (Views: 1348.7ms | Allocations: 19997)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:23:17 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.3ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1157.8ms | Allocations: 20774)
+Completed 200 OK in 1161ms (Views: 1158.9ms | Allocations: 21029)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:23:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 816.3ms | Allocations: 20272)
+Completed 200 OK in 820ms (Views: 819.3ms | Allocations: 20528)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:24:01 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2156)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1070.4ms | Allocations: 21236)
+Completed 200 OK in 1080ms (Views: 1079.2ms | Allocations: 21492)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:24:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 848.5ms | Allocations: 21647)
+Completed 200 OK in 850ms (Views: 849.5ms | Allocations: 21904)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:24:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 21.6ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1014.5ms | Allocations: 20188)
+Completed 200 OK in 1018ms (Views: 1016.7ms | Allocations: 20444)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:24:47 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 840.7ms | Allocations: 19765)
+Completed 200 OK in 842ms (Views: 841.4ms | Allocations: 20022)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:25:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 863.7ms | Allocations: 18885)
+Completed 200 OK in 866ms (Views: 865.6ms | Allocations: 19141)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:26:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 877.2ms | Allocations: 19368)
+Completed 200 OK in 878ms (Views: 877.9ms | Allocations: 19624)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:27:17 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.4ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1226.6ms | Allocations: 20247)
+Completed 200 OK in 1228ms (Views: 1227.4ms | Allocations: 20504)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:27:40 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2157)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1460.5ms | Allocations: 18798)
+Completed 200 OK in 1470ms (Views: 1461.6ms | Allocations: 19054)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:28:01 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 65.7ms | Allocations: 2141)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 936.3ms | Allocations: 19249)
+Completed 200 OK in 952ms (Views: 951.9ms | Allocations: 19504)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:28:08 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 748.8ms | Allocations: 19797)
+Completed 200 OK in 750ms (Views: 749.9ms | Allocations: 20052)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:29:27 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 27.4ms | Allocations: 2155)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 823.5ms | Allocations: 20248)
+Completed 200 OK in 829ms (Views: 828.5ms | Allocations: 20505)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:29:42 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 880.3ms | Allocations: 19689)
+Completed 200 OK in 882ms (Views: 881.3ms | Allocations: 19944)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:29:59 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 848.1ms | Allocations: 21641)
+Completed 200 OK in 850ms (Views: 849.5ms | Allocations: 21898)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:30:42 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 22.0ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 975.0ms | Allocations: 19340)
+Completed 200 OK in 979ms (Views: 978.3ms | Allocations: 19595)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:31:12 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1074.7ms | Allocations: 19813)
+Completed 200 OK in 1076ms (Views: 1075.7ms | Allocations: 20069)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:31:49 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 788.2ms | Allocations: 17843)
+Completed 200 OK in 790ms (Views: 789.2ms | Allocations: 18100)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:32:22 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 907.8ms | Allocations: 18315)
+Completed 200 OK in 912ms (Views: 911.4ms | Allocations: 18571)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:32:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 698.9ms | Allocations: 19858)
+Completed 200 OK in 700ms (Views: 699.6ms | Allocations: 20115)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:32:51 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 723.3ms | Allocations: 20279)
+Completed 200 OK in 725ms (Views: 724.2ms | Allocations: 20535)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:33:10 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.2ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 891.4ms | Allocations: 19829)
+Completed 200 OK in 893ms (Views: 892.5ms | Allocations: 20085)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:33:48 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2135)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 856.7ms | Allocations: 19239)
+Completed 200 OK in 858ms (Views: 857.9ms | Allocations: 19495)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:34:09 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 34.7ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 754.8ms | Allocations: 19385)
+Completed 200 OK in 757ms (Views: 756.1ms | Allocations: 19640)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:34:27 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 852.1ms | Allocations: 19771)
+Completed 200 OK in 853ms (Views: 853.0ms | Allocations: 20026)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:34:42 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.9ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 784.4ms | Allocations: 20245)
+Completed 200 OK in 787ms (Views: 786.9ms | Allocations: 20502)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:34:58 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.1ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1142.9ms | Allocations: 21179)
+Completed 200 OK in 1149ms (Views: 1148.2ms | Allocations: 21434)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:35:17 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1020.1ms | Allocations: 18327)
+Completed 200 OK in 1024ms (Views: 1023.2ms | Allocations: 18584)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:35:32 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 758.9ms | Allocations: 19807)
+Completed 200 OK in 760ms (Views: 760.0ms | Allocations: 20062)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:35:41 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.4ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 8145)
+Completed 200 OK in 41ms (Views: 41.0ms | Allocations: 8402)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:36:11 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2134)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 750.7ms | Allocations: 17886)
+Completed 200 OK in 754ms (Views: 752.8ms | Allocations: 18141)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:36:24 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.3ms | Allocations: 8143)
+Completed 200 OK in 31ms (Views: 30.2ms | Allocations: 8399)
+
+
+Started GET "/login" for ::1 at 2024-08-02 12:36:44 +0200
 Processing by LoginController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering login/index.html.erb within layouts/application
-  Rendered login/index.html.erb within layouts/application (Duration: 20.8ms | Allocations: 2424)
+  Rendered login/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 2423)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 71.4ms | Allocations: 5365)
-Completed 200 OK in 88ms (Views: 80.0ms | ActiveRecord: 0.0ms | Allocations: 6133)
-
-
-Started GET "/register" for ::1 at 2024-08-02 12:12:04 +0200
-Processing by RegisterController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering register/index.html.erb within layouts/application
-  Rendered register/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2429)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 5370)
-Completed 200 OK in 38ms (Views: 35.3ms | ActiveRecord: 0.0ms | Allocations: 6138)
+  Rendered layout layouts/application.html.erb (Duration: 25.2ms | Allocations: 6999)
+Completed 200 OK in 31ms (Views: 27.4ms | Allocations: 7767)
 
 
-Started GET "/login" for ::1 at 2024-08-02 12:12:12 +0200
-Processing by LoginController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering login/index.html.erb within layouts/application
-  Rendered login/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2258)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 5236)
-Completed 200 OK in 24ms (Views: 24.1ms | ActiveRecord: 0.0ms | Allocations: 5492)
-
-
-Started GET "/register" for ::1 at 2024-08-02 12:12:18 +0200
-Processing by RegisterController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering register/index.html.erb within layouts/application
-  Rendered register/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2254)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 13.3ms | Allocations: 5224)
-Completed 200 OK in 14ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 5480)
-
-
-Started GET "/nurseries" for ::1 at 2024-08-02 12:12:20 +0200
-Processing by NurseriesController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering nurseries/index.html.erb within layouts/application
-  [1m[36mNursery Load (2.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
-  ↳ app/views/nurseries/index.html.erb:12
-  Rendered nurseries/index.html.erb within layouts/application (Duration: 76.5ms | Allocations: 5154)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 86.0ms | Allocations: 9151)
-Completed 200 OK in 148ms (Views: 109.1ms | ActiveRecord: 2.6ms | Allocations: 10260)
-
-
-Started GET "/infoplants" for ::1 at 2024-08-02 12:12:22 +0200
-Processing by InfoplantsController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering infoplants/index.html.erb within layouts/application
-  Rendered infoplants/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 222)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 4280)
-Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms | Allocations: 5041)
-
-
-Started GET "/" for ::1 at 2024-08-02 12:12:23 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2135)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 11.3ms | Allocations: 6079)
-Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 6335)
-
-
-  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateUsers (20240802102602)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "nome" varchar, "cognome" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (6.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240802102602"]]
-  [1m[36mTRANSACTION (20.4ms)[0m  [1m[36mcommit transaction[0m
-  [1m[36mActiveRecord::InternalMetadata Load (11.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/" for ::1 at 2024-08-02 12:36:49 +0200
-  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (30.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 2974.6ms | Allocations: 47208)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 3020.7ms | Allocations: 57986)
-Completed 200 OK in 3048ms (Views: 3023.4ms | ActiveRecord: 0.0ms | Allocations: 60532)
-
-
-Started GET "/login" for ::1 at 2024-08-02 12:36:57 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 26.9ms | Allocations: 2531)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 65.0ms | Allocations: 5520)
-Completed 200 OK in 82ms (Views: 81.5ms | ActiveRecord: 0.0ms | Allocations: 6292)
-
-
-Started GET "/register" for ::1 at 2024-08-02 12:37:01 +0200
-Processing by RegistrationsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering registrations/new.html.erb within layouts/application
-  Rendered registrations/new.html.erb within layouts/application (Duration: 45.2ms | Allocations: 3547)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 60.6ms | Allocations: 6524)
-Completed 200 OK in 132ms (Views: 64.1ms | ActiveRecord: 1.6ms | Allocations: 11692)
-
-
-Started GET "/login" for ::1 at 2024-08-02 12:37:08 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 2365)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 24.6ms | Allocations: 5355)
-Completed 200 OK in 28ms (Views: 27.9ms | ActiveRecord: 0.0ms | Allocations: 5616)
-
-
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
-  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
-Started GET "/register" for ::1 at 2024-08-02 12:41:11 +0200
-Processing by RegistrationsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering registrations/new.html.erb within layouts/application
-  Rendered registrations/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2899)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 13.2ms | Allocations: 5871)
-Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 6143)
-
-
-Started POST "/register" for ::1 at 2024-08-02 12:41:38 +0200
-Processing by RegistrationsController#create as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"Marco", "cognome"=>"Rossi", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
-  ↳ app/controllers/registrations_controller.rb:8:in `create'
-  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/registrations_controller.rb:8:in `create'
-  [1m[36mUser Create (5.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "nome", "cognome", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "mrossi@gmail.com"], ["password_digest", "$2a$12$R0Z/CHbKjuqeAu.ur4vl2e.WawhAsQNirb51UV2QYAxoh/JKmrrZS"], ["nome", "Marco"], ["cognome", "Rossi"], ["created_at", "2024-08-02 10:41:39.281980"], ["updated_at", "2024-08-02 10:41:39.281980"]]
-  ↳ app/controllers/registrations_controller.rb:8:in `create'
-  [1m[36mTRANSACTION (40.1ms)[0m  [1m[36mcommit transaction[0m
-  ↳ app/controllers/registrations_controller.rb:8:in `create'
-Redirected to http://localhost:3000/
-Completed 302 Found in 350ms (ActiveRecord: 46.1ms | Allocations: 8221)
-
-
-Started GET "/" for ::1 at 2024-08-02 12:41:39 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 2141)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 20.7ms | Allocations: 6217)
-Completed 200 OK in 28ms (Views: 27.8ms | ActiveRecord: 0.0ms | Allocations: 6475)
-
-
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
-  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" /* loading for inspect */ LIMIT ?[0m  [["LIMIT", 11]]
-Started GET "/logout" for ::1 at 2024-08-02 12:42:24 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/logout" for ::1 at 2024-08-02 12:44:59 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/logout" for ::1 at 2024-08-02 12:45:06 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/" for ::1 at 2024-08-02 12:45:13 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2647)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 7134)
-Completed 200 OK in 38ms (Views: 36.1ms | Allocations: 8210)
-
-
-Started GET "/logout" for ::1 at 2024-08-02 12:45:16 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/" for ::1 at 2024-08-02 12:45:19 +0200
+Started GET "/" for ::1 at 2024-08-02 12:36:48 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
   Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2142)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 6240)
-Completed 200 OK in 16ms (Views: 16.1ms | Allocations: 6497)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 7681)
+Completed 200 OK in 28ms (Views: 27.9ms | Allocations: 7939)
 
 
-Started GET "/logout" for ::1 at 2024-08-02 12:45:28 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/" for ::1 at 2024-08-02 12:47:28 +0200
+Started GET "/login" for ::1 at 2024-08-02 12:36:51 +0200
+Processing by LoginController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering login/index.html.erb within layouts/application
+  Rendered login/index.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2257)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 6816)
+Completed 200 OK in 13ms (Views: 12.2ms | Allocations: 7073)
+
+
+Started GET "/" for ::1 at 2024-08-02 12:36:55 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 2551)
+  Rendered home/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2133)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 7014)
-Completed 200 OK in 18ms (Views: 17.3ms | Allocations: 8011)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.7ms | Allocations: 7663)
+Completed 200 OK in 18ms (Views: 17.9ms | Allocations: 7918)
 
 
-Started GET "/logout" for ::1 at 2024-08-02 12:47:31 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/" for ::1 at 2024-08-02 12:47:34 +0200
+Started GET "/" for ::1 at 2024-08-02 12:37:27 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2142)
+  Rendered home/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2133)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 20.4ms | Allocations: 6274)
-Completed 200 OK in 35ms (Views: 35.0ms | Allocations: 6531)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1080.9ms | Allocations: 24466)
+Completed 200 OK in 1082ms (Views: 1081.4ms | Allocations: 24723)
 
 
-Started GET "/" for ::1 at 2024-08-02 12:51:07 +0200
+Started GET "/" for ::1 at 2024-08-02 12:38:32 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 11.0ms | Allocations: 2542)
+  Rendered home/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 2133)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 44.1ms | Allocations: 6997)
-Completed 200 OK in 64ms (Views: 62.0ms | Allocations: 8013)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1082.2ms | Allocations: 22849)
+Completed 200 OK in 1088ms (Views: 1087.1ms | Allocations: 23105)
 
 
-Started GET "/logout" for ::1 at 2024-08-02 12:51:10 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/" for ::1 at 2024-08-02 12:53:03 +0200
+Started GET "/" for ::1 at 2024-08-02 12:38:54 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 34.9ms | Allocations: 2558)
-  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 9430)
-Completed 500 Internal Server Error in 47ms (Allocations: 10403)
+  Rendered home/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 853.4ms | Allocations: 23304)
+Completed 200 OK in 856ms (Views: 855.5ms | Allocations: 23559)
 
 
-  
-ActionView::Template::Error (undefined local variable or method `delete' for #<ActionView::Base:0x0000000000c6c0>):
-    24:       </div>
-    25:       <% if session[:user_id] %>
-    26:         <div class="nav-item">
-    27:           <%= link_to 'Logout', logout_path, method: delete, data: { confirm: 'Sei sicuro di voler uscire?' }, class: 'nav-link' %>
-    28:         </div>
-    29:       <% else %>
-    30:         <div class="nav-item">
-  
-app/views/layouts/application.html.erb:27
-Started GET "/" for ::1 at 2024-08-02 12:53:24 +0200
+Started GET "/" for ::1 at 2024-08-02 12:39:14 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 64.9ms | Allocations: 2548)
+  Rendered home/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 2133)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 98.0ms | Allocations: 7021)
-Completed 200 OK in 113ms (Views: 103.3ms | Allocations: 8038)
-
-
-Started GET "/logout" for ::1 at 2024-08-02 12:53:27 +0200
-  
-ActionController::RoutingError (No route matches [GET] "/logout"):
-  
-Started GET "/" for ::1 at 2024-08-02 12:53:32 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 36.9ms | Allocations: 2140)
 [Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 6238)
-Completed 200 OK in 63ms (Views: 62.6ms | Allocations: 6495)
-
-
-Started GET "/logout" for ::1 at 2024-08-02 12:53:54 +0200
-Processing by SessionsController#destroy as HTML
-Redirected to http://localhost:3000/
-Completed 302 Found in 1ms (Allocations: 243)
-
-
-Started GET "/" for ::1 at 2024-08-02 12:53:54 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 2148)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 47.1ms | Allocations: 6218)
-Completed 200 OK in 52ms (Views: 51.1ms | Allocations: 6593)
-
-
-Started GET "/login" for ::1 at 2024-08-02 12:53:57 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2532)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 44.7ms | Allocations: 5521)
-Completed 200 OK in 49ms (Views: 48.8ms | Allocations: 6290)
-
-
-Started POST "/login" for ::1 at 2024-08-02 12:54:11 +0200
-Processing by SessionsController#create as HTML
-  Parameters: {"email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
-Can't verify CSRF token authenticity.
-Completed 422 Unprocessable Entity in 1ms (Allocations: 466)
-
-
-  
-ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
-  
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:427:in `block in make_lambda'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
-actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:199:in `block in halting'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `block in invoke_before'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `each'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `invoke_before'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:115:in `block in run_callbacks'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:137:in `run_callbacks'
-actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:41:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/rescue.rb:22:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
-activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `block in instrument'
-activesupport (6.1.7.8) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
-activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `instrument'
-actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
-activerecord (6.1.7.8) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
-actionpack (6.1.7.8) lib/abstract_controller/base.rb:165:in `process'
-actionview (6.1.7.8) lib/action_view/rendering.rb:39:in `process'
-actionpack (6.1.7.8) lib/action_controller/metal.rb:190:in `dispatch'
-actionpack (6.1.7.8) lib/action_controller/metal.rb:254:in `dispatch'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:33:in `serve'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `each'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `serve'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:842:in `call'
-rack (2.2.9) lib/rack/tempfile_reaper.rb:15:in `call'
-rack (2.2.9) lib/rack/etag.rb:27:in `call'
-rack (2.2.9) lib/rack/conditional_get.rb:40:in `call'
-rack (2.2.9) lib/rack/head.rb:12:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
-rack (2.2.9) lib/rack/session/abstract/id.rb:266:in `context'
-rack (2.2.9) lib/rack/session/abstract/id.rb:260:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/cookies.rb:697:in `call'
-activerecord (6.1.7.8) lib/active_record/migration.rb:601:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
-railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
-rack (2.2.9) lib/rack/method_override.rb:24:in `call'
-rack (2.2.9) lib/rack/runtime.rb:22:in `call'
-activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
-rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
-rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
-webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
-puma (5.6.8) lib/puma/configuration.rb:252:in `call'
-puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
-puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
-puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
-puma (5.6.8) lib/puma/server.rb:443:in `process_client'
-puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
-Started GET "/login" for ::1 at 2024-08-02 12:54:28 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 28.5ms | Allocations: 2402)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 43.5ms | Allocations: 5383)
-Completed 200 OK in 49ms (Views: 47.8ms | Allocations: 5640)
-
-
-Started POST "/login" for ::1 at 2024-08-02 12:54:35 +0200
-Processing by SessionsController#create as HTML
-  Parameters: {"email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
-Can't verify CSRF token authenticity.
-Completed 422 Unprocessable Entity in 1ms (Allocations: 458)
-
-
-  
-ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
-  
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:427:in `block in make_lambda'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
-actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:199:in `block in halting'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `block in invoke_before'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `each'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `invoke_before'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:115:in `block in run_callbacks'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:137:in `run_callbacks'
-actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:41:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/rescue.rb:22:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
-activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `block in instrument'
-activesupport (6.1.7.8) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
-activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `instrument'
-actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
-activerecord (6.1.7.8) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
-actionpack (6.1.7.8) lib/abstract_controller/base.rb:165:in `process'
-actionview (6.1.7.8) lib/action_view/rendering.rb:39:in `process'
-actionpack (6.1.7.8) lib/action_controller/metal.rb:190:in `dispatch'
-actionpack (6.1.7.8) lib/action_controller/metal.rb:254:in `dispatch'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:33:in `serve'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `each'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `serve'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:842:in `call'
-rack (2.2.9) lib/rack/tempfile_reaper.rb:15:in `call'
-rack (2.2.9) lib/rack/etag.rb:27:in `call'
-rack (2.2.9) lib/rack/conditional_get.rb:40:in `call'
-rack (2.2.9) lib/rack/head.rb:12:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
-rack (2.2.9) lib/rack/session/abstract/id.rb:266:in `context'
-rack (2.2.9) lib/rack/session/abstract/id.rb:260:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/cookies.rb:697:in `call'
-activerecord (6.1.7.8) lib/active_record/migration.rb:601:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
-railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
-rack (2.2.9) lib/rack/method_override.rb:24:in `call'
-rack (2.2.9) lib/rack/runtime.rb:22:in `call'
-activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
-rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
-rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
-webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
-puma (5.6.8) lib/puma/configuration.rb:252:in `call'
-puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
-puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
-puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
-puma (5.6.8) lib/puma/server.rb:443:in `process_client'
-puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
-Started GET "/login" for ::1 at 2024-08-02 12:56:44 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2380)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 5361)
-Completed 200 OK in 12ms (Views: 10.3ms | Allocations: 5617)
-
-
-Started POST "/login" for ::1 at 2024-08-02 12:56:48 +0200
-Processing by SessionsController#create as HTML
-  Parameters: {"email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
-Can't verify CSRF token authenticity.
-Completed 422 Unprocessable Entity in 1ms (Allocations: 458)
-
-
-  
-ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
-  
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
-actionpack (6.1.7.8) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:427:in `block in make_lambda'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
-actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:199:in `block in halting'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `block in invoke_before'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `each'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:512:in `invoke_before'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:115:in `block in run_callbacks'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:137:in `run_callbacks'
-actionpack (6.1.7.8) lib/abstract_controller/callbacks.rb:41:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/rescue.rb:22:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
-activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `block in instrument'
-activesupport (6.1.7.8) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
-activesupport (6.1.7.8) lib/active_support/notifications.rb:203:in `instrument'
-actionpack (6.1.7.8) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
-actionpack (6.1.7.8) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
-activerecord (6.1.7.8) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
-actionpack (6.1.7.8) lib/abstract_controller/base.rb:165:in `process'
-actionview (6.1.7.8) lib/action_view/rendering.rb:39:in `process'
-actionpack (6.1.7.8) lib/action_controller/metal.rb:190:in `dispatch'
-actionpack (6.1.7.8) lib/action_controller/metal.rb:254:in `dispatch'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:33:in `serve'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `each'
-actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `serve'
-actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:842:in `call'
-rack (2.2.9) lib/rack/tempfile_reaper.rb:15:in `call'
-rack (2.2.9) lib/rack/etag.rb:27:in `call'
-rack (2.2.9) lib/rack/conditional_get.rb:40:in `call'
-rack (2.2.9) lib/rack/head.rb:12:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
-rack (2.2.9) lib/rack/session/abstract/id.rb:266:in `context'
-rack (2.2.9) lib/rack/session/abstract/id.rb:260:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/cookies.rb:697:in `call'
-activerecord (6.1.7.8) lib/active_record/migration.rb:601:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
-railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
-railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
-activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
-railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
-sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
-rack (2.2.9) lib/rack/method_override.rb:24:in `call'
-rack (2.2.9) lib/rack/runtime.rb:22:in `call'
-activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
-rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
-actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
-rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
-webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
-rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
-railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
-puma (5.6.8) lib/puma/configuration.rb:252:in `call'
-puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
-puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
-puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
-puma (5.6.8) lib/puma/server.rb:443:in `process_client'
-puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
-Started GET "/login" for ::1 at 2024-08-02 12:56:51 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 36.5ms | Allocations: 2380)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 42.9ms | Allocations: 5361)
-Completed 200 OK in 53ms (Views: 52.9ms | Allocations: 5617)
-
-
-Started GET "/login" for ::1 at 2024-08-02 13:01:27 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 15.8ms | Allocations: 2586)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 5905)
-Completed 200 OK in 50ms (Views: 49.3ms | Allocations: 6907)
-
-
-Started POST "/login" for ::1 at 2024-08-02 13:01:34 +0200
-Processing by SessionsController#create as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  ↳ app/controllers/sessions_controller.rb:7:in `create'
-  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/sessions_controller.rb:7:in `create'
-Redirected to http://localhost:3000/
-Completed 302 Found in 257ms (ActiveRecord: 1.0ms | Allocations: 5584)
-
-
-Started GET "/" for ::1 at 2024-08-02 13:01:35 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 4.9ms | Allocations: 2547)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 6641)
-Completed 200 OK in 26ms (Views: 21.8ms | ActiveRecord: 0.0ms | Allocations: 7414)
-
-
-Started GET "/logout" for ::1 at 2024-08-02 13:01:40 +0200
-Processing by SessionsController#destroy as HTML
-Redirected to http://localhost:3000/
-Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 243)
-
-
-Started GET "/" for ::1 at 2024-08-02 13:01:40 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 20.6ms | Allocations: 2133)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 25.9ms | Allocations: 6189)
-Completed 200 OK in 27ms (Views: 26.9ms | ActiveRecord: 0.0ms | Allocations: 6446)
-
-
-Started GET "/login" for ::1 at 2024-08-02 13:01:43 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 2410)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 5399)
-Completed 200 OK in 18ms (Views: 12.4ms | ActiveRecord: 0.0ms | Allocations: 5656)
-
-
-Started POST "/login" for ::1 at 2024-08-02 13:01:50 +0200
-Processing by SessionsController#create as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"frelliorli@libero.it", "password"=>"[FILTERED]"}
-  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "frelliorli@libero.it"], ["LIMIT", 1]]
-  ↳ app/controllers/sessions_controller.rb:7:in `create'
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2269)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 15.9ms | Allocations: 5252)
-Completed 200 OK in 20ms (Views: 16.8ms | ActiveRecord: 0.2ms | Allocations: 6191)
-
-
-Started GET "/register" for ::1 at 2024-08-02 13:01:53 +0200
-Processing by RegistrationsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering registrations/new.html.erb within layouts/application
-  Rendered registrations/new.html.erb within layouts/application (Duration: 14.6ms | Allocations: 3312)
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 6288)
-Completed 200 OK in 48ms (Views: 47.3ms | ActiveRecord: 0.0ms | Allocations: 7077)
+  Rendered layout layouts/application.html.erb (Duration: 883.8ms | Allocations: 24097)
+Completed 200 OK in 885ms (Views: 884.6ms | Allocations: 24353)
 
 

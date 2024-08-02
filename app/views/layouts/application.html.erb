@@ -5,6 +5,8 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'navbar', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -22,15 +24,9 @@
       <div class="nav-item">
         <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
       </div>
-      <% if session[:user_id] %>
-        <div class="nav-item">
-          <%= link_to 'Logout', logout_path, method: :delete, data: { confirm: 'Sei sicuro di voler uscire?' }, class: 'nav-link' %>
-        </div>
-      <% else %>
-        <div class="nav-item">
-          <%= link_to 'Login', login_path, class: 'nav-link' %>
-        </div>
-      <% end %>
+      <div class="nav-item">
+        <%= link_to 'Login', login_path, class: 'nav-link' %>
+      </div>
     </div>
   </nav>
   <div class="container mt-4 content">
