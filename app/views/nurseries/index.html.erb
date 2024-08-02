@@ -1,20 +1,34 @@
-<h1>Vivai</h1>
+<br><br><br><br><br><br>
+<h1>VIVAI</h1>
+
 
 <%= form_with url: nurseries_path, method: :get, local: true do |form| %>
-  <%= form.label :query, "Search" %>
-  <%= form.text_field :query %>
+  <%= text_field_tag :query, params[:query], placeholder: 'Cerca...' %>
   <%= form.submit "Search" %>
 <% end %>
 
 
-<h2>Risultati della ricerca:</h2>
-<ul>
-  <% @nurseries.each do |nursery| %>
-    <li>
-      <h3><%= link_to nursery.name, nurseries_path(nursery) %></h3>
-      <h3><%= nursery.name %></h3>
-      <p><%= nursery.location %></p>
-      <p><%= nursery.description %></p>
-    </li>
+
+<!-- 
+<ul id="optionsList">
+  <% @nurseries.each do |option| %>
+    <li><%= option.name %></li>
   <% end %>
 </ul>
+-->
+
+<% if @nurseries.empty? %>
+  <p>Nessun vivaio presente a questo nome</p>
+<% else %>
+  <h2>Lista vivai:</h2>
+  <ul>
+    <% @nurseries.each do |nursery| %>
+      <li>
+        <h3><%= link_to nursery.name, nursery_path(nursery) %></h3>
+
+        <p><%= nursery.location %></p>
+        <p><%= nursery.description %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

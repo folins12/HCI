@@ -1,0 +1,2 @@
+class Infoplant < ApplicationRecord
+end

@@ -1,2 +1,6 @@
-ciao
-<%= button_to 'torna idietro', infoplants_path, method: :get %>
+<br><br><br><br>
+<h1><%= @infoplant.name %></h1>
+<p><strong>habitat:</strong> <%= @infoplant.habitat %></p>
+<p><strong>Description:</strong> <%= @infoplant.description %></p>
+
+<%= link_to 'Torna alla lista delle piante', infoplants_path %>

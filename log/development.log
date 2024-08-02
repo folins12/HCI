@@ -12696,214 +12696,6 @@ Completed 200 OK in 16ms (Views: 16.1ms | ActiveRecord: 0.0ms | Allocations: 961
 >>>>>>> eb495feb1f464a461b61cbb0e03d7d457dc2e001
 
 
-<<<<<<< HEAD
-Started GET "/" for ::1 at 2024-08-02 16:11:32 +0200
-  [1m[35m (20.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 5430.8ms | Allocations: 50240)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 5558.0ms | Allocations: 66004)
-Completed 200 OK in 5681ms (Views: 5600.5ms | ActiveRecord: 0.0ms | Allocations: 69576)
-
-
-Started GET "/nurseries" for ::1 at 2024-08-02 16:16:21 +0200
-Processing by NurseriesController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering nurseries/index.html.erb within layouts/application
-  [1m[36mNursery Load (0.8ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
-  ↳ app/views/nurseries/index.html.erb:12
-  Rendered nurseries/index.html.erb within layouts/application (Duration: 122.6ms | Allocations: 5164)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 173.3ms | Allocations: 12470)
-Completed 200 OK in 202ms (Views: 177.5ms | ActiveRecord: 2.4ms | Allocations: 13573)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:16:26 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 20.3ms | Allocations: 2146)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 104.3ms | Allocations: 9348)
-Completed 200 OK in 136ms (Views: 135.0ms | ActiveRecord: 0.0ms | Allocations: 9609)
-
-
-Started GET "/infoplants" for ::1 at 2024-08-02 16:16:37 +0200
-Processing by InfoplantsController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering infoplants/index.html.erb within layouts/application
-  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 222)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 167.4ms | Allocations: 7542)
-Completed 200 OK in 176ms (Views: 174.2ms | ActiveRecord: 0.0ms | Allocations: 8313)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:16:38 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 2153)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 68.5ms | Allocations: 9358)
-Completed 200 OK in 78ms (Views: 75.2ms | ActiveRecord: 0.0ms | Allocations: 9620)
-
-
-Started GET "/login" for ::1 at 2024-08-02 16:18:34 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 2574)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 84.8ms | Allocations: 8673)
-Completed 200 OK in 111ms (Views: 99.2ms | ActiveRecord: 0.0ms | Allocations: 9446)
-
-
-Started GET "/register" for ::1 at 2024-08-02 16:18:39 +0200
-Processing by RegistrationsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering registrations/new.html.erb within layouts/application
-  Rendered registrations/new.html.erb within layouts/application (Duration: 42.8ms | Allocations: 3488)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 107.4ms | Allocations: 9612)
-Completed 200 OK in 168ms (Views: 113.6ms | ActiveRecord: 3.6ms | Allocations: 14144)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:18:45 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 2146)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 9346)
-Completed 200 OK in 37ms (Views: 35.0ms | ActiveRecord: 0.0ms | Allocations: 9602)
-
-
-Started GET "/about" for ::1 at 2024-08-02 16:19:46 +0200
-Processing by HomeController#about as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/about.html.erb within layouts/application
-  Rendered home/about.html.erb within layouts/application (Duration: 97.8ms | Allocations: 148)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 139.6ms | Allocations: 7535)
-Completed 200 OK in 141ms (Views: 140.4ms | ActiveRecord: 0.0ms | Allocations: 7921)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:21:47 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 2146)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 38.4ms | Allocations: 9352)
-Completed 200 OK in 40ms (Views: 39.3ms | ActiveRecord: 0.0ms | Allocations: 9608)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:22:26 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 44.7ms | Allocations: 2144)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 117.5ms | Allocations: 9343)
-Completed 200 OK in 134ms (Views: 120.6ms | ActiveRecord: 0.0ms | Allocations: 9599)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:24:33 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 2551)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 58.3ms | Allocations: 10161)
-Completed 200 OK in 70ms (Views: 68.1ms | Allocations: 11155)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:25:14 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 2135)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 2272.3ms | Allocations: 27349)
-Completed 200 OK in 2275ms (Views: 2274.7ms | Allocations: 27606)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:26:14 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 15.3ms | Allocations: 2145)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 1518.4ms | Allocations: 28493)
-Completed 200 OK in 1523ms (Views: 1522.0ms | Allocations: 28749)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:26:42 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 2156)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 82.5ms | Allocations: 9898)
-Completed 200 OK in 85ms (Views: 84.5ms | Allocations: 10164)
-
-
-Started GET "/about" for ::1 at 2024-08-02 16:30:23 +0200
-Processing by HomeController#about as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/about.html.erb within layouts/application
-  Rendered home/about.html.erb within layouts/application (Duration: 6.0ms | Allocations: 148)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 82.0ms | Allocations: 7532)
-Completed 200 OK in 99ms (Views: 97.1ms | Allocations: 7917)
-
-
-Started GET "/login" for ::1 at 2024-08-02 16:31:01 +0200
-Processing by SessionsController#new as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering sessions/new.html.erb within layouts/application
-  Rendered sessions/new.html.erb within layouts/application (Duration: 38.5ms | Allocations: 2566)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 88.8ms | Allocations: 8703)
-Completed 200 OK in 121ms (Views: 119.9ms | Allocations: 9494)
-=======
 Started GET "/" for ::1 at 2024-08-02 15:52:59 +0200
   [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
@@ -13803,26 +13595,12 @@ Processing by InfoplantsController#index as HTML
 [Webpacker] Everything's up-to-date. Nothing to do
   Rendered layout layouts/application.html.erb (Duration: 28.8ms | Allocations: 7587)
 Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.0ms | Allocations: 8348)
->>>>>>> d9cbc7a8c5f4c772336b2aac315c72dbdd0709f1
 
 
 Started GET "/" for ::1 at 2024-08-02 16:32:14 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-<<<<<<< HEAD
-  Rendered home/index.html.erb within layouts/application (Duration: 50.0ms | Allocations: 2152)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 118.7ms | Allocations: 9356)
-Completed 200 OK in 140ms (Views: 136.9ms | Allocations: 9613)
-
-
-Started GET "/myplants" for ::1 at 2024-08-02 16:33:05 +0200
-Processing by MyplantsController#index as HTML
-Completed 500 Internal Server Error in 21ms (Allocations: 2283)
-=======
   Rendered home/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 2146)
 [Webpacker] Everything's up-to-date. Nothing to do
 [Webpacker] Everything's up-to-date. Nothing to do
@@ -13874,7 +13652,6 @@ Completed 200 OK in 41ms (Views: 40.2ms | ActiveRecord: 0.0ms | Allocations: 961
 Started GET "/myplants" for ::1 at 2024-08-02 16:32:45 +0200
 Processing by MyplantsController#index as HTML
 Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms | Allocations: 2286)
->>>>>>> d9cbc7a8c5f4c772336b2aac315c72dbdd0709f1
 
 
   
@@ -13882,98 +13659,6 @@ NameError (uninitialized constant MyplantsController::Myplant
 Did you mean?  Plant):
   
 app/controllers/myplants_controller.rb:4:in `index'
-<<<<<<< HEAD
-Started GET "/" for ::1 at 2024-08-02 16:33:15 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 32.2ms | Allocations: 2263)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 123.6ms | Allocations: 9532)
-Completed 200 OK in 132ms (Views: 129.2ms | Allocations: 9859)
-
-
-Started GET "/nurseries" for ::1 at 2024-08-02 16:40:13 +0200
-Processing by NurseriesController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering nurseries/index.html.erb within layouts/application
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
-  ↳ app/views/nurseries/index.html.erb:12
-  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
-  ↳ app/views/nurseries/index.html.erb:12
-  Rendered nurseries/index.html.erb within layouts/application (Duration: 38.7ms | Allocations: 3011)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 94.8ms | Allocations: 10267)
-Completed 200 OK in 111ms (Views: 105.3ms | ActiveRecord: 1.7ms | Allocations: 11072)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:40:18 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 9.5ms | Allocations: 2141)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 55.8ms | Allocations: 9342)
-Completed 200 OK in 58ms (Views: 56.8ms | ActiveRecord: 0.0ms | Allocations: 9600)
-
-
-Started GET "/nurseries" for ::1 at 2024-08-02 16:40:23 +0200
-Processing by NurseriesController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering nurseries/index.html.erb within layouts/application
-  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
-  ↳ app/views/nurseries/index.html.erb:12
-  Rendered nurseries/index.html.erb within layouts/application (Duration: 12.5ms | Allocations: 1924)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 73.8ms | Allocations: 9177)
-Completed 200 OK in 123ms (Views: 116.0ms | ActiveRecord: 0.3ms | Allocations: 9453)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:41:37 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2144)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 46.4ms | Allocations: 9344)
-Completed 200 OK in 50ms (Views: 48.3ms | ActiveRecord: 0.0ms | Allocations: 9600)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:42:34 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 43.7ms | Allocations: 2147)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 2217.2ms | Allocations: 28062)
-Completed 200 OK in 2230ms (Views: 2227.6ms | ActiveRecord: 0.0ms | Allocations: 28327)
-
-
-Started GET "/" for ::1 at 2024-08-02 16:43:15 +0200
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 2155)
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-[Webpacker] Everything's up-to-date. Nothing to do
-  Rendered layout layouts/application.html.erb (Duration: 1373.7ms | Allocations: 28491)
-Completed 200 OK in 1379ms (Views: 1375.6ms | ActiveRecord: 0.0ms | Allocations: 28747)
-
-
-=======
 Started GET "/" for ::1 at 2024-08-02 16:32:54 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
@@ -14031,4 +13716,2137 @@ Did you mean?  nurseries_url
     52:           <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
   
 app/views/home/index.html.erb:49
->>>>>>> d9cbc7a8c5f4c772336b2aac315c72dbdd0709f1
+Started GET "/" for ::1 at 2024-08-02 16:36:21 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2742)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2806)
+Completed 500 Internal Server Error in 6ms (Allocations: 3157)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    46:     </div>
+    47: 
+    48:     <div class="section">
+    49:       <%= link_to nurseries_path, class: 'section-link' do %>
+    50:         <h2 class="section-title">VIVAI</h2>
+    51:         <div class="section-content">
+    52:           <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+  
+app/views/home/index.html.erb:49
+Started GET "/" for ::1 at 2024-08-02 16:37:19 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.9ms | Allocations: 3188)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3252)
+Completed 500 Internal Server Error in 11ms (Allocations: 4219)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    46:     </div>
+    47: 
+    48:     <div class="section">
+    49:       <%= link_to nurseries_path, class: 'section-link' do %>
+    50:         <h2 class="section-title">VIVAI</h2>
+    51:         <div class="section-content">
+    52:           <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+  
+app/views/home/index.html.erb:49
+Started GET "/" for ::1 at 2024-08-02 16:40:01 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 3195)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3259)
+Completed 500 Internal Server Error in 11ms (Allocations: 4226)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    46:     </div>
+    47: 
+    48:     <div class="section">
+    49:       <%= link_to 'All Nurseries', nurseries_path ,class: 'section-link' do %>
+    50: 
+    51: 
+    52:         <h2 class="section-title">VIVAI</h2>
+  
+app/views/home/index.html.erb:49
+Started GET "/infoplants" for ::1 at 2024-08-02 16:41:52 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 218)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.9ms | Allocations: 7287)
+Completed 500 Internal Server Error in 28ms (Allocations: 8257)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    22:         <%= link_to 'Piante', infoplants_path, class: 'nav-link' %>
+    23:       </div>
+    24:       <div class="nav-item">
+    25:         <%= link_to 'All Nurseries', nurseries_path %>
+    26:       </div>
+    27:       <% if session[:user_id] %>
+    28:         <div class="nav-item">
+  
+app/views/layouts/application.html.erb:25
+Started GET "/infoplants" for ::1 at 2024-08-02 16:43:24 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 126)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.6ms | Allocations: 6821)
+Completed 500 Internal Server Error in 19ms (Allocations: 7050)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    22:         <%= link_to 'Piante', infoplants_path, class: 'nav-link' %>
+    23:       </div>
+    24:       <div class="nav-item">
+    25:         <%= link_to 'All Nurseries', nurseries_path %>
+    26:       </div>
+    27:       <% if session[:user_id] %>
+    28:         <div class="nav-item">
+  
+app/views/layouts/application.html.erb:25
+Started GET "/" for ::1 at 2024-08-02 16:48:09 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 3190)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 3254)
+Completed 500 Internal Server Error in 10ms (Allocations: 3987)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    47: 
+    48:     <div class="section">
+    49:       
+    50:       <%= link_to nurseries_path, class: 'section-link' do %>
+    51:         <h2 class="section-title">VIVAI</h2>
+    52:         <div class="section-content">
+    53:           <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+  
+app/views/home/index.html.erb:50
+Started GET "/nurseries" for ::1 at 2024-08-02 16:48:11 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1387)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1451)
+Completed 500 Internal Server Error in 10ms (Allocations: 2445)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    1: <h1>Vivai</h1>
+    2: 
+    3: <%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+    4:   <%= form.label :query, "Search" %>
+    5:   <%= form.text_field :query %>
+    6:   <%= form.submit "Search" %>
+  
+app/views/nurseries/index.html.erb:3
+Started GET "/nurseries" for ::1 at 2024-08-02 16:48:11 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1168)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1232)
+Completed 500 Internal Server Error in 4ms (Allocations: 1474)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    1: <h1>Vivai</h1>
+    2: 
+    3: <%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+    4:   <%= form.label :query, "Search" %>
+    5:   <%= form.text_field :query %>
+    6:   <%= form.submit "Search" %>
+  
+app/views/nurseries/index.html.erb:3
+Started GET "/nurseries" for ::1 at 2024-08-02 16:52:24 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1168)
+  Rendered layout layouts/application.html.erb (Duration: 1.7ms | Allocations: 1232)
+Completed 500 Internal Server Error in 3ms (Allocations: 1479)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"nurseries"}, missing required keys: [:id]
+Did you mean?  nurseries_url
+               nurseries_index_url
+               nurseries_index_path):
+    1: <h1>Vivai</h1>
+    2: 
+    3: <%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+    4:   <%= form.label :query, "Search" %>
+    5:   <%= form.text_field :query %>
+    6:   <%= form.submit "Search" %>
+  
+app/views/nurseries/index.html.erb:3
+Started GET "/nurseries" for ::1 at 2024-08-02 16:52:35 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:6
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:6
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 50.2ms | Allocations: 7418)
+  Rendered layout layouts/application.html.erb (Duration: 50.8ms | Allocations: 7482)
+Completed 500 Internal Server Error in 57ms (ActiveRecord: 2.7ms | Allocations: 8462)
+
+
+  
+ActionView::Template::Error (undefined method `nursery_path' for #<ActionView::Base:0x00000000018d30>
+Did you mean?  nurseries_path
+               user_path):
+     5: <ul>
+     6:   <% @nurseries.each do |nursery| %>
+     7:     <li>
+     8:       <%= link_to nursery.name, nursery_path(nursery) %>
+     9:     </li>
+    10:   <% end %>
+    11: </ul>
+  
+app/views/nurseries/index.html.erb:8
+app/views/nurseries/index.html.erb:6
+Started GET "/nurseries" for ::1 at 2024-08-02 16:54:14 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:5
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 21.3ms | Allocations: 4724)
+  Rendered layout layouts/application.html.erb (Duration: 21.7ms | Allocations: 4788)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.2ms | Allocations: 5768)
+
+
+  
+ActionView::Template::Error (undefined method `nursery_path' for #<ActionView::Base:0x00000000019668>
+Did you mean?  nurseries_path
+               user_path):
+    4: <ul>
+    5:   <% @nurseries.each do |nursery| %>
+    6:     <li>
+    7:       <%= link_to nursery.name, nursery_path(nursery) %>  <!-- This should work -->
+    8:     </li>
+    9:   <% end %>
+   10: </ul>
+  
+app/views/nurseries/index.html.erb:7
+app/views/nurseries/index.html.erb:5
+Started GET "/nurseries" for ::1 at 2024-08-02 16:54:37 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 4830)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.1ms | Allocations: 12499)
+Completed 200 OK in 35ms (Views: 33.6ms | ActiveRecord: 1.7ms | Allocations: 13909)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 16:55:09 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.7ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 1917)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 9173)
+Completed 200 OK in 42ms (Views: 39.6ms | ActiveRecord: 0.7ms | Allocations: 9592)
+
+
+Started GET "/nurseries.3" for ::1 at 2024-08-02 16:55:11 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 1916)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.8ms | Allocations: 9166)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 0.3ms | Allocations: 9436)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 16:55:43 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.2ms | Allocations: 1916)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.1ms | Allocations: 9166)
+Completed 200 OK in 43ms (Views: 41.5ms | ActiveRecord: 0.3ms | Allocations: 9437)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 16:55:44 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 1916)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 9166)
+Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.3ms | Allocations: 9436)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 16:55:44 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1917)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.6ms | Allocations: 11374)
+Completed 200 OK in 37ms (Views: 36.4ms | ActiveRecord: 0.3ms | Allocations: 11644)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 16:55:44 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1917)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.1ms | Allocations: 9173)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.1ms | Allocations: 9444)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 16:55:45 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1916)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.0ms | Allocations: 9168)
+Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.2ms | Allocations: 9438)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:02:30 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 4224)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 11484)
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.8ms | Allocations: 12122)
+
+
+Started GET "/" for ::1 at 2024-08-02 17:02:31 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.6ms | Allocations: 2568)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.2ms | Allocations: 9770)
+Completed 200 OK in 34ms (Views: 32.7ms | ActiveRecord: 0.0ms | Allocations: 10533)
+
+
+Started GET "/" for ::1 at 2024-08-02 17:02:44 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.6ms | Allocations: 2565)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.3ms | Allocations: 10196)
+Completed 200 OK in 49ms (Views: 47.3ms | ActiveRecord: 0.0ms | Allocations: 11187)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:02:46 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 2168)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 9437)
+Completed 200 OK in 36ms (Views: 34.1ms | ActiveRecord: 0.4ms | Allocations: 10210)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 17:02:47 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.5ms | Allocations: 1916)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 9177)
+Completed 200 OK in 42ms (Views: 39.5ms | ActiveRecord: 0.4ms | Allocations: 9594)
+
+
+Started GET "/nurseries/2" for ::1 at 2024-08-02 17:03:11 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 217)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 7581)
+Completed 200 OK in 26ms (Views: 21.1ms | ActiveRecord: 0.3ms | Allocations: 8624)
+
+
+Started GET "/nurseries/3" for ::1 at 2024-08-02 17:05:55 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 0.7ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.3ms | Allocations: 7442)
+Completed 200 OK in 36ms (Views: 30.9ms | ActiveRecord: 0.2ms | Allocations: 8233)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:06:00 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1917)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.8ms | Allocations: 9179)
+Completed 200 OK in 44ms (Views: 43.1ms | ActiveRecord: 0.4ms | Allocations: 9447)
+
+
+Started GET "/nurseries.2" for ::1 at 2024-08-02 17:06:02 +0200
+Processing by NurseriesController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1917)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 9184)
+Completed 200 OK in 41ms (Views: 39.8ms | ActiveRecord: 0.4ms | Allocations: 9455)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:06:15 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 6013)
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 6077)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.2ms | Allocations: 7057)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `name' for #<ActionView::Base:0x0000000001cbb0>):
+     9: <ul>
+    10:   <% @nurseries.each do |nursery| %>
+    11:     <li>
+    12:       <h3><%= link_to nursery/name, nurseries_path(nursery) %></h3>
+    13:       <h3><%= nursery.name %></h3>
+    14:       <p><%= nursery.location %></p>
+    15:       <p><%= nursery.description %></p>
+  
+app/views/nurseries/index.html.erb:12
+app/views/nurseries/index.html.erb:10
+Started GET "/nurseries" for ::1 at 2024-08-02 17:06:16 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 5755)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 5819)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.1ms | Allocations: 6061)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `name' for #<ActionView::Base:0x0000000001cf98>):
+     9: <ul>
+    10:   <% @nurseries.each do |nursery| %>
+    11:     <li>
+    12:       <h3><%= link_to nursery/name, nurseries_path(nursery) %></h3>
+    13:       <h3><%= nursery.name %></h3>
+    14:       <p><%= nursery.location %></p>
+    15:       <p><%= nursery.description %></p>
+  
+app/views/nurseries/index.html.erb:12
+app/views/nurseries/index.html.erb:10
+Started GET "/nurseries" for ::1 at 2024-08-02 17:08:30 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 4780)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.0ms | Allocations: 12465)
+Completed 200 OK in 37ms (Views: 34.6ms | ActiveRecord: 1.0ms | Allocations: 13724)
+
+
+Started GET "/nurseries/2" for ::1 at 2024-08-02 17:08:33 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 211)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 7575)
+Completed 200 OK in 18ms (Views: 13.2ms | ActiveRecord: 0.3ms | Allocations: 8608)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:08:35 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1876)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.3ms | Allocations: 9137)
+Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.3ms | Allocations: 9406)
+
+
+Started GET "/nurseries/2" for ::1 at 2024-08-02 17:09:45 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 7438)
+Completed 200 OK in 39ms (Views: 34.3ms | ActiveRecord: 0.3ms | Allocations: 8228)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:09:49 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 1874)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.2ms | Allocations: 9135)
+Completed 200 OK in 41ms (Views: 40.4ms | ActiveRecord: 0.4ms | Allocations: 9403)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:10:22 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2119)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.4ms | Allocations: 9801)
+Completed 200 OK in 29ms (Views: 26.7ms | ActiveRecord: 0.2ms | Allocations: 10809)
+
+
+Started GET "/nurseries/3" for ::1 at 2024-08-02 17:10:24 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 213)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.6ms | Allocations: 7577)
+Completed 200 OK in 39ms (Views: 33.5ms | ActiveRecord: 0.2ms | Allocations: 8496)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:10:32 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1874)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.6ms | Allocations: 9135)
+Completed 200 OK in 39ms (Views: 38.0ms | ActiveRecord: 0.4ms | Allocations: 9404)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:11:12 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:13
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 2122)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.7ms | Allocations: 9798)
+Completed 200 OK in 46ms (Views: 44.0ms | ActiveRecord: 0.3ms | Allocations: 10801)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:11:24 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:13
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 2122)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.6ms | Allocations: 9800)
+Completed 200 OK in 51ms (Views: 47.8ms | ActiveRecord: 0.3ms | Allocations: 10803)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:11:35 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 2129)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.1ms | Allocations: 9811)
+Completed 200 OK in 46ms (Views: 43.7ms | ActiveRecord: 0.3ms | Allocations: 10819)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:14:58 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:11
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 2183)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 9859)
+Completed 200 OK in 48ms (Views: 45.9ms | ActiveRecord: 0.2ms | Allocations: 10861)
+
+
+Started GET "/nurseries?query=a&commit=Search" for ::1 at 2024-08-02 17:17:21 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"a", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:11
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1877)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.4ms | Allocations: 9138)
+Completed 200 OK in 45ms (Views: 43.6ms | ActiveRecord: 0.2ms | Allocations: 9407)
+
+
+Started GET "/nurseries?query=fasfdfsdfsdfsdfsdf&commit=Search" for ::1 at 2024-08-02 17:17:26 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"fasfdfsdfsdfsdfsdf", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:11
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1875)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 9136)
+Completed 200 OK in 42ms (Views: 40.6ms | ActiveRecord: 0.3ms | Allocations: 9405)
+
+
+Started GET "/nurseries?query=fior&commit=Search" for ::1 at 2024-08-02 17:17:30 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"fior", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:11
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1875)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.2ms | Allocations: 9140)
+Completed 200 OK in 37ms (Views: 36.0ms | ActiveRecord: 0.2ms | Allocations: 9409)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:17:49 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2128)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.7ms | Allocations: 9808)
+Completed 200 OK in 42ms (Views: 40.8ms | ActiveRecord: 0.2ms | Allocations: 10816)
+
+
+Started GET "/" for ::1 at 2024-08-02 17:17:50 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2563)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 9737)
+Completed 200 OK in 29ms (Views: 27.5ms | ActiveRecord: 0.0ms | Allocations: 10500)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:17:52 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 1879)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.2ms | Allocations: 9146)
+Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.2ms | Allocations: 9415)
+
+
+Started GET "/nurseries?query=fior&commit=Search" for ::1 at 2024-08-02 17:17:57 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"fior", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 1872)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.1ms | Allocations: 9133)
+Completed 200 OK in 42ms (Views: 41.0ms | ActiveRecord: 0.3ms | Allocations: 9402)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:19:46 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 4531)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 11955)
+Completed 200 OK in 29ms (Views: 27.4ms | ActiveRecord: 1.4ms | Allocations: 12602)
+
+
+Started GET "/nurseries?query=fior&commit=Search" for ::1 at 2024-08-02 17:19:51 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"fior", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.8ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%fior%' OR LOWER(location) LIKE '%fior%' OR LOWER(description) LIKE '%fior%')[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 1852)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.3ms | Allocations: 9113)
+Completed 200 OK in 41ms (Views: 38.9ms | ActiveRecord: 0.8ms | Allocations: 9439)
+
+
+Started GET "/nurseries?query=&commit=Search" for ::1 at 2024-08-02 17:19:55 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1873)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.9ms | Allocations: 9134)
+Completed 200 OK in 22ms (Views: 21.6ms | ActiveRecord: 0.1ms | Allocations: 9410)
+
+
+Started GET "/nurseries?query=ggdfgdfgdfgd&commit=Search" for ::1 at 2024-08-02 17:19:58 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"ggdfgdfgdfgd", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%ggdfgdfgdfgd%' OR LOWER(location) LIKE '%ggdfgdfgdfgd%' OR LOWER(description) LIKE '%ggdfgdfgdfgd%')[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1805)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.8ms | Allocations: 9069)
+Completed 200 OK in 47ms (Views: 45.7ms | ActiveRecord: 0.4ms | Allocations: 9391)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:21:40 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1277)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 1342)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms | Allocations: 2333)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <br><br><br><br><br><br>
+<h1>VIVAI</h1>
+
+
+<%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+  <%= form.label :query, "Search" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+<%> if @nurseries.empty? %>
+  <p>Nessun vivaio presente a questo nome</p>
+<% else %>
+  <h2>Lista vivai:</h2>
+  <ul>
+    <% @nurseries.each do |nursery| %>
+      <li>
+        <h3><%= link_to nursery.name, nursery_path(nursery) %></h3>
+
+        <p><%= nursery.location %></p>
+        <p><%= nursery.description %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+):
+1:    <br><br><br><br><br><br>
+2:    <h1>VIVAI</h1>
+3:    
+4:    
+5:    <%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+6:      <%= form.label :query, "Search" %>
+7:      <%= form.text_field :query %>
+8:      <%= form.submit "Search" %>
+9:    <% end %>
+10:    
+11:    
+12:    <%> if @nurseries.empty? %>
+13:      <p>Nessun vivaio presente a questo nome</p>
+14:    <% else %>
+15:      <h2>Lista vivai:</h2>
+16:      <ul>
+17:        <% @nurseries.each do |nursery| %>
+18:          <li>
+19:            <h3><%= link_to nursery.name, nursery_path(nursery) %></h3>
+20:    
+21:            <p><%= nursery.location %></p>
+22:            <p><%= nursery.description %></p>
+23:          </li>
+24:        <% end %>
+25:      </ul>
+26:    <% end %>
+  
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+Started GET "/nurseries" for ::1 at 2024-08-02 17:21:41 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1262)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1327)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1579)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <br><br><br><br><br><br>
+<h1>VIVAI</h1>
+
+
+<%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+  <%= form.label :query, "Search" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+
+<%> if @nurseries.empty? %>
+  <p>Nessun vivaio presente a questo nome</p>
+<% else %>
+  <h2>Lista vivai:</h2>
+  <ul>
+    <% @nurseries.each do |nursery| %>
+      <li>
+        <h3><%= link_to nursery.name, nursery_path(nursery) %></h3>
+
+        <p><%= nursery.location %></p>
+        <p><%= nursery.description %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+):
+1:    <br><br><br><br><br><br>
+2:    <h1>VIVAI</h1>
+3:    
+4:    
+5:    <%= form_with url: nurseries_path, method: :get, local: true do |form| %>
+6:      <%= form.label :query, "Search" %>
+7:      <%= form.text_field :query %>
+8:      <%= form.submit "Search" %>
+9:    <% end %>
+10:    
+11:    
+12:    <%> if @nurseries.empty? %>
+13:      <p>Nessun vivaio presente a questo nome</p>
+14:    <% else %>
+15:      <h2>Lista vivai:</h2>
+16:      <ul>
+17:        <% @nurseries.each do |nursery| %>
+18:          <li>
+19:            <h3><%= link_to nursery.name, nursery_path(nursery) %></h3>
+20:    
+21:            <p><%= nursery.location %></p>
+22:            <p><%= nursery.description %></p>
+23:          </li>
+24:        <% end %>
+25:      </ul>
+26:    <% end %>
+  
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+app/views/nurseries/index.html.erb:12: syntax error, unexpected '>', expecting `end'
+Started GET "/nurseries" for ::1 at 2024-08-02 17:21:59 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:17
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 16.5ms | Allocations: 2830)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 10515)
+Completed 200 OK in 63ms (Views: 59.6ms | ActiveRecord: 0.6ms | Allocations: 11533)
+
+
+Started GET "/nurseries?query=fior&commit=Search" for ::1 at 2024-08-02 17:22:04 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"fior", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" WHERE (LOWER(name) LIKE '%fior%' OR LOWER(location) LIKE '%fior%' OR LOWER(description) LIKE '%fior%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%fior%' OR LOWER(location) LIKE '%fior%' OR LOWER(description) LIKE '%fior%')[0m
+  ↳ app/views/nurseries/index.html.erb:17
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 15.6ms | Allocations: 2499)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 9760)
+Completed 200 OK in 44ms (Views: 41.6ms | ActiveRecord: 0.9ms | Allocations: 10082)
+
+
+Started GET "/nurseries?query=gfgfsdd&commit=Search" for ::1 at 2024-08-02 17:22:06 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"gfgfsdd", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" WHERE (LOWER(name) LIKE '%gfgfsdd%' OR LOWER(location) LIKE '%gfgfsdd%' OR LOWER(description) LIKE '%gfgfsdd%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1806)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 9067)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.6ms | Allocations: 9388)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:24:24 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:17
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2512)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.4ms | Allocations: 9773)
+Completed 200 OK in 32ms (Views: 29.8ms | ActiveRecord: 0.8ms | Allocations: 10052)
+
+
+Started GET "/nurseries/2" for ::1 at 2024-08-02 17:24:28 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 218)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.6ms | Allocations: 7585)
+Completed 200 OK in 49ms (Views: 39.8ms | ActiveRecord: 0.5ms | Allocations: 8618)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:24:37 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:17
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 14.1ms | Allocations: 2514)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.9ms | Allocations: 9781)
+Completed 200 OK in 45ms (Views: 43.6ms | ActiveRecord: 0.7ms | Allocations: 10061)
+
+
+Started GET "/nurseries?query=ver&commit=Search" for ::1 at 2024-08-02 17:24:44 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"ver", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" WHERE (LOWER(name) LIKE '%ver%' OR LOWER(location) LIKE '%ver%' OR LOWER(description) LIKE '%ver%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%ver%' OR LOWER(location) LIKE '%ver%' OR LOWER(description) LIKE '%ver%')[0m
+  ↳ app/views/nurseries/index.html.erb:17
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 2497)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.2ms | Allocations: 9758)
+Completed 200 OK in 48ms (Views: 45.5ms | ActiveRecord: 0.9ms | Allocations: 10079)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:29:05 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:17
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 2512)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.9ms | Allocations: 9773)
+Completed 200 OK in 40ms (Views: 38.6ms | ActiveRecord: 0.8ms | Allocations: 10051)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:30:04 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:16
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1857)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | Allocations: 9635)
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.3ms | Allocations: 10653)
+
+
+Started GET "/nurseries?query=vs&commit=Search" for ::1 at 2024-08-02 17:30:09 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"vs", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" WHERE (LOWER(name) LIKE '%vs%' OR LOWER(location) LIKE '%vs%' OR LOWER(description) LIKE '%vs%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 4.8ms | Allocations: 878)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.3ms | Allocations: 8240)
+Completed 200 OK in 33ms (Views: 31.7ms | ActiveRecord: 0.4ms | Allocations: 8563)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:30:34 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1981)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2045)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms | Allocations: 3035)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7:   <%= form.submit "Search" %>
+     8: <% end %>
+     9: <ul id="optionsList">
+    10:   <% @options.each do |option| %>
+    11:     <li><%= option.name %></li>
+    12:   <% end %>
+    13: </ul>
+  
+app/views/nurseries/index.html.erb:10
+Started GET "/nurseries" for ::1 at 2024-08-02 17:30:34 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1651)
+  Rendered layout layouts/application.html.erb (Duration: 2.6ms | Allocations: 1715)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 1967)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     7:   <%= form.submit "Search" %>
+     8: <% end %>
+     9: <ul id="optionsList">
+    10:   <% @options.each do |option| %>
+    11:     <li><%= option.name %></li>
+    12:   <% end %>
+    13: </ul>
+  
+app/views/nurseries/index.html.erb:10
+Started GET "/nurseries" for ::1 at 2024-08-02 17:30:50 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 1266)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 9045)
+Completed 200 OK in 49ms (Views: 46.3ms | ActiveRecord: 0.5ms | Allocations: 10062)
+
+
+Started GET "/nurseries?query=ve&commit=Search" for ::1 at 2024-08-02 17:30:54 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"ve", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%ve%' OR LOWER(location) LIKE '%ve%' OR LOWER(description) LIKE '%ve%')[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 924)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.1ms | Allocations: 8282)
+Completed 200 OK in 43ms (Views: 41.2ms | ActiveRecord: 0.5ms | Allocations: 8604)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:31:42 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:9
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1286)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | Allocations: 9059)
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 0.1ms | Allocations: 10071)
+
+
+Started GET "/nurseries?query=ver&commit=Search" for ::1 at 2024-08-02 17:31:48 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"ver", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.6ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%ver%' OR LOWER(location) LIKE '%ver%' OR LOWER(description) LIKE '%ver%')[0m
+  ↳ app/views/nurseries/index.html.erb:9
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 938)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 8302)
+Completed 200 OK in 44ms (Views: 42.3ms | ActiveRecord: 0.6ms | Allocations: 8625)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:32:06 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1270)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.9ms | Allocations: 9043)
+Completed 200 OK in 31ms (Views: 29.7ms | ActiveRecord: 0.2ms | Allocations: 10060)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:39:19 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:10
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 1981)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.9ms | Allocations: 9755)
+Completed 200 OK in 50ms (Views: 47.5ms | ActiveRecord: 1.1ms | Allocations: 10768)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:40:28 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:12
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1272)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.6ms | Allocations: 9050)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.2ms | Allocations: 10067)
+
+
+Started GET "/nurseries?query=ver&commit=Search" for ::1 at 2024-08-02 17:40:35 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"ver", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%ver%' OR LOWER(location) LIKE '%ver%' OR LOWER(description) LIKE '%ver%')[0m
+  ↳ app/views/nurseries/index.html.erb:12
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 924)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 8282)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.4ms | Allocations: 8604)
+
+
+Started GET "/nurseries/3" for ::1 at 2024-08-02 17:40:37 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 217)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.1ms | Allocations: 7588)
+Completed 200 OK in 46ms (Views: 38.9ms | ActiveRecord: 0.4ms | Allocations: 8528)
+
+
+Started GET "/nurseries/3" for ::1 at 2024-08-02 17:40:51 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 218)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.8ms | Allocations: 7993)
+Completed 200 OK in 37ms (Views: 30.5ms | ActiveRecord: 0.3ms | Allocations: 9522)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:40:54 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:12
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.2ms | Allocations: 1270)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.9ms | Allocations: 8634)
+Completed 200 OK in 46ms (Views: 44.6ms | ActiveRecord: 0.3ms | Allocations: 9042)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:42:43 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:24
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 1284)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.0ms | Allocations: 9058)
+Completed 200 OK in 44ms (Views: 42.3ms | ActiveRecord: 0.2ms | Allocations: 10071)
+
+
+Started GET "/script.js" for ::1 at 2024-08-02 17:42:43 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/script.js"):
+  
+Started GET "/nurseries" for ::1 at 2024-08-02 17:44:08 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1273)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.8ms | Allocations: 9052)
+Completed 200 OK in 46ms (Views: 43.7ms | ActiveRecord: 0.3ms | Allocations: 10070)
+
+
+Started GET "/nurseries/2" for ::1 at 2024-08-02 17:44:17 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 213)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | Allocations: 7577)
+Completed 200 OK in 40ms (Views: 34.2ms | ActiveRecord: 0.3ms | Allocations: 8496)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:44:19 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 942)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.6ms | Allocations: 8301)
+Completed 200 OK in 44ms (Views: 42.6ms | ActiveRecord: 0.4ms | Allocations: 8581)
+
+
+Started GET "/nurseries/3" for ::1 at 2024-08-02 17:44:20 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:15:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.4ms | Allocations: 7440)
+Completed 200 OK in 42ms (Views: 34.9ms | ActiveRecord: 0.4ms | Allocations: 8229)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:44:21 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 941)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.3ms | Allocations: 8299)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.2ms | Allocations: 8578)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:47:26 +0200
+  
+NoMethodError (undefined method `esources' for #<ActionDispatch::Routing::Mapper:0x000071a2b4bcef08>
+Did you mean?  resources
+               resource):
+  
+config/routes.rb:19:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/nurseries" for ::1 at 2024-08-02 17:47:44 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 4546)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 4610)
+Completed 500 Internal Server Error in 21ms (Allocations: 5850)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `search_vivai_path' for #<ActionView::Base:0x000000000246f8>
+Did you mean?  search_vivai_index_path):
+    2: <h1>VIVAI</h1>
+    3: 
+    4: 
+    5: <%= form_with url: search_vivai_path, method: :get, local: true do %>
+    6:   <div class="form-group">
+    7:     <%= label_tag :query, "Cerca nei vivai:" %>
+    8:     <%= text_field_tag :query, params[:query], class: "form-control" %>
+  
+app/views/nurseries/index.html.erb:5
+Started GET "/nurseries" for ::1 at 2024-08-02 17:48:21 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 18.1ms | Allocations: 4501)
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 4565)
+Completed 500 Internal Server Error in 24ms (Allocations: 5806)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `search_nurseries_path' for #<ActionView::Base:0x00000000026318>
+Did you mean?  search_nurseries_index_path):
+    2: <h1>VIVAI</h1>
+    3: 
+    4: 
+    5: <%= form_with url: search_nurseries_path, method: :get, local: true do %>
+    6:   <div class="form-group">
+    7:     <%= label_tag :query, "Cerca nei vivai:" %>
+    8:     <%= text_field_tag :query, params[:query], class: "form-control" %>
+  
+app/views/nurseries/index.html.erb:5
+Started GET "/nurseries" for ::1 at 2024-08-02 17:49:55 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 4144)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 4208)
+Completed 500 Internal Server Error in 20ms (Allocations: 4827)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `search_nurseries_path' for #<ActionView::Base:0x00000000028000>
+Did you mean?  search_nurseries_index_path):
+    2: <h1>VIVAI</h1>
+    3: 
+    4: 
+    5: <%= form_with url: search_nurseries_path, method: :get, local: true do %>
+    6:   <div class="form-group">
+    7:     <%= label_tag :query, "Cerca nei vivai:" %>
+    8:     <%= text_field_tag :query, params[:query], class: "form-control" %>
+  
+app/views/nurseries/index.html.erb:5
+Started GET "/nurseries" for ::1 at 2024-08-02 17:50:59 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 3980)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 11721)
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 1.6ms | Allocations: 12989)
+
+
+Started GET "/" for ::1 at 2024-08-02 17:51:21 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 2569)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 9786)
+Completed 200 OK in 44ms (Views: 41.8ms | ActiveRecord: 0.0ms | Allocations: 10550)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 17:51:31 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 218)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 7546)
+Completed 200 OK in 30ms (Views: 28.7ms | ActiveRecord: 0.0ms | Allocations: 8309)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:51:37 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 947)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.1ms | Allocations: 8311)
+Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.2ms | Allocations: 8590)
+
+
+Started GET "/" for ::1 at 2024-08-02 17:51:51 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.0ms | Allocations: 2147)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.6ms | Allocations: 9364)
+Completed 200 OK in 48ms (Views: 47.1ms | ActiveRecord: 0.0ms | Allocations: 9620)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 17:51:55 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 125)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.1ms | Allocations: 7490)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.0ms | Allocations: 7747)
+
+
+Started GET "/login" for ::1 at 2024-08-02 17:51:58 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 12.0ms | Allocations: 2588)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 8725)
+Completed 200 OK in 45ms (Views: 42.8ms | ActiveRecord: 0.0ms | Allocations: 9498)
+
+
+Started GET "/" for ::1 at 2024-08-02 17:52:01 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 2152)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.6ms | Allocations: 9364)
+Completed 200 OK in 43ms (Views: 42.3ms | ActiveRecord: 0.0ms | Allocations: 9620)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 17:52:03 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 947)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.6ms | Allocations: 8312)
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.1ms | Allocations: 8591)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateInfoplants (20240802155537)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "infoplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "description" text, "habitat" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240802155537"]]
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/nurseries" for ::1 at 2024-08-02 18:00:36 +0200
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 2919)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.3ms | Allocations: 10662)
+Completed 200 OK in 32ms (Views: 29.5ms | ActiveRecord: 0.4ms | Allocations: 11931)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:00:37 +0200
+Processing by InfoplantsController#index as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2300)
+
+
+  
+NameError (uninitialized constant InfoplantsController::Infoplants):
+  
+app/controllers/infoplants_controller.rb:4:in `index'
+Started GET "/infoplants" for ::1 at 2024-08-02 18:01:11 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1931)
+  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1995)
+Completed 500 Internal Server Error in 5ms (Allocations: 2734)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     9: 
+    10: <!-- 
+    11: <ul id="optionsList">
+    12:   <% @nurseries.each do |option| %>
+    13:     <li><%= option.name %></li>
+    14:   <% end %>
+    15: </ul>
+  
+app/views/infoplants/index.html.erb:12
+Started GET "/infoplants" for ::1 at 2024-08-02 18:01:48 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1633)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 1697)
+Completed 500 Internal Server Error in 14ms (Allocations: 2664)
+
+
+  
+ActionView::Template::Error (undefined method `empty?' for nil:NilClass):
+    1: <h1>INFOPLANTS!</h1>
+    2: 
+    3: 
+    4: <% if @nurseries.empty? %>
+    5:   <p>Nessuna pianta presente a questo nome</p>
+    6: <% else %>
+    7:   <h2>Lista piante:</h2>
+  
+app/views/infoplants/index.html.erb:4
+Started GET "/infoplants" for ::1 at 2024-08-02 18:02:01 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1596)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1660)
+Completed 500 Internal Server Error in 9ms (Allocations: 2627)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: 
+    5: <h2>Lista piante:</h2>
+    6: <ul>
+    7: <% @infoplants.each do |plant| %>
+    8:     <li>
+    9:     <h3><%= link_to plant.name, plant_path(plant) %></h3>
+   10: 
+  
+app/views/infoplants/index.html.erb:7
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mInfoplant Create (0.4ms)[0m  [1m[32mINSERT INTO "infoplants" ("name", "description", "habitat", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Rosa"], ["description", "Un fiore molto bello e profumato"], ["habitat", "Giardini"], ["created_at", "2024-08-02 16:05:43.644937"], ["updated_at", "2024-08-02 16:05:43.644937"]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mInfoplant Create (0.3ms)[0m  [1m[32mINSERT INTO "infoplants" ("name", "description", "habitat", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Cactus"], ["description", "Pianta succulenta resistente alla siccità"], ["habitat", "Deserti"], ["created_at", "2024-08-02 16:05:43.653390"], ["updated_at", "2024-08-02 16:05:43.653390"]]
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/infoplants" for ::1 at 2024-08-02 18:05:55 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1464)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 1528)
+Completed 500 Internal Server Error in 7ms (Allocations: 1757)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    4: 
+    5: <h2>Lista piante:</h2>
+    6: <ul>
+    7: <% @infoplants.each do |plant| %>
+    8:     <li>
+    9:     <h3><%= link_to plant.name, plant_path(plant) %></h3>
+   10: 
+  
+app/views/infoplants/index.html.erb:7
+Started GET "/infoplants" for ::1 at 2024-08-02 18:07:04 +0200
+Processing by InfoplantsController#index as HTML
+Completed 500 Internal Server Error in 4ms (Allocations: 2290)
+
+
+  
+NameError (uninitialized constant InfoplantsController::InfoPlant):
+  
+app/controllers/infoplants_controller.rb:5:in `index'
+Started GET "/infoplants" for ::1 at 2024-08-02 18:07:22 +0200
+Processing by InfoplantsController#index as HTML
+Completed 500 Internal Server Error in 4ms (Allocations: 2293)
+
+
+  
+NameError (uninitialized constant InfoplantsController::InfoPlants):
+  
+app/controllers/infoplants_controller.rb:5:in `index'
+Started GET "/infoplants" for ::1 at 2024-08-02 18:10:01 +0200
+Processing by InfoplantsController#index as HTML
+Completed 500 Internal Server Error in 5ms (Allocations: 2291)
+
+
+  
+NameError (uninitialized constant InfoplantsController::InfoPlant):
+  
+app/controllers/infoplants_controller.rb:4:in `index'
+Started GET "/infoplants" for ::1 at 2024-08-02 18:10:34 +0200
+Processing by InfoplantsController#index as HTML
+Completed 500 Internal Server Error in 4ms (Allocations: 2290)
+
+
+  
+NameError (uninitialized constant InfoplantsController::InfoPlant):
+  
+app/controllers/infoplants_controller.rb:4:in `index'
+Started GET "/infoplants" for ::1 at 2024-08-02 18:11:37 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  [1m[36mInfoplant Load (0.1ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 8132)
+  Rendered layout layouts/application.html.erb (Duration: 25.1ms | Allocations: 8196)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 1.5ms | Allocations: 8793)
+
+
+  
+ActionView::Template::Error (undefined method `plant_path' for #<ActionView::Base:0x00000000034a30>
+Did you mean?  myplants_path):
+     6: <ul>
+     7: <% @infoplants.each do |plant| %>
+     8:     <li>
+     9:     <h3><%= link_to plant.name, plant_path(plant) %></h3>
+    10: 
+    11:     </li>
+    12: <% end %>
+  
+app/views/infoplants/index.html.erb:9
+app/views/infoplants/index.html.erb:7
+Started GET "/infoplants" for ::1 at 2024-08-02 18:12:13 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 888)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.5ms | Allocations: 8667)
+Completed 200 OK in 28ms (Views: 25.8ms | ActiveRecord: 0.2ms | Allocations: 9674)
+
+
+Started GET "/infoplants/1" for ::1 at 2024-08-02 18:12:16 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 210)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.6ms | Allocations: 7581)
+Completed 200 OK in 50ms (Views: 44.0ms | ActiveRecord: 0.4ms | Allocations: 8625)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:12:18 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 755)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.2ms | Allocations: 8113)
+Completed 200 OK in 36ms (Views: 34.6ms | ActiveRecord: 0.4ms | Allocations: 8382)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:13:48 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.3ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 888)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 8661)
+Completed 200 OK in 41ms (Views: 39.2ms | ActiveRecord: 0.3ms | Allocations: 9669)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:13:50 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.3ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 755)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.9ms | Allocations: 8119)
+Completed 200 OK in 37ms (Views: 36.1ms | ActiveRecord: 0.3ms | Allocations: 8388)
+
+
+Started GET "/infoplants/1" for ::1 at 2024-08-02 18:13:52 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 16.7ms | Allocations: 3171)
+  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 3235)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.4ms | Allocations: 4128)
+
+
+  
+ActionView::Template::Error (undefined method `location' for #<Infoplant:0x000071a2b4cb9828>):
+    1: <br><br><br><br>
+    2: <h1><%= @infoplant.name %></h1>
+    3: <p><strong>habitat:</strong> <%= @infoplant.location %></p>
+    4: <p><strong>Description:</strong> <%= @infoplant.description %></p>
+    5: 
+    6: <%= link_to 'Torna alla lista delle piante', infoplants_path %>
+  
+app/views/infoplants/show.html.erb:3
+Started GET "/infoplants" for ::1 at 2024-08-02 18:14:37 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 886)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.0ms | Allocations: 8665)
+Completed 200 OK in 42ms (Views: 40.6ms | ActiveRecord: 0.2ms | Allocations: 9672)
+
+
+Started GET "/infoplants/1" for ::1 at 2024-08-02 18:14:40 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 2.0ms | Allocations: 210)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | Allocations: 7580)
+Completed 200 OK in 41ms (Views: 35.8ms | ActiveRecord: 0.2ms | Allocations: 8502)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:14:44 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.3ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 755)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.4ms | Allocations: 8113)
+Completed 200 OK in 42ms (Views: 40.5ms | ActiveRecord: 0.3ms | Allocations: 8382)
+
+
+Started GET "/infoplants/2" for ::1 at 2024-08-02 18:14:45 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.5ms | Allocations: 7438)
+Completed 200 OK in 39ms (Views: 34.5ms | ActiveRecord: 0.2ms | Allocations: 8229)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:14:46 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 754)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.5ms | Allocations: 8112)
+Completed 200 OK in 39ms (Views: 37.6ms | ActiveRecord: 0.4ms | Allocations: 8381)
+
+
+Started GET "/infoplants/2" for ::1 at 2024-08-02 18:15:08 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.6ms | Allocations: 7445)
+Completed 200 OK in 44ms (Views: 37.1ms | ActiveRecord: 0.4ms | Allocations: 8237)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:15:09 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.1ms | Allocations: 754)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.5ms | Allocations: 8118)
+Completed 200 OK in 40ms (Views: 38.6ms | ActiveRecord: 0.2ms | Allocations: 8387)
+
+
+Started GET "/" for ::1 at 2024-08-02 18:15:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.4ms | Allocations: 2568)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.7ms | Allocations: 9742)
+Completed 200 OK in 37ms (Views: 34.9ms | ActiveRecord: 0.0ms | Allocations: 10505)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:15:27 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 5.8ms | Allocations: 759)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.1ms | Allocations: 8124)
+Completed 200 OK in 36ms (Views: 35.2ms | ActiveRecord: 0.2ms | Allocations: 8393)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 18:15:28 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 19.6ms | Allocations: 3056)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 49.8ms | Allocations: 10385)
+Completed 200 OK in 58ms (Views: 52.1ms | ActiveRecord: 2.2ms | Allocations: 11317)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:15:34 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.2ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 759)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.4ms | Allocations: 8134)
+Completed 200 OK in 41ms (Views: 39.7ms | ActiveRecord: 0.2ms | Allocations: 8404)
+
+
+Started GET "/infoplants/2" for ::1 at 2024-08-02 18:15:58 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.2ms | Allocations: 7440)
+Completed 200 OK in 39ms (Views: 33.4ms | ActiveRecord: 0.4ms | Allocations: 8232)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-02 18:15:59 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 754)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.2ms | Allocations: 8112)
+Completed 200 OK in 42ms (Views: 40.3ms | ActiveRecord: 0.4ms | Allocations: 8380)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-02 18:16:01 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 941)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.3ms | Allocations: 8299)
+Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.3ms | Allocations: 8578)
+
+

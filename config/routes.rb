@@ -11,11 +11,10 @@ Rails.application.routes.draw do
   get 'myplants', to: 'myplants#index'
 
   get 'infoplants', to: 'infoplants#index'
-  get 'infoplants/show'
-  resources :infoplants, only: [:index, :show]
+  get 'infoplants/:id', to: 'infoplants#show', as: 'infoplant'
 
   get 'nurseries', to: 'nurseries#index'
-  resources :nurseries, only: [:index, :show]
+  get 'nurseries/:id', to: 'nurseries#show', as: 'nursery'
 
   get 'register', to: 'registrations#new'
   post 'register', to: 'registrations#create'
