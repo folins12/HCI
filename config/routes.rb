@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'registrations/new'
+  get 'registrations/create'
   root 'home#index'
 
   get 'about', to: 'home#about', as: 'about'
@@ -12,8 +16,12 @@ Rails.application.routes.draw do
   get 'nurseries', to: 'nurseries#index'
   resources :nurseries, only: [:index, :show]
 
-  get 'login', to: 'login#index'
+  get 'register', to: 'registrations#new'
+  post 'register', to: 'registrations#create'
 
-  get 'register', to: 'register#index'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
 
+  resources :users, only: [:show]
 end

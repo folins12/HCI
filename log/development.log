@@ -12286,6 +12286,7 @@ Processing by HomeController#index as HTML
 Completed 200 OK in 885ms (Views: 884.6ms | Allocations: 24353)
 
 
+<<<<<<< HEAD
 Started GET "/" for ::1 at 2024-08-02 12:48:02 +0200
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
@@ -12559,5 +12560,139 @@ Processing by HomeController#index as HTML
 [Webpacker] Everything's up-to-date. Nothing to do
   Rendered layout layouts/application.html.erb (Duration: 928.4ms | Allocations: 19357)
 Completed 200 OK in 931ms (Views: 929.4ms | Allocations: 19613)
+=======
+Started GET "/" for ::1 at 2024-08-02 13:07:45 +0200
+  [1m[35m (40.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1237.3ms | Allocations: 48312)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1280.9ms | Allocations: 63103)
+Completed 200 OK in 1298ms (Views: 1282.9ms | ActiveRecord: 0.0ms | Allocations: 65649)
+
+
+Started GET "/login" for ::1 at 2024-08-02 13:07:59 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2567)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 75.2ms | Allocations: 8704)
+Completed 200 OK in 78ms (Views: 77.0ms | ActiveRecord: 0.0ms | Allocations: 9476)
+
+
+Started POST "/login" for ::1 at 2024-08-02 13:08:06 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 380ms (ActiveRecord: 1.2ms | Allocations: 5763)
+
+
+Started GET "/" for ::1 at 2024-08-02 13:08:07 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2141)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.2ms | Allocations: 9350)
+Completed 200 OK in 45ms (Views: 44.2ms | ActiveRecord: 0.0ms | Allocations: 9606)
+
+
+Started GET "/login" for ::1 at 2024-08-02 13:08:14 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 15.0ms | Allocations: 2389)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 58.9ms | Allocations: 8515)
+Completed 200 OK in 63ms (Views: 61.4ms | ActiveRecord: 0.0ms | Allocations: 8771)
+
+
+Started GET "/login" for ::1 at 2024-08-02 13:09:20 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 35.2ms | Allocations: 2593)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 69.9ms | Allocations: 9164)
+Completed 200 OK in 78ms (Views: 76.8ms | ActiveRecord: 0.0ms | Allocations: 10162)
+
+
+Started GET "/" for ::1 at 2024-08-02 13:09:22 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 20.4ms | Allocations: 2551)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.4ms | Allocations: 9782)
+Completed 200 OK in 74ms (Views: 72.7ms | ActiveRecord: 0.0ms | Allocations: 10558)
+
+
+Started GET "/logout" for ::1 at 2024-08-02 13:09:24 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 26ms (ActiveRecord: 0.0ms | Allocations: 243)
+
+
+Started GET "/" for ::1 at 2024-08-02 13:09:24 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 21.0ms | Allocations: 2141)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 62.4ms | Allocations: 9348)
+Completed 200 OK in 66ms (Views: 65.5ms | ActiveRecord: 0.0ms | Allocations: 9604)
+
+
+Started GET "/login" for ::1 at 2024-08-02 13:09:27 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2391)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.3ms | Allocations: 8528)
+Completed 200 OK in 66ms (Views: 64.6ms | ActiveRecord: 0.0ms | Allocations: 8784)
+
+
+Started POST "/login" for ::1 at 2024-08-02 13:09:35 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 301ms (ActiveRecord: 0.3ms | Allocations: 843)
+
+
+Started GET "/" for ::1 at 2024-08-02 13:09:36 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2133)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.0ms | Allocations: 9355)
+Completed 200 OK in 16ms (Views: 16.1ms | ActiveRecord: 0.0ms | Allocations: 9610)
+>>>>>>> eb495feb1f464a461b61cbb0e03d7d457dc2e001
 
 
