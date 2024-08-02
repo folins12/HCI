@@ -22,9 +22,15 @@
       <div class="nav-item">
         <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
       </div>
-      <div class="nav-item">
-        <%= link_to 'Login', login_path, class: 'nav-link' %>
-      </div>
+      <% if session[:user_id] %>
+        <div class="nav-item">
+          <%= link_to 'Logout', logout_path, method: :delete, data: { confirm: 'Sei sicuro di voler uscire?' }, class: 'nav-link' %>
+        </div>
+      <% else %>
+        <div class="nav-item">
+          <%= link_to 'Login', login_path, class: 'nav-link' %>
+        </div>
+      <% end %>
     </div>
   </nav>
   <div class="container mt-4 content">
