@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'infoplants/show'
   resources :infoplants, only: [:index, :show]
 
-  #get 'nurseries', to: 'nurseries#index'
+  get 'nurseries', to: 'nurseries#index'
   resources :nurseries, only: [:index, :show]
 
   get 'register', to: 'registrations#new'
