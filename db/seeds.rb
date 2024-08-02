@@ -6,5 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Nursery.create(name: 'Vivaio Verde', location: 'Milano', description: 'Specializzato in piante tropicali.')
-Nursery.create(name: 'Vivaio Fiorito', location: 'Roma', description: 'Offre una vasta gamma di fiori e arbusti.')
+# db/seeds.rb
+Infoplant.create(name: 'Rosa', description: 'Un fiore molto bello e profumato', habitat: 'Giardini')
+Infoplant.create(name: 'Cactus', description: 'Pianta succulenta resistente alla siccità', habitat: 'Deserti')

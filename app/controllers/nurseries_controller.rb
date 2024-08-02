@@ -1,17 +1,11 @@
 class NurseriesController < ApplicationController
-  #def index
-  #  if params[:query].present?
-  #    @nurseries = Nursery.search(params[:query])
-  #  else
-  #    @nurseries = Nursery.all
-  #  end
-  #end
-  
+    
   def index
-    @nurseries = Nursery.all
+    @nurseries = params[:query].present? ? Nursery.search(params[:query]) : Nursery.all
   end
 
   def show
     @nursery = Nursery.find(params[:id])
   end
+
 end

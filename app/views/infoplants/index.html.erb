@@ -1,4 +1,13 @@
 <h1>INFOPLANTS!</h1>
 
-<!-- app/views/pages/index.html.erb -->
-<%= button_to 'Vai alla pagina Ciao', infoplants_show_path, method: :get %>
+
+
+<h2>Lista piante:</h2>
+<ul>
+<% @infoplants.each do |plant| %>
+    <li>
+    <h3><%= link_to plant.name, infoplant_path(plant) %></h3>
+
+    </li>
+<% end %>
+</ul>
