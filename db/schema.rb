@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_02_155537) do
+ActiveRecord::Schema.define(version: 2024_08_03_093357) do
 
   create_table "infoplants", force: :cascade do |t|
     t.string "name"
@@ -22,8 +22,15 @@ ActiveRecord::Schema.define(version: 2024_08_02_155537) do
 
   create_table "nurseries", force: :cascade do |t|
     t.string "name"
+    t.integer "number"
+    t.string "email"
+    t.string "address"
     t.string "location"
+    t.integer "open_time"
+    t.integer "close_time"
     t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "plants", force: :cascade do |t|
