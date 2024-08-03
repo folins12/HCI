@@ -15850,3 +15850,276 @@ Processing by NurseriesController#index as HTML
 Completed 200 OK in 43ms (Views: 41.6ms | ActiveRecord: 0.3ms | Allocations: 8578)
 
 
+Started GET "/" for ::1 at 2024-08-03 11:32:14 +0200
+  [1m[35m (4.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2588.0ms | Allocations: 54201)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2641.5ms | Allocations: 62249)
+Completed 200 OK in 2671ms (Views: 2653.2ms | ActiveRecord: 0.0ms | Allocations: 64795)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-03 11:32:36 +0200
+Processing by NurseriesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (2.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:14
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.0ms | Allocations: 3798)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 11254)
+Completed 200 OK in 28ms (Views: 21.1ms | ActiveRecord: 2.6ms | Allocations: 12311)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-03 11:32:41 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.9ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 19.0ms | Allocations: 3609)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.2ms | Allocations: 11063)
+Completed 200 OK in 66ms (Views: 53.1ms | ActiveRecord: 5.1ms | Allocations: 11989)
+
+
+Started GET "/infoplants/1" for ::1 at 2024-08-03 11:32:44 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mInfoplant Load (0.4ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 213)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 27.9ms | Allocations: 7640)
+Completed 200 OK in 44ms (Views: 28.5ms | ActiveRecord: 0.4ms | Allocations: 10930)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-03 11:32:47 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.1ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 763)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.4ms | Allocations: 8248)
+Completed 200 OK in 37ms (Views: 35.2ms | ActiveRecord: 0.1ms | Allocations: 8528)
+
+
+Started GET "/infoplants/2" for ::1 at 2024-08-03 11:32:48 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mInfoplant Load (0.1ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants" WHERE "infoplants"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 7587)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.1ms | Allocations: 8380)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-03 11:32:50 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (0.1ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 754)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.8ms | Allocations: 8247)
+Completed 200 OK in 31ms (Views: 30.4ms | ActiveRecord: 0.1ms | Allocations: 8515)
+
+
+Started GET "/login" for ::1 at 2024-08-03 11:32:52 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 14.3ms | Allocations: 2802)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 8931)
+Completed 200 OK in 34ms (Views: 29.4ms | ActiveRecord: 0.0ms | Allocations: 9711)
+
+
+Started GET "/" for ::1 at 2024-08-03 11:32:56 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2161)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.5ms | Allocations: 9503)
+Completed 200 OK in 60ms (Views: 59.3ms | ActiveRecord: 0.0ms | Allocations: 9764)
+
+
+Started GET "/login" for ::1 at 2024-08-03 11:32:58 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2559)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.7ms | Allocations: 8684)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms | Allocations: 8940)
+
+
+Started GET "/register" for ::1 at 2024-08-03 11:32:59 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 14.1ms | Allocations: 3744)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.9ms | Allocations: 9875)
+Completed 200 OK in 54ms (Views: 43.8ms | ActiveRecord: 0.5ms | Allocations: 14252)
+
+
+Started GET "/login" for ::1 at 2024-08-03 11:33:06 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2577)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 8705)
+Completed 200 OK in 16ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 8961)
+
+
+Started GET "/register" for ::1 at 2024-08-03 11:33:08 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 3081)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 9206)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 9480)
+
+
+Started GET "/login" for ::1 at 2024-08-03 11:33:11 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2563)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 8688)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms | Allocations: 8943)
+
+
+Started GET "/register" for ::1 at 2024-08-03 11:33:18 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 8.6ms | Allocations: 3071)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 9196)
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.0ms | Allocations: 9467)
+
+
+Started GET "/" for ::1 at 2024-08-03 11:33:22 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 2161)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.2ms | Allocations: 9497)
+Completed 200 OK in 22ms (Views: 21.8ms | ActiveRecord: 0.0ms | Allocations: 9753)
+
+
+Started GET "/" for ::1 at 2024-08-03 11:45:20 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 25.9ms | Allocations: 2578)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 016560f9e4e66b9e9ec1
+Version: webpack 4.47.0
+Time: 6862ms
+Built at: 08/03/2024 11:45:35 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-3095143c9360212337e0.js    249 KiB  application  [emitted] [immutable]  application
+js/application-3095143c9360212337e0.js.map    287 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-3095143c9360212337e0.js js/application-3095143c9360212337e0.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 493 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 553 bytes {application} [built]
+    + 3 hidden modules
+
+ERROR in ./app/javascript/packs/application.js
+Module not found: Error: Can't resolve '../stylesheets/application' in '/home/biar/Documents/GitHub/PlantTracker-labAssi/app/javascript/packs'
+ @ ./app/javascript/packs/application.js 10:0-36
+
+ERROR in ./node_modules/bootstrap/dist/js/bootstrap.esm.js
+Module not found: Error: Can't resolve '@popperjs/core' in '/home/biar/Documents/GitHub/PlantTracker-labAssi/node_modules/bootstrap/dist/js'
+ @ ./node_modules/bootstrap/dist/js/bootstrap.esm.js 36:0-41 2273:17-23 2285:21-40 3902:15-21 4170:13-32
+ @ ./app/javascript/packs/application.js
+
+  Rendered layout layouts/application.html.erb (Duration: 15185.7ms | Allocations: 23425)
+Completed 200 OK in 15188ms (Views: 15187.3ms | Allocations: 24432)
+
+
+Started GET "/" for ::1 at 2024-08-03 12:04:30 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2149)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2069.1ms | Allocations: 25507)
+Completed 200 OK in 2073ms (Views: 2072.1ms | Allocations: 25764)
+
+
+Started GET "/" for ::1 at 2024-08-03 12:08:23 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1001.4ms | Allocations: 25607)
+Completed 200 OK in 1002ms (Views: 1002.0ms | Allocations: 25863)
+
+
+Started GET "/" for ::1 at 2024-08-03 12:11:27 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 14.2ms | Allocations: 2605)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 52.9ms | Allocations: 7706)
+Completed 200 OK in 171ms (Views: 168.3ms | Allocations: 8702)
+
+

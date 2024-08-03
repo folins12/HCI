@@ -68,7 +68,9 @@
       <a href="mailto:planttracker@gmail.com" target="_blank">
         <i class="fas fa-envelope"></i> Contact Us
       </a>
-      <%= link_to 'About Us', about_path, target: "_blank" %>
+      <%= link_to about_path, target: "_blank" do %>
+        <i class="fas fa-users"></i> About Us
+      <% end %>
       <a href="#" onclick="openLink('facebook')">
         <i class="fab fa-facebook"></i> Facebook
       </a>
@@ -78,6 +80,7 @@
     </div>
   </footer>
 </div>
+
 
 
 <script>
