@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_08_04_102052) do
+ActiveRecord::Schema.define(version: 2024_08_04_150805) do
 
   create_table "infoplants", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2024_08_04_102052) do
     t.string "habitat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "myplants", force: :cascade do |t|
+    t.string "pianta", null: false
+    t.string "proprietario", null: false
+    t.integer "disponibilita", default: -1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proprietario"], name: "index_myplants_on_proprietario"
   end
 
   create_table "nurseries", force: :cascade do |t|
