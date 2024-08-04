@@ -1,0 +1,82 @@
+// app/assets/stylesheets/profiles.scss
+
+.profile-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f8ff;
+  margin-top:10%;
+  height:80%;
+  width:40%;
+  border-radius:15px;
+  border: 6px solid #004d00; // Verde scuro
+}
+
+.welcome-message {
+  color: #004d00; // Verde scuro
+  font-size: 40px;
+  margin-bottom: 5%;
+}
+
+.profile-table {
+  display: inline-block;
+  text-align: left;
+  margin: 0 auto;
+  border: 4px solid #004d00; // Verde scuro, raddoppiato
+  border-radius: 15px; // Raddoppiato rispetto al bordo precedente
+}
+
+.profile-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-table th, .profile-table td {
+  padding: 20px; // Raddoppiato rispetto al padding precedente
+  border: 2px solid #004d00; // Verde scuro, raddoppiato
+  border-radius: 15px;
+}
+
+.profile-table th {
+  background-color: #e6ffe6; // Colore di sfondo chiaro
+  color: #004d00; // Verde scuro
+  font-size: 18px; // Aumenta la dimensione del testo se necessario
+}
+
+.profile-table td {
+  color: #004d00; // Verde scuro
+  font-size: 18px; // Aumenta la dimensione del testo se necessario
+}
+
+
+.logout-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Stile per i link che devono sembrare bottoni */
+.lo-button {
+display: inline-flex; /* Imposta il display per utilizzare Flexbox */
+width: auto; /* Imposta la larghezza automatica per adattarsi al contenuto */
+background-color: #006400; /* Colore di sfondo del bottone */
+color: white; /* Colore del testo */
+border: none; /* Rimuove il bordo predefinito */
+padding: 20px; /* Padding verticale per centrare il testo */
+border-radius: 20px; /* Angoli arrotondati */
+cursor: pointer; /* Cambia il cursore in una mano */
+font-size: 30px; /* Dimensione del testo */
+text-align: center; /* Allinea il testo al centro */
+align-items: center; /* Centra verticalmente il testo */
+justify-content: center; /* Centra orizzontalmente il testo */
+text-decoration: none; /* Rimuove la sottolineatura per i link */
+margin-top: 2%; /* Margine superiore */
+margin-bottom: 2%; /* Margine inferiore */
+}
+
+/* Stile per il bottone quando è in hover */
+.lo-button:hover {
+background-color: #004d00; /* Colore di sfondo quando si passa sopra */
+}
+
+
+  

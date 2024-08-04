@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profilo Vivaio</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="welcome-message">
+      Benvenuto nel tuo vivaio <%= @user.nome %>!
+    </div>
+    <div class="profile-table">
+      <table>
+        <tr>
+          <th>Nome</th>
+          <td><%= @user.nome %></td>
+        </tr>
+        <tr>
+          <th>Cognome</th>
+          <td><%= @user.cognome %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="logout-button">
+      <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
+    </div>
+  </div>
+</body>
+</html>

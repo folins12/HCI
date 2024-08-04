@@ -89,3 +89,43 @@
     margin-bottom: 10%;
     text-align: center; /* Centra il testo della scritta cliccabile */
 }
+
+/* Stile per la checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 24px; /* Dimensione della checkbox */
+  height: 24px; /* Dimensione della checkbox */
+  -webkit-appearance: none; /* Rimuove lo stile di default */
+  background-color: #fff; /* Colore di sfondo predefinito */
+  border: 2px solid #004d00; /* Bordo verde scuro */
+  border-radius: 4px; /* Angoli arrotondati */
+  cursor: pointer; /* Cambia il cursore quando si passa sopra */
+  position: relative; /* Per posizionare l'indicatore di selezione */
+  outline: none; /* Rimuove il bordo di focus predefinito */
+}
+
+.checkbox-container input[type="checkbox"]:checked {
+  background-color: #004d00; /* Colore di riempimento quando selezionato */
+}
+
+.checkbox-container input[type="checkbox"]:checked::after {
+  content: ""; /* Necessario per aggiungere il segno di spunta */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: #fff; /* Colore del segno di spunta */
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.checkbox-container label {
+  color: #004d00; /* Colore del testo dell'etichetta */
+  margin-left: 8px; /* Spazio tra la checkbox e l'etichetta */
+  font-size: 20px; /* Dimensione del testo */
+}

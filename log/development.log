@@ -16199,6 +16199,7 @@ Migrating to CreateNurseries (20240803093357)
   [1m[36mNursery Create (0.3ms)[0m  [1m[32mINSERT INTO "nurseries" ("name", "number", "email", "address", "location", "open_time", "close_time", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Magic Forest"], ["number", 123456789], ["email", "magic@forest.com"], ["address", "321 Enchanted Lane"], ["location", "Mystic Woods"], ["open_time", 8], ["close_time", 16], ["description", "A magical place where learning comes alive."], ["created_at", "2024-08-03 09:52:41.661467"], ["updated_at", "2024-08-03 09:52:41.661467"]]
   [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
 >>>>>>> 523b0de80d50cce63330a7e79b2bde93f7dfcf27
+<<<<<<< HEAD
 Started GET "/" for ::1 at 2024-08-04 12:03:00 +0200
   [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
@@ -19332,5 +19333,2780 @@ Processing by NurseriesController#index as HTML
 [Webpacker] Everything's up-to-date. Nothing to do
   Rendered layout layouts/application.html.erb (Duration: 57.8ms | Allocations: 9848)
 Completed 200 OK in 98ms (Views: 92.5ms | ActiveRecord: 0.5ms | Allocations: 11456)
+=======
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNurseryToUsers (20240804102052)
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (13.2ms)[0m  [1m[35mALTER TABLE "users" ADD "nursery" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240804102052"]]
+  [1m[36mTRANSACTION (27.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-08-04 12:28:01 +0200
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1580.2ms | Allocations: 49859)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1642.1ms | Allocations: 54782)
+Completed 200 OK in 1722ms (Views: 1677.8ms | ActiveRecord: 0.0ms | Allocations: 58355)
+
+
+Started GET "/login" for ::1 at 2024-08-04 12:28:07 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 35.6ms | Allocations: 2797)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.7ms | Allocations: 5740)
+Completed 200 OK in 62ms (Views: 58.5ms | ActiveRecord: 0.0ms | Allocations: 6520)
+
+
+Started GET "/register" for ::1 at 2024-08-04 12:28:10 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 123.1ms | Allocations: 4791)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 176.9ms | Allocations: 7771)
+Completed 200 OK in 291ms (Views: 194.5ms | ActiveRecord: 0.6ms | Allocations: 13415)
+
+
+Started POST "/register" for ::1 at 2024-08-04 12:28:41 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"Antonio", "cognome"=>"Verdi", "email"=>"averdi@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "nursery"=>"1"}}
+[31mUnpermitted parameter: :nursery[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "averdi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "nome", "cognome", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "averdi@gmail.com"], ["password_digest", "$2a$12$8SQ.b/I143ZvyLGB8D5a/uw32JHapSSx7yzM6pElAzIA/mQ1MD4Ta"], ["nome", "Antonio"], ["cognome", "Verdi"], ["created_at", "2024-08-04 10:28:41.832297"], ["updated_at", "2024-08-04 10:28:41.832297"]]
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+  [1m[36mTRANSACTION (31.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:8:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 453ms (ActiveRecord: 33.3ms | Allocations: 6816)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:28:41 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 28.1ms | Allocations: 2161)
+  Rendered layout layouts/application.html.erb (Duration: 75.3ms | Allocations: 9444)
+Completed 500 Internal Server Error in 90ms (ActiveRecord: 0.0ms | Allocations: 10013)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `current_user' for #<ActionView::Base:0x00000000009420>
+Did you mean?  current_page?):
+    24:       </div>
+    25:       <% if session[:user_id] %>
+    26:         <div class="nav-item">
+    27:           <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+    28:         </div>
+    29:         <div class="nav-item">
+    30:           <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
+  
+app/views/layouts/application.html.erb:27
+Started GET "/" for ::1 at 2024-08-04 12:30:06 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2276)
+  Rendered layout layouts/application.html.erb (Duration: 45.2ms | Allocations: 8956)
+Completed 500 Internal Server Error in 51ms (Allocations: 9375)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `current_user' for #<ActionView::Base:0x0000000000acf8>
+Did you mean?  current_page?):
+    24:       </div>
+    25:       <% if session[:user_id] %>
+    26:         <div class="nav-item">
+    27:           <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+    28:         </div>
+    29:         <div class="nav-item">
+    30:           <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
+  
+app/views/layouts/application.html.erb:27
+Started GET "/" for ::1 at 2024-08-04 12:30:24 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 2169)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 12287)
+Completed 200 OK in 38ms (Views: 37.2ms | ActiveRecord: 2.6ms | Allocations: 12676)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 12:30:27 +0200
+Processing by UsersController#profile as HTML
+Completed 404 Not Found in 14ms (ActiveRecord: 0.0ms | Allocations: 512)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:15:in `set_user'
+Started GET "/user_profile" for ::1 at 2024-08-04 12:31:57 +0200
+  
+ArgumentError (Invalid route name, already in use: 'root' 
+You may have defined two routes with the same name using the `:as` option, or you may be overriding a route already defined by a resource with the same naming. For the latter, you can restrict the routes created with `resources` as explained here: 
+https://guides.rubyonrails.org/routing.html#restricting-the-routes-created):
+  
+config/routes.rb:21:in `block in <main>'
+config/routes.rb:1:in `<main>'
+Started GET "/user_profile" for ::1 at 2024-08-04 12:32:13 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:15:in `set_user'
+Completed 404 Not Found in 17ms (ActiveRecord: 0.5ms | Allocations: 1872)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/users_controller.rb:15:in `set_user'
+Started GET "/user_profile" for ::1 at 2024-08-04 12:33:30 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 9.4ms | Allocations: 3546)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3610)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 28.5ms | Allocations: 9991)
+
+
+  
+ActionView::Template::Error (undefined method `nome' for nil:NilClass):
+     8: </head>
+     9: <body>
+    10:   <h1>Profilo Utente</h1>
+    11:   <p>Nome: <%= @user.nome %></p>
+    12:   <p>Cognome: <%= @user.cognome %></p>
+    13:   <%= link_to 'Logout', logout_path, method: :delete %>
+    14: </body>
+  
+app/views/users/profile.html.erb:11
+Started GET "/user_profile" for ::1 at 2024-08-04 12:34:37 +0200
+Processing by UsersController#profile as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3360)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 3425)
+Completed 500 Internal Server Error in 14ms (Allocations: 3953)
+
+
+  
+ActionView::Template::Error (undefined method `nome' for nil:NilClass):
+     8: </head>
+     9: <body>
+    10:   <h1>Profilo Utente</h1>
+    11:   <p>Nome: <%= @user.nome %></p>
+    12:   <p>Cognome: <%= @user.cognome %></p>
+    13:   <%= link_to 'Logout', logout_path, method: :delete %>
+    14: </body>
+  
+app/views/users/profile.html.erb:11
+Started GET "/user_profile" for ::1 at 2024-08-04 12:36:25 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 17.0ms | Allocations: 2050)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.8ms | Allocations: 5233)
+Completed 200 OK in 90ms (Views: 49.9ms | ActiveRecord: 2.2ms | Allocations: 11256)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 12:36:31 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2035)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 5248)
+Completed 200 OK in 17ms (Views: 14.2ms | ActiveRecord: 0.1ms | Allocations: 6186)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 12:36:47 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 254)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:36:47 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2168)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.3ms | Allocations: 6370)
+Completed 200 OK in 28ms (Views: 27.1ms | ActiveRecord: 0.0ms | Allocations: 6746)
+
+
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-08-04 12:42:51 +0200
+  [1m[35m (7.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 52.9ms | Allocations: 7870)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 79.0ms | Allocations: 12810)
+Completed 200 OK in 97ms (Views: 85.6ms | ActiveRecord: 0.0ms | Allocations: 15356)
+
+
+Started GET "/login" for ::1 at 2024-08-04 12:42:56 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 12.5ms | Allocations: 2804)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.2ms | Allocations: 5785)
+Completed 200 OK in 41ms (Views: 40.6ms | ActiveRecord: 0.0ms | Allocations: 6564)
+
+
+Started GET "/register" for ::1 at 2024-08-04 12:43:14 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 11.8ms | Allocations: 4288)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.4ms | Allocations: 7268)
+Completed 200 OK in 72ms (Views: 54.8ms | ActiveRecord: 0.5ms | Allocations: 12960)
+
+
+Started POST "/register" for ::1 at 2024-08-04 12:43:50 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"Michele", "cognome"=>"Libriani", "email"=>"mlibriani@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "nursery"=>"1"}}
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mlibriani@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "nome", "cognome", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["email", "mlibriani@gmail.com"], ["password_digest", "$2a$12$y/UxD8VVteZvH5gIBTDor.XJpondN7rJNxmlZwRTp6qDhr56xrX8i"], ["nome", "Michele"], ["cognome", "Libriani"], ["created_at", "2024-08-04 10:43:50.438092"], ["updated_at", "2024-08-04 10:43:50.438092"]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (57.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 318ms (ActiveRecord: 60.2ms | Allocations: 8291)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:43:50 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2170)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.8ms | Allocations: 7238)
+Completed 200 OK in 25ms (Views: 24.1ms | ActiveRecord: 0.1ms | Allocations: 7496)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 12:43:53 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2227)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.0ms | Allocations: 5407)
+Completed 200 OK in 24ms (Views: 15.3ms | ActiveRecord: 0.2ms | Allocations: 6880)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:44:37 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 2166)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.7ms | Allocations: 7089)
+Completed 200 OK in 47ms (Views: 46.1ms | ActiveRecord: 0.2ms | Allocations: 7345)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:47:05 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 28.2ms | Allocations: 2616)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 106.2ms | Allocations: 7888)
+Completed 200 OK in 117ms (Views: 114.9ms | ActiveRecord: 0.2ms | Allocations: 8889)
+
+
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-08-04 12:50:27 +0200
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 64.8ms | Allocations: 7870)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 94.7ms | Allocations: 18845)
+Completed 200 OK in 104ms (Views: 97.4ms | ActiveRecord: 1.6ms | Allocations: 21674)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 12:50:30 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2226)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.8ms | Allocations: 5407)
+Completed 200 OK in 54ms (Views: 29.7ms | ActiveRecord: 0.3ms | Allocations: 6896)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 12:50:33 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms | Allocations: 264)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:50:33 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2159)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 6355)
+Completed 200 OK in 14ms (Views: 13.5ms | ActiveRecord: 0.0ms | Allocations: 6611)
+
+
+Started GET "/login" for ::1 at 2024-08-04 12:50:35 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 25.0ms | Allocations: 2804)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 60.8ms | Allocations: 5785)
+Completed 200 OK in 97ms (Views: 91.8ms | ActiveRecord: 0.0ms | Allocations: 6561)
+
+
+Started GET "/register" for ::1 at 2024-08-04 12:50:40 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 18.5ms | Allocations: 4326)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.5ms | Allocations: 7306)
+Completed 200 OK in 41ms (Views: 38.8ms | ActiveRecord: 0.0ms | Allocations: 8096)
+
+
+Started POST "/register" for ::1 at 2024-08-04 12:51:02 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"Luca", "cognome"=>"Bianchi", "email"=>"lbianchi@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "nursery"=>"true"}}
+  [1m[36mTRANSACTION (8.9ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lbianchi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "nome", "cognome", "created_at", "updated_at", "nursery") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "lbianchi@gmail.com"], ["password_digest", "$2a$12$Dde5dTosoitbh8KRCgQI1.96Cnb0EZO1tp8nezqryqDz./LN6uInC"], ["nome", "Luca"], ["cognome", "Bianchi"], ["created_at", "2024-08-04 10:51:03.361675"], ["updated_at", "2024-08-04 10:51:03.361675"], ["nursery", 1]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (31.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 472ms (ActiveRecord: 42.8ms | Allocations: 6024)
+
+
+Started GET "/" for ::1 at 2024-08-04 12:51:03 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 14.7ms | Allocations: 2170)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.8ms | Allocations: 7373)
+Completed 200 OK in 101ms (Views: 99.7ms | ActiveRecord: 0.5ms | Allocations: 7630)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 12:51:06 +0200
+  
+ActionController::RoutingError (uninitialized constant NurseriesProfileController
+Did you mean?  NurseriesController):
+  
+Started GET "/nursery_profile" for ::1 at 2024-08-04 12:53:26 +0200
+  
+ActionController::RoutingError (uninitialized constant NurseriesProfileController
+Did you mean?  NurseriesController):
+  
+Started GET "/nursery_profile" for ::1 at 2024-08-04 12:54:42 +0200
+Processing by NurseryController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+Completed 404 Not Found in 55ms (ActiveRecord: 2.2ms | Allocations: 2055)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/nursery_controller.rb:20:in `set_user'
+Started GET "/nursery_profile" for ::1 at 2024-08-04 12:55:28 +0200
+Processing by NurseryController#profile as HTML
+Completed 404 Not Found in 3ms (ActiveRecord: 0.0ms | Allocations: 490)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/nursery_controller.rb:20:in `set_user'
+Started GET "/nursery_profile" for ::1 at 2024-08-04 12:56:47 +0200
+Processing by NurseryController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+Completed 404 Not Found in 15ms (ActiveRecord: 0.9ms | Allocations: 2013)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/nursery_controller.rb:20:in `set_user'
+Started GET "/nursery_profile" for ::1 at 2024-08-04 12:57:30 +0200
+Processing by NurseryController#profile as HTML
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms | Allocations: 490)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User without an ID):
+  
+app/controllers/nursery_controller.rb:20:in `set_user'
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:01:09 +0200
+Processing by NurseryController#profile as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+Completed 500 Internal Server Error in 94ms (ActiveRecord: 9.6ms | Allocations: 7146)
+
+
+  
+ActionView::MissingTemplate (Missing template nursery/profile, application/profile with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/home/biar/Documents/GitHub/PlantTracker-labAssi/app/views"
+  * "/home/biar/.rvm/gems/ruby-2.7.2/gems/actiontext-6.1.7.8/app/views"
+  * "/home/biar/.rvm/gems/ruby-2.7.2/gems/actionmailbox-6.1.7.8/app/views"
+):
+  
+app/controllers/nursery_controller.rb:14:in `profile'
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:02:35 +0200
+Processing by NurseryController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 18.1ms | Allocations: 2391)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 68.3ms | Allocations: 6544)
+Completed 200 OK in 141ms (Views: 81.3ms | ActiveRecord: 4.7ms | Allocations: 13247)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:13:24 +0200
+Processing by NurseryController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 1522.6ms | Allocations: 59255)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1568.1ms | Allocations: 63346)
+Completed 200 OK in 1645ms (Views: 1603.6ms | ActiveRecord: 0.7ms | Allocations: 65631)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:14:17 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 909.7ms | Allocations: 22202)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 930.0ms | Allocations: 25886)
+Completed 200 OK in 935ms (Views: 932.1ms | ActiveRecord: 0.2ms | Allocations: 26786)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:15:48 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 1078.6ms | Allocations: 24475)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1129.2ms | Allocations: 28565)
+Completed 200 OK in 1150ms (Views: 1140.9ms | ActiveRecord: 0.2ms | Allocations: 30226)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:16:14 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 843.3ms | Allocations: 24221)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 876.6ms | Allocations: 27905)
+Completed 200 OK in 933ms (Views: 883.2ms | ActiveRecord: 0.3ms | Allocations: 28817)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:16:19 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 42.7ms | Allocations: 2153)
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 122.0ms | Allocations: 5933)
+Completed 200 OK in 133ms (Views: 125.1ms | ActiveRecord: 0.3ms | Allocations: 6832)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:17:12 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 752.3ms | Allocations: 23466)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 760.7ms | Allocations: 27554)
+Completed 200 OK in 779ms (Views: 763.9ms | ActiveRecord: 0.2ms | Allocations: 29192)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:19:03 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 717.0ms | Allocations: 23555)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 726.4ms | Allocations: 27640)
+Completed 200 OK in 737ms (Views: 728.5ms | ActiveRecord: 0.2ms | Allocations: 29278)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:19:27 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 740.1ms | Allocations: 24038)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 779.2ms | Allocations: 28127)
+Completed 200 OK in 818ms (Views: 785.9ms | ActiveRecord: 0.3ms | Allocations: 29783)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:20:03 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 722.6ms | Allocations: 22833)
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 747.8ms | Allocations: 26520)
+Completed 200 OK in 763ms (Views: 753.9ms | ActiveRecord: 0.4ms | Allocations: 27420)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 13:20:36 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 12.2ms | Allocations: 2820)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.6ms | Allocations: 6507)
+Completed 200 OK in 82ms (Views: 46.9ms | ActiveRecord: 0.2ms | Allocations: 7428)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 13:20:47 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 262)
+
+
+Started GET "/" for ::1 at 2024-08-04 13:20:47 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 25.8ms | Allocations: 2609)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 44.6ms | Allocations: 6908)
+Completed 200 OK in 48ms (Views: 47.3ms | ActiveRecord: 0.0ms | Allocations: 7683)
+
+
+Started GET "/login" for ::1 at 2024-08-04 13:20:49 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 15.5ms | Allocations: 2926)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 5914)
+Completed 200 OK in 60ms (Views: 59.1ms | ActiveRecord: 0.0ms | Allocations: 6684)
+
+
+Started POST "/login" for ::1 at 2024-08-04 13:20:57 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 339ms (ActiveRecord: 0.4ms | Allocations: 985)
+
+
+Started GET "/" for ::1 at 2024-08-04 13:20:58 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2176)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.5ms | Allocations: 7150)
+Completed 200 OK in 30ms (Views: 29.0ms | ActiveRecord: 0.2ms | Allocations: 7406)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:21:04 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 11.1ms | Allocations: 2390)
+  [1m[36mCACHE User Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.1ms | Allocations: 6134)
+Completed 200 OK in 53ms (Views: 27.0ms | ActiveRecord: 4.8ms | Allocations: 7590)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:22:01 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 785.8ms | Allocations: 24499)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 802.7ms | Allocations: 28580)
+Completed 200 OK in 828ms (Views: 811.5ms | ActiveRecord: 0.2ms | Allocations: 30176)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:22:46 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 704.1ms | Allocations: 22753)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 723.3ms | Allocations: 26436)
+Completed 200 OK in 728ms (Views: 724.2ms | ActiveRecord: 0.2ms | Allocations: 27361)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:23:06 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 794.1ms | Allocations: 24248)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 827.1ms | Allocations: 27931)
+Completed 200 OK in 844ms (Views: 829.9ms | ActiveRecord: 0.3ms | Allocations: 28855)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:23:22 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 750.2ms | Allocations: 22883)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 755.4ms | Allocations: 26566)
+Completed 200 OK in 758ms (Views: 756.2ms | ActiveRecord: 0.2ms | Allocations: 27490)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:23:32 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 758.3ms | Allocations: 23753)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 781.3ms | Allocations: 27436)
+Completed 200 OK in 793ms (Views: 783.7ms | ActiveRecord: 0.4ms | Allocations: 28360)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:24:49 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 765.2ms | Allocations: 23183)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 775.9ms | Allocations: 26866)
+Completed 200 OK in 785ms (Views: 778.4ms | ActiveRecord: 0.2ms | Allocations: 27791)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:25:17 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 694.4ms | Allocations: 26780)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 711.3ms | Allocations: 30463)
+Completed 200 OK in 718ms (Views: 713.7ms | ActiveRecord: 0.2ms | Allocations: 31387)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:25:35 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 845.4ms | Allocations: 22784)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 888.6ms | Allocations: 26467)
+Completed 200 OK in 899ms (Views: 892.9ms | ActiveRecord: 0.1ms | Allocations: 27392)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 13:26:04 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 949.3ms | Allocations: 22327)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 955.4ms | Allocations: 26010)
+Completed 200 OK in 966ms (Views: 959.2ms | ActiveRecord: 0.2ms | Allocations: 26934)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:09:16 +0200
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 4002.5ms | Allocations: 81979)
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 4019.5ms | Allocations: 86108)
+Completed 200 OK in 4089ms (Views: 4032.9ms | ActiveRecord: 2.4ms | Allocations: 94458)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 14:09:28 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 298)
+
+
+Started GET "/" for ::1 at 2024-08-04 14:09:28 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 2626)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 6927)
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 7701)
+
+
+Started GET "/login" for ::1 at 2024-08-04 14:09:30 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 16.0ms | Allocations: 2910)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.7ms | Allocations: 5898)
+Completed 200 OK in 44ms (Views: 43.3ms | ActiveRecord: 0.0ms | Allocations: 6667)
+
+
+Started GET "/register" for ::1 at 2024-08-04 14:09:32 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 31.9ms | Allocations: 4393)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.4ms | Allocations: 7382)
+Completed 200 OK in 54ms (Views: 44.2ms | ActiveRecord: 0.0ms | Allocations: 8182)
+
+
+Started GET "/register" for ::1 at 2024-08-04 14:10:16 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 973.8ms | Allocations: 27448)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 998.9ms | Allocations: 30337)
+Completed 200 OK in 1001ms (Views: 999.7ms | ActiveRecord: 0.0ms | Allocations: 30616)
+
+
+Started GET "/login" for ::1 at 2024-08-04 14:10:47 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 17.4ms | Allocations: 2705)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.7ms | Allocations: 5693)
+Completed 200 OK in 25ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 5949)
+
+
+Started POST "/login" for ::1 at 2024-08-04 14:10:55 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 364ms (ActiveRecord: 0.2ms | Allocations: 1010)
+
+
+Started GET "/" for ::1 at 2024-08-04 14:10:55 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2171)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.4ms | Allocations: 7141)
+Completed 200 OK in 40ms (Views: 39.6ms | ActiveRecord: 0.5ms | Allocations: 7398)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:10:57 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2163)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.0ms | Allocations: 5948)
+Completed 200 OK in 59ms (Views: 36.7ms | ActiveRecord: 0.2ms | Allocations: 6888)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:11:47 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 760.5ms | Allocations: 22408)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 776.5ms | Allocations: 26088)
+Completed 200 OK in 807ms (Views: 780.4ms | ActiveRecord: 1.5ms | Allocations: 27012)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:16:50 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 965.2ms | Allocations: 27286)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1003.3ms | Allocations: 30968)
+Completed 200 OK in 1018ms (Views: 1006.2ms | ActiveRecord: 0.4ms | Allocations: 31892)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:32:17 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 876.1ms | Allocations: 23756)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 889.1ms | Allocations: 27438)
+Completed 200 OK in 931ms (Views: 907.8ms | ActiveRecord: 0.8ms | Allocations: 28987)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:32:50 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 680.3ms | Allocations: 24272)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 685.7ms | Allocations: 27954)
+Completed 200 OK in 689ms (Views: 686.7ms | ActiveRecord: 0.2ms | Allocations: 28886)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:33:27 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 747.3ms | Allocations: 22294)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 753.2ms | Allocations: 25976)
+Completed 200 OK in 767ms (Views: 764.2ms | ActiveRecord: 0.2ms | Allocations: 26910)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:34:01 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 938.8ms | Allocations: 23870)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 947.5ms | Allocations: 27552)
+Completed 200 OK in 989ms (Views: 973.7ms | ActiveRecord: 0.2ms | Allocations: 28498)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 14:34:21 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 1199.9ms | Allocations: 23818)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1207.2ms | Allocations: 27500)
+Completed 200 OK in 1227ms (Views: 1209.6ms | ActiveRecord: 0.3ms | Allocations: 28424)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 14:34:46 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 243)
+
+
+Started GET "/" for ::1 at 2024-08-04 14:34:46 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2163)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 683.8ms | Allocations: 27893)
+Completed 200 OK in 685ms (Views: 684.1ms | ActiveRecord: 0.0ms | Allocations: 28148)
+
+
+Started GET "/login" for ::1 at 2024-08-04 14:34:50 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 9.5ms | Allocations: 2673)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 5658)
+Completed 200 OK in 63ms (Views: 62.3ms | ActiveRecord: 0.0ms | Allocations: 5914)
+
+
+Started GET "/register" for ::1 at 2024-08-04 14:34:53 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 17.8ms | Allocations: 3350)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 6340)
+Completed 200 OK in 29ms (Views: 28.8ms | ActiveRecord: 0.0ms | Allocations: 6613)
+
+
+Started GET "/login" for ::1 at 2024-08-04 14:34:56 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 11.2ms | Allocations: 2677)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.2ms | Allocations: 5662)
+Completed 200 OK in 46ms (Views: 45.0ms | ActiveRecord: 0.0ms | Allocations: 5918)
+
+
+Started POST "/login" for ::1 at 2024-08-04 14:35:10 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"lbianchi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "lbianchi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 308ms (ActiveRecord: 0.1ms | Allocations: 879)
+
+
+Started GET "/" for ::1 at 2024-08-04 14:35:10 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2164)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.4ms | Allocations: 7130)
+Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.1ms | Allocations: 7385)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 14:35:17 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 22.2ms | Allocations: 2397)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 74.1ms | Allocations: 6146)
+Completed 200 OK in 99ms (Views: 96.5ms | ActiveRecord: 0.2ms | Allocations: 7598)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:36:15 +0200
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2270.5ms | Allocations: 56765)
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2307.4ms | Allocations: 67881)
+Completed 200 OK in 2330ms (Views: 2315.9ms | ActiveRecord: 1.3ms | Allocations: 70427)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-04 16:36:27 +0200
+Processing by NurseryController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2412)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 6162)
+Completed 200 OK in 28ms (Views: 24.5ms | ActiveRecord: 0.2ms | Allocations: 7651)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 16:36:35 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 266)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:36:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 34.9ms | Allocations: 2165)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 79.8ms | Allocations: 6467)
+Completed 200 OK in 81ms (Views: 80.9ms | ActiveRecord: 0.0ms | Allocations: 6726)
+
+
+Started GET "/login" for ::1 at 2024-08-04 16:36:39 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 48.7ms | Allocations: 2910)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 81.4ms | Allocations: 5899)
+Completed 200 OK in 88ms (Views: 86.9ms | ActiveRecord: 0.0ms | Allocations: 6675)
+
+
+Started POST "/login" for ::1 at 2024-08-04 16:36:46 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 304ms (ActiveRecord: 0.2ms | Allocations: 987)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:36:46 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2165)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 7134)
+Completed 200 OK in 30ms (Views: 28.9ms | ActiveRecord: 0.3ms | Allocations: 7390)
+
+
+Started GET "/myplants" for ::1 at 2024-08-04 16:36:58 +0200
+Processing by MyplantsController#index as HTML
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.0ms | Allocations: 2303)
+
+
+  
+NameError (uninitialized constant MyplantsController::Myplant
+Did you mean?  Plant):
+  
+app/controllers/myplants_controller.rb:4:in `index'
+Started GET "/" for ::1 at 2024-08-04 16:37:02 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2282)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 7395)
+Completed 200 OK in 54ms (Views: 53.1ms | ActiveRecord: 0.0ms | Allocations: 7732)
+
+
+Started GET "/myplants" for ::1 at 2024-08-04 16:37:42 +0200
+Processing by MyplantsController#index as HTML
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms | Allocations: 2346)
+
+
+  
+NameError (uninitialized constant MyplantsController::Myplant
+Did you mean?  Plant):
+  
+app/controllers/myplants_controller.rb:4:in `index'
+Started GET "/" for ::1 at 2024-08-04 16:37:46 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 5758)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 5822)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.0ms | Allocations: 6798)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `profilo_path' for #<ActionView::Base:0x00000000009f10>):
+    35:     </div>
+    36: 
+    37:     <div class="section">
+    38:       <%= link_to profilo_path, class: 'section-link' do %>
+    39:         <h2 class="section-title">LE MIE PIANTE</h2>
+    40:         <div class="section-content">
+    41:           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+  
+app/views/home/index.html.erb:38
+Started GET "/login" for ::1 at 2024-08-04 16:37:48 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 2926)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.0ms | Allocations: 6974)
+Completed 200 OK in 43ms (Views: 42.4ms | ActiveRecord: 0.1ms | Allocations: 7742)
+
+
+Started POST "/login" for ::1 at 2024-08-04 16:37:53 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 356ms (ActiveRecord: 0.1ms | Allocations: 880)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:37:53 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 5326)
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 5390)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 5619)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `profilo_path' for #<ActionView::Base:0x0000000000a320>):
+    35:     </div>
+    36: 
+    37:     <div class="section">
+    38:       <%= link_to profilo_path, class: 'section-link' do %>
+    39:         <h2 class="section-title">LE MIE PIANTE</h2>
+    40:         <div class="section-content">
+    41:           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+  
+app/views/home/index.html.erb:38
+Started GET "/" for ::1 at 2024-08-04 16:37:59 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 18.4ms | Allocations: 5322)
+  Rendered layout layouts/application.html.erb (Duration: 48.3ms | Allocations: 5386)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.0ms | Allocations: 5614)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `profilo_path' for #<ActionView::Base:0x0000000000a5f0>):
+    35:     </div>
+    36: 
+    37:     <div class="section">
+    38:       <%= link_to profilo_path, class: 'section-link' do %>
+    39:         <h2 class="section-title">LE MIE PIANTE</h2>
+    40:         <div class="section-content">
+    41:           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+  
+app/views/home/index.html.erb:38
+Started GET "/login" for ::1 at 2024-08-04 16:38:02 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2696)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 6346)
+Completed 200 OK in 19ms (Views: 18.6ms | ActiveRecord: 0.1ms | Allocations: 6602)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:38:05 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 16.6ms | Allocations: 5321)
+  Rendered layout layouts/application.html.erb (Duration: 17.3ms | Allocations: 5385)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.0ms | Allocations: 5613)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `profilo_path' for #<ActionView::Base:0x0000000000a8e8>):
+    35:     </div>
+    36: 
+    37:     <div class="section">
+    38:       <%= link_to profilo_path, class: 'section-link' do %>
+    39:         <h2 class="section-title">LE MIE PIANTE</h2>
+    40:         <div class="section-content">
+    41:           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+  
+app/views/home/index.html.erb:38
+Started GET "/" for ::1 at 2024-08-04 16:38:56 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 27.7ms | Allocations: 2605)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.5ms | Allocations: 7997)
+Completed 200 OK in 90ms (Views: 88.2ms | ActiveRecord: 0.2ms | Allocations: 9016)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:39:01 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2416)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 6162)
+Completed 200 OK in 29ms (Views: 18.2ms | ActiveRecord: 0.3ms | Allocations: 7640)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:39:45 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1414)
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | Allocations: 1479)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2447)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="banner-home">
+  <div class="content">
+    <h1>PlantTracker</h1>
+    <p class="description">
+      PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+    </p>
+    <p class="description description-separator">
+      Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+    </p>
+  </div>
+</div>
+
+
+<!-- Video Background -->
+<div class="video-background">
+  <video autoplay muted loop id="bg-video">
+    <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="dark-overlay"></div>
+</div>
+
+<!-- Content Sections -->
+<div class="content-sections">
+  <div class="container">
+    <div class="section">
+      <%= link_to infoplants_path, class: 'section-link' do %>
+        <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+          <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+        </div>
+      <% end %>
+      <div class="home-divider-thin"></div>
+    </div>
+
+    <div class="section">
+      <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'section-link' %>
+        <h2 class="section-title">LE MIE PIANTE</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+          <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+        </div>
+      <% end %>
+      <div class="home-divider-thin"></div>
+    </div>
+
+    <div class="section">
+      
+      <%= link_to nurseries_path, class: 'section-link' do %>
+        <h2 class="section-title">VIVAI</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+          <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <footer>
+    <div class="copyright">
+      <p>&copy; PlantTracker</p>
+    </div>
+    <div class="social">
+      <a href="mailto:planttracker@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i> Contact Us
+      </a>
+      <%= link_to about_path, target: "_blank" do %>
+        <i class="fas fa-users"></i> About Us
+      <% end %>
+      <a href="#" onclick="openLink('facebook')">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="#" onclick="openLink('instagram')">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+</div>
+
+
+
+<script>
+  function openLink(platform) {
+    var urls = {
+      facebook: {
+        app: 'fb://profile',
+        web: 'https://www.facebook.com'
+      },
+      instagram: {
+        app: 'instagram://user?username=planttracker',
+        web: 'https://www.instagram.com/planttracker'
+      }
+    };
+
+    var appUrl = urls[platform].app;
+    var webUrl = urls[platform].web;
+
+    var timeout;
+    var openApp = setTimeout(function() {
+      window.location = webUrl;
+    }, 25);
+
+    window.location = appUrl;
+
+    window.addEventListener('blur', function() {
+      clearTimeout(openApp);
+    });
+  }
+</script>
+):
+1:    <div class="banner-home">
+2:      <div class="content">
+3:        <h1>PlantTracker</h1>
+4:        <p class="description">
+5:          PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+6:        </p>
+7:        <p class="description description-separator">
+8:          Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+9:        </p>
+10:      </div>
+11:    </div>
+12:    
+13:    
+14:    <!-- Video Background -->
+15:    <div class="video-background">
+16:      <video autoplay muted loop id="bg-video">
+17:        <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+18:        Your browser does not support HTML5 video.
+19:      </video>
+20:      <div class="dark-overlay"></div>
+21:    </div>
+22:    
+23:    <!-- Content Sections -->
+24:    <div class="content-sections">
+25:      <div class="container">
+26:        <div class="section">
+27:          <%= link_to infoplants_path, class: 'section-link' do %>
+28:            <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+29:            <div class="section-content">
+30:              <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+31:              <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+32:            </div>
+33:          <% end %>
+34:          <div class="home-divider-thin"></div>
+35:        </div>
+36:    
+37:        <div class="section">
+38:          <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'section-link' %>
+39:            <h2 class="section-title">LE MIE PIANTE</h2>
+40:            <div class="section-content">
+41:              <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+42:              <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+43:            </div>
+44:          <% end %>
+45:          <div class="home-divider-thin"></div>
+46:        </div>
+47:    
+48:        <div class="section">
+49:          
+50:          <%= link_to nurseries_path, class: 'section-link' do %>
+51:            <h2 class="section-title">VIVAI</h2>
+52:            <div class="section-content">
+53:              <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+54:              <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+55:            </div>
+56:          <% end %>
+57:        </div>
+58:      </div>
+59:    </div>
+60:    
+61:    <!-- Footer -->
+62:    <div class="footer">
+63:      <footer>
+64:        <div class="copyright">
+65:          <p>&copy; PlantTracker</p>
+66:        </div>
+67:        <div class="social">
+68:          <a href="mailto:planttracker@gmail.com" target="_blank">
+69:            <i class="fas fa-envelope"></i> Contact Us
+70:          </a>
+71:          <%= link_to about_path, target: "_blank" do %>
+72:            <i class="fas fa-users"></i> About Us
+73:          <% end %>
+74:          <a href="#" onclick="openLink('facebook')">
+75:            <i class="fab fa-facebook"></i> Facebook
+76:          </a>
+77:          <a href="#" onclick="openLink('instagram')">
+78:            <i class="fab fa-instagram"></i> Instagram
+79:          </a>
+80:        </div>
+81:      </footer>
+82:    </div>
+83:    
+84:    
+85:    
+86:    <script>
+87:      function openLink(platform) {
+88:        var urls = {
+89:          facebook: {
+90:            app: 'fb://profile',
+91:            web: 'https://www.facebook.com'
+92:          },
+93:          instagram: {
+94:            app: 'instagram://user?username=planttracker',
+95:            web: 'https://www.instagram.com/planttracker'
+96:          }
+97:        };
+98:    
+99:        var appUrl = urls[platform].app;
+100:        var webUrl = urls[platform].web;
+101:    
+102:        var timeout;
+103:        var openApp = setTimeout(function() {
+104:          window.location = webUrl;
+105:        }, 25);
+106:    
+107:        window.location = appUrl;
+108:    
+109:        window.addEventListener('blur', function() {
+110:          clearTimeout(openApp);
+111:        });
+112:      }
+113:    </script>
+  
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+Started GET "/" for ::1 at 2024-08-04 16:40:04 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 158.6ms | Allocations: 4528)
+  Rendered layout layouts/application.html.erb (Duration: 175.8ms | Allocations: 4592)
+Completed 500 Internal Server Error in 182ms (ActiveRecord: 0.1ms | Allocations: 5559)
+
+
+  
+ActionView::Template::Error (undefined method `stringify_keys' for "/user_profile":String):
+    35:     </div>
+    36: 
+    37:     <div class="section">
+    38:       <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'section-link' do%>
+    39:         <h2 class="section-title">LE MIE PIANTE</h2>
+    40:         <div class="section-content">
+    41:           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+  
+app/views/home/index.html.erb:38
+Started GET "/user_profile" for ::1 at 2024-08-04 16:40:13 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 28.5ms | Allocations: 2407)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.0ms | Allocations: 6583)
+Completed 200 OK in 80ms (Views: 77.6ms | ActiveRecord: 0.2ms | Allocations: 7993)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:40:16 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 41.8ms | Allocations: 4090)
+  Rendered layout layouts/application.html.erb (Duration: 42.3ms | Allocations: 4154)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.1ms | Allocations: 4383)
+
+
+  
+ActionView::Template::Error (undefined method `stringify_keys' for "/user_profile":String):
+    35:     </div>
+    36: 
+    37:     <div class="section">
+    38:       <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'section-link' do%>
+    39:         <h2 class="section-title">LE MIE PIANTE</h2>
+    40:         <div class="section-content">
+    41:           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+  
+app/views/home/index.html.erb:38
+Started GET "/" for ::1 at 2024-08-04 16:40:32 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 22.1ms | Allocations: 2605)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.1ms | Allocations: 7986)
+Completed 200 OK in 43ms (Views: 42.1ms | ActiveRecord: 0.1ms | Allocations: 8980)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:40:38 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 14.9ms | Allocations: 2410)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 62.2ms | Allocations: 6193)
+Completed 200 OK in 67ms (Views: 64.4ms | ActiveRecord: 0.2ms | Allocations: 7605)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-04 16:41:20 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[36mInfoplant Load (1.5ms)[0m  [1m[34mSELECT "infoplants".* FROM "infoplants"[0m
+  ↳ app/views/infoplants/index.html.erb:7
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 29.9ms | Allocations: 3758)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.4ms | Allocations: 8841)
+Completed 200 OK in 63ms (Views: 55.9ms | ActiveRecord: 2.8ms | Allocations: 9817)
+
+
+Started GET "/" for ::1 at 2024-08-04 16:41:24 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 30.5ms | Allocations: 2171)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 69.4ms | Allocations: 7139)
+Completed 200 OK in 75ms (Views: 74.0ms | ActiveRecord: 0.2ms | Allocations: 7395)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:41:26 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 22.2ms | Allocations: 2162)
+  [1m[36mCACHE User Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 118.6ms | Allocations: 5946)
+Completed 200 OK in 132ms (Views: 126.5ms | ActiveRecord: 0.5ms | Allocations: 6871)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:43:34 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 675.9ms | Allocations: 24503)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 683.1ms | Allocations: 28588)
+Completed 200 OK in 706ms (Views: 702.2ms | ActiveRecord: 0.2ms | Allocations: 30163)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:48:15 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 803.7ms | Allocations: 24097)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 818.1ms | Allocations: 28182)
+Completed 200 OK in 852ms (Views: 848.4ms | ActiveRecord: 0.2ms | Allocations: 29761)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:48:58 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 651.5ms | Allocations: 24293)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 668.3ms | Allocations: 27973)
+Completed 200 OK in 672ms (Views: 668.7ms | ActiveRecord: 0.2ms | Allocations: 28898)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:49:41 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 811.2ms | Allocations: 23354)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 817.4ms | Allocations: 27036)
+Completed 200 OK in 833ms (Views: 817.8ms | ActiveRecord: 0.2ms | Allocations: 27961)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:50:09 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 786.7ms | Allocations: 23726)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 797.8ms | Allocations: 27408)
+Completed 200 OK in 806ms (Views: 799.6ms | ActiveRecord: 1.7ms | Allocations: 28354)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:50:39 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 606.1ms | Allocations: 23415)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 628.8ms | Allocations: 27098)
+Completed 200 OK in 651ms (Views: 630.1ms | ActiveRecord: 0.2ms | Allocations: 28022)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:51:25 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 723.5ms | Allocations: 23762)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 730.1ms | Allocations: 27444)
+Completed 200 OK in 734ms (Views: 731.3ms | ActiveRecord: 0.2ms | Allocations: 28368)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:51:43 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 566.3ms | Allocations: 23754)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 606.8ms | Allocations: 27436)
+Completed 200 OK in 610ms (Views: 607.7ms | ActiveRecord: 0.2ms | Allocations: 28361)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:52:10 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 22.4ms | Allocations: 2426)
+  [1m[36mCACHE User Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 55.9ms | Allocations: 6624)
+Completed 200 OK in 84ms (Views: 82.1ms | ActiveRecord: 0.4ms | Allocations: 8202)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:52:20 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 8.9ms | Allocations: 2427)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.3ms | Allocations: 6601)
+Completed 200 OK in 63ms (Views: 48.0ms | ActiveRecord: 0.2ms | Allocations: 8175)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:52:32 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2421)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.5ms | Allocations: 6598)
+Completed 200 OK in 28ms (Views: 26.2ms | ActiveRecord: 0.4ms | Allocations: 8171)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:53:22 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 657.4ms | Allocations: 23796)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 686.6ms | Allocations: 27478)
+Completed 200 OK in 705ms (Views: 699.7ms | ActiveRecord: 1.0ms | Allocations: 28404)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:54:02 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2415)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.9ms | Allocations: 6591)
+Completed 200 OK in 34ms (Views: 21.7ms | ActiveRecord: 0.2ms | Allocations: 8169)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:57:07 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 704.2ms | Allocations: 22368)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 711.2ms | Allocations: 26050)
+Completed 200 OK in 732ms (Views: 713.0ms | ActiveRecord: 0.2ms | Allocations: 26988)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:58:15 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 743.4ms | Allocations: 23827)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 748.9ms | Allocations: 27509)
+Completed 200 OK in 790ms (Views: 749.8ms | ActiveRecord: 0.2ms | Allocations: 28443)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 16:58:43 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:17:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 741.0ms | Allocations: 24784)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 744.7ms | Allocations: 28466)
+Completed 200 OK in 748ms (Views: 745.2ms | ActiveRecord: 0.2ms | Allocations: 29390)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMyplants (20240804150805)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "pianta" varchar NOT NULL, "proprietario" varchar NOT NULL, "disponibilita" integer DEFAULT -1, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("proprietario")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240804150805"]]
+  [1m[36mTRANSACTION (17.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMyplant Create (0.7ms)[0m  [1m[32mINSERT INTO "myplants" ("pianta", "proprietario", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pianta", "Rosa"], ["proprietario", "mrossi@gmail.com"], ["created_at", "2024-08-04 15:14:32.312449"], ["updated_at", "2024-08-04 15:14:32.312449"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/user_profile" for ::1 at 2024-08-04 17:16:15 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 904.9ms | Allocations: 54739)
+  Rendered layout layouts/application.html.erb (Duration: 905.2ms | Allocations: 54808)
+Completed 500 Internal Server Error in 970ms (ActiveRecord: 9.4ms | Allocations: 63125)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    35:     </div>
+    36:     
+    37:     <div class="plant-panels">
+    38:       <% @plants.each do |plant| %>
+    39:         <div class="plant-panel">
+    40:           <span class="plant-name"><%= plant.pianta %></span>
+    41:         </div>
+  
+app/views/users/profile.html.erb:38
+Started GET "/user_profile" for ::1 at 2024-08-04 17:17:52 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 22.9ms | Allocations: 2644)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 62.2ms | Allocations: 6823)
+Completed 200 OK in 119ms (Views: 85.3ms | ActiveRecord: 9.3ms | Allocations: 13810)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMyplant Create (1.3ms)[0m  [1m[32mINSERT INTO "myplants" ("pianta", "proprietario", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pianta", "Rosa"], ["proprietario", "mrossi@gmail.com"], ["created_at", "2024-08-04 15:20:28.247120"], ["updated_at", "2024-08-04 15:20:28.247120"]]
+  [1m[36mTRANSACTION (9.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+Started GET "/user_profile" for ::1 at 2024-08-04 17:21:37 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 45.4ms | Allocations: 8578)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 52.3ms | Allocations: 12777)
+Completed 200 OK in 138ms (Views: 81.5ms | ActiveRecord: 0.8ms | Allocations: 21126)
+
+
+Started GET "/" for ::1 at 2024-08-04 17:21:42 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 2682)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.2ms | Allocations: 7662)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.1ms | Allocations: 8472)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:21:46 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 58.1ms | Allocations: 2161)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 81.3ms | Allocations: 5942)
+Completed 200 OK in 90ms (Views: 87.9ms | ActiveRecord: 0.2ms | Allocations: 6867)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:23:21 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 12.2ms | Allocations: 2202)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 56.7ms | Allocations: 6103)
+Completed 200 OK in 71ms (Views: 59.7ms | ActiveRecord: 1.1ms | Allocations: 12202)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:23:23 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 13.0ms | Allocations: 2153)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 5931)
+Completed 200 OK in 28ms (Views: 25.9ms | ActiveRecord: 0.2ms | Allocations: 6855)
+
+
+Started GET "/" for ::1 at 2024-08-04 17:24:38 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2175)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.4ms | Allocations: 7119)
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.1ms | Allocations: 7500)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:24:40 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2153)
+  [1m[36mCACHE User Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 55.5ms | Allocations: 5930)
+Completed 200 OK in 71ms (Views: 67.7ms | ActiveRecord: 0.3ms | Allocations: 6869)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:26:06 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 26.2ms | Allocations: 2519)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.1ms | Allocations: 6693)
+Completed 200 OK in 50ms (Views: 44.9ms | ActiveRecord: 0.2ms | Allocations: 8272)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:26:26 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2497)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.8ms | Allocations: 6681)
+Completed 200 OK in 19ms (Views: 16.0ms | ActiveRecord: 0.2ms | Allocations: 8255)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:26:41 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2509)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.4ms | Allocations: 6683)
+Completed 200 OK in 96ms (Views: 61.9ms | ActiveRecord: 1.1ms | Allocations: 8261)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:27:23 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 16.0ms | Allocations: 2531)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.4ms | Allocations: 6730)
+Completed 200 OK in 61ms (Views: 41.1ms | ActiveRecord: 0.2ms | Allocations: 8305)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:28:33 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2185)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 5932)
+Completed 200 OK in 79ms (Views: 18.9ms | ActiveRecord: 4.9ms | Allocations: 12188)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:28:35 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2153)
+  [1m[36mCACHE User Load (4.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 5929)
+Completed 200 OK in 17ms (Views: 10.4ms | ActiveRecord: 5.0ms | Allocations: 6854)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:28:51 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2202)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 5949)
+Completed 200 OK in 70ms (Views: 36.5ms | ActiveRecord: 1.6ms | Allocations: 12181)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:28:52 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 11.4ms | Allocations: 2153)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.3ms | Allocations: 5932)
+Completed 200 OK in 42ms (Views: 36.1ms | ActiveRecord: 0.2ms | Allocations: 6857)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:28:53 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 10.4ms | Allocations: 2165)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 5941)
+Completed 200 OK in 24ms (Views: 14.8ms | ActiveRecord: 0.2ms | Allocations: 6866)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:29:09 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 28.2ms | Allocations: 2202)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 36.0ms | Allocations: 5949)
+Completed 200 OK in 132ms (Views: 38.2ms | ActiveRecord: 1.0ms | Allocations: 12029)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:29:10 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2153)
+  [1m[36mCACHE User Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.0ms | Allocations: 5929)
+Completed 200 OK in 53ms (Views: 48.8ms | ActiveRecord: 2.1ms | Allocations: 6853)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:33:28 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2202)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.7ms | Allocations: 6101)
+Completed 200 OK in 61ms (Views: 43.9ms | ActiveRecord: 1.2ms | Allocations: 12162)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:33:29 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.3ms | Allocations: 2153)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.5ms | Allocations: 5929)
+Completed 200 OK in 30ms (Views: 27.8ms | ActiveRecord: 0.2ms | Allocations: 6853)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:34:34 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:18:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 17.9ms | Allocations: 2202)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | Allocations: 6101)
+Completed 200 OK in 59ms (Views: 35.0ms | ActiveRecord: 0.9ms | Allocations: 12200)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:34:36 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:18:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2153)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 5929)
+Completed 200 OK in 61ms (Views: 19.7ms | ActiveRecord: 0.2ms | Allocations: 6853)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:34:58 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:16:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 29.4ms | Allocations: 2203)
+  [1m[36mCACHE User Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 43.9ms | Allocations: 6102)
+Completed 200 OK in 59ms (Views: 44.6ms | ActiveRecord: 1.5ms | Allocations: 12169)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:35:24 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 23.7ms | Allocations: 2518)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.7ms | Allocations: 6692)
+Completed 200 OK in 56ms (Views: 52.8ms | ActiveRecord: 0.2ms | Allocations: 8270)
+
+
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMyplant Create (2.6ms)[0m  [1m[32mINSERT INTO "myplants" ("pianta", "proprietario", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pianta", "Rosa"], ["proprietario", "mrossi@gmail.com"], ["created_at", "2024-08-04 15:36:11.349200"], ["updated_at", "2024-08-04 15:36:11.349200"]]
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+Started GET "/user_profile" for ::1 at 2024-08-04 17:36:44 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 21.8ms | Allocations: 8582)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.2ms | Allocations: 12781)
+Completed 200 OK in 87ms (Views: 39.0ms | ActiveRecord: 23.5ms | Allocations: 21130)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:36:47 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 10.2ms | Allocations: 2154)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.9ms | Allocations: 5932)
+Completed 200 OK in 70ms (Views: 59.0ms | ActiveRecord: 0.2ms | Allocations: 6872)
+
+
+  [1m[35m (11.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMyplant Create (1.7ms)[0m  [1m[32mINSERT INTO "myplants" ("pianta", "proprietario", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["pianta", "Rosa"], ["proprietario", "mrossi@gmail.com"], ["created_at", "2024-08-04 15:43:12.929692"], ["updated_at", "2024-08-04 15:43:12.929692"]]
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mMyplant Load (0.7ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+Started GET "/user_profile" for ::1 at 2024-08-04 17:45:49 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 45.5ms | Allocations: 8574)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 66.4ms | Allocations: 12773)
+Completed 200 OK in 103ms (Views: 80.5ms | ActiveRecord: 0.6ms | Allocations: 21271)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:45:51 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2151)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.0ms | Allocations: 5929)
+Completed 200 OK in 43ms (Views: 40.5ms | ActiveRecord: 0.2ms | Allocations: 6972)
+
+
+Started GET "/" for ::1 at 2024-08-04 17:45:52 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.8ms | Allocations: 2682)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.1ms | Allocations: 7662)
+Completed 200 OK in 64ms (Views: 50.1ms | ActiveRecord: 0.5ms | Allocations: 8472)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:45:54 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2158)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.6ms | Allocations: 5942)
+Completed 200 OK in 65ms (Views: 56.9ms | ActiveRecord: 0.2ms | Allocations: 6971)
+
+
+Started GET "/logout" for ::1 at 2024-08-04 17:45:55 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 264)
+
+
+Started GET "/" for ::1 at 2024-08-04 17:45:55 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2168)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.6ms | Allocations: 6483)
+Completed 200 OK in 19ms (Views: 18.8ms | ActiveRecord: 0.0ms | Allocations: 6739)
+
+
+Started GET "/login" for ::1 at 2024-08-04 17:45:57 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2912)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 5900)
+Completed 200 OK in 36ms (Views: 35.1ms | ActiveRecord: 0.0ms | Allocations: 6669)
+
+
+Started POST "/login" for ::1 at 2024-08-04 17:46:05 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 313ms (ActiveRecord: 0.2ms | Allocations: 994)
+
+
+Started GET "/" for ::1 at 2024-08-04 17:46:05 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2169)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 7159)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.1ms | Allocations: 7415)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:46:07 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2159)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.1ms | Allocations: 5942)
+Completed 200 OK in 28ms (Views: 22.8ms | ActiveRecord: 0.2ms | Allocations: 6985)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:48:47 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 11.3ms | Allocations: 2532)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.3ms | Allocations: 6672)
+Completed 200 OK in 103ms (Views: 42.4ms | ActiveRecord: 8.3ms | Allocations: 13563)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-04 17:48:49 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:14:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2172)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.4ms | Allocations: 5950)
+Completed 200 OK in 61ms (Views: 48.0ms | ActiveRecord: 0.2ms | Allocations: 6993)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMyplant Load (0.1ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMyplant Load (0.1ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+  [1m[36mMyplant Load (0.1ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  [1m[36mMyplant Load (0.1ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+  [1m[36mMyplant Load (3.9ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."proprietario" = ? /* loading for inspect */ LIMIT ?[0m  [["proprietario", "mrossi@gmail.com"], ["LIMIT", 11]]
+Started GET "/user_profile" for ::1 at 2024-08-04 17:57:24 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 29.4ms | Allocations: 10334)
+  Rendered layout layouts/application.html.erb (Duration: 30.9ms | Allocations: 10403)
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 0.8ms | Allocations: 18870)
+
+
+  
+ActionView::Template::Error (undefined method `any?' for nil:NilClass):
+    36: 
+    37: <div>
+    38:   <h2>Le tue piante:</h2>
+    39:   <% if @plants.any? %>
+    40:     <ul>
+    41:       <% @plants.each do |plant| %>
+    42:         <li><%= plant.pianta %> - Disponibilità: <%= plant.disponibilita %></li>
+  
+app/views/users/profile.html.erb:39
+Started GET "/user_profile" for ::1 at 2024-08-04 17:57:41 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1457)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1524)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.1ms | Allocations: 3363)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+<head>
+  <title>Profilo Utente</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="profile-container">
+    <div class="welcome-message">
+      Benvenuto nel tuo profilo <%= @user.nome %>!
+    </div>
+    <div class="profile-table">
+      <table>
+        <tr>
+          <th>Nome</th>
+          <td><%= @user.nome %></td>
+        </tr>
+        <tr>
+          <th>Cognome</th>
+          <td><%= @user.cognome %></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+  <h2>Informazioni utente:</h2>
+  <p>Email: <%= @user.email %></p>
+  <p>Nome: <%= @user.nome %></p>
+  <p>Cognome: <%= @user.cognome %></p>
+</div>
+
+<div>
+  <h2>Le tue piante:</h2>
+    <ul>
+      <% @plants.each do |plant| %>
+        <li><%= plant.pianta %> - Disponibilità: <%= plant.disponibilita %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Non hai piante.</p>
+  <% end %>
+</div>
+    <hr class="separator" /> <!-- Linea di separazione -->
+
+    <div class="plant-message">
+      Queste sono le tue piante:
+    </div>
+    
+    <div class="plant-panels">
+      <% if @plants.present? %>
+        <% @plants.each do |plant| %>
+          <div class="plant-panel">
+            <span class="plant-name"><%= plant.pianta %></span>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Nessuna pianta trovata.</p>
+      <% end %>
+    </div>
+
+    <div class="logout-button">
+      <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
+    </div>
+  </div>
+</body>
+</html>
+
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:    <head>
+4:      <title>Profilo Utente</title>
+5:      <%= csrf_meta_tags %>
+6:      <%= csp_meta_tag %>
+7:      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+8:    </head>
+9:    <body>
+10:      <div class="profile-container">
+11:        <div class="welcome-message">
+12:          Benvenuto nel tuo profilo <%= @user.nome %>!
+13:        </div>
+14:        <div class="profile-table">
+15:          <table>
+16:            <tr>
+17:              <th>Nome</th>
+18:              <td><%= @user.nome %></td>
+19:            </tr>
+20:            <tr>
+21:              <th>Cognome</th>
+22:              <td><%= @user.cognome %></td>
+23:            </tr>
+24:            <tr>
+25:              <th>Email</th>
+26:              <td><%= @user.email %></td>
+27:            </tr>
+28:          </table>
+29:        </div>
+30:        <div>
+31:      <h2>Informazioni utente:</h2>
+32:      <p>Email: <%= @user.email %></p>
+33:      <p>Nome: <%= @user.nome %></p>
+34:      <p>Cognome: <%= @user.cognome %></p>
+35:    </div>
+36:    
+37:    <div>
+38:      <h2>Le tue piante:</h2>
+39:        <ul>
+40:          <% @plants.each do |plant| %>
+41:            <li><%= plant.pianta %> - Disponibilità: <%= plant.disponibilita %></li>
+42:          <% end %>
+43:        </ul>
+44:      <% else %>
+45:        <p>Non hai piante.</p>
+46:      <% end %>
+47:    </div>
+48:        <hr class="separator" /> <!-- Linea di separazione -->
+49:    
+50:        <div class="plant-message">
+51:          Queste sono le tue piante:
+52:        </div>
+53:        
+54:        <div class="plant-panels">
+55:          <% if @plants.present? %>
+56:            <% @plants.each do |plant| %>
+57:              <div class="plant-panel">
+58:                <span class="plant-name"><%= plant.pianta %></span>
+59:              </div>
+60:            <% end %>
+61:          <% else %>
+62:            <p>Nessuna pianta trovata.</p>
+63:          <% end %>
+64:        </div>
+65:    
+66:        <div class="logout-button">
+67:          <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
+68:        </div>
+69:      </div>
+70:    </body>
+71:    </html>
+  
+app/views/users/profile.html.erb:44: else without rescue is useless
+app/views/users/profile.html.erb:74: syntax error, unexpected `end', expecting end-of-input
+app/views/users/profile.html.erb:44: else without rescue is useless
+app/views/users/profile.html.erb:74: syntax error, unexpected `end', expecting end-of-input
+app/views/users/profile.html.erb:44: else without rescue is useless
+app/views/users/profile.html.erb:74: syntax error, unexpected `end', expecting end-of-input
+app/views/users/profile.html.erb:44: else without rescue is useless
+app/views/users/profile.html.erb:74: syntax error, unexpected `end', expecting end-of-input
+Started GET "/user_profile" for ::1 at 2024-08-04 17:57:50 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: nil>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2653)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.9ms | Allocations: 7036)
+Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 0.2ms | Allocations: 8749)
+>>>>>>> b61fe093911369c248a418f484e3885ee582c844
 
 
