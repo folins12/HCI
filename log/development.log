@@ -22110,3 +22110,256 @@ Completed 200 OK in 32ms (Views: 29.7ms | ActiveRecord: 0.2ms | Allocations: 874
 >>>>>>> b61fe093911369c248a418f484e3885ee582c844
 
 
+Started GET "/" for ::1 at 2024-08-04 19:55:17 +0200
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 2 pending migrations:
+
+20240804102052_add_nursery_to_users.rb
+20240804150805_create_myplants.rb
+
+
+):
+  
+activerecord (6.1.7.8) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.7.8) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.7.8) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.7.8) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.7.8) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7.8) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/method_override.rb:24:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
+puma (5.6.8) lib/puma/configuration.rb:252:in `call'
+puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.8) lib/puma/server.rb:443:in `process_client'
+puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for ::1 at 2024-08-04 19:55:18 +0200
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35mCACHE  (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 2 pending migrations:
+
+20240804102052_add_nursery_to_users.rb
+20240804150805_create_myplants.rb
+
+
+):
+  
+activerecord (6.1.7.8) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.7.8) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.7.8) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.7.8) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.7.8) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7.8) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/method_override.rb:24:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
+puma (5.6.8) lib/puma/configuration.rb:252:in `call'
+puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.8) lib/puma/server.rb:443:in `process_client'
+puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNurseryToUsers (20240804102052)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.1ms)[0m  [1m[35mALTER TABLE "users" ADD "nursery" boolean DEFAULT 0 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (3.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240804102052"]]
+  [1m[36mTRANSACTION (37.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMyplants (20240804150805)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "pianta" varchar NOT NULL, "proprietario" varchar NOT NULL, "disponibilita" integer DEFAULT -1, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("proprietario")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20240804150805"]]
+  [1m[36mTRANSACTION (18.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2024-08-04 19:57:39 +0200
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5093.9ms | Allocations: 76912)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 5133.1ms | Allocations: 92242)
+Completed 200 OK in 5181ms (Views: 5149.9ms | ActiveRecord: 0.0ms | Allocations: 95194)
+
+
+Started GET "/login" for ::1 at 2024-08-04 19:57:55 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 16.2ms | Allocations: 3099)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.1ms | Allocations: 6134)
+Completed 200 OK in 45ms (Views: 44.0ms | ActiveRecord: 0.0ms | Allocations: 6911)
+
+
+Started GET "/register" for ::1 at 2024-08-04 19:57:58 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 99.5ms | Allocations: 5101)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 140.1ms | Allocations: 8136)
+Completed 200 OK in 219ms (Views: 148.4ms | ActiveRecord: 0.6ms | Allocations: 13914)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-04 19:58:06 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:15
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 93.7ms | Allocations: 9499)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 144.8ms | Allocations: 14032)
+Completed 200 OK in 170ms (Views: 154.4ms | ActiveRecord: 3.2ms | Allocations: 16133)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-04 19:58:34 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (0.7ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:15
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 20.9ms | Allocations: 4732)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1072.7ms | Allocations: 32465)
+Completed 200 OK in 1094ms (Views: 1077.8ms | ActiveRecord: 1.1ms | Allocations: 33333)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-04 19:59:14 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (1.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:15
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 40.7ms | Allocations: 4719)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 932.0ms | Allocations: 33822)
+Completed 200 OK in 941ms (Views: 933.5ms | ActiveRecord: 1.6ms | Allocations: 34692)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-04 20:00:23 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:12
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:16
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 5088)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 59.7ms | Allocations: 9979)
+Completed 200 OK in 97ms (Views: 65.1ms | ActiveRecord: 0.7ms | Allocations: 11609)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-04 20:00:41 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (1.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:15
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 33.1ms | Allocations: 5078)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 9978)
+Completed 200 OK in 59ms (Views: 52.3ms | ActiveRecord: 1.7ms | Allocations: 11595)
+
+

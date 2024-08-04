@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2024_08_04_150805) do
     t.string "cognome"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "nursery"
+    t.boolean "nursery", default: false, null: false
   end
 
 end
