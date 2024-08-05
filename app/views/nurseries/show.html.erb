@@ -23,7 +23,9 @@
             <!--%= image_tag nursery_plant.plant.image_url, alt: nursery_plant.plant.name, class: 'plant-image' %-->
             <h3><%= nursery_plant.plant.name %></h3>
             <p><%= nursery_plant.plant.description %></p>
-            <!--%= link_to 'Prenota', nurseries_nursery_plant_reservations_path(nursery_plant_id: @plants.name), class: 'btn-reserve' %-->
+            <p>Disponibilità in negozio: <%= nursery_plant.max_disponibility - nursery_plant.num_reservations%></p>
+            <!--%= link_to 'Prenota', nurseries_nursery_plant_reservations_path(nursery_plant_id: @nursery_plants.id), class: 'btn-reserve' %-->
+            <div class="btn-reserve">
           </div>
         <% end %>
       </div>
