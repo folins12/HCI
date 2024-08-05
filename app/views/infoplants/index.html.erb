@@ -6,17 +6,17 @@
 
   <div>
     <%= label_tag :typology, 'Tipologia' %>
-    <%= select_tag :typology, options_for_select(Infoplant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
+    <%= select_tag :typology, options_for_select(Plant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
   </div>
 
   <div>
     <%= label_tag :climate, 'Clima' %>
-    <%= select_tag :climate, options_for_select(Infoplant.pluck(:climate).uniq, params[:climate]), include_blank: true %>
+    <%= select_tag :climate, options_for_select(Plant.pluck(:climate).uniq, params[:climate]), include_blank: true %>
   </div>
 
   <div>
     <%= label_tag :use, 'Uso' %>
-    <%= select_tag :use, options_for_select(Infoplant.pluck(:use).uniq, params[:use]), include_blank: true %>
+    <%= select_tag :use, options_for_select(Plant.pluck(:use).uniq, params[:use]), include_blank: true %>
   </div>
 
   <div>
@@ -47,8 +47,8 @@
 
 <h2>Lista piante:</h2>
 <ul>
-<% if @infoplants.any? %>
-    <% @infoplants.each do |plant| %>
+<% if @plants.any? %>
+    <% @plants.each do |plant| %>
         <li>
         <h3><%= link_to plant.name, infoplant_path(plant) %></h3>
 

@@ -11,7 +11,7 @@
 
 # db/seeds.rb
 
-Infoplant.create([
+Plant.create([
   {
     name: 'Rosa',
     typology: 'giardino',
