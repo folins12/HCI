@@ -22363,3 +22363,77 @@ Processing by NurseriesController#index as HTML
 Completed 200 OK in 59ms (Views: 52.3ms | ActiveRecord: 1.7ms | Allocations: 11595)
 
 
+Started GET "/" for ::1 at 2024-08-05 10:15:10 +0200
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3374.3ms | Allocations: 62091)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3434.8ms | Allocations: 67318)
+Completed 200 OK in 3474ms (Views: 3455.6ms | ActiveRecord: 0.0ms | Allocations: 69864)
+
+
+Started GET "/about" for ::1 at 2024-08-05 10:15:38 +0200
+Processing by HomeController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/about.html.erb within layouts/application
+  Rendered home/about.html.erb within layouts/application (Duration: 4.2ms | Allocations: 123)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 4786)
+Completed 200 OK in 16ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 5171)
+
+
+Started GET "/" for ::1 at 2024-08-05 10:15:55 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2225)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 6703)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.0ms | Allocations: 6964)
+
+
+Started GET "/about" for ::1 at 2024-08-05 10:16:01 +0200
+Processing by HomeController#about as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/about.html.erb within layouts/application
+  Rendered home/about.html.erb within layouts/application (Duration: 0.2ms | Allocations: 37)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.9ms | Allocations: 4687)
+Completed 200 OK in 56ms (Views: 54.5ms | ActiveRecord: 0.0ms | Allocations: 4947)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-05 10:16:04 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:15
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 58.5ms | Allocations: 10144)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 73.4ms | Allocations: 14604)
+Completed 200 OK in 117ms (Views: 82.7ms | ActiveRecord: 2.3ms | Allocations: 16901)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-05 10:16:27 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:11
+  [1m[36mNursery Load (1.6ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:15
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 22.7ms | Allocations: 4721)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 85.1ms | Allocations: 9214)
+Completed 200 OK in 98ms (Views: 84.1ms | ActiveRecord: 4.9ms | Allocations: 10097)
+
+
