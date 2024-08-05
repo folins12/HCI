@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2024_08_04_144140) do
 
   create_table "examples", force: :cascade do |t|
@@ -17,6 +18,9 @@ ActiveRecord::Schema.define(version: 2024_08_04_144140) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
+=======
+ActiveRecord::Schema.define(version: 2024_08_04_150805) do
+>>>>>>> 2ccbb3cf1d68e831517e941980adf385a1146f9f
 
   create_table "infoplants", force: :cascade do |t|
     t.string "name"
@@ -29,6 +33,15 @@ ActiveRecord::Schema.define(version: 2024_08_04_144140) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "myplants", force: :cascade do |t|
+    t.string "pianta", null: false
+    t.string "proprietario", null: false
+    t.integer "disponibilita", default: -1
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proprietario"], name: "index_myplants_on_proprietario"
   end
 
   create_table "nurseries", force: :cascade do |t|
@@ -58,7 +71,7 @@ ActiveRecord::Schema.define(version: 2024_08_04_144140) do
     t.string "cognome"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "nursery"
+    t.boolean "nursery", default: false, null: false
   end
 
 end

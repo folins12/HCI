@@ -1,12 +1,10 @@
-<br><br><br><br>
 <h1><%= @nursery.name %></h1>
 
 <p><strong>Location:</strong> <%= @nursery.location %></p>
 <p><strong>Address:</strong> <%= @nursery.address %></p>
 <p><strong>Number:</strong> <%= @nursery.number %></p>
 <p><strong>Email:</strong> <%= @nursery.email %></p>
-<p><strong>Orario:</strong> <%= @nursery.open_time %>
-<strong> - </strong><%= @nursery.close_time %></p>
+<p><strong>Orario:</strong> <%= @nursery.open_time %> - <%= @nursery.close_time %></p>
 <p><strong>Description:</strong> <%= @nursery.description %></p>
 
 <%= link_to 'Torna alla lista dei vivai', nurseries_path %>

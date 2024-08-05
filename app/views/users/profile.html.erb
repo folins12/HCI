@@ -9,7 +9,7 @@
 <body>
   <div class="profile-container">
     <div class="welcome-message">
-      Bentornato nel tuo profilo <%= @user.nome %>!
+      Benvenuto nel tuo profilo <%= @user.nome %>!
     </div>
     <div class="profile-table">
       <table>
@@ -27,6 +27,25 @@
         </tr>
       </table>
     </div>
+    
+    <hr class="separator" /> <!-- Linea di separazione -->
+
+    <div class="plant-message">
+      Queste sono le tue piante:
+    </div>
+    
+    <div class="plant-panels">
+      <% if @plants.present? %>
+        <% @plants.each do |plant| %>
+          <div class="plant-panel">
+            <span class="plant-name"><%= plant.pianta %></span>
+          </div>
+        <% end %>
+      <% else %>
+        <p>Nessuna pianta trovata.</p>
+      <% end %>
+    </div>
+
     <div class="logout-button">
       <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
     </div>
