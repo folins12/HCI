@@ -8,17 +8,27 @@
 
 # db/seeds.rb# db/seeds.rb
 
+
 Infoplant.create([
   {
-    name: "Loto",
-    typology: "Aquatic Plant",
-    light: 4,
-    irrigation: 1,  # Per una pianta acquatica, l'irrigazione potrebbe non essere applicabile come per le piante terrestri
+    name: "Rosa",
+    typology: "Fiore",
+    light: 3,
+    irrigation: 2,
     size: 2,
-    climate: "Tropical",
-    use: "Ornamental",
-    description: "Il loto è una pianta acquatica con fiori grandi e colorati che galleggiano sulla superficie dell'acqua. È spesso utilizzato in laghetti ornamentali e giardini acquatici."
+    climate: "Temperato",
+    use: "Ornamentale",
+    description: "La rosa è un fiore ornamentale molto popolare e apprezzato per la sua bellezza e il suo profumo."
+  },
+  {
+    name: "Basilico",
+    typology: "Erba aromatica",
+    light: 4,
+    irrigation: 3,
+    size: 1,
+    climate: "Mediterraneo",
+    use: "Culinario",
+    description: "Il basilico è una pianta aromatica utilizzata in cucina per insaporire vari piatti, come il pesto."
   }
 ])
-
 
