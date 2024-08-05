@@ -32,10 +32,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update]  # Assicurati che il percorso update sia incluso
 
-  resources :nurseries do
-    resources :nursery_plants, only: [] do
-      resources :reservations, only: [:new, :create]
-    end
-  end
+  #resources :nurseries do
+  #  resources :nursery_plants, only: [] do
+  #    resources :reservations, only: [:new, :create]
+  #  end
+  #end
 
 end
