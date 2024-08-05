@@ -15,3 +15,25 @@ plant = Plant.first
 
 # Associa una pianta a un vivaio
 NurseryPlant.create(nursery: nursery, plant: plant)
+Infoplant.create([
+  {
+    name: "Rosa",
+    typology: "Fiore",
+    light: 3,
+    irrigation: 2,
+    size: 2,
+    climate: "Temperato",
+    use: "Ornamentale",
+    description: "La rosa è un fiore ornamentale molto popolare e apprezzato per la sua bellezza e il suo profumo."
+  },
+  {
+    name: "Basilico",
+    typology: "Erba aromatica",
+    light: 4,
+    irrigation: 3,
+    size: 1,
+    climate: "Mediterraneo",
+    use: "Culinario",
+    description: "Il basilico è una pianta aromatica utilizzata in cucina per insaporire vari piatti, come il pesto."
+  }
+])

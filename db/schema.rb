@@ -14,8 +14,13 @@ ActiveRecord::Schema.define(version: 2024_08_05_112104) do
 
   create_table "infoplants", force: :cascade do |t|
     t.string "name"
+    t.string "typology"
+    t.integer "light", limit: 1, null: false
+    t.integer "irrigation", limit: 1, null: false
+    t.integer "size", limit: 1, null: false
+    t.string "climate"
+    t.string "use"
     t.text "description"
-    t.string "habitat"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
