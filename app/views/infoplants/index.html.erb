@@ -1,13 +1,60 @@
 <h1>INFOPLANTS!</h1>
 
+<%= form_with url: infoplants_path, method: :get, local: true do |form| %>
+
+  <%= text_field_tag :query, params[:query], placeholder: 'Cerca...' %>
+
+  <div>
+    <%= label_tag :typology, 'Tipologia' %>
+    <%= select_tag :typology, options_for_select(Infoplant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
+  </div>
+
+  <div>
+    <%= label_tag :climate, 'Clima' %>
+    <%= select_tag :climate, options_for_select(Infoplant.pluck(:climate).uniq, params[:climate]), include_blank: true %>
+  </div>
+
+  <div>
+    <%= label_tag :use, 'Uso' %>
+    <%= select_tag :use, options_for_select(Infoplant.pluck(:use).uniq, params[:use]), include_blank: true %>
+  </div>
+
+  <div>
+    <%= label_tag :light, "Luce:" %>
+    <%= select_tag :light, options_for_select([
+      ['1', 1], ['2', 2], ['3', 3], ['4', 4]
+    ], params[:light]), include_blank: true %>
+  </div>
+
+  <div>
+    <%= label_tag :size, "Dimensione:" %>
+    <%= select_tag :size, options_for_select([
+      ['1', 1], ['2', 2], ['3', 3]
+    ], params[:size]), include_blank: true %>
+  </div>
+
+  <div>
+    <%= label_tag :irrigation, "Irrigazione:" %>
+    <%= select_tag :irrigation, options_for_select([
+      ['1', 1], ['2', 2], ['3', 3]
+    ], params[:irrigation]), include_blank: true %>
+  </div>
+
+  <%= form.submit "Search" %>
+<% end %>
+
 
 
 <h2>Lista piante:</h2>
 <ul>
-<% @infoplants.each do |plant| %>
-    <li>
-    <h3><%= link_to plant.name, infoplant_path(plant) %></h3>
+<% if @infoplants.any? %>
+    <% @infoplants.each do |plant| %>
+        <li>
+        <h3><%= link_to plant.name, infoplant_path(plant) %></h3>
 
-    </li>
+        </li>
+    <% end %>
+<% else %>
+  <p>Non ci sono piante con questi filtri</p>
 <% end %>
 </ul>

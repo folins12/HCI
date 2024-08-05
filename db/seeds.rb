@@ -8,27 +8,17 @@
 
 # db/seeds.rb# db/seeds.rb
 
-Nursery.create!(
-  [
-    {
-      name: "Blue Sky Nursery",
-      number: "9012345678",
-      email: "info@bluesky.com",
-      address: "789 Blue Sky Boulevard",
-      location: "Skytown",
-      open_time: 7,
-      close_time: 19,
-      description: "Where the sky's the limit for learning."
-    },
-    {
-      name: "Magic Forest",
-      number: "0123456789",
-      email: "magic@forest.com",
-      address: "321 Enchanted Lane",
-      location: "Mystic Woods",
-      open_time: 8,
-      close_time: 16,
-      description: "A magical place where learning comes alive."
-    }
-  ]
-)
+Infoplant.create([
+  {
+    name: "Loto",
+    typology: "Aquatic Plant",
+    light: 4,
+    irrigation: 1,  # Per una pianta acquatica, l'irrigazione potrebbe non essere applicabile come per le piante terrestri
+    size: 2,
+    climate: "Tropical",
+    use: "Ornamental",
+    description: "Il loto è una pianta acquatica con fiori grandi e colorati che galleggiano sulla superficie dell'acqua. È spesso utilizzato in laghetti ornamentali e giardini acquatici."
+  }
+])
+
+
