@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
   get 'user_profile', to: 'users#profile'
-  get 'nursery_profile', to: 'nursery#profile', as: 'nursery_profile'
+  get 'nursery_profile', to: 'nursery_profile#profile', as: 'nursery_profile'
 
   resources :users, only: [:show]
 

@@ -1,5 +1,4 @@
-# app/controllers/nurseries_controller.rb
-class NurseryController < ApplicationController
+class NurseryProfileController < ApplicationController
   before_action :set_user, only: [:profile]
 
   def index

@@ -26471,3 +26471,405 @@ Migrating to CreateInfoplants (20240805143929)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[36mPlant Create (0.4ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "description", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Edera"], ["typology", "giardino"], ["light", 2], ["irrigation", 2], ["size", 3], ["climate", "temperato"], ["use", "decorativa"], ["created_at", "2024-08-05 15:44:49.363542"], ["description", "L'edera è una pianta rampicante molto resistente, ideale per coprire muri e recinzioni."], ["updated_at", "2024-08-05 15:44:49.363542"]]
   [1m[36mTRANSACTION (6.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2024-08-05 17:58:20 +0200
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 92.8ms | Allocations: 11090)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.1ms | Allocations: 16515)
+Completed 200 OK in 189ms (Views: 158.6ms | ActiveRecord: 0.0ms | Allocations: 20101)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-05 17:58:30 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 92.9ms | Allocations: 11299)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 129.6ms | Allocations: 16019)
+Completed 200 OK in 166ms (Views: 132.7ms | ActiveRecord: 2.8ms | Allocations: 18995)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-05 17:58:36 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.7ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:34
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 62.9ms | Allocations: 8996)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 86.0ms | Allocations: 13566)
+Completed 200 OK in 130ms (Views: 116.4ms | ActiveRecord: 3.4ms | Allocations: 16624)
+
+
+Started GET "/nurseries/1" for ::1 at 2024-08-05 17:58:42 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  [1m[36mNurseryPlant Load (0.8ms)[0m  [1m[34mSELECT "nursery_plants".* FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/views/nurseries/show.html.erb:20
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:24
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 152.0ms | Allocations: 8603)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 204.4ms | Allocations: 13167)
+Completed 200 OK in 259ms (Views: 210.8ms | ActiveRecord: 2.9ms | Allocations: 18449)
+
+
+Started GET "/login" for ::1 at 2024-08-05 17:58:49 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 17.8ms | Allocations: 3211)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.9ms | Allocations: 6253)
+Completed 200 OK in 36ms (Views: 35.2ms | ActiveRecord: 0.0ms | Allocations: 7026)
+
+
+Started GET "/register" for ::1 at 2024-08-05 17:58:51 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 13.1ms | Allocations: 4687)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.0ms | Allocations: 7730)
+Completed 200 OK in 45ms (Views: 27.9ms | ActiveRecord: 3.0ms | Allocations: 12654)
+
+
+Started GET "/" for ::1 at 2024-08-05 17:58:54 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 2244)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.6ms | Allocations: 6832)
+Completed 200 OK in 37ms (Views: 33.3ms | ActiveRecord: 0.0ms | Allocations: 7088)
+
+
+Started GET "/login" for ::1 at 2024-08-05 18:04:23 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3524.7ms | Allocations: 72002)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3552.3ms | Allocations: 75344)
+Completed 200 OK in 3569ms (Views: 3565.7ms | Allocations: 76346)
+
+
+Started GET "/login" for ::1 at 2024-08-05 18:04:27 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2997)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.9ms | Allocations: 6032)
+Completed 200 OK in 28ms (Views: 24.9ms | Allocations: 6289)
+
+
+Started GET "/" for ::1 at 2024-08-05 18:04:34 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 2675)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 7210)
+Completed 200 OK in 21ms (Views: 20.5ms | Allocations: 7982)
+
+
+Started GET "/" for ::1 at 2024-08-05 18:04:46 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 17.0ms | Allocations: 2226)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 6756)
+Completed 200 OK in 59ms (Views: 51.7ms | Allocations: 7012)
+
+
+Started GET "/login" for ::1 at 2024-08-05 18:04:52 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 11.5ms | Allocations: 2925)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.7ms | Allocations: 5963)
+Completed 200 OK in 22ms (Views: 20.9ms | Allocations: 6219)
+
+
+Started POST "/login" for ::1 at 2024-08-05 18:05:02 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"brasiliano@sanbasilio.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 15.1ms | Allocations: 2807)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.3ms | Allocations: 5771)
+Completed 200 OK in 53ms (Views: 28.9ms | ActiveRecord: 3.6ms | Allocations: 10110)
+
+
+Started POST "/login" for ::1 at 2024-08-05 18:05:21 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"brasiliano@sanbasilio.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.8ms | Allocations: 2805)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 5846)
+Completed 200 OK in 16ms (Views: 12.4ms | ActiveRecord: 0.3ms | Allocations: 6765)
+
+
+Started POST "/login" for ::1 at 2024-08-05 18:06:03 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2803)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 5844)
+Completed 200 OK in 353ms (Views: 16.5ms | ActiveRecord: 0.2ms | Allocations: 9660)
+
+
+Started POST "/login" for ::1 at 2024-08-05 18:06:13 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"mrossi@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mrossi@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 308ms (ActiveRecord: 0.1ms | Allocations: 866)
+
+
+Started GET "/" for ::1 at 2024-08-05 18:06:13 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2236)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 7581)
+Completed 200 OK in 28ms (Views: 26.1ms | ActiveRecord: 0.3ms | Allocations: 7836)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-05 18:06:20 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:15:in `set_user'
+User set: #<User id: 1, email: "mrossi@gmail.com", password_digest: [FILTERED], nome: "Marco", cognome: "Rossi", created_at: "2024-08-02 10:41:39.281980000 +0000", updated_at: "2024-08-02 10:41:39.281980000 +0000", nursery: false>
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 38.3ms | Allocations: 2750)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 100.7ms | Allocations: 6544)
+Completed 200 OK in 114ms (Views: 105.5ms | ActiveRecord: 0.3ms | Allocations: 8249)
+
+
+Started GET "/logout" for ::1 at 2024-08-05 18:06:47 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 243)
+
+
+Started GET "/" for ::1 at 2024-08-05 18:06:47 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 2245)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.7ms | Allocations: 6792)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.0ms | Allocations: 7050)
+
+
+Started GET "/login" for ::1 at 2024-08-05 18:06:49 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 31.3ms | Allocations: 2936)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 81.0ms | Allocations: 5974)
+Completed 200 OK in 88ms (Views: 87.6ms | ActiveRecord: 0.0ms | Allocations: 6230)
+
+
+Started GET "/register" for ::1 at 2024-08-05 18:06:51 +0200
+Processing by RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 6.9ms | Allocations: 4037)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.4ms | Allocations: 7075)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.0ms | Allocations: 7857)
+
+
+Started POST "/register" for ::1 at 2024-08-05 18:07:12 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"massimiliano", "cognome"=>"minnocci", "email"=>"brasiliano@sanbasilio.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "nursery"=>"true"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["LIMIT", 1]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "nome", "cognome", "created_at", "updated_at", "nursery") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["email", "brasiliano@sanbasilio.com"], ["password_digest", "$2a$12$V1Z7e3bxtISQaHNSZVyZWexV0mcdE70DLUl1qFB22nyvRwk4cQ612"], ["nome", "massimiliano"], ["cognome", "minnocci"], ["created_at", "2024-08-05 16:07:13.131928"], ["updated_at", "2024-08-05 16:07:13.131928"], ["nursery", 1]]
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+  [1m[36mTRANSACTION (12.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/registrations_controller.rb:9:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 321ms (ActiveRecord: 13.4ms | Allocations: 5954)
+
+
+Started GET "/" for ::1 at 2024-08-05 18:07:13 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 2244)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.5ms | Allocations: 7456)
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.2ms | Allocations: 7712)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:07:19 +0200
+  
+ActionController::RoutingError (uninitialized constant NurseryController
+Did you mean?  NurseriesController):
+  
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:08:27 +0200
+  
+ActionController::RoutingError (uninitialized constant NurseryController
+Did you mean?  NurseriesController):
+  
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:10:19 +0200
+  
+ActionController::RoutingError (uninitialized constant NurseryController
+Did you mean?  NurseriesController):
+  
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:11:27 +0200
+Processing by NurseryController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery/profile.html.erb within layouts/application
+  Rendered nursery/profile.html.erb within layouts/application (Duration: 23.6ms | Allocations: 2775)
+  [1m[36mCACHE User Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.6ms | Allocations: 6985)
+Completed 200 OK in 110ms (Views: 67.4ms | ActiveRecord: 11.9ms | Allocations: 13982)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:12:11 +0200
+  
+ActionController::RoutingError (uninitialized constant NurseryController
+Did you mean?  NurseriesController):
+  
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:14:04 +0200
+  
+Zeitwerk::NameError (expected file /home/biar/Documents/GitHub/PlantTracker-labAssi/app/controllers/nursery_profile_controller.rb to define constant NurseryProfileController, but didn't):
+  
+zeitwerk (2.6.16) lib/zeitwerk/loader/callbacks.rb:32:in `on_file_autoloaded'
+zeitwerk (2.6.16) lib/zeitwerk/kernel.rb:27:in `require'
+activesupport (6.1.7.8) lib/active_support/inflector/methods.rb:273:in `const_get'
+activesupport (6.1.7.8) lib/active_support/inflector/methods.rb:273:in `constantize'
+activesupport (6.1.7.8) lib/active_support/dependencies/zeitwerk_integration.rb:19:in `constantize'
+actionpack (6.1.7.8) lib/action_dispatch/http/request.rb:93:in `controller_class_for'
+actionpack (6.1.7.8) lib/action_dispatch/request/utils.rb:95:in `action_encoding_template'
+actionpack (6.1.7.8) lib/action_dispatch/request/utils.rb:83:in `encode'
+actionpack (6.1.7.8) lib/action_dispatch/request/utils.rb:45:in `set_binary_encoding'
+actionpack (6.1.7.8) lib/action_dispatch/http/parameters.rb:68:in `path_parameters='
+actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:48:in `block in serve'
+actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7.8) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7.8) lib/action_dispatch/routing/route_set.rb:842:in `call'
+rack (2.2.9) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.9) lib/rack/etag.rb:27:in `call'
+rack (2.2.9) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.9) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.9) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.9) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (6.1.7.8) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.8) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.8) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.8) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.8) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.5.1) lib/sprockets/rails/quiet_assets.rb:17:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.9) lib/rack/method_override.rb:24:in `call'
+rack (2.2.9) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.9) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.8) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.7) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.8) lib/rails/engine.rb:539:in `call'
+puma (5.6.8) lib/puma/configuration.rb:252:in `call'
+puma (5.6.8) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.8) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.8) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.8) lib/puma/server.rb:443:in `process_client'
+puma (5.6.8) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/nursery_profile" for ::1 at 2024-08-05 18:14:20 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 12.6ms | Allocations: 2666)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.6ms | Allocations: 6860)
+Completed 200 OK in 113ms (Views: 53.5ms | ActiveRecord: 2.4ms | Allocations: 13587)
+
+
