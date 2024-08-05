@@ -22,21 +22,21 @@
   <div>
     <%= label_tag :light, "Luce:" %>
     <%= select_tag :light, options_for_select([
-      ['1', 1], ['2', 2], ['3', 3], ['4', 4]
+      ['ombra completa', 1], ['ombra parziale', 2], ['luce indiretta', 3], ['sole diretto', 4]
     ], params[:light]), include_blank: true %>
   </div>
 
   <div>
     <%= label_tag :size, "Dimensione:" %>
     <%= select_tag :size, options_for_select([
-      ['1', 1], ['2', 2], ['3', 3]
+      ['piccola', 1], ['media', 2], ['granda', 3]
     ], params[:size]), include_blank: true %>
   </div>
 
   <div>
     <%= label_tag :irrigation, "Irrigazione:" %>
     <%= select_tag :irrigation, options_for_select([
-      ['1', 1], ['2', 2], ['3', 3]
+      ['raramente', 1], ['ogni tanto', 2], ['frequentemente', 3]
     ], params[:irrigation]), include_blank: true %>
   </div>
 
