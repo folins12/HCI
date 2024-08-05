@@ -1,0 +1,22 @@
+<%= form_with model: @reservation, local: true do |form| %>
+  <div class="field">
+    <%= form.label :user_name %>
+    <%= form.text_field :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_email %>
+    <%= form.email_field :user_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickup_time %>
+    <%= form.datetime_select :pickup_time %>
+  </div>
+
+  <%= form.hidden_field :nursery_plant_id, value: @nursery_plant.id %>
+
+  <div class="actions">
+    <%= form.submit 'Prenota' %>
+  </div>
+<% end %>

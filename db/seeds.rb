@@ -8,27 +8,10 @@
 
 # db/seeds.rb# db/seeds.rb
 
-Nursery.create!(
-  [
-    {
-      name: "Blue Sky Nursery",
-      number: "9012345678",
-      email: "info@bluesky.com",
-      address: "789 Blue Sky Boulevard",
-      location: "Skytown",
-      open_time: 7,
-      close_time: 19,
-      description: "Where the sky's the limit for learning."
-    },
-    {
-      name: "Magic Forest",
-      number: "0123456789",
-      email: "magic@forest.com",
-      address: "321 Enchanted Lane",
-      location: "Mystic Woods",
-      open_time: 8,
-      close_time: 16,
-      description: "A magical place where learning comes alive."
-    }
-  ]
-)
+
+# Assumendo che hai già creato dei vivai e delle piante
+nursery = Nursery.first
+plant = Plant.first
+
+# Associa una pianta a un vivaio
+NurseryPlant.create(nursery: nursery, plant: plant)

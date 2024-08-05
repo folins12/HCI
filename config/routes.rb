@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reservations/new'
+  get 'reservations/create'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -28,5 +30,10 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  
+  resources :nurseries do
+    resources :nursery_plants, only: [] do
+      resources :reservations, only: [:new, :create]
+    end
+  end
+
 end

@@ -1,10 +1,36 @@
-<h1><%= @nursery.name %></h1>
+<div class="nursery-show">
+  <div class="nursery-header">
+    <h1><%= @nursery.name %></h1>
+    <p class="location"><%= @nursery.location %></p>
+  </div>
 
-<p><strong>Location:</strong> <%= @nursery.location %></p>
-<p><strong>Address:</strong> <%= @nursery.address %></p>
-<p><strong>Number:</strong> <%= @nursery.number %></p>
-<p><strong>Email:</strong> <%= @nursery.email %></p>
-<p><strong>Orario:</strong> <%= @nursery.open_time %> - <%= @nursery.close_time %></p>
-<p><strong>Description:</strong> <%= @nursery.description %></p>
+  <div class="nursery-details">
+    <p><strong>Indirizzo:</strong> <%= @nursery.address %></p>
+    <p><strong>Telefono:</strong> +39 <%= @nursery.number %></p>
+    <p><strong>Email:</strong> <%= @nursery.email %></p>
+    <p><strong>Orario:</strong> <%= @nursery.open_time %> - <%= @nursery.close_time %></p>
+    <p><strong>Descrizione:</strong> <%= @nursery.description %></p>
+  </div>
 
-<%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+  <!-- Sezione Piante Disponibili -->
+  <% if @nursery.nursery_plants.any? %>
+    <div class="plants-available">
+      <h2>Piante Disponibili</h2>
+      <div class="plants-container">
+        <% @nursery.nursery_plants.each do |nursery_plant| %>
+          <div class="plant-box">
+            <%= image_tag "myplants.jpg", alt: @plants.name, class: 'plant-image' %>
+            <!--%= image_tag nursery_plant.plant.image_url, alt: nursery_plant.plant.name, class: 'plant-image' %-->
+            <h3><%= nursery_plant.plant.name %></h3>
+            <p><%= nursery_plant.plant.description %></p>
+            <!--%= link_to 'Prenota', nurseries_nursery_plant_reservations_path(nursery_plant_id: @plants.name), class: 'btn-reserve' %-->
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <p>Nessuna pianta disponibile in questo vivaio.</p>
+  <% end %>
+
+  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+</div>
