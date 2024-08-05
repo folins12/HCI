@@ -17,19 +17,28 @@
       </div>
       <%= form_with model: @user, url: register_path, local: true do |form| %>
         <div class="input-group">
-          <%= form.text_field :nome, placeholder: 'Nome', required: true %>
+          <%= form.text_field :nome, value: @user.nome, placeholder: 'Nome', required: true %>
         </div>
         <div class="input-group">
-          <%= form.text_field :cognome, placeholder: 'Cognome', required: true %>
+          <%= form.text_field :cognome, value: @user.cognome, placeholder: 'Cognome', required: true %>
         </div>
-        <div class="input-group">
-          <%= form.email_field :email, placeholder: 'Email', required: true %>
+        <div class="input-group <%= 'has-error' if @user.errors[:email].any? %>">
+          <%= form.email_field :email, value: @user.email, placeholder: 'Email', required: true %>
+          <% if @user.errors[:email].any? %>
+            <span class="error-message"><%= @user.errors[:email].first %></span>
+          <% end %>
         </div>
-        <div class="input-group">
+        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
           <%= form.password_field :password, placeholder: 'Password', required: true %>
+          <% if @user.errors[:password].any? %>
+            <span class="error-message"><%= @user.errors[:password].first %></span>
+          <% end %>
         </div>
-        <div class="input-group">
+        <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
           <%= form.password_field :password_confirmation, placeholder: 'Conferma Password', required: true %>
+          <% if @user.errors[:password_confirmation].any? %>
+            <span class="error-message"><%= @user.errors[:password_confirmation].first %></span>
+          <% end %>
         </div>
         <div class="checkbox-container">
           <%= form.check_box :nursery, {}, 'true', 'false' %>

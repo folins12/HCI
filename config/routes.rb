@@ -26,9 +26,11 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
 
   get 'user_profile', to: 'users#profile'
+  patch 'user_profile', to: 'users#update'  # Aggiungi questa riga per gestire l'aggiornamento del profilo
+
   get 'nursery_profile', to: 'nursery_profile#profile', as: 'nursery_profile'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :update]  # Assicurati che il percorso update sia incluso
 
   resources :nurseries do
     resources :nursery_plants, only: [] do
