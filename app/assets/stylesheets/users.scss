@@ -163,6 +163,11 @@
   border-radius: 5px;
 }
 
+.has-error input {
+  border-color: #ff0000; /* Colore rosso per i bordi in caso di errore */
+}
+
+
 .form-group {
   margin-bottom: 20px;
 }

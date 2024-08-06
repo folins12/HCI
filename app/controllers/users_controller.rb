@@ -1,4 +1,3 @@
-# app/controllers/users_controller.rb
 class UsersController < ApplicationController
   before_action :authenticate_user! # Assicurati che questo metodo sia disponibile
   before_action :set_user, only: [:profile, :update]
@@ -24,6 +23,7 @@ class UsersController < ApplicationController
         render :profile
       end
     else
+      flash.now[:alert] = @error_message
       render :profile
     end
   end
@@ -44,13 +44,16 @@ class UsersController < ApplicationController
     password_confirmation = params[:user][:password_confirmation]
 
     if new_password.present? && (new_password == current_password)
-      @error_message = "La password inserita è uguale a quella vecchia! Inserisci una password diversa da quella precedente."
+      @error_message = "La nuova password non può essere uguale a quella vecchia."
+      @user.errors.add(:password, @error_message)
       return false
     elsif new_password.present? && new_password != password_confirmation
-      @error_message = "La password e la conferma della password non corrispondono."
+      @error_message = "La password confermata è diversa da quella precedentemente inserita."
+      @user.errors.add(:password_confirmation, @error_message)
       return false
     elsif new_password.blank? && password_confirmation.present?
       @error_message = "Se la conferma della password è presente, la nuova password deve essere compilata."
+      @user.errors.add(:password, @error_message)
       return false
     else
       @error_message = nil
