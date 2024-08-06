@@ -31559,3 +31559,1193 @@ Processing by NurseriesController#index as HTML
 Completed 200 OK in 57ms (Views: 55.6ms | ActiveRecord: 0.2ms | Allocations: 11231)
 
 
+Started GET "/" for ::1 at 2024-08-06 12:44:37 +0200
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 5185.5ms | Allocations: 130558)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.22
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+error Couldn't find a package.json file in "/home/biar/Documents/GitHub/PlantTracker-labAssi/PlantTracker-labAssi"
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6812.8ms | Allocations: 149080)
+Completed 200 OK in 6883ms (Views: 6825.2ms | ActiveRecord: 0.0ms | Allocations: 152665)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-06 12:45:01 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:72
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 101.4ms | Allocations: 9777)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 181.8ms | Allocations: 16127)
+Completed 200 OK in 281ms (Views: 183.9ms | ActiveRecord: 2.2ms | Allocations: 21136)
+
+
+Started GET "/nurseries/2" for ::1 at 2024-08-06 12:45:19 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 2], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 53.1ms | Allocations: 2707)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 101.3ms | Allocations: 9205)
+Completed 200 OK in 270ms (Views: 102.8ms | ActiveRecord: 0.8ms | Allocations: 17943)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-06 12:45:22 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (4.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:72
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 35.8ms | Allocations: 4190)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 74.0ms | Allocations: 10575)
+Completed 200 OK in 82ms (Views: 72.4ms | ActiveRecord: 4.5ms | Allocations: 11463)
+
+
+Started GET "/nurseries?query=vivaio+colle+fiorito&commit=Search" for ::1 at 2024-08-06 12:45:32 +0200
+Processing by NurseriesController#index as HTML
+  Parameters: {"query"=>"vivaio colle fiorito", "commit"=>"Search"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "nurseries" WHERE (LOWER(name) LIKE '%vivaio colle fiorito%' OR LOWER(location) LIKE '%vivaio colle fiorito%' OR LOWER(description) LIKE '%vivaio colle fiorito%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/nurseries/index.html.erb:53
+  [1m[36mNursery Load (1.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE (LOWER(name) LIKE '%vivaio colle fiorito%' OR LOWER(location) LIKE '%vivaio colle fiorito%' OR LOWER(description) LIKE '%vivaio colle fiorito%')[0m
+  ↳ app/views/nurseries/index.html.erb:58
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 35.9ms | Allocations: 2331)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 138.2ms | Allocations: 8716)
+Completed 200 OK in 176ms (Views: 158.7ms | ActiveRecord: 1.7ms | Allocations: 9612)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:45:41 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 20.5ms | Allocations: 2345)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 8705)
+Completed 200 OK in 52ms (Views: 51.8ms | ActiveRecord: 0.0ms | Allocations: 8961)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-06 12:45:47 +0200
+Processing by UsersController#profile as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 302 Found in 17ms (ActiveRecord: 0.0ms | Allocations: 327)
+
+
+Started GET "/login" for ::1 at 2024-08-06 12:45:47 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 129.7ms | Allocations: 5191)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 213.8ms | Allocations: 9962)
+Completed 200 OK in 217ms (Views: 216.7ms | ActiveRecord: 0.0ms | Allocations: 10736)
+
+
+Started POST "/login" for ::1 at 2024-08-06 12:46:32 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"brasiliano@sanbasilio.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 595ms (ActiveRecord: 7.2ms | Allocations: 7464)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:46:33 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.7ms | Allocations: 2348)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 68.8ms | Allocations: 9527)
+Completed 200 OK in 78ms (Views: 70.2ms | ActiveRecord: 0.2ms | Allocations: 9783)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 12:46:36 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 37.6ms | Allocations: 2889)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 66.8ms | Allocations: 8510)
+Completed 200 OK in 141ms (Views: 79.5ms | ActiveRecord: 0.4ms | Allocations: 9972)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:46:41 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 2339)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 57.0ms | Allocations: 9376)
+Completed 200 OK in 96ms (Views: 95.7ms | ActiveRecord: 0.2ms | Allocations: 9632)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-06 12:46:46 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 107.1ms | Allocations: 5280)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 157.7ms | Allocations: 10396)
+Completed 200 OK in 229ms (Views: 169.4ms | ActiveRecord: 0.6ms | Allocations: 11838)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:46:51 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.3ms | Allocations: 2346)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.4ms | Allocations: 9379)
+Completed 200 OK in 43ms (Views: 41.8ms | ActiveRecord: 0.3ms | Allocations: 9635)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-06 12:52:35 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 45.1ms | Allocations: 4516)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 145.4ms | Allocations: 10047)
+Completed 200 OK in 188ms (Views: 152.0ms | ActiveRecord: 0.2ms | Allocations: 11729)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:52:38 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 33.1ms | Allocations: 2784)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.1ms | Allocations: 9813)
+Completed 200 OK in 60ms (Views: 58.8ms | ActiveRecord: 0.2ms | Allocations: 10583)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 12:52:40 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 23.2ms | Allocations: 2872)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 154.6ms | Allocations: 8530)
+Completed 200 OK in 184ms (Views: 170.3ms | ActiveRecord: 1.0ms | Allocations: 9927)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:52:42 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 2339)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.8ms | Allocations: 9368)
+Completed 200 OK in 40ms (Views: 39.0ms | ActiveRecord: 0.6ms | Allocations: 9624)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-06 12:53:36 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 10.8ms | Allocations: 4510)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 29.0ms | Allocations: 10041)
+Completed 200 OK in 50ms (Views: 31.5ms | ActiveRecord: 4.2ms | Allocations: 11731)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:53:40 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 53.0ms | Allocations: 3922)
+  Rendered layout layouts/application.html.erb (Duration: 57.1ms | Allocations: 3987)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 0.0ms | Allocations: 4734)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="banner-home">
+  <div class="content">
+    <h1>PlantTracker</h1>
+    <p class="description">
+      PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+    </p>
+    <p class="description description-separator">
+      Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+    </p>
+  </div>
+</div>
+
+
+<!-- Video Background -->
+<div class="video-background">
+  <video autoplay muted loop id="bg-video">
+    <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="dark-overlay"></div>
+</div>
+
+<!-- Content Sections -->
+<div class="content-sections">
+  <div class="container">
+    <div class="section">
+      <%= link_to infoplants_path, class: 'section-link' do %>
+        <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+          <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+        </div>
+      <% end %>
+      <div class="home-divider-thin"></div>
+    </div>
+
+    <div class="section">
+    <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+      <h2 class="section-title">LE MIE PIANTE</h2>
+      <div class="section-content">
+        <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+        <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+      </div>
+    <% end %>
+    <div class="home-divider-thin"></div>
+  </div>
+
+    <div class="section">
+      
+      <%= link_to nurseries_path, class: 'section-link' do %>
+        <h2 class="section-title">VIVAI</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+          <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <footer>
+    <div class="copyright">
+      <p>&copy; PlantTracker</p>
+    </div>
+    <div class="social">
+      <a href="mailto:planttracker@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i> Contact Us
+      </a>
+      <%= link_to about_path, target: "_blank" do %>
+        <i class="fas fa-users"></i> About Us
+      <% end %>
+      <a href="#" onclick="openLink('facebook')">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="#" onclick="openLink('instagram')">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+</div>
+
+
+
+<script>
+  function openLink(platform) {
+    var urls = {
+      facebook: {
+        app: 'fb://profile',
+        web: 'https://www.facebook.com'
+      },
+      instagram: {
+        app: 'instagram://user?username=planttracker',
+        web: 'https://www.instagram.com/planttracker'
+      }
+    };
+
+    var appUrl = urls[platform].app;
+    var webUrl = urls[platform].web;
+
+    var timeout;
+    var openApp = setTimeout(function() {
+      window.location = webUrl;
+    }, 25);
+
+    window.location = appUrl;
+
+    window.addEventListener('blur', function() {
+      clearTimeout(openApp);
+    });
+  }
+</script>
+):
+1:    <div class="banner-home">
+2:      <div class="content">
+3:        <h1>PlantTracker</h1>
+4:        <p class="description">
+5:          PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+6:        </p>
+7:        <p class="description description-separator">
+8:          Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+9:        </p>
+10:      </div>
+11:    </div>
+12:    
+13:    
+14:    <!-- Video Background -->
+15:    <div class="video-background">
+16:      <video autoplay muted loop id="bg-video">
+17:        <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+18:        Your browser does not support HTML5 video.
+19:      </video>
+20:      <div class="dark-overlay"></div>
+21:    </div>
+22:    
+23:    <!-- Content Sections -->
+24:    <div class="content-sections">
+25:      <div class="container">
+26:        <div class="section">
+27:          <%= link_to infoplants_path, class: 'section-link' do %>
+28:            <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+29:            <div class="section-content">
+30:              <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+31:              <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+32:            </div>
+33:          <% end %>
+34:          <div class="home-divider-thin"></div>
+35:        </div>
+36:    
+37:        <div class="section">
+38:        <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+39:          <h2 class="section-title">LE MIE PIANTE</h2>
+40:          <div class="section-content">
+41:            <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+42:            <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+43:          </div>
+44:        <% end %>
+45:        <div class="home-divider-thin"></div>
+46:      </div>
+47:    
+48:        <div class="section">
+49:          
+50:          <%= link_to nurseries_path, class: 'section-link' do %>
+51:            <h2 class="section-title">VIVAI</h2>
+52:            <div class="section-content">
+53:              <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+54:              <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+55:            </div>
+56:          <% end %>
+57:        </div>
+58:      </div>
+59:    </div>
+60:    
+61:    <!-- Footer -->
+62:    <div class="footer">
+63:      <footer>
+64:        <div class="copyright">
+65:          <p>&copy; PlantTracker</p>
+66:        </div>
+67:        <div class="social">
+68:          <a href="mailto:planttracker@gmail.com" target="_blank">
+69:            <i class="fas fa-envelope"></i> Contact Us
+70:          </a>
+71:          <%= link_to about_path, target: "_blank" do %>
+72:            <i class="fas fa-users"></i> About Us
+73:          <% end %>
+74:          <a href="#" onclick="openLink('facebook')">
+75:            <i class="fab fa-facebook"></i> Facebook
+76:          </a>
+77:          <a href="#" onclick="openLink('instagram')">
+78:            <i class="fab fa-instagram"></i> Instagram
+79:          </a>
+80:        </div>
+81:      </footer>
+82:    </div>
+83:    
+84:    
+85:    
+86:    <script>
+87:      function openLink(platform) {
+88:        var urls = {
+89:          facebook: {
+90:            app: 'fb://profile',
+91:            web: 'https://www.facebook.com'
+92:          },
+93:          instagram: {
+94:            app: 'instagram://user?username=planttracker',
+95:            web: 'https://www.instagram.com/planttracker'
+96:          }
+97:        };
+98:    
+99:        var appUrl = urls[platform].app;
+100:        var webUrl = urls[platform].web;
+101:    
+102:        var timeout;
+103:        var openApp = setTimeout(function() {
+104:          window.location = webUrl;
+105:        }, 25);
+106:    
+107:        window.location = appUrl;
+108:    
+109:        window.addEventListener('blur', function() {
+110:          clearTimeout(openApp);
+111:        });
+112:      }
+113:    </script>
+  
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+Started GET "/user_profile" for ::1 at 2024-08-06 12:54:11 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 13.6ms | Allocations: 3909)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.6ms | Allocations: 9040)
+Completed 200 OK in 40ms (Views: 34.5ms | ActiveRecord: 0.7ms | Allocations: 10098)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:54:14 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1405)
+  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1470)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1705)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="banner-home">
+  <div class="content">
+    <h1>PlantTracker</h1>
+    <p class="description">
+      PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+    </p>
+    <p class="description description-separator">
+      Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+    </p>
+  </div>
+</div>
+
+
+<!-- Video Background -->
+<div class="video-background">
+  <video autoplay muted loop id="bg-video">
+    <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="dark-overlay"></div>
+</div>
+
+<!-- Content Sections -->
+<div class="content-sections">
+  <div class="container">
+    <div class="section">
+      <%= link_to infoplants_path, class: 'section-link' do %>
+        <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+          <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+        </div>
+      <% end %>
+      <div class="home-divider-thin"></div>
+    </div>
+
+    <div class="section">
+    <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+      <h2 class="section-title">LE MIE PIANTE</h2>
+      <div class="section-content">
+        <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+        <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+      </div>
+    <% end %>
+    <div class="home-divider-thin"></div>
+  </div>
+
+    <div class="section">
+      
+      <%= link_to nurseries_path, class: 'section-link' do %>
+        <h2 class="section-title">VIVAI</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+          <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <footer>
+    <div class="copyright">
+      <p>&copy; PlantTracker</p>
+    </div>
+    <div class="social">
+      <a href="mailto:planttracker@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i> Contact Us
+      </a>
+      <%= link_to about_path, target: "_blank" do %>
+        <i class="fas fa-users"></i> About Us
+      <% end %>
+      <a href="#" onclick="openLink('facebook')">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="#" onclick="openLink('instagram')">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+</div>
+
+
+
+<script>
+  function openLink(platform) {
+    var urls = {
+      facebook: {
+        app: 'fb://profile',
+        web: 'https://www.facebook.com'
+      },
+      instagram: {
+        app: 'instagram://user?username=planttracker',
+        web: 'https://www.instagram.com/planttracker'
+      }
+    };
+
+    var appUrl = urls[platform].app;
+    var webUrl = urls[platform].web;
+
+    var timeout;
+    var openApp = setTimeout(function() {
+      window.location = webUrl;
+    }, 25);
+
+    window.location = appUrl;
+
+    window.addEventListener('blur', function() {
+      clearTimeout(openApp);
+    });
+  }
+</script>
+):
+1:    <div class="banner-home">
+2:      <div class="content">
+3:        <h1>PlantTracker</h1>
+4:        <p class="description">
+5:          PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+6:        </p>
+7:        <p class="description description-separator">
+8:          Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+9:        </p>
+10:      </div>
+11:    </div>
+12:    
+13:    
+14:    <!-- Video Background -->
+15:    <div class="video-background">
+16:      <video autoplay muted loop id="bg-video">
+17:        <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+18:        Your browser does not support HTML5 video.
+19:      </video>
+20:      <div class="dark-overlay"></div>
+21:    </div>
+22:    
+23:    <!-- Content Sections -->
+24:    <div class="content-sections">
+25:      <div class="container">
+26:        <div class="section">
+27:          <%= link_to infoplants_path, class: 'section-link' do %>
+28:            <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+29:            <div class="section-content">
+30:              <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+31:              <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+32:            </div>
+33:          <% end %>
+34:          <div class="home-divider-thin"></div>
+35:        </div>
+36:    
+37:        <div class="section">
+38:        <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+39:          <h2 class="section-title">LE MIE PIANTE</h2>
+40:          <div class="section-content">
+41:            <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+42:            <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+43:          </div>
+44:        <% end %>
+45:        <div class="home-divider-thin"></div>
+46:      </div>
+47:    
+48:        <div class="section">
+49:          
+50:          <%= link_to nurseries_path, class: 'section-link' do %>
+51:            <h2 class="section-title">VIVAI</h2>
+52:            <div class="section-content">
+53:              <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+54:              <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+55:            </div>
+56:          <% end %>
+57:        </div>
+58:      </div>
+59:    </div>
+60:    
+61:    <!-- Footer -->
+62:    <div class="footer">
+63:      <footer>
+64:        <div class="copyright">
+65:          <p>&copy; PlantTracker</p>
+66:        </div>
+67:        <div class="social">
+68:          <a href="mailto:planttracker@gmail.com" target="_blank">
+69:            <i class="fas fa-envelope"></i> Contact Us
+70:          </a>
+71:          <%= link_to about_path, target: "_blank" do %>
+72:            <i class="fas fa-users"></i> About Us
+73:          <% end %>
+74:          <a href="#" onclick="openLink('facebook')">
+75:            <i class="fab fa-facebook"></i> Facebook
+76:          </a>
+77:          <a href="#" onclick="openLink('instagram')">
+78:            <i class="fab fa-instagram"></i> Instagram
+79:          </a>
+80:        </div>
+81:      </footer>
+82:    </div>
+83:    
+84:    
+85:    
+86:    <script>
+87:      function openLink(platform) {
+88:        var urls = {
+89:          facebook: {
+90:            app: 'fb://profile',
+91:            web: 'https://www.facebook.com'
+92:          },
+93:          instagram: {
+94:            app: 'instagram://user?username=planttracker',
+95:            web: 'https://www.instagram.com/planttracker'
+96:          }
+97:        };
+98:    
+99:        var appUrl = urls[platform].app;
+100:        var webUrl = urls[platform].web;
+101:    
+102:        var timeout;
+103:        var openApp = setTimeout(function() {
+104:          window.location = webUrl;
+105:        }, 25);
+106:    
+107:        window.location = appUrl;
+108:    
+109:        window.addEventListener('blur', function() {
+110:          clearTimeout(openApp);
+111:        });
+112:      }
+113:    </script>
+  
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+Started GET "/user_profile" for ::1 at 2024-08-06 12:54:17 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 8.3ms | Allocations: 3704)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 16.0ms | Allocations: 8815)
+Completed 200 OK in 21ms (Views: 17.2ms | ActiveRecord: 0.2ms | Allocations: 9742)
+
+
+Started GET "/" for ::1 at 2024-08-06 12:54:19 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 12.0ms | Allocations: 1405)
+  Rendered layout layouts/application.html.erb (Duration: 29.5ms | Allocations: 1470)
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.0ms | Allocations: 1699)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class="banner-home">
+  <div class="content">
+    <h1>PlantTracker</h1>
+    <p class="description">
+      PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+    </p>
+    <p class="description description-separator">
+      Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+    </p>
+  </div>
+</div>
+
+
+<!-- Video Background -->
+<div class="video-background">
+  <video autoplay muted loop id="bg-video">
+    <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <div class="dark-overlay"></div>
+</div>
+
+<!-- Content Sections -->
+<div class="content-sections">
+  <div class="container">
+    <div class="section">
+      <%= link_to infoplants_path, class: 'section-link' do %>
+        <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+          <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+        </div>
+      <% end %>
+      <div class="home-divider-thin"></div>
+    </div>
+
+    <div class="section">
+    <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+      <h2 class="section-title">LE MIE PIANTE</h2>
+      <div class="section-content">
+        <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+        <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+      </div>
+    <% end %>
+    <div class="home-divider-thin"></div>
+  </div>
+
+    <div class="section">
+      
+      <%= link_to nurseries_path, class: 'section-link' do %>
+        <h2 class="section-title">VIVAI</h2>
+        <div class="section-content">
+          <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+          <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <footer>
+    <div class="copyright">
+      <p>&copy; PlantTracker</p>
+    </div>
+    <div class="social">
+      <a href="mailto:planttracker@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i> Contact Us
+      </a>
+      <%= link_to about_path, target: "_blank" do %>
+        <i class="fas fa-users"></i> About Us
+      <% end %>
+      <a href="#" onclick="openLink('facebook')">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
+      <a href="#" onclick="openLink('instagram')">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+  </footer>
+</div>
+
+
+
+<script>
+  function openLink(platform) {
+    var urls = {
+      facebook: {
+        app: 'fb://profile',
+        web: 'https://www.facebook.com'
+      },
+      instagram: {
+        app: 'instagram://user?username=planttracker',
+        web: 'https://www.instagram.com/planttracker'
+      }
+    };
+
+    var appUrl = urls[platform].app;
+    var webUrl = urls[platform].web;
+
+    var timeout;
+    var openApp = setTimeout(function() {
+      window.location = webUrl;
+    }, 25);
+
+    window.location = appUrl;
+
+    window.addEventListener('blur', function() {
+      clearTimeout(openApp);
+    });
+  }
+</script>
+):
+1:    <div class="banner-home">
+2:      <div class="content">
+3:        <h1>PlantTracker</h1>
+4:        <p class="description">
+5:          PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Tieni traccia delle tue piante, ricevi promemoria per la loro gestione e ottieni consigli su come prendertene cura. Esplora una vasta varietà di piante, aggiungi nuove piante alla tua collezione personale e trova vivai nelle tue vicinanze.
+6:        </p>
+7:        <p class="description description-separator">
+8:          Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+9:        </p>
+10:      </div>
+11:    </div>
+12:    
+13:    
+14:    <!-- Video Background -->
+15:    <div class="video-background">
+16:      <video autoplay muted loop id="bg-video">
+17:        <source src="<%= asset_path('video.mp4') %>" type="video/mp4">
+18:        Your browser does not support HTML5 video.
+19:      </video>
+20:      <div class="dark-overlay"></div>
+21:    </div>
+22:    
+23:    <!-- Content Sections -->
+24:    <div class="content-sections">
+25:      <div class="container">
+26:        <div class="section">
+27:          <%= link_to infoplants_path, class: 'section-link' do %>
+28:            <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+29:            <div class="section-content">
+30:              <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
+31:              <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+32:            </div>
+33:          <% end %>
+34:          <div class="home-divider-thin"></div>
+35:        </div>
+36:    
+37:        <div class="section">
+38:        <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+39:          <h2 class="section-title">LE MIE PIANTE</h2>
+40:          <div class="section-content">
+41:            <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+42:            <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+43:          </div>
+44:        <% end %>
+45:        <div class="home-divider-thin"></div>
+46:      </div>
+47:    
+48:        <div class="section">
+49:          
+50:          <%= link_to nurseries_path, class: 'section-link' do %>
+51:            <h2 class="section-title">VIVAI</h2>
+52:            <div class="section-content">
+53:              <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
+54:              <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+55:            </div>
+56:          <% end %>
+57:        </div>
+58:      </div>
+59:    </div>
+60:    
+61:    <!-- Footer -->
+62:    <div class="footer">
+63:      <footer>
+64:        <div class="copyright">
+65:          <p>&copy; PlantTracker</p>
+66:        </div>
+67:        <div class="social">
+68:          <a href="mailto:planttracker@gmail.com" target="_blank">
+69:            <i class="fas fa-envelope"></i> Contact Us
+70:          </a>
+71:          <%= link_to about_path, target: "_blank" do %>
+72:            <i class="fas fa-users"></i> About Us
+73:          <% end %>
+74:          <a href="#" onclick="openLink('facebook')">
+75:            <i class="fab fa-facebook"></i> Facebook
+76:          </a>
+77:          <a href="#" onclick="openLink('instagram')">
+78:            <i class="fab fa-instagram"></i> Instagram
+79:          </a>
+80:        </div>
+81:      </footer>
+82:    </div>
+83:    
+84:    
+85:    
+86:    <script>
+87:      function openLink(platform) {
+88:        var urls = {
+89:          facebook: {
+90:            app: 'fb://profile',
+91:            web: 'https://www.facebook.com'
+92:          },
+93:          instagram: {
+94:            app: 'instagram://user?username=planttracker',
+95:            web: 'https://www.instagram.com/planttracker'
+96:          }
+97:        };
+98:    
+99:        var appUrl = urls[platform].app;
+100:        var webUrl = urls[platform].web;
+101:    
+102:        var timeout;
+103:        var openApp = setTimeout(function() {
+104:          window.location = webUrl;
+105:        }, 25);
+106:    
+107:        window.location = appUrl;
+108:    
+109:        window.addEventListener('blur', function() {
+110:          clearTimeout(openApp);
+111:        });
+112:      }
+113:    </script>
+  
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+app/views/home/index.html.erb:115: syntax error, unexpected `end', expecting end-of-input
+Started GET "/" for ::1 at 2024-08-06 12:59:44 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 153.7ms | Allocations: 8818)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 262.2ms | Allocations: 15516)
+Completed 200 OK in 309ms (Views: 306.2ms | ActiveRecord: 2.1ms | Allocations: 16522)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 12:59:50 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 30.8ms | Allocations: 2875)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 95.9ms | Allocations: 8511)
+Completed 200 OK in 150ms (Views: 125.4ms | ActiveRecord: 0.4ms | Allocations: 9986)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 13:01:42 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 879.9ms | Allocations: 29154)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 930.0ms | Allocations: 35159)
+Completed 200 OK in 1002ms (Views: 952.2ms | ActiveRecord: 0.4ms | Allocations: 36808)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 13:02:23 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 6.6ms | Allocations: 4357)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 74.0ms | Allocations: 10447)
+Completed 200 OK in 96ms (Views: 85.4ms | ActiveRecord: 1.3ms | Allocations: 12100)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 13:03:02 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 35.0ms | Allocations: 4358)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 63.3ms | Allocations: 10446)
+Completed 200 OK in 97ms (Views: 73.1ms | ActiveRecord: 0.3ms | Allocations: 12098)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 13:04:30 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 63.9ms | Allocations: 4516)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 142.3ms | Allocations: 10617)
+Completed 200 OK in 175ms (Views: 160.3ms | ActiveRecord: 0.2ms | Allocations: 12265)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 13:04:47 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 53.3ms | Allocations: 4420)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 94.7ms | Allocations: 10509)
+Completed 200 OK in 115ms (Views: 103.1ms | ActiveRecord: 0.3ms | Allocations: 12161)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-06 13:05:08 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:19:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 49.9ms | Allocations: 4412)
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 151.2ms | Allocations: 10503)
+Completed 200 OK in 192ms (Views: 165.5ms | ActiveRecord: 0.4ms | Allocations: 12178)
+
+
+Started PATCH "/user_profile" for ::1 at 2024-08-06 13:05:26 +0200
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"massimiliano", "cognome"=>"minnocci", "current_password"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "nursery"=>"false"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[31mUnpermitted parameter: :current_password[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `update'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `update'
+  [1m[36mUser Update (2.1ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "nursery" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2024-08-06 11:05:26.403565"], ["nursery", 0], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (13.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `update'
+Redirected to http://localhost:3000/user_profile
+Completed 302 Found in 95ms (ActiveRecord: 16.3ms | Allocations: 6888)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-06 13:05:26 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 24.8ms | Allocations: 4523)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.0ms | Allocations: 9638)
+Completed 200 OK in 92ms (Views: 73.0ms | ActiveRecord: 0.2ms | Allocations: 11425)
+
+
+Started PATCH "/user_profile" for ::1 at 2024-08-06 13:05:39 +0200
+Processing by UsersController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"nome"=>"massimiliano", "cognome"=>"minnocci", "current_password"=>"[FILTERED]", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "nursery"=>"true"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[31mUnpermitted parameter: :current_password[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `update'
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? AND "users"."id" != ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:20:in `update'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = ?, "nursery" = ? WHERE "users"."id" = ?[0m  [["updated_at", "2024-08-06 11:05:39.670877"], ["nursery", 1], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:20:in `update'
+Redirected to http://localhost:3000/user_profile
+Completed 302 Found in 39ms (ActiveRecord: 12.7ms | Allocations: 6379)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-06 13:05:39 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  Rendered users/profile.html.erb within layouts/application (Duration: 41.6ms | Allocations: 4054)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 116.0ms | Allocations: 9164)
+Completed 200 OK in 120ms (Views: 118.0ms | ActiveRecord: 0.2ms | Allocations: 10101)
+
+
