@@ -15,6 +15,13 @@
 
   <div id="map">
 
+  
+  <script type="text/javascript">
+    // DOVRA CREARE DUE VETTORI UNO CON LE LONGITUDINI E UNO CON LE LATUTUDINI
+    var nurseryNames = <%= raw @nurseries.map { |nursery| j(nursery.name) }.to_json %>;
+    console.log(nurseryNames);
+  </script>
+
   <!--poi faccio che per ogni vivaio inserisco un marker sulla mappa -->
     <script>
       function initMap() {
@@ -39,7 +46,7 @@
         });
       }
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgX5q9nH4yvlGDQapTpsKDmvBnL9JlHh4&callback=initMap" type="text/javascript"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgX5q9nH4yvlGDQapTpsKDmvBnL9JlHh4&callback=initMap&loading=async" type="text/javascript"></script>
 
   </div>
 
