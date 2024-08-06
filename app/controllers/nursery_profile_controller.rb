@@ -2,7 +2,7 @@ class NurseryProfileController < ApplicationController
   before_action :set_user, only: [:profile]
 
   def index
-    @nursery = User.where(nursery: true)
+    @nurseries = User.where(nursery: true)
   end
 
   def show
@@ -10,7 +10,7 @@ class NurseryProfileController < ApplicationController
   end
 
   def profile
-    render :profile
+    # Logica per visualizzare il profilo vivaio
   end
 
   private
