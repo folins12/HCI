@@ -19,7 +19,7 @@
       <div class="plants-container">
         <% @nursery.nursery_plants.each do |nursery_plant| %>
           <div class="plant-box">
-            <%= image_tag "myplants.jpg", alt: nursery_plant.plant.name, class: 'plant-image' %>
+            <%= image_tag "#{nursery_plant.plant.name}.jpg", alt: nursery_plant.plant.name, class: 'plant-image' %>
             <h3><%= nursery_plant.plant.name %></h3>
             <p><%= nursery_plant.plant.description %></p>
             <p class="availability" data-nursery-plant-id="<%= nursery_plant.id %>">
