@@ -51,8 +51,8 @@
   border-top: 4px solid #004d00; // Linea verde scura
   margin-left: 10%;
   margin-right: 10%;
-  margin-top:4%;
-  margin-bottom:4%;
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 .plant-message {
@@ -77,8 +77,8 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-left:3%;
-  margin-right:3%;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .plant-name {
@@ -116,5 +116,98 @@
 
 /* Stile per il bottone quando è in hover */
 .lo-button:hover {
-  background-color: #004d00; /* Colore di sfondo quando si passa sopra */
+  background-color: #004d00; /* Colore di sfondo del bottone in hover */
+}
+
+/* Stili per la modifica del profilo */
+#profile-edit .input-group {
+  margin-bottom: 10px;
+}
+
+#profile-edit .form-label {
+  color: #004d00; /* Verde scuro */
+  font-size: 20px; /* Dimensione del testo */
+  display: block;
+  margin-bottom: 5px;
+  text-align: center; /* Allinea il testo al centro */
+  margin-right: 2%;
+}
+
+#profile-edit input[type="text"], #profile-edit input[type="password"] {
+  width: 35%;
+  padding: 8px;
+  font-size: 15px;
+}
+
+#profile-edit .checkbox-container {
+  margin-top: 2%;
+  margin-left:30%;
+}
+
+#profile-edit .checkbox-label {
+  color: #004d00; /* Colore del testo dell'etichetta */
+  font-size: 20px; /* Dimensione del testo */
+  margin-right: 2%;
+}
+
+.alert {
+  color: #ff0000; /* Rosso per gli errori */
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.alert-danger {
+  border: 1px solid #ff0000;
+  background-color: #fdd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.has-error input {
+  border-color: #ff0000; /* Colore rosso per i bordi in caso di errore */
+}
+
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.label {
+  color: #004d00;
+  font-size: 20px;
+  margin-right: 2%;
+  text-align: right;
+  display: inline-block;
+}
+
+.form-control {
+  padding: 10px;
+  border: 1px solid #004d00;
+  border-radius: 5px;
+  font-size: 16px;
+  width: calc(100% - 60px);
+}
+
+.checkbox-container {
+  margin-bottom: 20px;
+}
+
+.checkbox-label {
+  color: #004d00;
+  font-size: 20px;
+}
+
+/* Stile per il bottone di modifica profilo */
+.edit-button #edit-profile-button {
+  background-color: #006400; /* Verde scuro */
+  color: white;
+  border: none;
+  padding: 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 30px; /* Dimensione del testo */
+}
+
+.edit-button #edit-profile-button:hover {
+  background-color: #004d00; /* Verde più scuro */
 }

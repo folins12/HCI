@@ -11,24 +11,67 @@
     <div class="welcome-message">
       Benvenuto nel tuo profilo <%= @user.nome %>!
     </div>
-    <div class="profile-table">
-      <table>
-        <tr>
-          <th>Nome</th>
-          <td><%= @user.nome %></td>
-        </tr>
-        <tr>
-          <th>Cognome</th>
-          <td><%= @user.cognome %></td>
-        </tr>
-        <tr>
-          <th>Email</th>
-          <td><%= @user.email %></td>
-        </tr>
-      </table>
+
+    <div id="profile-view" style="<%= @user.errors.any? ? 'display: none;' : 'display: block;' %>">
+      <div class="profile-table">
+        <table>
+          <tr>
+            <th>Nome</th>
+            <td><%= @user.nome %></td>
+          </tr>
+          <tr>
+            <th>Cognome</th>
+            <td><%= @user.cognome %></td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td><%= @user.email %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="edit-button">
+        <button id="edit-profile-button" class="lo-button">Modifica profilo</button>
+      </div>
     </div>
-    
-    <hr class="separator" /> <!-- Linea di separazione -->
+
+    <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
+      <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
+        <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
+          <%= form.label :nome, "Nome", class: 'form-label' %>
+          <%= form.text_field :nome, value: @user.nome, required: true %>
+        </div>
+        <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
+          <%= form.label :cognome, "Cognome", class: 'form-label' %>
+          <%= form.text_field :cognome, value: @user.cognome, required: true %>
+        </div>
+        <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
+          <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
+          <%= form.password_field :current_password, required: true %>
+        </div>
+        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
+          <%= form.label :password, "Nuova Password", class: 'form-label' %>
+          <%= form.password_field :password %>
+        </div>
+        <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
+          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
+          <%= form.password_field :password_confirmation %>
+        </div>
+        <div class="checkbox-container">
+          <%= form.label :nursery, "Vivaio", class: 'checkbox-label' %>
+          <%= form.check_box :nursery, {}, 'true', 'false' %>
+        </div>
+        <% if flash[:alert].present? %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
+          </div>
+        <% end %>
+        <div class="button-container">
+          <button type="submit" class="button">Conferma modifiche</button>
+        </div>
+      <% end %>
+    </div>
+
+    <hr class="separator" />
 
     <div class="plant-message">
       Queste sono le tue piante:
@@ -50,5 +93,12 @@
       <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
     </div>
   </div>
+
+  <script>
+    document.getElementById('edit-profile-button').addEventListener('click', function() {
+      document.getElementById('profile-view').style.display = 'none';
+      document.getElementById('profile-edit').style.display = 'block';
+    });
+  </script>
 </body>
 </html>

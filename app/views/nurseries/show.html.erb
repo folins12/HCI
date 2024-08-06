@@ -19,13 +19,15 @@
       <div class="plants-container">
         <% @nursery.nursery_plants.each do |nursery_plant| %>
           <div class="plant-box">
-            <%= image_tag "myplants.jpg", alt: @plants.name, class: 'plant-image' %>
-            <!--%= image_tag nursery_plant.plant.image_url, alt: nursery_plant.plant.name, class: 'plant-image' %-->
+            <%= image_tag "#{nursery_plant.plant.name}.jpg", alt: nursery_plant.plant.name, class: 'plant-image' %>
             <h3><%= nursery_plant.plant.name %></h3>
             <p><%= nursery_plant.plant.description %></p>
-            <p>Disponibilità in negozio: <%= nursery_plant.max_disponibility - nursery_plant.num_reservations%></p>
-            <!--%= link_to 'Prenota', nurseries_nursery_plant_reservations_path(nursery_plant_id: @nursery_plants.id), class: 'btn-reserve' %-->
-            <div class="btn-reserve">
+            <p class="availability" data-nursery-plant-id="<%= nursery_plant.id %>">
+              Disponibilità in negozio: <%= nursery_plant.max_disponibility - nursery_plant.num_reservations %>
+            </p>
+            <div class="btn-reserve" data-nursery-plant-id="<%= nursery_plant.id %>">
+              <p>PRENOTA</p>
+            </div>
           </div>
         <% end %>
       </div>
