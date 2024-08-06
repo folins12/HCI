@@ -8,13 +8,19 @@ Rails.application.routes.draw do
   #get 'registrations/new'
   #get 'registrations/create'
   get 'about', to: 'home#about', as: 'about'
+
   get 'myplants', to: 'myplants#index'
+
   get 'infoplants', to: 'infoplants#index'
   get 'infoplants/:id', to: 'infoplants#show', as: 'infoplant'
+
   get 'nurseries', to: 'nurseries#index'
   get 'nurseries/:id', to: 'nurseries#show', as: 'nursery'
+  #get 'locations/get_coordinates', to: 'locations#get_coordinates'
+
   get 'register', to: 'registrations#new'
   post 'register', to: 'registrations#create'
+
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'

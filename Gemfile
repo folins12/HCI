@@ -20,8 +20,10 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-#gem for mapa
+#gem for maps
 gem 'gmaps4rails'
+gem 'geocoder'
+
 
 
 # Use Active Storage variant
