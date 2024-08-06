@@ -9,6 +9,16 @@
       "js.map": [
         "/packs/js/application-3095143c9360212337e0.js.map"
       ]
+    },
+    "reservations": {
+      "js": [
+        "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js"
+      ],
+      "js.map": [
+        "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js.map"
+      ]
     }
-  }
+  },
+  "reservations.js": "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js",
+  "reservations.js.map": "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js.map"
 }

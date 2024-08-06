@@ -6,11 +6,12 @@ class User < ApplicationRecord
   validates :cognome, presence: true
   validates :nursery, inclusion: { in: [true, false] } # Validazione per booleano
 
-  
+  has_many :nurseries
+
   attr_accessor :current_password
-  
+
   validate :validate_passwords
-  
+
   # Metodo per la validazione delle password
   def validate_passwords
     if password.present? || password_confirmation.present?
@@ -23,5 +24,5 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
 end

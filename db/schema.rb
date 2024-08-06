@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2024_08_05_143929) do
 
   create_table "nurseries", force: :cascade do |t|
     t.string "name"
+    t.integer "id_owner", null: false
     t.integer "number"
     t.string "email"
     t.string "address"
@@ -50,6 +51,8 @@ ActiveRecord::Schema.define(version: 2024_08_05_143929) do
   create_table "nursery_plants", force: :cascade do |t|
     t.integer "nursery_id", null: false
     t.integer "plant_id", null: false
+    t.integer "max_disponibility"
+    t.integer "num_reservations"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["nursery_id"], name: "index_nursery_plants_on_nursery_id"
@@ -58,20 +61,25 @@ ActiveRecord::Schema.define(version: 2024_08_05_143929) do
 
   create_table "plants", force: :cascade do |t|
     t.string "name"
+    t.string "typology"
+    t.integer "light"
+    t.integer "irrigation"
+    t.integer "size"
+    t.string "climate"
+    t.text "use"
+    t.datetime "created_at", precision: 6, null: false
     t.text "description"
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "nursery_plant_id"
+    t.string "user_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "reservations", force: :cascade do |t|
-    t.integer "nursery_plant_id", null: false
-    t.string "user_name"
-    t.string "user_email"
-    t.datetime "pickup_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["nursery_plant_id"], name: "index_reservations_on_nursery_plant_id"
-  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"
@@ -83,7 +91,9 @@ ActiveRecord::Schema.define(version: 2024_08_05_143929) do
     t.boolean "nursery", default: false, null: false
   end
 
+  add_foreign_key "nurseries", "users", column: "id_owner"
   add_foreign_key "nursery_plants", "nurseries", column: "nursery_id"
   add_foreign_key "nursery_plants", "plants"
   add_foreign_key "reservations", "nursery_plants"
+  add_foreign_key "reservations", "users", column: "user_email", primary_key: "email"
 end
