@@ -31559,3 +31559,910 @@ Processing by NurseriesController#index as HTML
 Completed 200 OK in 57ms (Views: 55.6ms | ActiveRecord: 0.2ms | Allocations: 11231)
 
 
+Started GET "/nurseries" for ::1 at 2024-08-06 16:27:14 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nurseries_controller.rb:3:in `index'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:72
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 10.3ms | Allocations: 4769)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+/home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/definition.rb:540:in `materialize': Could not find gmaps4rails-2.1.2 in locally installed gems (Bundler::GemNotFound)
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/definition.rb:200:in `specs'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/definition.rb:266:in `specs_for'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/runtime.rb:18:in `setup'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler.rb:162:in `setup'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/setup.rb:23:in `block in <top (required)>'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/ui/shell.rb:159:in `with_level'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/ui/shell.rb:111:in `silence'
+	from /home/biar/.rvm/gems/ruby-2.7.2/gems/bundler-2.4.22/lib/bundler/setup.rb:23:in `<top (required)>'
+	from /home/biar/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0/rubygems/core_ext/kernel_require.rb:92:in `require'
+	from /home/biar/.rvm/rubies/ruby-2.7.2/lib/ruby/2.7.0/rubygems/core_ext/kernel_require.rb:92:in `require'
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 2602.9ms | Allocations: 96698)
+Completed 200 OK in 2612ms (Views: 2604.7ms | ActiveRecord: 1.3ms | Allocations: 98911)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-06 16:58:53 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 24.1ms | Allocations: 6671)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1029.0ms | Allocations: 47684)
+Completed 200 OK in 1033ms (Views: 1032.4ms | ActiveRecord: 4.0ms | Allocations: 48491)
+
+
+Started GET "/infoplants?query=&typology=giardino&climate=&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:28 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"giardino", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/models/plant.rb:20:in `search'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%giardino%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(typology) LIKE '%giardino%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 5147)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.0ms | Allocations: 11604)
+Completed 200 OK in 28ms (Views: 24.3ms | ActiveRecord: 1.0ms | Allocations: 12539)
+
+
+Started GET "/infoplants?query=&typology=acquatica&climate=&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:31 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"acquatica", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%acquatica%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(typology) LIKE '%acquatica%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 4816)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.9ms | Allocations: 11171)
+Completed 200 OK in 47ms (Views: 45.9ms | ActiveRecord: 0.7ms | Allocations: 11487)
+
+
+Started GET "/infoplants?query=&typology=appartamento&climate=&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:38 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"appartamento", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%appartamento%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (1.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(typology) LIKE '%appartamento%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 26.8ms | Allocations: 5033)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.1ms | Allocations: 11387)
+Completed 200 OK in 54ms (Views: 51.1ms | ActiveRecord: 2.5ms | Allocations: 11703)
+
+
+Started GET "/infoplants?query=&typology=appartamento&climate=temperato&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:43 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"appartamento", "climate"=>"temperato", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%appartamento%') AND (LOWER(climate) LIKE '%temperato%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 15.8ms | Allocations: 4111)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 10465)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.6ms | Allocations: 10810)
+
+
+Started GET "/infoplants?query=&typology=&climate=temperato&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:49 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"temperato", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(climate) LIKE '%temperato%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(climate) LIKE '%temperato%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 15.7ms | Allocations: 5075)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.1ms | Allocations: 11434)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.9ms | Allocations: 11751)
+
+
+Started GET "/infoplants?query=&typology=acquatica&climate=temperato&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:52 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"acquatica", "climate"=>"temperato", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%acquatica%') AND (LOWER(climate) LIKE '%temperato%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 4109)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.8ms | Allocations: 10463)
+Completed 200 OK in 27ms (Views: 26.1ms | ActiveRecord: 0.9ms | Allocations: 10808)
+
+
+Started GET "/infoplants?query=&typology=appartamento&climate=temperato&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:55 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"appartamento", "climate"=>"temperato", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%appartamento%') AND (LOWER(climate) LIKE '%temperato%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 4109)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 17.2ms | Allocations: 10463)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.4ms | Allocations: 10808)
+
+
+Started GET "/infoplants?query=&typology=giardino&climate=temperato&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:06:58 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"giardino", "climate"=>"temperato", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%giardino%') AND (LOWER(climate) LIKE '%temperato%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (2.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(typology) LIKE '%giardino%') AND (LOWER(climate) LIKE '%temperato%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 5099)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.2ms | Allocations: 11459)
+Completed 200 OK in 21ms (Views: 16.3ms | ActiveRecord: 2.8ms | Allocations: 11816)
+
+
+Started GET "/infoplants?query=&typology=giardino&climate=temperato&use=decorativa&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:07 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"giardino", "climate"=>"temperato", "use"=>"decorativa", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(typology) LIKE '%giardino%') AND (LOWER(climate) LIKE '%temperato%') AND (LOWER(use) LIKE '%decorativa%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(typology) LIKE '%giardino%') AND (LOWER(climate) LIKE '%temperato%') AND (LOWER(use) LIKE '%decorativa%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 4972)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.6ms | Allocations: 11326)
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.8ms | Allocations: 11701)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=decorativa&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:13 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"decorativa", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(use) LIKE '%decorativa%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(use) LIKE '%decorativa%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 5161)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 25.4ms | Allocations: 11552)
+Completed 200 OK in 26ms (Views: 25.4ms | ActiveRecord: 0.5ms | Allocations: 11870)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=medicinale&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:17 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"medicinale", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(use) LIKE '%medicinale%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(use) LIKE '%medicinale%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 11.5ms | Allocations: 4816)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 20.4ms | Allocations: 11171)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 1.7ms | Allocations: 11488)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=culinario&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:20 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"culinario", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(use) LIKE '%culinario%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (6.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(use) LIKE '%culinario%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 4902)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.8ms | Allocations: 11256)
+Completed 200 OK in 53ms (Views: 46.2ms | ActiveRecord: 6.5ms | Allocations: 11573)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=aromatica&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:24 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"aromatica", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (LOWER(use) LIKE '%aromatica%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (LOWER(use) LIKE '%aromatica%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 4859)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 22.5ms | Allocations: 11238)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.5ms | Allocations: 11555)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=1&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:35 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"1", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%1%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 5.7ms | Allocations: 4098)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 21.3ms | Allocations: 10453)
+Completed 200 OK in 22ms (Views: 21.5ms | ActiveRecord: 0.4ms | Allocations: 10768)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=2&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:38 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"2", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%2%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (light LIKE '%2%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 26.7ms | Allocations: 4945)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.6ms | Allocations: 11336)
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.9ms | Allocations: 11652)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=3&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:41 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"3", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (light LIKE '%3%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 30.7ms | Allocations: 5074)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.7ms | Allocations: 11429)
+Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.8ms | Allocations: 11744)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=4&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:44 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"4", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%4%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (light LIKE '%4%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 4945)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.5ms | Allocations: 11299)
+Completed 200 OK in 43ms (Views: 41.3ms | ActiveRecord: 0.6ms | Allocations: 11614)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=1&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:52 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"1", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (size LIKE '%1%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (size LIKE '%1%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 20.0ms | Allocations: 5031)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.3ms | Allocations: 11410)
+Completed 200 OK in 36ms (Views: 34.5ms | ActiveRecord: 0.5ms | Allocations: 11725)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=2&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:54 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"2", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (size LIKE '%2%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (size LIKE '%2%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 14.0ms | Allocations: 5031)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.1ms | Allocations: 11386)
+Completed 200 OK in 37ms (Views: 36.0ms | ActiveRecord: 0.7ms | Allocations: 11702)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=3&irrigation=&commit=Search" for ::1 at 2024-08-06 17:07:56 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"3", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (size LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (size LIKE '%3%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 4901)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 37.8ms | Allocations: 11281)
+Completed 200 OK in 47ms (Views: 45.6ms | ActiveRecord: 0.7ms | Allocations: 11597)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=3&irrigation=1&commit=Search" for ::1 at 2024-08-06 17:07:58 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"3", "irrigation"=>"1", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%1%') AND (size LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 4107)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.3ms | Allocations: 10462)
+Completed 200 OK in 19ms (Views: 18.4ms | ActiveRecord: 0.5ms | Allocations: 10804)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=3&irrigation=2&commit=Search" for ::1 at 2024-08-06 17:08:01 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"3", "irrigation"=>"2", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%2%') AND (size LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (irrigation LIKE '%2%') AND (size LIKE '%3%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 18.0ms | Allocations: 4919)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.0ms | Allocations: 11273)
+Completed 200 OK in 32ms (Views: 31.0ms | ActiveRecord: 0.7ms | Allocations: 11615)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=3&irrigation=3&commit=Search" for ::1 at 2024-08-06 17:08:05 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"3", "irrigation"=>"3", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%3%') AND (size LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 12.7ms | Allocations: 4107)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.4ms | Allocations: 10479)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.6ms | Allocations: 10821)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=3&irrigation=1&commit=Search" for ::1 at 2024-08-06 17:08:08 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"3", "irrigation"=>"1", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%1%') AND (size LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.7ms | Allocations: 4107)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 26.4ms | Allocations: 10461)
+Completed 200 OK in 28ms (Views: 26.8ms | ActiveRecord: 0.6ms | Allocations: 10803)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=&irrigation=1&commit=Search" for ::1 at 2024-08-06 17:09:32 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"1", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%1%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (irrigation LIKE '%1%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 31.5ms | Allocations: 4901)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.1ms | Allocations: 11273)
+Completed 200 OK in 46ms (Views: 42.6ms | ActiveRecord: 1.5ms | Allocations: 11589)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=&irrigation=2&commit=Search" for ::1 at 2024-08-06 17:09:37 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"2", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%2%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (irrigation LIKE '%2%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 5203)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 23.9ms | Allocations: 11558)
+Completed 200 OK in 25ms (Views: 23.2ms | ActiveRecord: 1.5ms | Allocations: 11873)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=&irrigation=1&commit=Search" for ::1 at 2024-08-06 17:09:40 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"1", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%1%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (irrigation LIKE '%1%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 4901)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.3ms | Allocations: 11255)
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.6ms | Allocations: 11569)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=&irrigation=3&commit=Search" for ::1 at 2024-08-06 17:09:42 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"3", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (irrigation LIKE '%3%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (irrigation LIKE '%3%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 24.6ms | Allocations: 4858)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 52.2ms | Allocations: 11237)
+Completed 200 OK in 54ms (Views: 52.8ms | ActiveRecord: 0.5ms | Allocations: 11552)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=1&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:09:50 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"1", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%1%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 9.8ms | Allocations: 4098)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.5ms | Allocations: 10457)
+Completed 200 OK in 32ms (Views: 30.6ms | ActiveRecord: 0.5ms | Allocations: 10773)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=2&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 17:09:53 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"2", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%2%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (light LIKE '%2%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 4945)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 15.8ms | Allocations: 11325)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.8ms | Allocations: 11641)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=2&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 18:08:53 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"2", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/models/plant.rb:30:in `search'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (1.7ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE (light LIKE '%2%') LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE (light LIKE '%2%')[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 72.3ms | Allocations: 5069)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 137.6ms | Allocations: 11449)
+Completed 200 OK in 151ms (Views: 134.0ms | ActiveRecord: 8.5ms | Allocations: 12376)
+
+
+Started GET "/infoplants?query=&typology=&climate=&use=&light=&size=&irrigation=&commit=Search" for ::1 at 2024-08-06 18:08:58 +0200
+Processing by InfoplantsController#index as HTML
+  Parameters: {"query"=>"", "typology"=>"", "climate"=>"", "use"=>"", "light"=>"", "size"=>"", "irrigation"=>"", "commit"=>"Search"}
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 5981)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.3ms | Allocations: 12361)
+Completed 200 OK in 58ms (Views: 55.1ms | ActiveRecord: 1.6ms | Allocations: 12646)
+
+
+Started GET "/infoplants/26" for ::1 at 2024-08-06 18:09:02 +0200
+Processing by InfoplantsController#show as HTML
+  Parameters: {"id"=>"26"}
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/infoplants_controller.rb:17:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/show.html.erb within layouts/application
+  Rendered infoplants/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 310)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.8ms | Allocations: 6670)
+Completed 200 OK in 60ms (Views: 45.0ms | ActiveRecord: 0.3ms | Allocations: 7734)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-06 18:09:09 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:14
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:19
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:50
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:51
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 24.8ms | Allocations: 5939)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 47.2ms | Allocations: 12293)
+Completed 200 OK in 53ms (Views: 50.4ms | ActiveRecord: 1.2ms | Allocations: 12591)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-06 18:09:12 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:72
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 28.2ms | Allocations: 4328)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 46.7ms | Allocations: 10548)
+Completed 200 OK in 51ms (Views: 47.4ms | ActiveRecord: 0.6ms | Allocations: 11422)
+
+
+Started GET "/nurseries/1" for ::1 at 2024-08-06 18:09:19 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  [1m[36mNurseryPlant Load (0.3ms)[0m  [1m[34mSELECT "nursery_plants".* FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/views/nurseries/show.html.erb:20
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 90.3ms | Allocations: 7728)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 112.7ms | Allocations: 13857)
+Completed 200 OK in 120ms (Views: 112.6ms | ActiveRecord: 2.1ms | Allocations: 14889)
+
+
+Started GET "/nurseries/1" for ::1 at 2024-08-06 19:04:50 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  [1m[36mNurseryPlant Load (0.2ms)[0m  [1m[34mSELECT "nursery_plants".* FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/views/nurseries/show.html.erb:20
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (1.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 5894.6ms | Allocations: 110124)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 6095.6ms | Allocations: 127744)
+Completed 200 OK in 6113ms (Views: 6093.7ms | ActiveRecord: 5.5ms | Allocations: 129236)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-06 19:05:11 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.1ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:72
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 48.2ms | Allocations: 4611)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 98.5ms | Allocations: 11020)
+Completed 200 OK in 117ms (Views: 103.2ms | ActiveRecord: 0.4ms | Allocations: 11893)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-06 19:05:17 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:72
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 14.4ms | Allocations: 4611)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.8ms | Allocations: 10946)
+Completed 200 OK in 40ms (Views: 34.6ms | ActiveRecord: 0.6ms | Allocations: 11816)
+
+
+Started GET "/nurseries/3" for ::1 at 2024-08-06 19:05:21 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 3], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  [1m[36mNurseryPlant Load (1.0ms)[0m  [1m[34mSELECT "nursery_plants".* FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 3]]
+  ↳ app/views/nurseries/show.html.erb:20
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 51.0ms | Allocations: 7047)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 85.7ms | Allocations: 13381)
+Completed 200 OK in 92ms (Views: 85.5ms | ActiveRecord: 2.3ms | Allocations: 14237)
+
+
