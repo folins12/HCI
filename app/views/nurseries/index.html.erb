@@ -1,9 +1,47 @@
+<!--<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgX5q9nH4yvlGDQapTpsKDmvBnL9JlHh4"></script>
+<script async defer src="https://cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
+<script async defer src="https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" type="text/javascript"></script><!-- -->
+<style>
+  #map {
+    height: 500px; /* Altezza della mappa */
+    width: 100%; /* Larghezza della mappa */
+  }
+</style>
+
 <div class="nurseries">
   <div class="spacer-large"></div>
 
   <h1>Vivai</h1>
 
-    
+  <div id="map">
+
+  <!--poi faccio che per ogni vivaio inserisco un marker sulla mappa -->
+    <script>
+      function initMap() {
+        var location1 = { lat: 41.80857849121094, lng: 12.676111221313477 };//frascati
+        var location2 = { lat: 41.89684295654297, lng: 12.482213020324707 };//roma
+        
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: location1
+        });
+        
+        var marker = new google.maps.Marker({
+          position: location1,
+          map: map,
+          title: 'Punto di Interesse'
+        });
+
+        var marker2 = new google.maps.Marker({
+          position: location2,
+          map: map,
+          title: 'Punto di Interesse'
+        });
+      }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgX5q9nH4yvlGDQapTpsKDmvBnL9JlHh4&callback=initMap" type="text/javascript"></script>
+
+  </div>
 
   <p class="search-instruction">Cerca i vivai per zona (comune) o per nome utilizzando la barra di ricerca sottostante.</p>
 
