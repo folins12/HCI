@@ -35241,3 +35241,309 @@ Processing by NurseriesController#show as HTML
 Completed 200 OK in 741ms (Views: 731.4ms | ActiveRecord: 2.8ms | Allocations: 46669)
 
 
+Started GET "/nurseries/1" for ::1 at 2024-08-07 11:20:12 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  [1m[36mNursery Load (1.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:8:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (2.0ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  [1m[36mNurseryPlant Load (1.9ms)[0m  [1m[34mSELECT "nursery_plants".* FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/views/nurseries/show.html.erb:20
+  [1m[36mPlant Load (3.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (1.7ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (1.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (8.9ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 19], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 108.9ms | Allocations: 11553)
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1660.5ms | Allocations: 45131)
+Completed 200 OK in 1681ms (Views: 1643.0ms | ActiveRecord: 26.5ms | Allocations: 47378)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:20:16 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 55.1ms | Allocations: 10157)
+  Rendered layout layouts/application.html.erb (Duration: 60.4ms | Allocations: 10221)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 0.6ms | Allocations: 11196)
+
+
+  
+ActionView::Template::Error (undefined method `latitude' for #<Nursery:0x00007f39183e41c8>):
+    52:   console.log(nurseryNames);
+    53: 
+    54:   function initMap() {
+    55:     var locations = <%= raw @nurseries.map { |nursery| { lat: nursery.latitude, lng: nursery.longitude } }.to_json %>;
+    56: 
+    57:     var map = new google.maps.Map(document.getElementById('map'), {
+    58:       zoom: 11,
+  
+app/views/nurseries/index.html.erb:55
+app/views/nurseries/index.html.erb:55:in `map'
+app/views/nurseries/index.html.erb:55
+Started GET "/nurseries" for ::1 at 2024-08-07 11:25:56 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nurseries_controller.rb:3:in `index'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 34.1ms | Allocations: 7357)
+  Rendered layout layouts/application.html.erb (Duration: 35.5ms | Allocations: 7421)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 5.3ms | Allocations: 9608)
+
+
+  
+ActionView::Template::Error (no implicit conversion of Symbol into Integer):
+    48: </div>
+    49: 
+    50: <script type="text/javascript">
+    51:   var nurseryLocations = <%= raw @nurseries.map { |nursery| { lat: nursery.location[:latitude], lng: nursery.location[:longitude], name: nursery.name } }.to_json %>;
+    52:   console.log(nurseryLocations);
+    53: 
+    54:   function initMap() {
+  
+app/views/nurseries/index.html.erb:51:in `[]'
+app/views/nurseries/index.html.erb:51
+app/views/nurseries/index.html.erb:51:in `map'
+app/views/nurseries/index.html.erb:51
+Started GET "/nurseries" for ::1 at 2024-08-07 11:31:34 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 79.2ms | Allocations: 9970)
+  Rendered layout layouts/application.html.erb (Duration: 80.7ms | Allocations: 10034)
+Completed 500 Internal Server Error in 100ms (ActiveRecord: 2.2ms | Allocations: 11613)
+
+
+  
+ActionView::Template::Error (undefined method `latitude' for #<Nursery:0x00007f3920fdfc40>):
+    48: </div>
+    49: 
+    50: <script type="text/javascript">
+    51:   var nurseryLocations = <%= raw @nurseries.map { |nursery| { lat: nursery.latitude, lng: nursery.longitude, name: nursery.name } }.to_json %>;
+    52:   console.log(nurseryLocations);
+    53: 
+    54:   function initMap() {
+  
+app/views/nurseries/index.html.erb:51
+app/views/nurseries/index.html.erb:51:in `map'
+app/views/nurseries/index.html.erb:51
+Started GET "/nurseries" for ::1 at 2024-08-07 11:37:51 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/nurseries_controller.rb:3:in `index'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.7ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 33.3ms | Allocations: 6403)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1045.8ms | Allocations: 41509)
+Completed 200 OK in 1077ms (Views: 1049.7ms | ActiveRecord: 17.7ms | Allocations: 43720)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:42:36 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (8.9ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 28.7ms | Allocations: 6508)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.3ms | Allocations: 14175)
+Completed 200 OK in 79ms (Views: 64.2ms | ActiveRecord: 9.3ms | Allocations: 15782)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:43:49 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 31.4ms | Allocations: 6489)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 75.2ms | Allocations: 14156)
+Completed 200 OK in 84ms (Views: 78.7ms | ActiveRecord: 1.3ms | Allocations: 15761)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:45:23 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 22.9ms | Allocations: 6488)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 937.6ms | Allocations: 41507)
+Completed 200 OK in 947ms (Views: 939.9ms | ActiveRecord: 0.8ms | Allocations: 43109)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:45:35 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (4.6ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 23.7ms | Allocations: 5896)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 998.9ms | Allocations: 39551)
+Completed 200 OK in 1008ms (Views: 995.0ms | ActiveRecord: 5.3ms | Allocations: 40419)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:45:59 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 52.5ms | Allocations: 5917)
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1127.7ms | Allocations: 40046)
+Completed 200 OK in 1144ms (Views: 1126.8ms | ActiveRecord: 2.7ms | Allocations: 40913)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:46:31 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 22.0ms | Allocations: 5878)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 977.4ms | Allocations: 39453)
+Completed 200 OK in 985ms (Views: 978.3ms | ActiveRecord: 0.8ms | Allocations: 40320)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:47:02 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.8ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 44.3ms | Allocations: 5894)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 76.4ms | Allocations: 14310)
+Completed 200 OK in 88ms (Views: 79.7ms | ActiveRecord: 1.2ms | Allocations: 15178)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:47:35 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.3ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 5878)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 937.9ms | Allocations: 40011)
+Completed 200 OK in 947ms (Views: 941.1ms | ActiveRecord: 0.7ms | Allocations: 40878)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:47:44 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.4ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 48.4ms | Allocations: 5878)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1013.2ms | Allocations: 39919)
+Completed 200 OK in 1022ms (Views: 1015.6ms | ActiveRecord: 0.8ms | Allocations: 40786)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-07 11:47:56 +0200
+Processing by NurseriesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:4:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[36mNursery Load (0.5ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 75.0ms | Allocations: 5893)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1050.6ms | Allocations: 40494)
+Completed 200 OK in 1078ms (Views: 1052.8ms | ActiveRecord: 0.9ms | Allocations: 41361)
+
+
