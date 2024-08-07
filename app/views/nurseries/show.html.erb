@@ -14,12 +14,12 @@
 
   <!-- Sezione Piante Disponibili -->
   <% if @nursery.nursery_plants.any? %>
-    <div class="plants-available">
+    <div class="nursery-plants-available">
       <h2>Piante Disponibili Nel Nostro Vivaio</h2>
-      <div class="plants-container">
+      <div class="nursery-plants-container">
         <% @nursery.nursery_plants.each do |nursery_plant| %>
-          <div class="plant-box">
-            <%= image_tag "#{nursery_plant.plant.name}.jpg", alt: nursery_plant.plant.name, class: 'plant-image' %>
+          <div class="nursery-plant-box">
+            <%= image_tag "#{nursery_plant.plant.name}.jpg", alt: nursery_plant.plant.name, class: 'nursery-plant-image' %>
             <h3><%= nursery_plant.plant.name %></h3>
             <p><%= nursery_plant.plant.description %></p>
             <p class="availability" data-nursery-plant-id="<%= nursery_plant.id %>">

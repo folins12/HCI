@@ -3,10 +3,10 @@
 
   <p class="nursery-title">Vivai</p>
 
-  <p class="search-instruction">Cerca i vivai per zona (comune) o per nome utilizzando la barra di ricerca sottostante.</p>
+  <p class="nursery-search-instruction">Cerca i vivai per zona (comune) o per nome utilizzando la barra di ricerca sottostante.</p>
 
-  <%= form_with url: nurseries_path, method: :get, local: true, class: 'search-form' do |form| %>
-    <%= text_field_tag :query, params[:query], placeholder: 'Cerca...', class: 'search-bar' %>
+  <%= form_with url: nurseries_path, method: :get, local: true, class: 'nursery-search-form' do |form| %>
+    <%= text_field_tag :query, params[:query], placeholder: 'Cerca...', class: 'nursery-search-bar' %>
     <%= form.submit "Search" %>
   <% end %>
 
@@ -16,7 +16,7 @@
 </div><!-- questo div si toglie e si mette dopo -->
 
   <% if params[:query].present? && @nurseries.empty? %>
-    <p class="search-failure">Nessun vivaio presente con questo nome o in questa zona.</p>
+    <p class="nursery-search-failure">Nessun vivaio presente con questo nome o in questa zona.</p>
     <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
   <% elsif params[:query].present? %>
     <div class="nurseries-container">

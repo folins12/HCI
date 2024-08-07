@@ -9,7 +9,7 @@
     </div>
   <% end %>
 
-  <%= form_with url: infoplants_path, method: :get, local: true, class: "filters-form" do |form| %>
+  <%= form_with url: infoplants_path, method: :get, local: true, class: "filters-form", id: "filters-form" do |form| %>
     <div class="filters-container">
       <div class="filter">
         <%= label_tag :typology, 'Tipologia' %>
@@ -38,11 +38,14 @@
       <div class="apply-filters">
         <%= form.submit "Applica", class: "apply-button" %>
       </div>
+      <div class="clear-filters">
+        <%= button_tag "Cancella", type: 'button', class: "clear-button", onclick: "clearFilters()" %>
+      </div>
     </div>
   <% end %>
 </div>
 
-<div class="plants-grid">
+<div class="plants-grid <%= 'single-item' if @plants.size == 1 %>">
   <% if @plants.any? %>
     <% @plants.each do |plant| %>
       <div class="plant-box">
@@ -53,9 +56,9 @@
         <div class="plant-info">
           <p class="nome"><strong><%= plant.name %></strong></p>
           <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-          <p><strong>Luce:</strong> <%= plant.light %></p>
-          <p><strong>Irrigazione:</strong> <%= plant.irrigation %></p>
-          <p><strong>Dimensione:</strong> <%= plant.size %></p>
+          <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
+          <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
+          <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
           <p><strong>Clima:</strong> <%= plant.climate %></p>
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>
@@ -66,3 +69,20 @@
     <p class="no-results">Non ci sono piante con questi filtri</p>
   <% end %>
 </div>
+
+<% if params[:query].present? || params[:typology].present? || params[:climate].present? || params[:use].present? || params[:light].present? || params[:size].present? || params[:irrigation].present? %>
+  <div class="back-button-container">
+    <%= link_to 'Torna indietro', infoplants_path, class: 'back-button' %>
+  </div>
+<% end %>
+
+<script>
+  function clearFilters() {
+    const form = document.getElementById("filters-form");
+    const selects = form.querySelectorAll("select");
+    
+    selects.forEach(select => {
+      select.selectedIndex = 0; // Reset each select to its default option
+    });
+  }
+</script>

@@ -1,70 +1,96 @@
 .plants-container {
-    text-align: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('plants.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    width: 100%;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 20px;
+    text-align: center;
   }
-  
+
   .plant-title {
-    margin-left: 32%;
-    font-size: 3em;
-    color: #134509;
+    font-size: 7em;
+    color: #ffffff;
+    margin-bottom: 10px;
+    margin-top: -20px;
   }
-  
+
   .intro-text {
-    font-size: 1.2em;
+    font-size: 1.7em;
     margin: 10px 0;
+    margin-bottom: 30px;
   }
-  
+
   .search-form,
   .filters-form {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
   }
-  
+
   .search-bar-container {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    width: 100%;
   }
-  
+
   .search-bar {
     padding: 10px;
     font-size: 1em;
     border: 2px solid #134509;
     border-radius: 5px;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
   }
-  
+
   .search-button,
-  .apply-button {
+  .apply-button,
+  .clear-button {
     background-color: #134509;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
+    font-size: 1.2em;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
-  
+
+  .clear-button {
+    background-color: rgb(255, 62, 62);
+  }
+
   .filters-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
+    width: 100%;
+    max-width: 800px;
   }
-  
+
   .filter {
     margin: 10px;
+    flex: 1;
+    min-width: 150px;
+    font-size: 1.2em;
   }
-  
+
   .plants-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
   }
-  
+
   .plant-box {
     background-color: white;
     border: 2px solid #ddd;
@@ -75,12 +101,16 @@
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
   }
-  
+
   .plant-box:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
-  
+
+  .plants-grid.single-item .plant-box {
+    width: 100%;
+  }
+
   .plant-image img {
     width: 100%;
     height: 100%;
@@ -92,13 +122,13 @@
     text-align: left;
     margin-left: 5%;
   }
-  
+
   .plant-info p {
     margin: 5px 0;
     font-size: 1em;
     color: #333;
   }
-  
+
   .plant-info p.nome {
     text-align: center;
     font-size: 2.5em;
@@ -108,14 +138,38 @@
   }
 
   .no-results {
-    font-size: 1.2em;
+    font-size: 1.9em;
     color: #134509;
-    margin: 20px 0;
+    margin-top: 60px;
+  }
+
+  .clear-button {
+    margin-left: 10px;
+  }
+
+  .back-button-container {
+    text-align: center;
+    margin-top: 20px;
   }
   
+  .back-button {
+    background-color: #134509;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .back-button:hover {
+    background-color: #0c3a08;
+  }
+  
+
   @media (max-width: 768px) {
     .plant-box {
       width: 100%;
     }
   }
-  
