@@ -1,60 +1,68 @@
-<h1>INFOPLANTS!</h1>
+<div class="plants-container">
+  <p class="plant-title">PlantExplorer</p>
+  <p class="intro-text">Esplora e conosci le caratteristiche di queste piante e divertiti a selezionare i filtri per scoprire le piante che si addicono ai tuoi gusti.</p>
 
-<%= form_with url: infoplants_path, method: :get, local: true do |form| %>
+  <%= form_with url: infoplants_path, method: :get, local: true, class: "search-form" do |form| %>
+    <div class="search-bar-container">
+      <%= text_field_tag :query, params[:query], placeholder: 'Cerca...', class: "search-bar" %>
+      <%= form.submit "Cerca", class: "search-button" %>
+    </div>
+  <% end %>
 
-  <%= text_field_tag :query, params[:query], placeholder: 'Cerca...' %>
+  <%= form_with url: infoplants_path, method: :get, local: true, class: "filters-form" do |form| %>
+    <div class="filters-container">
+      <div class="filter">
+        <%= label_tag :typology, 'Tipologia' %>
+        <%= select_tag :typology, options_for_select(Plant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
+      </div>
+      <div class="filter">
+        <%= label_tag :climate, 'Clima' %>
+        <%= select_tag :climate, options_for_select(Plant.pluck(:climate).uniq, params[:climate]), include_blank: true %>
+      </div>
+      <div class="filter">
+        <%= label_tag :use, 'Uso' %>
+        <%= select_tag :use, options_for_select(Plant.pluck(:use).uniq, params[:use]), include_blank: true %>
+      </div>
+      <div class="filter">
+        <%= label_tag :light, "Luce" %>
+        <%= select_tag :light, options_for_select([['ombra completa', 1], ['ombra parziale', 2], ['luce indiretta', 3], ['sole diretto', 4]], params[:light]), include_blank: true %>
+      </div>
+      <div class="filter">
+        <%= label_tag :size, "Dimensione" %>
+        <%= select_tag :size, options_for_select([['piccola', 1], ['media', 2], ['grande', 3]], params[:size]), include_blank: true %>
+      </div>
+      <div class="filter">
+        <%= label_tag :irrigation, "Irrigazione" %>
+        <%= select_tag :irrigation, options_for_select([['raramente', 1], ['ogni tanto', 2], ['frequentemente', 3]], params[:irrigation]), include_blank: true %>
+      </div>
+      <div class="apply-filters">
+        <%= form.submit "Applica", class: "apply-button" %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-  <div>
-    <%= label_tag :typology, 'Tipologia' %>
-    <%= select_tag :typology, options_for_select(Plant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
-  </div>
-
-  <div>
-    <%= label_tag :climate, 'Clima' %>
-    <%= select_tag :climate, options_for_select(Plant.pluck(:climate).uniq, params[:climate]), include_blank: true %>
-  </div>
-
-  <div>
-    <%= label_tag :use, 'Uso' %>
-    <%= select_tag :use, options_for_select(Plant.pluck(:use).uniq, params[:use]), include_blank: true %>
-  </div>
-
-  <div>
-    <%= label_tag :light, "Luce:" %>
-    <%= select_tag :light, options_for_select([
-      ['ombra completa', 1], ['ombra parziale', 2], ['luce indiretta', 3], ['sole diretto', 4]
-    ], params[:light]), include_blank: true %>
-  </div>
-
-  <div>
-    <%= label_tag :size, "Dimensione:" %>
-    <%= select_tag :size, options_for_select([
-      ['piccola', 1], ['media', 2], ['granda', 3]
-    ], params[:size]), include_blank: true %>
-  </div>
-
-  <div>
-    <%= label_tag :irrigation, "Irrigazione:" %>
-    <%= select_tag :irrigation, options_for_select([
-      ['raramente', 1], ['ogni tanto', 2], ['frequentemente', 3]
-    ], params[:irrigation]), include_blank: true %>
-  </div>
-
-  <%= form.submit "Search" %>
-<% end %>
-
-
-
-<h2>Lista piante:</h2>
-<ul>
-<% if @plants.any? %>
+<div class="plants-grid">
+  <% if @plants.any? %>
     <% @plants.each do |plant| %>
-        <li>
-        <h3><%= link_to plant.name, infoplant_path(plant) %></h3>
-
-        </li>
+      <div class="plant-box">
+        <div class="plant-image">
+          <%= image_tag "#{plant.name}.jpg", alt: plant.name %>
+        </div>
+        
+        <div class="plant-info">
+          <p class="nome"><strong><%= plant.name %></strong></p>
+          <p><strong>Tipologia:</strong> <%= plant.typology %></p>
+          <p><strong>Luce:</strong> <%= plant.light %></p>
+          <p><strong>Irrigazione:</strong> <%= plant.irrigation %></p>
+          <p><strong>Dimensione:</strong> <%= plant.size %></p>
+          <p><strong>Clima:</strong> <%= plant.climate %></p>
+          <p><strong>Uso:</strong> <%= plant.use %></p>
+          <p><strong>Descrizione:</strong> <%= plant.description %></p>
+        </div>
+      </div>
     <% end %>
-<% else %>
-  <p>Non ci sono piante con questi filtri</p>
-<% end %>
-</ul>
+  <% else %>
+    <p class="no-results">Non ci sono piante con questi filtri</p>
+  <% end %>
+</div>

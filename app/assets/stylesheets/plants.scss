@@ -1,3 +1,121 @@
-// Place all the styles related to the Plants controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.plants-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .plant-title {
+    margin-left: 32%;
+    font-size: 3em;
+    color: #134509;
+  }
+  
+  .intro-text {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .search-form,
+  .filters-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .search-bar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #134509;
+    border-radius: 5px;
+    width: 300px;
+  }
+  
+  .search-button,
+  .apply-button {
+    background-color: #134509;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .filters-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .filter {
+    margin: 10px;
+  }
+  
+  .plants-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .plant-box {
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .plant-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .plant-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .plant-info {
+    text-align: left;
+    margin-left: 5%;
+  }
+  
+  .plant-info p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #333;
+  }
+  
+  .plant-info p.nome {
+    text-align: center;
+    font-size: 2.5em;
+    color: #134509;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .no-results {
+    font-size: 1.2em;
+    color: #134509;
+    margin: 20px 0;
+  }
+  
+  @media (max-width: 768px) {
+    .plant-box {
+      width: 100%;
+    }
+  }
+  
