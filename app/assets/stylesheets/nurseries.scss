@@ -1,3 +1,5 @@
+// Styles for the nurseries index page
+
 .nurseries {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('sfondo-vivai.jpg');
   background-size: cover;
@@ -17,6 +19,7 @@
   text-align: center;
   font-size: 5em;
   color: white;
+  margin: 0;
 }
 
 .search-instruction {
@@ -31,8 +34,8 @@
   margin: 30px auto;
   padding: 20px;
   font-size: 1.6em;
-  color: white;
-  border: 2px solid white;
+  color: #134509;
+  border: 2px solid #134509;
   border-radius: 10px;
   display: inline-block;
 }
@@ -42,6 +45,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
+  padding: 0 10px; // Added padding to avoid proximity to edges
 }
 
 .search-bar {
@@ -84,31 +88,39 @@
   border: 2px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px; // Added padding to avoid map touching edges
 }
 
 #map {
-  height: 300px; /* Altezza della mappa */
-  width: 100%; /* Larghezza della mappa */
+  height: 300px;
+  width: 100%;
   border-radius: 10px;
 }
 
 .nurseries-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 2% 10%;
+  justify-content: center; // Center the content horizontally
+  gap: 20px; // Space between items
+  margin: 2% auto; // Center the container horizontally
+  max-width: 1200px; // Optional: Set a maximum width for the container
+  width: 100%;
 }
 
 .nursery-box {
-  border: 3px solid #ddd;
+  border: 3px solid #134509;
   border-radius: 10px;
   padding: 20px;
-  margin: 10px;
-  width: calc(33.333% - 20px);
   text-align: center;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   box-sizing: border-box;
+  min-height: 300px; // Minimum height to avoid shrinking
+  width: calc(33.333% - 20px); // Default width for multiple items
+}
+
+.nurseries-container.single-item .nursery-box {
+  width: 100%; // Full width if only one item
 }
 
 .nursery-box img {
@@ -121,13 +133,13 @@
 .nursery-box h3 {
   margin: 15px 0 10px;
   font-size: 2em;
-  color: white;
+  color: #134509;
 }
 
 .nursery-box p {
   margin: 0;
   font-size: 1.5em;
-  color: white;
+  color: #134509;
 }
 
 .nursery-box:hover {
@@ -139,21 +151,24 @@
   color: white !important;
 }
 
+// Responsive design
+
 @media (min-width: 1024px) {
   .nurseries-container .nursery-box {
-    width: calc(33.333% - 20px);
+    width: calc(33.333% - 20px); // Three items per row on large screens
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .nurseries-container .nursery-box {
-    width: calc(50% - 20px);
+    width: calc(50% - 20px); // Two items per row on medium screens
   }
 }
 
 @media (max-width: 767px) {
   .nurseries-container {
-    justify-content: center;
+    flex-direction: column; // Stack items vertically on small screens
+    align-items: center; // Center items horizontally
   }
   .nurseries-container .nursery-box {
     width: 90%;
@@ -161,7 +176,7 @@
   .search-form {
     margin-top: 10px;
   }
-  h1 {
+  .nursery-title {
     margin-top: 40px;
   }
 }
@@ -176,7 +191,7 @@
   background-color: #0a3b00;
   padding: 9px;
   border-radius: 10px;
-  width: fit-content; /* Adatta il bottone al contenuto */
+  width: fit-content; 
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 30px;
