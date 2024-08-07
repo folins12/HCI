@@ -51,33 +51,104 @@
 
 
 <script type="text/javascript">
-  // DOVRA CREARE DUE VETTORI UNO CON LE LONGITUDINI E UNO CON LE LATUTUDINI
-  var nurseryNames = <%= raw @nurseries.map { |nursery| j(nursery.name) }.to_json %>;
-  console.log(nurseryNames);
+  var nurseryNames = <%= raw @nurseries.map { |nursery| ERB::Util.json_escape(nursery.name) }.to_json %>;
+  var nurseryID = <%= raw @nurseries.map { |nursery| j(nursery.id) }.to_json %>;
+  var nurseryLong = <%= raw @nurseries.map { |nursery| j(nursery.long) }.to_json %>;
+  var nurseryLat = <%= raw @nurseries.map { |nursery| j(nursery.lat) }.to_json %>;
+
+  function initMap() {
+    geocoder = new google.maps.Geocoder();
+    //calcolo posizione media
+    var totalLat = 0;
+    var totalLng = 0;
+    var numNurseries = nurseryNames.length;
+    for (var i = 0; i < numNurseries; i++) {
+      totalLat += parseFloat(nurseryLat[i]);
+      totalLng += parseFloat(nurseryLong[i]);
+    }
+    var avgLat = totalLat / numNurseries;
+    var avgLng = totalLng / numNurseries;
+    var location = { lat: avgLat, lng: avgLng };
+
+    // Inizializza la mappa centrata sulla posizione media
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: location
+    });
+
+    //creazione marker sui vivai
+    for (var i = 0; i < nurseryNames.length; i++) {
+      var lat = parseFloat(nurseryLat[i]);
+      var lng = parseFloat(nurseryLong[i]);
+      location = { lat: lat, lng: lng };
+      
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: nurseryNames[i]
+      });
+      attachClickEvent(marker, nurseryNames[i],nurseryID[i]);
+    }
+
+    //var myLocation = { lat: -25.344, lng: 131.036 };
+    const address = "<%= j @current_user&.address.to_s %>";
+    geocodeAddress(address).then(MyLocation => {
+        var marker = new google.maps.Marker({
+          position: MyLocation,
+          map: map,
+          icon: {
+              path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+              scale: 10,
+              fillColor: '#0000FF',  // Colore del marker (rosso in questo caso)
+              fillOpacity: 1,
+              strokeWeight: 1,
+              strokeColor: '#FFFFFF'
+          }
+      });  
+    });    
+  }
+
+  var lastInfoWindow = null;
+  function attachClickEvent(marker, nurseryName, nurseryID) {
+    var infowindowContent = '<div style="color: black;">' + 
+                              '<a href="/nurseries/' + nurseryID + '">' + nurseryName + '</a>' +
+                            '</div>';
+    var infowindow = new google.maps.InfoWindow({
+      content: infowindowContent
+    });
+    marker.addListener('click', function() {
+      if (lastInfoWindow) lastInfoWindow.close();
+      infowindow.open(marker.getMap(), marker);
+      lastInfoWindow = infowindow;
+    });
+  }
+
+  
 </script>
 
-<!--poi faccio che per ogni vivaio inserisco un marker sulla mappa -->
+
 <script>
-  function initMap() {
-    var location1 = { lat: 41.80857849121094, lng: 12.676111221313477 };//frascati
-    var location2 = { lat: 41.89684295654297, lng: 12.482213020324707 };//roma
-    
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 11,
-      center: location1
-    });
-    
-    var marker = new google.maps.Marker({
-      position: location1,
-      map: map,
-      title: 'Punto di Interesse'
-    });
-    var marker2 = new google.maps.Marker({
-      position: location2,
-      map: map,
-      title: 'Punto di Interesse'
-    });
+  async function geocodeAddress(address) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      if (data.length > 0) {
+        const location = data[0];
+        const latitude = location.lat;
+        const longitude = location.lon;
+        var MyLocation = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+        return MyLocation;
+      } 
+      return null;
+    } catch (error) {
+      console.error('Error fetching geocode data:', error);
+      return null;
+    }
   }
 </script>
 
+
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgX5q9nH4yvlGDQapTpsKDmvBnL9JlHh4&callback=initMap&loading=async" type="text/javascript"></script>
+
