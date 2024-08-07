@@ -58,43 +58,18 @@
 
   function initMap() {
     geocoder = new google.maps.Geocoder();
-    //calcolo posizione media
-    var totalLat = 0;
-    var totalLng = 0;
-    var numNurseries = nurseryNames.length;
-    for (var i = 0; i < numNurseries; i++) {
-      totalLat += parseFloat(nurseryLat[i]);
-      totalLng += parseFloat(nurseryLong[i]);
-    }
-    var avgLat = totalLat / numNurseries;
-    var avgLng = totalLng / numNurseries;
-    var location = { lat: avgLat, lng: avgLng };
-
-    // Inizializza la mappa centrata sulla posizione media
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 10,
-      center: location
-    });
-
-    //creazione marker sui vivai
-    for (var i = 0; i < nurseryNames.length; i++) {
-      var lat = parseFloat(nurseryLat[i]);
-      var lng = parseFloat(nurseryLong[i]);
-      location = { lat: lat, lng: lng };
-      
-      var marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        title: nurseryNames[i]
-      });
-      attachClickEvent(marker, nurseryNames[i],nurseryID[i]);
-    }
-
-    //var myLocation = { lat: -25.344, lng: 131.036 };
     const address = "<%= j @current_user&.address.to_s %>";
-    geocodeAddress(address).then(MyLocation => {
+    geocodeAddress(address).then(location => {
+
+        // Inizializza la mappa centrata sulla tua casa
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: location
+        });
+
+        //marker casa
         var marker = new google.maps.Marker({
-          position: MyLocation,
+          position: location,
           map: map,
           icon: {
               path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
@@ -104,13 +79,29 @@
               strokeWeight: 1,
               strokeColor: '#FFFFFF'
           }
-      });  
-    });    
+      });
+
+      //creazione marker sui vivai
+      for (var i = 0; i < nurseryNames.length; i++) {
+        var lat = parseFloat(nurseryLat[i]);
+        var lng = parseFloat(nurseryLong[i]);
+        location = { lat: lat, lng: lng };
+        
+        var marker = new google.maps.Marker({
+          position: location,
+          map: map,
+          title: nurseryNames[i]
+        });
+        attachClickEvent(marker, nurseryNames[i],nurseryID[i]);
+      }
+    });
   }
 
-  var lastInfoWindow = null;
+  /*var lastInfoWindow = null;
   function attachClickEvent(marker, nurseryName, nurseryID) {
-    var infowindowContent = '<div style="color: black;">' + 
+    
+    var imageUrl = "<%= asset_path('Edera.jpg') %>";
+    var infowindowContent = '<div style="color: black; background-image:url(\'' + imageUrl + '\'); background-size: cover; background-position: center;">' +
                               '<a href="/nurseries/' + nurseryID + '">' + nurseryName + '</a>' +
                             '</div>';
     var infowindow = new google.maps.InfoWindow({
@@ -121,13 +112,14 @@
       infowindow.open(marker.getMap(), marker);
       lastInfoWindow = infowindow;
     });
+  }*/
+  function attachClickEvent(marker, nurseryName, nurseryID) {
+    marker.addListener('click', function() {
+        const url = '/nurseries/' + nurseryID;
+        window.location.href = url;
+    });
   }
 
-  
-</script>
-
-
-<script>
   async function geocodeAddress(address) {
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
 
