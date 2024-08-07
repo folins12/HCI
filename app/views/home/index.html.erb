@@ -35,7 +35,7 @@
     </div>
 
     <div class="section">
-      <%= link_to (current_user.nursery ? nursery_profile_path : user_profile_path), class: 'section-link' do %>
+      <%= link_to (current_user&.nursery ? nursery_profile_path : user_profile_path), class: 'section-link' do %>
         <h2 class="section-title">LE MIE PIANTE</h2>
         <div class="section-content">
           <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
