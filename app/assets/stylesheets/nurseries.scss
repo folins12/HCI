@@ -1,5 +1,3 @@
-// Styles for the nurseries index page
-
 .nurseries {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('sfondo-vivai.jpg');
   background-size: cover;
@@ -45,7 +43,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  padding: 0 10px; // Added padding to avoid proximity to edges
+  padding: 0 10px;
 }
 
 .search-bar {
@@ -88,7 +86,7 @@
   border: 2px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 10px; // Added padding to avoid map touching edges
+  padding: 10px;
 }
 
 #map {
@@ -100,10 +98,10 @@
 .nurseries-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; // Center the content horizontally
-  gap: 20px; // Space between items
-  margin: 2% auto; // Center the container horizontally
-  max-width: 1200px; // Optional: Set a maximum width for the container
+  justify-content: center;
+  gap: 20px;
+  margin: 2% auto;
+  max-width: 1200px;
   width: 100%;
 }
 
@@ -115,12 +113,12 @@
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   box-sizing: border-box;
-  min-height: 300px; // Minimum height to avoid shrinking
-  width: calc(33.333% - 20px); // Default width for multiple items
+  min-height: 300px; 
+  width: calc(33.333% - 20px); 
 }
 
 .nurseries-container.single-item .nursery-box {
-  width: 100%; // Full width if only one item
+  width: 100%; 
 }
 
 .nursery-box img {
@@ -151,24 +149,23 @@
   color: white !important;
 }
 
-// Responsive design
 
 @media (min-width: 1024px) {
   .nurseries-container .nursery-box {
-    width: calc(33.333% - 20px); // Three items per row on large screens
+    width: calc(33.333% - 20px);
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .nurseries-container .nursery-box {
-    width: calc(50% - 20px); // Two items per row on medium screens
+    width: calc(50% - 20px);
   }
 }
 
 @media (max-width: 767px) {
   .nurseries-container {
-    flex-direction: column; // Stack items vertically on small screens
-    align-items: center; // Center items horizontally
+    flex-direction: column;
+    align-items: center;
   }
   .nurseries-container .nursery-box {
     width: 90%;
