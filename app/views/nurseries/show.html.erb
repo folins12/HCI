@@ -1,6 +1,6 @@
 <div class="nursery-show">
   <div class="nursery-header">
-    <h1><%= @nursery.name %></h1>
+    <p class="nursery-name"><%= @nursery.name %></p>
     <p class="location"><%= @nursery.location %></p>
   </div>
 
@@ -15,7 +15,7 @@
   <!-- Sezione Piante Disponibili -->
   <% if @nursery.nursery_plants.any? %>
     <div class="plants-available">
-      <h2>Piante Disponibili</h2>
+      <h2>Piante Disponibili Nel Nostro Vivaio</h2>
       <div class="plants-container">
         <% @nursery.nursery_plants.each do |nursery_plant| %>
           <div class="plant-box">
