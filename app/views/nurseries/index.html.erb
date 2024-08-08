@@ -57,7 +57,7 @@
 
   function initMap() {
     geocoder = new google.maps.Geocoder();
-    const address = "<%= j @current_user&.address.to_s %>";
+    const address = "<%= raw @current_user&.address.to_s %>";
     geocodeAddress(address).then(location => {
 
       // Inizializza la mappa centrata sulla tua casa

@@ -12,7 +12,10 @@ class UsersController < ApplicationController
   end
 
   def profile
-    # La vista profile.html.erb mostrerà i dettagli dell'utente e il modulo di modifica
+    plant_ids = Myplant.where(std_user_id: current_user.id).pluck(:plant_id)
+    @myplants = Plant.where(id: plant_ids)
+
+    #@myplants = Myplant.where(std_user_id: current_user.id).pluck(:plant_id)
   end
 
   def update

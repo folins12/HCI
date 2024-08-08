@@ -76,16 +76,40 @@
     <div class="plant-message">
       Queste sono le tue piante:
     </div>
-    
+    <!--
     <div class="plant-panels">
       <% if @plants.present? %>
-        <% @plants.each do |plant| %>
+        <% @myplants.each do |plant| %>
           <div class="plant-panel">
             <span class="plant-name"><%= plant.pianta %></span>
           </div>
         <% end %>
       <% else %>
         <p>Nessuna pianta trovata.</p>
+      <% end %>
+    </div>-->
+    <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
+      <% if @myplants.any? %>
+        <% @myplants.each do |plant| %>
+          <div class="plant-box">
+            <div class="plant-image">
+              <%= image_tag "#{plant.name}.jpg", alt: plant.name %>
+            </div>
+            
+            <div class="plant-info">
+              <p class="nome"><strong><%= plant.name %></strong></p>
+              <p><strong>Tipologia:</strong> <%= plant.typology %></p>
+              <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
+              <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
+              <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
+              <p><strong>Clima:</strong> <%= plant.climate %></p>
+              <p><strong>Uso:</strong> <%= plant.use %></p>
+              <p><strong>Descrizione:</strong> <%= plant.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="no-results">Non ci sono piante con questi filtri</p>
       <% end %>
     </div>
 
