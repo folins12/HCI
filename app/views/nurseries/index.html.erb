@@ -59,55 +59,44 @@
     geocoder = new google.maps.Geocoder();
     const address = "<%= j @current_user&.address.to_s %>";
     geocodeAddress(address).then(location => {
-      
-        // Inizializza la mappa centrata sulla tua casa
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: location
-        });
 
-        //marker casa
-        var marker = new google.maps.Marker({
-          position: location,
-          map: map,
-          icon: {
-              path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-              scale: 10,
-              fillColor: '#0000FF',  // Colore del marker (rosso in questo caso)
-              fillOpacity: 1,
-              strokeWeight: 1,
-              strokeColor: '#FFFFFF'
-          }
-        });
+      // Inizializza la mappa centrata sulla tua casa
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: location
+      });
 
-        //creazione marker sui vivai
-        var nurslocation;
-        for (var i = 0; i < nurseryNames.length; i++) {
-          geocodeAddress(nurseryAddres[i]).then(nurslocation => {
-            var marker = new google.maps.Marker({
-            position: nurslocation,
-            map: map,
-            title: nurseryNames[i]
-          });
-          attachClickEvent(marker, nurseryNames[i],nurseryID[i]);
-
-          })
-          //var lat = parseFloat(nurseryLat[i]);
-          //var lng = parseFloat(nurseryLong[i]);
-          //nurslocation = { lat: lat, lng: lng };
-          //
-          //var marker = new google.maps.Marker({
-          //  position: nurslocation,
-          //  map: map,
-          //  title: nurseryNames[i]
-          //});
-          //attachClickEvent(marker, nurseryNames[i],nurseryID[i]);
+      //marker casa
+      var marker = new google.maps.Marker({
+        position: location,
+        map: map,
+        icon: {
+          path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+          scale: 10,
+          fillColor: '#0000FF',
+          fillOpacity: 1,
+          strokeWeight: 1,
+          strokeColor: '#FFFFFF'
         }
+      });
 
-      
+      //creazione marker sui vivai
+      for (var i = 0; i < nurseryNames.length; i++) {
+        createNurseryMarker(map,nurseryAddres[i],nurseryID[i],nurseryNames[i])
+      }      
     });
   }
 
+  function createNurseryMarker(map,address,id,name){
+    geocodeAddress(address).then(nurslocation => {
+      var marker = new google.maps.Marker({
+        position: nurslocation,
+        map: map,
+        title: name
+      });
+      attachClickEvent(marker, name, id);
+    })
+  }
   /*var lastInfoWindow = null;
   function attachClickEvent(marker, nurseryName, nurseryID) {
     
@@ -124,6 +113,7 @@
       lastInfoWindow = infowindow;
     });
   }*/
+ 
   function attachClickEvent(marker, nurseryName, nurseryID) {
     marker.addListener('click', function() {
         const url = '/nurseries/' + nurseryID;
