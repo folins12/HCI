@@ -14,8 +14,6 @@ class UsersController < ApplicationController
   def profile
     plant_ids = Myplant.where(std_user_id: current_user.id).pluck(:plant_id)
     @myplants = Plant.where(id: plant_ids)
-
-    #@myplants = Myplant.where(std_user_id: current_user.id).pluck(:plant_id)
   end
 
   def update

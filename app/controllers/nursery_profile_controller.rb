@@ -10,7 +10,11 @@ class NurseryProfileController < ApplicationController
   end
 
   def profile
-    # Logica per visualizzare il profilo vivaio
+    @myplants = NurseryPlant
+                  .joins(:plant)
+                  .where(nursery_id: current_user.id)
+                  .select('nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
+                          plants.name, typology, light, size, irrigation, use, climate, irrigation, description')
   end
 
   private

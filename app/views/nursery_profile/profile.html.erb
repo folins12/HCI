@@ -71,7 +71,36 @@
       <% end %>
     </div>
 
-    <hr class="separator" />
+    <hr class="separator" >
+
+    <div class="nursery-plants-available <%= 'single-item' if @myplants.size == 1 %>">
+      <% if @myplants.any? %>
+        <div class="nursery-plants-container">
+          <% @myplants.each do |plant| %>
+          
+            <div class="nursery-plant-box">
+              <%= image_tag "#{plant.name}.jpg", alt: plant.name, class:"nursery-plant-image" %>
+            
+              <p class="nome"><strong><%= plant.name %></strong></p>
+              <p><strong>Tipologia:</strong> <%= plant.typology %></p>
+              <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
+              <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
+              <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
+              <p><strong>Clima:</strong> <%= plant.climate %></p>
+              <p><strong>Uso:</strong> <%= plant.use %></p>
+              <p><strong>Descrizione:</strong> <%= plant.description %></p>
+              <p><strong>Disponibiltà:</strong> <%= plant.disp %></p>
+              <p><strong>Ordinazioni:</strong> <%= plant.res %></p>
+            </div>
+
+          <% end %>
+        </div>
+      <% else %>
+        <p class="no-results">Non ci sono piante</p>
+      <% end %>
+    </div>
+
+    <hr class="separator" >
 
     <div class="logout-button">
       <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
