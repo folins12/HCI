@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'register', to: 'registrations#new'
   post 'register', to: 'registrations#create'
+  get 'users/fetch_weather', to: 'users#fetch_weather'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user! # Assicurati che questo metodo sia disponibile
+  before_action :authenticate_user!
   before_action :set_user, only: [:profile, :update]
 
   def show
@@ -29,7 +29,35 @@ class UsersController < ApplicationController
     end
   end
 
+  def fetch_weather
+    lat = params[:lat]
+    lon = params[:lon]
+
+    if lat.present? && lon.present?
+      weather_data = fetch_weather_data(lat, lon)
+      if weather_data
+        render json: { weather: weather_data }
+      else
+        render json: { error: 'Dati meteo non disponibili' }, status: :bad_request
+      end
+    else
+      render json: { error: 'Coordinate non valide' }, status: :bad_request
+    end
+  end
+
   private
+
+  def fetch_weather_data(lat, lon)
+    api_key = '58a0cdb53732cbf60b00188b157bbdba'
+    url = "https://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{lon}&units=metric&appid=#{api_key}"
+    response = Net::HTTP.get(URI(url))
+    JSON.parse(response)
+  rescue StandardError => e
+    Rails.logger.error "Errore durante il recupero dei dati meteo: #{e.message}"
+    nil
+  end
+
+
 
   def set_user
     @user = current_user
@@ -61,4 +89,6 @@ class UsersController < ApplicationController
       return true
     end
   end
+
+
 end

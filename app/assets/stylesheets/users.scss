@@ -211,3 +211,27 @@
 .edit-button #edit-profile-button:hover {
   background-color: #004d00; /* Verde più scuro */
 }
+
+
+
+
+
+.weather-widget {
+  background-color: #e6ffe6;
+  border: 2px solid #004d00;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: left;
+  color: #004d00;
+}
+
+.weather-widget h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.weather-widget p {
+  font-size: 18px;
+  margin: 5px 0;
+}

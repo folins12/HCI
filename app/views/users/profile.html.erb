@@ -73,6 +73,16 @@
 
     <hr class="separator" />
 
+
+    <div class="weather-widget" id="weather-widget">
+  <p>Caricamento meteo...</p>
+</div>
+
+
+
+
+
+
     <div class="plant-message">
       Queste sono le tue piante:
     </div>
@@ -124,5 +134,66 @@
       document.getElementById('profile-edit').style.display = 'block';
     });
   </script>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      const address = "<%= raw @current_user&.address.to_s %>";
+      geocodeAddress(address).then(location => {
+        if (location) {
+          fetchWeatherData(location.lat, location.lng);
+        } else {
+          document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
+        }
+      });
+    });
+    
+    async function geocodeAddress(address) {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+      
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.length > 0) {
+          const location = data[0];
+          const latitude = location.lat;
+          const longitude = location.lon;
+          return { lat: parseFloat(latitude), lng: parseFloat(longitude) };
+        } 
+        return null;
+      } catch (error) {
+        console.error('Error fetching geocode data:', error);
+        return null;
+      }
+    }
+
+
+    function fetchWeatherData(lat, lon) {
+      fetch(`/users/fetch_weather?lat=${lat}&lon=${lon}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('Weather data:', data); // Debug: Log the weather data
+
+          if (data.weather) {
+            const weather = data.weather;
+            const widgetContent = `
+              <h2>Meteo attuale</h2>
+              <p><strong>Temperatura:</strong> ${weather.main.temp}°C</p>
+              <p><strong>Condizioni:</strong> ${weather.weather[0].description}</p>
+              <p><strong>Umidità:</strong> ${weather.main.humidity}%</p>
+              <p><strong>Vento:</strong> ${weather.wind.speed} m/s</p>
+            `;
+            document.getElementById('weather-widget').innerHTML = widgetContent;
+          } else {
+            document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
+          }
+        })
+        .catch(error => {
+          console.error('Errore nel recupero dei dati meteo:', error);
+          document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
+        });
+    }
+
+  </script>
+
 </body>
 </html>
