@@ -12,7 +12,7 @@
   <%= form_with url: infoplants_path, method: :get, local: true, class: "filters-form", id: "filters-form" do |form| %>
     <div class="filters-container">
       <div class="filter">
-        <%= label_tag :typology, 'Tipo' %>
+        <%= label_tag :typology, 'Tipologia' %>
         <%= select_tag :typology, options_for_select(Plant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
       </div>
       <div class="filter">
@@ -45,7 +45,7 @@
   <% end %>
 </div>
 
-<div class="plants-grid <%= 'single-item' if @plants.size == 1 %>">
+<div class="plants-grid">
   <% if @plants.any? %>
     <% @plants.each do |plant| %>
       <div class="plant-box">
@@ -55,7 +55,7 @@
         
         <div class="plant-info">
           <p class="nome"><strong><%= plant.name %></strong></p>
-          <p><strong>Tipo:</strong> <%= plant.typology %></p>
+          <p><strong>Tipologia:</strong> <%= plant.typology %></p>
           <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
           <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
           <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
