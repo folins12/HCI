@@ -10,11 +10,16 @@ class NurseryProfileController < ApplicationController
   end
 
   def profile
-    @myplants = NurseryPlant
-                  .joins(:plant)
-                  .where(nursery_id: current_user.id)
-                  .select('nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
-                          plants.name, typology, light, size, irrigation, use, climate, irrigation, description')
+    nursery_plant_ids = NurseryPlant.where(nursery_id: current_user.id).pluck(:id)
+    @myplants = Plant.joins(:nursery_plants)
+                  .where(nursery_plants: { id: nursery_plant_ids })
+                  .select('plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
+                          typology, light, size, irrigation, use, climate, irrigation, description')
+
+    @reservations = Reservation.joins(:nursery_plant)
+                      .where(nursery_plants: { id: nursery_plant_ids })
+                      .pluck(:user_email, :nursery_plant_id)
+                      .group_by { |email, id| id }
   end
 
   private
