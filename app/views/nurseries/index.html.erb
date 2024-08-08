@@ -54,11 +54,12 @@
   var nurseryNames = <%= raw @nurseries.map { |nursery| ERB::Util.json_escape(nursery.name) }.to_json %>;
   var nurseryAddres = <%= raw @nurseries.map { |nursery| ERB::Util.json_escape(nursery.address) }.to_json %>;
   var nurseryID = <%= raw @nurseries.map { |nursery| j(nursery.id) }.to_json %>;
-  v
+
   function initMap() {
     geocoder = new google.maps.Geocoder();
     const address = "<%= j @current_user&.address.to_s %>";
     geocodeAddress(address).then(location => {
+      
         // Inizializza la mappa centrata sulla tua casa
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
@@ -78,8 +79,9 @@
               strokeColor: '#FFFFFF'
           }
         });
-        var nurslocation;
+
         //creazione marker sui vivai
+        var nurslocation;
         for (var i = 0; i < nurseryNames.length; i++) {
           geocodeAddress(nurseryAddres[i]).then(nurslocation => {
             var marker = new google.maps.Marker({
@@ -140,7 +142,7 @@
         const latitude = location.lat;
         const longitude = location.lon;
         var MyLocation = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
-        console.log(address);console.log(MyLocation);
+        //console.log(address);console.log(MyLocation);
         return MyLocation;
       } 
       console.log(address+" not found");
