@@ -48418,3 +48418,982 @@ Processing by UsersController#fetch_weather as */*
 Completed 200 OK in 220ms (Views: 0.6ms | ActiveRecord: 0.4ms | Allocations: 1755)
 
 
+Started GET "/" for ::1 at 2024-08-08 16:15:43 +0200
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 131.1ms | Allocations: 19889)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 257.5ms | Allocations: 27266)
+Completed 200 OK in 290ms (Views: 269.1ms | ActiveRecord: 0.0ms | Allocations: 29826)
+
+
+Started GET "/infoplants" for ::1 at 2024-08-08 16:17:55 +0200
+Processing by InfoplantsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering infoplants/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."typology" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:16
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "plants"."climate" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:20
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "plants"."use" FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:24
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/views/infoplants/index.html.erb:49
+  [1m[36mPlant Load (4.0ms)[0m  [1m[34mSELECT "plants".* FROM "plants"[0m
+  ↳ app/views/infoplants/index.html.erb:50
+  Rendered infoplants/index.html.erb within layouts/application (Duration: 245.7ms | Allocations: 34389)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 330.9ms | Allocations: 41067)
+Completed 200 OK in 377ms (Views: 321.5ms | ActiveRecord: 13.2ms | Allocations: 44431)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-08 16:18:17 +0200
+Processing by NurseriesController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :authenticate_user! rendered or redirected
+Completed 302 Found in 11ms (ActiveRecord: 0.0ms | Allocations: 314)
+
+
+Started GET "/login" for ::1 at 2024-08-08 16:18:18 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 51.5ms | Allocations: 5385)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 91.8ms | Allocations: 10349)
+Completed 200 OK in 110ms (Views: 109.2ms | ActiveRecord: 0.0ms | Allocations: 11123)
+
+
+Started POST "/login" for ::1 at 2024-08-08 16:18:28 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"andrea.folino@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "andrea.folino@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 882ms (ActiveRecord: 13.3ms | Allocations: 8600)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:18:29 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 22.5ms | Allocations: 3573)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 67.2ms | Allocations: 10210)
+Completed 200 OK in 72ms (Views: 69.5ms | ActiveRecord: 0.3ms | Allocations: 10467)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-08 16:21:18 +0200
+Processing by NurseriesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:5:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  [1m[36mNursery Load (1.0ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:37
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 57.2ms | Allocations: 12766)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 96.0ms | Allocations: 19336)
+Completed 200 OK in 222ms (Views: 114.7ms | ActiveRecord: 3.0ms | Allocations: 25257)
+
+
+Started GET "/nurseries/6" for ::1 at 2024-08-08 16:21:34 +0200
+Processing by NurseriesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" WHERE "nurseries"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/nurseries_controller.rb:9:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/show.html.erb within layouts/application
+  [1m[36mNurseryPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ? LIMIT ?[0m  [["nursery_id", 6], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:16
+  [1m[36mNurseryPlant Load (0.4ms)[0m  [1m[34mSELECT "nursery_plants".* FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 6]]
+  ↳ app/views/nurseries/show.html.erb:20
+  [1m[36mPlant Load (0.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/views/nurseries/show.html.erb:22
+  Rendered nurseries/show.html.erb within layouts/application (Duration: 134.0ms | Allocations: 12904)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 181.2ms | Allocations: 19469)
+Completed 200 OK in 241ms (Views: 179.2ms | ActiveRecord: 4.0ms | Allocations: 24585)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 16:23:20 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.8ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 75.0ms | Allocations: 9558)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 98.4ms | Allocations: 14829)
+Completed 200 OK in 157ms (Views: 99.6ms | ActiveRecord: 6.2ms | Allocations: 17825)
+
+
+Started GET "/users/fetch_weather?lat=41.78837&lon=12.6221794" for ::1 at 2024-08-08 16:23:21 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.78837", "lon"=>"12.6221794"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 282ms (Views: 0.9ms | ActiveRecord: 0.2ms | Allocations: 4062)
+
+
+Started GET "/logout" for ::1 at 2024-08-08 16:23:36 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:23:36 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 19.4ms | Allocations: 2811)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 67.7ms | Allocations: 9354)
+Completed 200 OK in 72ms (Views: 71.3ms | ActiveRecord: 0.0ms | Allocations: 9610)
+
+
+Started GET "/login" for ::1 at 2024-08-08 16:23:38 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 43.0ms | Allocations: 4740)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 102.9ms | Allocations: 9705)
+Completed 200 OK in 109ms (Views: 108.3ms | ActiveRecord: 0.0ms | Allocations: 9962)
+
+
+Started POST "/login" for ::1 at 2024-08-08 16:23:46 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"brasiliano@sanbasilio.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 483ms (ActiveRecord: 0.2ms | Allocations: 860)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:23:47 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 19.4ms | Allocations: 3411)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 64.5ms | Allocations: 10043)
+Completed 200 OK in 72ms (Views: 71.5ms | ActiveRecord: 0.2ms | Allocations: 10299)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-08 16:23:56 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:29:in `set_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "nurseries"."id" FROM "nurseries" WHERE "nurseries"."id_owner" = ?[0m  [["id_owner", 3]]
+  ↳ app/controllers/nursery_profile_controller.rb:13:in `profile'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "nursery_plants"."id" FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:14:in `profile'
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "reservations"."user_email", "reservations"."nursery_plant_id" FROM "reservations" INNER JOIN "nursery_plants" ON "nursery_plants"."id" = "reservations"."nursery_plant_id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/controllers/nursery_profile_controller.rb:22:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/views/nursery_profile/profile.html.erb:79
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?) LIMIT ?[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7], ["LIMIT", 1]]
+  ↳ app/views/nursery_profile/profile.html.erb:80
+  [1m[36mPlant Load (3.5ms)[0m  [1m[34mSELECT plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
+                          typology, light, size, irrigation, use, climate, irrigation, description FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/views/nursery_profile/profile.html.erb:82
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 79.0ms | Allocations: 12032)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 114.8ms | Allocations: 17280)
+Completed 200 OK in 194ms (Views: 113.9ms | ActiveRecord: 9.2ms | Allocations: 23668)
+
+
+Started GET "/nurseries" for ::1 at 2024-08-08 16:24:49 +0200
+Processing by NurseriesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT MAX("nurseries"."id") FROM "nurseries"[0m
+  ↳ app/controllers/nurseries_controller.rb:5:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering nurseries/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "nurseries"[0m
+  ↳ app/views/nurseries/index.html.erb:36
+  [1m[36mNursery Load (0.2ms)[0m  [1m[34mSELECT "nurseries".* FROM "nurseries" ORDER BY "position" ASC[0m
+  ↳ app/views/nurseries/index.html.erb:37
+  Rendered nurseries/index.html.erb within layouts/application (Duration: 16.3ms | Allocations: 7238)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 58.9ms | Allocations: 13869)
+Completed 200 OK in 70ms (Views: 60.0ms | ActiveRecord: 2.7ms | Allocations: 15418)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-08 16:24:51 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:29:in `set_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "nurseries"."id" FROM "nurseries" WHERE "nurseries"."id_owner" = ?[0m  [["id_owner", 3]]
+  ↳ app/controllers/nursery_profile_controller.rb:13:in `profile'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "nursery_plants"."id" FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:14:in `profile'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "reservations"."user_email", "reservations"."nursery_plant_id" FROM "reservations" INNER JOIN "nursery_plants" ON "nursery_plants"."id" = "reservations"."nursery_plant_id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/controllers/nursery_profile_controller.rb:22:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/views/nursery_profile/profile.html.erb:79
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?) LIMIT ?[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7], ["LIMIT", 1]]
+  ↳ app/views/nursery_profile/profile.html.erb:80
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
+                          typology, light, size, irrigation, use, climate, irrigation, description FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/views/nursery_profile/profile.html.erb:82
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 113.5ms | Allocations: 10780)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 141.9ms | Allocations: 16089)
+Completed 200 OK in 164ms (Views: 148.8ms | ActiveRecord: 2.0ms | Allocations: 19518)
+
+
+Started GET "/logout" for ::1 at 2024-08-08 16:50:55 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (Allocations: 235)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:50:55 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 13.0ms | Allocations: 3250)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 3836.0ms | Allocations: 99753)
+Completed 200 OK in 3843ms (Views: 3841.9ms | Allocations: 100749)
+
+
+Started GET "/login" for ::1 at 2024-08-08 16:51:02 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 31.9ms | Allocations: 5137)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.4ms | Allocations: 10101)
+Completed 200 OK in 72ms (Views: 71.7ms | Allocations: 10872)
+
+
+Started POST "/login" for ::1 at 2024-08-08 16:51:10 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"andrea.folino@gmail.com", "password"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "andrea.folino@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 345ms (ActiveRecord: 1.3ms | Allocations: 1481)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:51:11 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 3469)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.3ms | Allocations: 10071)
+Completed 200 OK in 36ms (Views: 34.3ms | ActiveRecord: 0.4ms | Allocations: 10327)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 16:51:13 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 21.3ms | Allocations: 9069)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 50.9ms | Allocations: 14375)
+Completed 200 OK in 76ms (Views: 56.9ms | ActiveRecord: 3.2ms | Allocations: 16462)
+
+
+Started GET "/users/fetch_weather?lat=41.78837&lon=12.6221794" for ::1 at 2024-08-08 16:51:13 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.78837", "lon"=>"12.6221794"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 244ms (Views: 1.6ms | ActiveRecord: 0.2ms | Allocations: 1747)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 16:58:15 +0200
+Processing by UsersController#profile as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 961.1ms | Allocations: 36406)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 975.5ms | Allocations: 42031)
+Completed 200 OK in 1037ms (Views: 977.1ms | ActiveRecord: 2.4ms | Allocations: 44970)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 16:58:16 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 222ms (Views: 0.7ms | ActiveRecord: 0.2ms | Allocations: 1707)
+
+
+Started GET "/logout" for ::1 at 2024-08-08 16:58:35 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:58:35 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 15.2ms | Allocations: 3234)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.9ms | Allocations: 9777)
+Completed 200 OK in 55ms (Views: 50.9ms | ActiveRecord: 0.0ms | Allocations: 10546)
+
+
+Started GET "/login" for ::1 at 2024-08-08 16:58:37 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 13.9ms | Allocations: 5129)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 10093)
+Completed 200 OK in 55ms (Views: 54.6ms | ActiveRecord: 0.0ms | Allocations: 10858)
+
+
+Started POST "/login" for ::1 at 2024-08-08 16:58:44 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"brasiliano@sanbasilio.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "brasiliano@sanbasilio.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 432ms (ActiveRecord: 0.2ms | Allocations: 902)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:58:44 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 13.8ms | Allocations: 3419)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 35.7ms | Allocations: 10021)
+Completed 200 OK in 39ms (Views: 38.4ms | ActiveRecord: 0.2ms | Allocations: 10277)
+
+
+Started GET "/nursery_profile" for ::1 at 2024-08-08 16:58:49 +0200
+Processing by NurseryProfileController#profile as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:29:in `set_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "nurseries"."id" FROM "nurseries" WHERE "nurseries"."id_owner" = ?[0m  [["id_owner", 3]]
+  ↳ app/controllers/nursery_profile_controller.rb:13:in `profile'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "nursery_plants"."id" FROM "nursery_plants" WHERE "nursery_plants"."nursery_id" = ?[0m  [["nursery_id", 1]]
+  ↳ app/controllers/nursery_profile_controller.rb:14:in `profile'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "reservations"."user_email", "reservations"."nursery_plant_id" FROM "reservations" INNER JOIN "nursery_plants" ON "nursery_plants"."id" = "reservations"."nursery_plant_id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/controllers/nursery_profile_controller.rb:22:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering nursery_profile/profile.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/views/nursery_profile/profile.html.erb:79
+  [1m[36mPlant Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?) LIMIT ?[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7], ["LIMIT", 1]]
+  ↳ app/views/nursery_profile/profile.html.erb:80
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
+                          typology, light, size, irrigation, use, climate, irrigation, description FROM "plants" INNER JOIN "nursery_plants" ON "nursery_plants"."plant_id" = "plants"."id" WHERE "nursery_plants"."id" IN (?, ?, ?, ?, ?, ?, ?)[0m  [["id", 1], ["id", 2], ["id", 3], ["id", 4], ["id", 5], ["id", 6], ["id", 7]]
+  ↳ app/views/nursery_profile/profile.html.erb:82
+  Rendered nursery_profile/profile.html.erb within layouts/application (Duration: 43.6ms | Allocations: 11880)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 51.1ms | Allocations: 17194)
+Completed 200 OK in 73ms (Views: 52.0ms | ActiveRecord: 2.6ms | Allocations: 21140)
+
+
+Started GET "/logout" for ::1 at 2024-08-08 16:58:56 +0200
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 235)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:58:56 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 2810)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.4ms | Allocations: 9353)
+Completed 200 OK in 46ms (Views: 43.7ms | ActiveRecord: 0.0ms | Allocations: 9609)
+
+
+Started GET "/login" for ::1 at 2024-08-08 16:58:58 +0200
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 16.2ms | Allocations: 4739)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.8ms | Allocations: 9703)
+Completed 200 OK in 41ms (Views: 35.9ms | ActiveRecord: 0.0ms | Allocations: 9959)
+
+
+Started POST "/login" for ::1 at 2024-08-08 16:59:10 +0200
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "email"=>"andrea.folino@gmail.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "andrea.folino@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:7:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 323ms (ActiveRecord: 0.2ms | Allocations: 857)
+
+
+Started GET "/" for ::1 at 2024-08-08 16:59:11 +0200
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  Rendered home/index.html.erb within layouts/application (Duration: 12.4ms | Allocations: 3411)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 45.7ms | Allocations: 10009)
+Completed 200 OK in 48ms (Views: 46.9ms | ActiveRecord: 0.3ms | Allocations: 10264)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 16:59:13 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (2.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 46.6ms | Allocations: 7910)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 74.2ms | Allocations: 13219)
+Completed 200 OK in 94ms (Views: 72.4ms | ActiveRecord: 3.8ms | Allocations: 14786)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 16:59:13 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 198ms (Views: 1.5ms | ActiveRecord: 0.9ms | Allocations: 1748)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:00:48 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 952.6ms | Allocations: 36447)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 975.5ms | Allocations: 42072)
+Completed 200 OK in 1002ms (Views: 991.7ms | ActiveRecord: 1.1ms | Allocations: 44369)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:00:49 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 195ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1706)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:01:37 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 1112.9ms | Allocations: 35273)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1125.6ms | Allocations: 40481)
+Completed 200 OK in 1143ms (Views: 1125.0ms | ActiveRecord: 1.9ms | Allocations: 42039)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:01:38 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 161ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1733)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:02:42 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (1.7ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 1085.8ms | Allocations: 35235)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1110.8ms | Allocations: 40440)
+Completed 200 OK in 1127ms (Views: 1110.9ms | ActiveRecord: 3.2ms | Allocations: 41998)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:02:44 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 163ms (Views: 0.5ms | ActiveRecord: 1.1ms | Allocations: 1705)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:03:01 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 862.5ms | Allocations: 34774)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 873.3ms | Allocations: 39982)
+Completed 200 OK in 890ms (Views: 874.8ms | ActiveRecord: 1.0ms | Allocations: 41540)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:03:02 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 178ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1732)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:03:29 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 788.0ms | Allocations: 34696)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 795.4ms | Allocations: 39902)
+Completed 200 OK in 804ms (Views: 795.9ms | ActiveRecord: 1.4ms | Allocations: 41459)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:03:30 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 174ms (Views: 0.6ms | ActiveRecord: 0.2ms | Allocations: 1710)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:03:57 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 47.2ms | Allocations: 9071)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 70.5ms | Allocations: 14793)
+Completed 200 OK in 102ms (Views: 71.5ms | ActiveRecord: 1.5ms | Allocations: 17090)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:03:57 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (4.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 194ms (Views: 0.3ms | ActiveRecord: 4.4ms | Allocations: 1708)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:04:33 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 1264.4ms | Allocations: 35227)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1283.5ms | Allocations: 40432)
+Completed 200 OK in 1313ms (Views: 1285.3ms | ActiveRecord: 1.4ms | Allocations: 41990)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:04:35 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 159ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 1704)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:05:22 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 1028.4ms | Allocations: 36465)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1044.6ms | Allocations: 42098)
+Completed 200 OK in 1085ms (Views: 1048.1ms | ActiveRecord: 1.3ms | Allocations: 44390)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:05:24 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 172ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1737)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:05:51 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (2.6ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 51.2ms | Allocations: 9739)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 65.7ms | Allocations: 15364)
+Completed 200 OK in 96ms (Views: 67.2ms | ActiveRecord: 4.5ms | Allocations: 17662)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:05:51 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 241ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1705)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:06:01 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 995.4ms | Allocations: 34743)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1014.1ms | Allocations: 39948)
+Completed 200 OK in 1029ms (Views: 1014.3ms | ActiveRecord: 1.1ms | Allocations: 41506)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:06:03 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 200ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 3331)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:06:31 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 33.5ms | Allocations: 9739)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 53.9ms | Allocations: 15364)
+Completed 200 OK in 63ms (Views: 55.0ms | ActiveRecord: 1.3ms | Allocations: 17656)
+
+
+Started GET "/users/fetch_weather?lat=41.789659&lon=12.622139003423325" for ::1 at 2024-08-08 17:06:32 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.789659", "lon"=>"12.622139003423325"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 169ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1728)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:07:27 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 29.1ms | Allocations: 9066)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 41.3ms | Allocations: 14788)
+Completed 200 OK in 86ms (Views: 43.0ms | ActiveRecord: 1.2ms | Allocations: 17102)
+
+
+Started GET "/users/fetch_weather?lat=41.78837&lon=12.6221794" for ::1 at 2024-08-08 17:07:28 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.78837", "lon"=>"12.6221794"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 182ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 1704)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:07:48 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.4ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 1137.8ms | Allocations: 35283)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1153.4ms | Allocations: 40491)
+Completed 200 OK in 1178ms (Views: 1152.8ms | ActiveRecord: 2.4ms | Allocations: 42052)
+
+
+Started GET "/users/fetch_weather?lat=41.78837&lon=12.6221794" for ::1 at 2024-08-08 17:07:50 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.78837", "lon"=>"12.6221794"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 158ms (Views: 0.7ms | ActiveRecord: 1.2ms | Allocations: 1738)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:08:16 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.8ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 922.7ms | Allocations: 34297)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 935.1ms | Allocations: 39506)
+Completed 200 OK in 971ms (Views: 939.6ms | ActiveRecord: 2.3ms | Allocations: 41063)
+
+
+Started GET "/users/fetch_weather?lat=41.78837&lon=12.6221794" for ::1 at 2024-08-08 17:08:18 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.78837", "lon"=>"12.6221794"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 212ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1708)
+
+
+Started GET "/user_profile" for ::1 at 2024-08-08 17:10:08 +0200
+Processing by UsersController#profile as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "myplants"."plant_id" FROM "myplants" WHERE "myplants"."std_user_id" = ?[0m  [["std_user_id", 11]]
+  ↳ app/controllers/users_controller.rb:15:in `profile'
+  Rendering layout layouts/application.html.erb
+  Rendering users/profile.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:101
+  [1m[36mPlant Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "plants" WHERE "plants"."id" IN (?, ?, ?) LIMIT ?[0m  [["id", 14], ["id", 34], ["id", 35], ["LIMIT", 1]]
+  ↳ app/views/users/profile.html.erb:102
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" IN (?, ?, ?)[0m  [["id", 14], ["id", 34], ["id", 35]]
+  ↳ app/views/users/profile.html.erb:103
+  Rendered users/profile.html.erb within layouts/application (Duration: 19.2ms | Allocations: 7909)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 30.4ms | Allocations: 13211)
+Completed 200 OK in 38ms (Views: 30.9ms | ActiveRecord: 0.9ms | Allocations: 14768)
+
+
+Started GET "/users/fetch_weather?lat=41.78837&lon=12.6221794" for ::1 at 2024-08-08 17:10:09 +0200
+Processing by UsersController#fetch_weather as */*
+  Parameters: {"lat"=>"41.78837", "lon"=>"12.6221794"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6:in `current_user'
+Completed 200 OK in 225ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 1707)
+
+

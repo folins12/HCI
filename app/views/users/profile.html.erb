@@ -75,8 +75,8 @@
 
 
     <div class="weather-widget" id="weather-widget">
-  <p>Caricamento meteo...</p>
-</div>
+      <p>Caricamento meteo...</p>
+    </div>
 
 
 
@@ -171,16 +171,20 @@
       fetch(`/users/fetch_weather?lat=${lat}&lon=${lon}`)
         .then(response => response.json())
         .then(data => {
-          console.log('Weather data:', data); // Debug: Log the weather data
+          console.log('Weather data:', data);
 
           if (data.weather) {
             const weather = data.weather;
+            const iconCode = weather.weather[0].icon;
+            const iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
+
             const widgetContent = `
-              <h2>Meteo attuale</h2>
-              <p><strong>Temperatura:</strong> ${weather.main.temp}°C</p>
-              <p><strong>Condizioni:</strong> ${weather.weather[0].description}</p>
-              <p><strong>Umidità:</strong> ${weather.main.humidity}%</p>
-              <p><strong>Vento:</strong> ${weather.wind.speed} m/s</p>
+              <h2 style="color: #004d00;">Meteo Nella Tua Zona</h2>
+              <img src="${iconUrl}" alt="Icona meteo" class="weather-icon">
+              <p><strong style="color: #004d00;">Temperatura:</strong> ${weather.main.temp}°C</p>
+              <p><strong style="color: #004d00;">Condizioni:</strong> ${weather.weather[0].description}</p>
+              <p><strong style="color: #004d00;">Umidità:</strong> ${weather.main.humidity}%</p>
+              <p><strong style="color: #004d00;">Vento:</strong> ${weather.wind.speed} m/s</p>
             `;
             document.getElementById('weather-widget').innerHTML = widgetContent;
           } else {
@@ -192,6 +196,7 @@
           document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
         });
     }
+
 
   </script>
 
