@@ -78,10 +78,10 @@
         <div class="nursery-plants-container">
           <% @myplants.each do |plant| %>
           
-            <div class="nursery-plant-box">
+            <div class="nursery-plant-box" style="text-align: left;">
               <%= image_tag "#{plant.name}.jpg", alt: plant.name, class:"nursery-plant-image" %>
             
-              <p class="nome"><strong><%= plant.name %></strong></p>
+              <h3 class="nome" style="text-align: center;"><strong><%= plant.name %></strong></h3>
               <p><strong>Tipologia:</strong> <%= plant.typology %></p>
               <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
               <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
@@ -89,8 +89,8 @@
               <p><strong>Clima:</strong> <%= plant.climate %></p>
               <p><strong>Uso:</strong> <%= plant.use %></p>
               <p><strong>Descrizione:</strong> <%= plant.description %></p>
-              <p><strong>Disponibiltà:</strong> <%= plant.disp %></p>
-              <p><strong>Ordinazioni:</strong> <%= plant.res %></p>
+              <p style="text-align: center; margin-top: 2%;"><strong>Disponibiltà:</strong> <%= plant.disp %></p>
+              <p style="text-align: center;"><strong>Ordinazioni:</strong> <%= plant.res %></p>
             </div>
 
           <% end %>
