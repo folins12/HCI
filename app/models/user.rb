@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :nursery, inclusion: { in: [true, false] } # Validazione per booleano
 
   has_many :nurseries
+  has_many :myplants
 
   attr_accessor :current_password
 

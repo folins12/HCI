@@ -1,6 +1,7 @@
 class Plant < ApplicationRecord
   has_many :nursery_plants
   has_many :nurseries, through: :nursery_plants
+  has_many :myplants
 
   validates :light, inclusion: { in: 1..4 }
   validates :irrigation, inclusion: { in: 1..3 }
@@ -8,7 +9,7 @@ class Plant < ApplicationRecord
 
 
   def self.search(params = {})
-    results = all  
+    results = all
 
     query=params[:query]
     if query.present? && !query.strip.empty?
@@ -19,7 +20,7 @@ class Plant < ApplicationRecord
     if typology.present? && !typology.strip.empty?
       results = results.where('LOWER(typology) LIKE ?', "%#{typology.strip.downcase}%")
     end
-    
+
     climate=params[:climate]
     if climate.present? && !climate.strip.empty?
       results = results.where('LOWER(climate) LIKE ?', "%#{climate.strip.downcase}%")
