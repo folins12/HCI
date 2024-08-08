@@ -72,6 +72,9 @@
     </div>
 
     <hr class="separator" >
+    <div class="plant-message">
+      Le tue piante in vendita:
+    </div>
 
     <div class="nursery-plants-available <%= 'single-item' if @myplants.size == 1 %>">
       <% if @myplants.any? %>
@@ -91,6 +94,16 @@
               <p><strong>Descrizione:</strong> <%= plant.description %></p>
               <p style="text-align: center; margin-top: 2%;"><strong>Disponibiltà:</strong> <%= plant.disp %></p>
               <p style="text-align: center;"><strong>Ordinazioni:</strong> <%= plant.res %></p>
+
+              <p><strong>Utenti che hanno prenotato questa pianta:</strong></p>
+              <% emails = @reservations[plant.nursery_plant_id] %>
+              <% if emails %>
+                <% emails.each do |email| %>
+                  <p><%= email[0] %></p>
+                <% end %>
+              <% else %>
+                <p>Nessuna prenotazione.</p>
+              <% end %>
             </div>
 
           <% end %>
