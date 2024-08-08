@@ -16,7 +16,7 @@
     font-size: 7em;
     color: #ffffff;
     margin-bottom: 10px;
-    margin-top: -20px;
+    margin-top: 20px;
   }
 
   .intro-text {
@@ -64,6 +64,11 @@
     cursor: pointer;
   }
 
+  .search-button {
+    padding: 13px 20px;
+    font-size: 1em;
+  }
+
   .clear-button {
     background-color: rgb(255, 62, 62);
   }
@@ -107,9 +112,7 @@
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   }
 
-  .plants-grid.single-item .plant-box {
-    width: 100%;
-  }
+  
 
   .plant-image img {
     width: 100%;
@@ -120,7 +123,6 @@
 
   .plant-info {
     text-align: left;
-    margin-left: 5%;
   }
 
   .plant-info p {
@@ -149,7 +151,8 @@
 
   .back-button-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
   
   .back-button {
