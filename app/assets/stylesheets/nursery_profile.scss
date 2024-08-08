@@ -20,7 +20,7 @@
   display: inline-block;
   text-align: left;
   margin: 0 auto;
-  border: 4px solid #004d00; // Verde scuro, raddoppiato
+  border: 4px solid #ffffff; // Verde scuro, raddoppiato
   border-radius: 15px; // Raddoppiato rispetto al bordo precedente
 }
 
@@ -31,18 +31,18 @@
 
 .profile-table th, .profile-table td {
   padding: 20px; // Raddoppiato rispetto al padding precedente
-  border: 2px solid #004d00; // Verde scuro, raddoppiato
+  border: 2px solid #ffffff; // Verde scuro, raddoppiato
   border-radius: 15px;
 }
 
 .profile-table th {
-  background-color: #e6ffe6; // Colore di sfondo chiaro
-  color: #004d00; // Verde scuro
+  background-color: inherit; // Colore di sfondo chiaro
+  color: #ffffff; // Verde scuro
   font-size: 18px; // Aumenta la dimensione del testo se necessario
 }
 
 .profile-table td {
-  color: #004d00; // Verde scuro
+  color: #ffffff; // Verde scuro
   font-size: 18px; // Aumenta la dimensione del testo se necessario
 }
 
@@ -70,7 +70,7 @@
 .plant-panel {
   width: 250px;
   height: 220px;
-  background-color: #e6ffe6; // Colore di sfondo chiaro
+  background-color: inherit; // Colore di sfondo chiaro
   border: 2px solid #004d00; // Verde scuro
   border-radius: 10px;
   display: flex;

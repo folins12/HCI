@@ -1,65 +1,32 @@
 .profile-container {
   text-align: center;
-  padding: 20px;
-  background-color: #f0f8ff;
+  padding: 40px 30px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('home.jpg');
   margin-top: 3%;
   margin-bottom: 3%;
   height: 80%;
-  width: 60%;
+  max-width: 50%;
   border-radius: 15px;
   align-items: center;
 }
 
 .welcome-message {
-  color: #004d00;
-  font-size: 40px;
-  margin-bottom: 5%;
+  color: #ffffff;
+  font-size: 4em;
+  margin-bottom: 2%;
 }
 
 .profile-table {
   display: inline-block;
   text-align: left;
   margin: 0 auto;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .profile-table th, .profile-table td {
   padding: 20px;
-  font-size: 18px;
-}
-
-.separator {
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-top: 4%;
-  margin-bottom: 4%;
-}
-
-.plant-message {
-  color: #004d00;
-  font-size: 30px;
-  margin-bottom: 4%;
-}
-
-.logout-button {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.lo-button {
-  background-color: #006400;
-  color: white;
-  padding: 20px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 30px;
-  margin-top: 4%;
-  margin-bottom: 2%;
-}
-
-.lo-button:hover {
-  background-color: #004d00;
+  font-size: 1.6em;
+  color: #ffffff;
 }
 
 #profile-edit .input-group {
@@ -127,18 +94,65 @@
   width: calc(100% - 60px);
 }
 
-.edit-button #edit-profile-button {
-  background-color: #006400;
-  color: white;
-  padding: 20px;
-  border-radius: 20px;
+.btn {
+  display: inline-block;
+  padding: 8px 26px; 
+  font-size: 1.2em;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+  border: none;
 }
 
-.edit-button #edit-profile-button:hover {
-  background-color: #004d00;
+.btn-primary {
+  background-color: #1a5e0d;
+  color: white;
 }
+
+.btn-primary:hover {
+  background-color: #134509; 
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-danger {
+  background-color: #ff0019;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e60012; 
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+#logout-button {
+  padding: 8px 26px; 
+  font-size: 1.2em; 
+}
+
+#cancel-edit-button {
+  background-color: #6c757d;
+  color: white;
+  font-size: 1.2em; 
+}
+
+#cancel-edit-button:hover {
+  background-color: #5a6268; 
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px; 
+  margin: 20px 0;
+}
+
+
+
 
 .weather-widget {
   background-color: #c6ffc6;
@@ -167,4 +181,11 @@
   height: 50px;
   margin-right: 10px;
   vertical-align: middle;
+}
+
+
+.plant-message {
+  color: #004d00;
+  font-size: 30px;
+  margin-bottom: 4%;
 }

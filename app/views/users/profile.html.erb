@@ -29,8 +29,9 @@
           </tr>
         </table>
       </div>
-      <div class="edit-button">
-        <button id="edit-profile-button" class="lo-button">Modifica profilo</button>
+      <div class="profile-buttons">
+        <button id="edit-profile-button" class="btn btn-primary">Modifica profilo</button>
+        <%= link_to 'Logout', logout_path, method: :delete, id: 'logout-button', class: 'btn btn-danger' %>
       </div>
     </div>
 
@@ -65,77 +66,69 @@
             <%= flash[:alert] %>
           </div>
         <% end %>
-        <div class="button-container">
-          <button type="submit" class="button">Conferma modifiche</button>
+        <div class="profile-buttons">
+          <%= form.submit "Invia", class: "btn btn-primary" %>
+          <button id="cancel-edit-button" class="btn btn-secondary" onclick="cancelEdit()">Annulla</button>
         </div>
       <% end %>
     </div>
-
-    <hr class="separator" />
-
-
-    <div class="weather-widget" id="weather-widget">
-      <p>Caricamento meteo...</p>
-    </div>
-
-
-
-
-
-
-    <div class="plant-message">
-      Queste sono le tue piante:
-    </div>
-    <!--
-    <div class="plant-panels">
-      <% if @plants.present? %>
-        <% @myplants.each do |plant| %>
-          <div class="plant-panel">
-            <span class="plant-name"><%= plant.pianta %></span>
-          </div>
-        <% end %>
-      <% else %>
-        <p>Nessuna pianta trovata.</p>
-      <% end %>
-    </div>-->
-    <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
-      <% if @myplants.any? %>
-        <% @myplants.each do |plant| %>
-          <div class="plant-box">
-            <div class="plant-image">
-              <%= image_tag "#{plant.name}.jpg", alt: plant.name %>
-            </div>
-            
-            <div class="plant-info">
-              <p class="nome"><strong><%= plant.name %></strong></p>
-              <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-              <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
-              <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
-              <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
-              <p><strong>Clima:</strong> <%= plant.climate %></p>
-              <p><strong>Uso:</strong> <%= plant.use %></p>
-              <p><strong>Descrizione:</strong> <%= plant.description %></p>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <p class="no-results">Non ci sono piante</p>
-      <% end %>
-    </div>
-
-    <div class="logout-button">
-      <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
-    </div>
   </div>
 
-  <script>
-    document.getElementById('edit-profile-button').addEventListener('click', function() {
-      document.getElementById('profile-view').style.display = 'none';
-      document.getElementById('profile-edit').style.display = 'block';
-    });
-  </script>
+
+
+  
+  <div class="weather-widget" id="weather-widget">
+    <p>Caricamento meteo...</p>
+  </div>
+
+
+
+
+
+
+  <div class="plant-message">
+    Queste sono le tue piante:
+  </div>
+  
+  <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
+    <% if @myplants.any? %>
+      <% @myplants.each do |plant| %>
+        <div class="plant-box">
+          <div class="plant-image">
+            <%= image_tag "#{plant.name}.jpg", alt: plant.name %>
+          </div>
+          
+          <div class="plant-info">
+            <p class="nome"><strong><%= plant.name %></strong></p>
+            <p><strong>Tipologia:</strong> <%= plant.typology %></p>
+            <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
+            <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
+            <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
+            <p><strong>Clima:</strong> <%= plant.climate %></p>
+            <p><strong>Uso:</strong> <%= plant.use %></p>
+            <p><strong>Descrizione:</strong> <%= plant.description %></p>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-results">Non ci sono piante</p>
+    <% end %>
+  </div>
+
+  
+  
 
   <script type="text/javascript">
+    document.getElementById("edit-profile-button").addEventListener("click", function() {
+      document.getElementById("profile-view").style.display = "none";
+      document.getElementById("profile-edit").style.display = "block";
+    });
+
+    function cancelEdit() {
+      document.getElementById("profile-edit").style.display = "none";
+      document.getElementById("profile-view").style.display = "block";
+    }
+  
     document.addEventListener('DOMContentLoaded', function() {
       const address = "<%= raw @current_user&.address.to_s %>";
       geocodeAddress(address).then(location => {
