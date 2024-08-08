@@ -10,7 +10,8 @@ class NurseryProfileController < ApplicationController
   end
 
   def profile
-    nursery_plant_ids = NurseryPlant.where(nursery_id: current_user.id).pluck(:id)
+    nursery_ids = Nursery.where(id_owner: current_user.id).pluck(:id)
+    nursery_plant_ids = NurseryPlant.where(nursery_id: nursery_ids).pluck(:id)
     @myplants = Plant.joins(:nursery_plants)
                   .where(nursery_plants: { id: nursery_plant_ids })
                   .select('plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
