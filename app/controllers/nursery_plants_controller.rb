@@ -30,11 +30,28 @@ class NurseryPlantsController < ApplicationController
   end
 
   def incdisp
-    puts "...........................................................";
     nursery_plant = NurseryPlant.find_by(nursery_id: params[:nursery_id], plant_id: params[:plant_id])
     if nursery_plant
       nursery_plant.increment!(:max_disponibility)
       render json: { success: true }
+    end
+  end
+
+  def reserve
+    nursery_plant = NurseryPlant.find_by(id: params[:nursery_plant_id])
+    if nursery_plant.max_disponibility - nursery_plant.num_reservations > 0
+      nursery_plant.num_reservations += 1
+      puts "..........................."
+      if nursery_plant.save
+        puts "XXXXXXXXXXXXXXXXXX"
+        Reservation.create(nursery_plant_id: nursery_plant.id, user_email: current_user.email)
+        render json: { success: true, new_availability: nursery_plant.max_disponibility - nursery_plant.num_reservations }
+      else
+        render json: { success: false, message: "Errore nel salvataggio della prenotazione." }
+      end
+    puts "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZz"
+    else
+      render json: { success: false, message: "Sold out. Non ci sono più disponibilità per questa pianta." }
     end
   end
 
