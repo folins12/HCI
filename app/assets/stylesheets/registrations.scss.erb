@@ -1,136 +1,132 @@
 .background {
-    background-image: url('<%= asset_path("sfondo.jpeg") %>');  /* Percorso dell'immagine di sfondo */
-    background-size: cover; /* Adatta l'immagine per coprire l'intero sfondo */
-    background-repeat: no-repeat; /* Evita la ripetizione dell'immagine */
-    background-position: center; /* Centra l'immagine */
-    width: 100%;
-    height: 100vh; /* Altezza della finestra del browser */
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-image: url('<%= asset_path("sfondo.jpeg") %>');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* INIZIO FORM */
 .formcontainer {
-    border: 3px solid #006400; /* Bordo verde scuro */
-    border-radius: 15px;
-    padding: 20px; /* Padding per creare spazio all'interno del container */
-    margin: 0 auto; /* Centratura orizzontale */
-    width: 40%; /* Adatta la larghezza del container ai contenuti */
-    height: auto; /* Adatta l'altezza al contenuto */
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: white; /* Aggiunto sfondo bianco per il container */
-    opacity: 0.95; /* Leggera trasparenza per vedere lo sfondo */
+  border: 3px solid #006400;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 100px;
+  margin: 0 auto;
+  width: 60%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  opacity: 0.95;
 }
 
 .logo {
-    margin-bottom: 3%; 
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .logo img {
-    max-width: 200px; 
+  max-width: 150px;
 }
 
 .input-group {
-    width: 100%; /* Aumentata la larghezza dell'input group */
-    margin: 2% 0; /* Margine verticale */
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
 }
 
 .input-group input {
-    width: 400px; /* Aumentata ulteriormente la larghezza dell'input */
-    padding: 15px; 
-    border: 4px solid #006400; 
-    border-radius: 10px; 
-    box-sizing: border-box;
+  width: 90%;
+  padding: 10px;
+  border: 2px solid #006400;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .input-group input:focus {
-    outline: none;
-    border-color: #004d00;
+  outline: none;
+  border-color: #004d00;
 }
 
-.button-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.button {
-    width: 50%; /* Regolata la larghezza del bottone */
-    background-color: #006400;
-    color: white;
-    border: none;
-    padding: 20px; /* Padding verticale per centrare il testo */
-    border-radius: 20px; 
-    cursor: pointer;
-    font-size: 30px; 
-    margin-top: 2%; 
-    margin-bottom: 5%; 
-    text-align: center; 
-    display: flex; /* Aggiunto display flex per centrare il testo */
-    align-items: center; /* Centrare verticalmente il testo */
-    justify-content: center; /* Centrare orizzontalmente il testo */
-}
-
-.button:hover {
-    background-color: #004d00;
-}
-
-.link {
-    color: #006400;
-    text-decoration: none;
-    font-size: 25px;
-    margin-bottom: 10%;
-    text-align: center; /* Centra il testo della scritta cliccabile */
-}
-
-/* Stile per la checkbox */
 .checkbox-container {
+  width: 90%;
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .checkbox-container input[type="checkbox"] {
-  width: 24px; /* Dimensione della checkbox */
-  height: 24px; /* Dimensione della checkbox */
-  -webkit-appearance: none; /* Rimuove lo stile di default */
-  background-color: #fff; /* Colore di sfondo predefinito */
-  border: 2px solid #004d00; /* Bordo verde scuro */
-  border-radius: 4px; /* Angoli arrotondati */
-  cursor: pointer; /* Cambia il cursore quando si passa sopra */
-  position: relative; /* Per posizionare l'indicatore di selezione */
-  outline: none; /* Rimuove il bordo di focus predefinito */
+  width: 24px;
+  height: 24px;
+  -webkit-appearance: none;
+  background-color: #fff;
+  border: 2px solid #004d00;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  outline: none;
 }
 
 .checkbox-container input[type="checkbox"]:checked {
-  background-color: #004d00; /* Colore di riempimento quando selezionato */
+  background-color: #004d00;
 }
 
 .checkbox-container input[type="checkbox"]:checked::after {
-  content: ""; /* Necessario per aggiungere il segno di spunta */
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   width: 12px;
   height: 12px;
-  background: #fff; /* Colore del segno di spunta */
+  background: #fff;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .checkbox-container label {
-  color: #004d00; /* Colore del testo dell'etichetta */
-  margin-left: 8px; /* Spazio tra la checkbox e l'etichetta */
-  font-size: 20px; /* Dimensione del testo */
+  color: #004d00;
+  margin-left: 8px;
+  font-size: 18px; /* Assicura che il testo sia leggibile */
 }
 
-/* Messaggi di errore */
+.button-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  width: 100%;
+  background-color: #006400;
+  color: white;
+  border: none;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: #004d00;
+}
+
+.link {
+  color: #006400;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .has-error input {
   border-color: red;
 }

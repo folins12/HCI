@@ -4,7 +4,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
   validates :nome, presence: true
   validates :cognome, presence: true
-  validates :nursery, inclusion: { in: [true, false] } # Validazione per booleano
+  validates :nursery, inclusion: { in: [true, false] }
+  validates :address, presence: true  # Usa address qui, se necessario
 
   has_many :nurseries
   has_many :myplants
@@ -13,7 +14,6 @@ class User < ApplicationRecord
 
   validate :validate_passwords
 
-  # Metodo per la validazione delle password
   def validate_passwords
     if password.present? || password_confirmation.present?
       if password == current_password
@@ -23,6 +23,16 @@ class User < ApplicationRecord
       elsif password.present? && password != password_confirmation
         errors.add(:password_confirmation, "Password diversa da quella nuova inserita nella casella precedente.")
       end
+    end
+  end
+
+  validate :valid_address_format
+
+  private
+
+  def valid_address_format
+    unless address =~ /\A(via|viale|v\.le)\s.+,\s.*\z/i
+      errors.add(:address, "Indirizzo non valido: deve iniziare con Via, Viale, o V.le e contenere una virgola. Esempio: Via Roma 1, Albano Laziale")
     end
   end
 

@@ -14,10 +14,16 @@ class UsersController < ApplicationController
   def profile
     plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
     @myplants = Plant.where(id: plant_ids)
+    if @user
+      plant_ids = Myplant.where(std_user_id: @user.id).pluck(:plant_id)
+      @myplants = Plant.where(id: plant_ids)
+    else
+      redirect_to root_path, alert: 'Utente non trovato.'
+    end
   end
 
   def update
-    if password_update_valid?
+    if @user && password_update_valid?
       if @user.update(user_params)
         redirect_to user_profile_path, notice: 'Profilo aggiornato con successo.'
       else
@@ -57,14 +63,16 @@ class UsersController < ApplicationController
     nil
   end
 
-
-
   def set_user
-    @user = current_user
+    @user = User.find_by(id: params[:id]) || current_user
+    if @user.nil?
+      redirect_to root_path, alert: 'Utente non trovato.'
+    end
   end
 
+
   def user_params
-    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery)
+    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :indirizzo)
   end
 
   def password_update_valid?
@@ -89,6 +97,4 @@ class UsersController < ApplicationController
       return true
     end
   end
-
-
 end

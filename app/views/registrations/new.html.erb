@@ -22,23 +22,17 @@
         <div class="input-group">
           <%= form.text_field :cognome, value: @user.cognome, placeholder: 'Cognome', required: true %>
         </div>
-        <div class="input-group <%= 'has-error' if @user.errors[:email].any? %>">
+        <div class="input-group">
           <%= form.email_field :email, value: @user.email, placeholder: 'Email', required: true %>
-          <% if @user.errors[:email].any? %>
-            <span class="error-message"><%= @user.errors[:email].first %></span>
-          <% end %>
         </div>
-        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
+        <div class="input-group">
           <%= form.password_field :password, placeholder: 'Password', required: true %>
-          <% if @user.errors[:password].any? %>
-            <span class="error-message"><%= @user.errors[:password].first %></span>
-          <% end %>
         </div>
-        <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
+        <div class="input-group">
           <%= form.password_field :password_confirmation, placeholder: 'Conferma Password', required: true %>
-          <% if @user.errors[:password_confirmation].any? %>
-            <span class="error-message"><%= @user.errors[:password_confirmation].first %></span>
-          <% end %>
+        </div>
+        <div class="input-group">
+          <%= form.text_field :address, value: @user.address, placeholder: 'Indirizzo', required: true %>
         </div>
         <div class="checkbox-container">
           <%= form.check_box :nursery, {}, 'true', 'false' %>
@@ -47,8 +41,17 @@
         <div class="button-container">
           <button type="submit" class="button">Register</button>
         </div>
-        <div>
-          <a href="/login" class="link">Clicca qui per effettuare il login</a>
+      <% end %>
+      <div>
+        <a href="/login" class="link">Clicca qui per effettuare il login</a>
+      </div>
+      <% if @user.errors.any? %>
+        <div class="error-messages">
+          <ul>
+            <script type="text/javascript">
+              alert("Si sono verificati i seguenti errori:\n<%= @user.errors.full_messages.join('\n') %>");
+            </script>
+          </ul>
         </div>
       <% end %>
     </div>

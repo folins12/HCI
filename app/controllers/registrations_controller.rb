@@ -1,4 +1,3 @@
-# app/controllers/registrations_controller.rb
 class RegistrationsController < ApplicationController
   def new
     @user = User.new
@@ -6,6 +5,8 @@ class RegistrationsController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
+    # Controlla l'unicità dell'email, la lunghezza della password, ecc.
     if User.exists?(email: @user.email)
       @user.errors.add(:email, "L'indirizzo email inserito è già stato utilizzato per un account!")
     elsif @user.password.length < 6
@@ -14,6 +15,7 @@ class RegistrationsController < ApplicationController
       @user.errors.add(:password_confirmation, "La password inserita è diversa da quella inserita precedentemente!")
     end
 
+    # Verifica se ci sono errori (compresa la validazione dell'indirizzo)
     if @user.errors.any?
       render :new
     else
@@ -29,6 +31,6 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery)
+    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :address)
   end
 end

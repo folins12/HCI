@@ -24,7 +24,7 @@
       </div>
       <% if session[:user_id] %>
         <div class="nav-item">
-          <%= link_to 'Profilo', current_user.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+          <%= link_to 'Profilo', current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
         </div>
         <!--<div class="nav-item">
           <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>

@@ -29,8 +29,9 @@
           </tr>
         </table>
       </div>
-      <div class="edit-button">
-        <button id="edit-profile-button" class="lo-button">Modifica profilo</button>
+      <div class="profile-buttons">
+        <button id="edit-profile-button" class="btn btn-primary">Modifica profilo</button>
+        <%= link_to 'Logout', logout_path, method: :delete, id: 'logout-button', class: 'btn btn-danger' %>
       </div>
     </div>
 
@@ -56,76 +57,77 @@
           <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation %>
         </div>
-        <div class="checkbox-container">
-          <%= form.label :nursery, "Vivaio", class: 'checkbox-label' %>
-          <%= form.check_box :nursery, {}, 'true', 'false' %>
+        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
+          <%= form.label :password, "Nuovo Indirizzo di Casa", class: 'form-label' %>
+          <%= form.text_field :address, value: @user.address, required: true %>
         </div>
         <% if flash[:alert].present? %>
           <div class="alert alert-danger">
             <%= flash[:alert] %>
           </div>
         <% end %>
-        <div class="button-container">
-          <button type="submit" class="button">Conferma modifiche</button>
+        <div class="profile-buttons">
+          <%= form.submit "Invia", class: "btn btn-primary" %>
+          <button id="cancel-edit-button" class="btn btn-secondary" onclick="cancelEdit()">Annulla</button>
         </div>
       <% end %>
     </div>
   
   </div>
 
-    <hr class="separator" >
-    <div class="plant-message">
-      Le tue piante in vendita:
-    </div>
+  <div class="plant-message">
+    Le tue piante in vendita:
+  </div>
 
-    <div class="nursery-plants-available <%= 'single-item' if @myplants.size == 1 %>">
-      <% if @myplants.any? %>
-        <div class="nursery-plants-container">
-          <% @myplants.each do |plant| %>
+  <div class="nursery-plants-available <%= 'single-item' if @myplants.size == 1 %>">
+    <% if @myplants.any? %>
+      <div class="nursery-plants-container">
+        <% @myplants.each do |plant| %>
+        
+          <div class="nursery-plant-box" style="text-align: left;">
+            <%= image_tag "#{plant.name}.jpg", alt: plant.name, class:"nursery-plant-image" %>
           
-            <div class="nursery-plant-box" style="text-align: left;">
-              <%= image_tag "#{plant.name}.jpg", alt: plant.name, class:"nursery-plant-image" %>
-            
-              <h3 class="nome" style="text-align: center;"><strong><%= plant.name %></strong></h3>
-              <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-              <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
-              <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
-              <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
-              <p><strong>Clima:</strong> <%= plant.climate %></p>
-              <p><strong>Uso:</strong> <%= plant.use %></p>
-              <p><strong>Descrizione:</strong> <%= plant.description %></p>
-              <p style="text-align: center; margin-top: 2%;"><strong>Disponibiltà:</strong> <%= plant.disp %></p>
-              <p style="text-align: center;"><strong>Ordinazioni:</strong> <%= plant.res %></p>
+            <h3 class="nome" style="text-align: center;"><strong><%= plant.name %></strong></h3>
+            <p><strong>Tipologia:</strong> <%= plant.typology %></p>
+            <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
+            <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
+            <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
+            <p><strong>Clima:</strong> <%= plant.climate %></p>
+            <p><strong>Uso:</strong> <%= plant.use %></p>
+            <p><strong>Descrizione:</strong> <%= plant.description %></p>
+            <p style="text-align: center; margin-top: 2%;"><strong>Disponibiltà:</strong> <%= plant.disp %></p>
+            <p style="text-align: center;"><strong>Ordinazioni:</strong> <%= plant.res %></p>
 
-              <p><strong>Utenti che hanno prenotato questa pianta:</strong></p>
-              <% emails = @reservations[plant.nursery_plant_id] %>
-              <% if emails %>
-                <% emails.each do |email| %>
-                  <p><%= email[0] %></p>
-                <% end %>
-              <% else %>
-                <p>Nessuna prenotazione.</p>
+            <p><strong>Utenti che hanno prenotato questa pianta:</strong></p>
+            <% emails = @reservations[plant.nursery_plant_id] %>
+            <% if emails %>
+              <% emails.each do |email| %>
+                <p><%= email[0] %></p>
               <% end %>
-            </div>
+            <% else %>
+              <p>Nessuna prenotazione.</p>
+            <% end %>
+          </div>
 
-          <% end %>
-        </div>
-      <% else %>
-        <p class="no-results">Non ci sono piante</p>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% else %>
+      <p class="no-results">Non ci sono piante</p>
+    <% end %>
+  </div>
 
-    <hr class="separator" >
+  <hr class="separator">
 
-    <div class="logout-button">
-      <%= link_to 'Logout', logout_path, method: :delete, class: 'lo-button' %>
-    </div>
-
-  <script>
-    document.getElementById('edit-profile-button').addEventListener('click', function() {
-      document.getElementById('profile-view').style.display = 'none';
-      document.getElementById('profile-edit').style.display = 'block';
+  <script type="text/javascript">
+    document.getElementById("edit-profile-button").addEventListener("click", function() {
+      document.getElementById("profile-view").style.display = "none";
+      document.getElementById("profile-edit").style.display = "block";
     });
+
+    function cancelEdit() {
+      document.getElementById("profile-edit").style.display = "none";
+      document.getElementById("profile-view").style.display = "block";
+    }
   </script>
 </body>
 </html>
