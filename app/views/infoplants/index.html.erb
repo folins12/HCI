@@ -98,47 +98,51 @@
 
 
   document.addEventListener("DOMContentLoaded", function() {
-      const reserveButtons = document.querySelectorAll(".btn-addmyplant");
-      
-      reserveButtons.forEach(button => {
-          button.addEventListener("click", function() {
-              const myplantId = this.dataset.myplantId;
-              // Disabilita il bottone per evitare clic ripetuti
-              this.style.pointerEvents = "none";
+    const reserveButtons = document.querySelectorAll(".btn-addmyplant");
+    
+    reserveButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const myplantId = this.dataset.myplantId;
+            // Disabilita il bottone per evitare clic ripetuti
+            this.style.pointerEvents = "none";
 
-              fetch('/addmyplant', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                  },
-                  body: JSON.stringify({ myplant_id: myplantId }) // Modifica questo campo se necessario
-              })
-              .then(response => {
-                  if (!response.ok) {
-                      return response.text().then(text => {
-                          throw new Error(text);
-                      });
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  if (data.success) {
-                      this.querySelector('p').textContent = "Pianta aggiunta con successo!";
-                  } else {
-                      alert(data.message || "Errore nella aggiunta. Riprova.");
-                  }
-              })
-              .catch(error => {
-                  console.error('Errore:', error);
-                  alert('Errore: ' + error.message);
-              })
-              .finally(() => {
-                  // Riabilita il bottone in caso di errore o successo
-                  this.style.pointerEvents = "auto"; // Riabilita i clic
-              });
-          });
-      });
+            fetch('/addmyplant', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ myplant_id: myplantId })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    return response.text().then(text => {
+                        throw new Error(text);
+                    });
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Cambia il testo del pulsante
+                    const plantBox = this.closest(".plant-box");
+                    plantBox.querySelector(".btn-addmyplant").style.display = 'none';
+                    
+                    // Mostra il messaggio "Questa pianta è già nelle tue piante."
+                    const message = document.createElement("p");
+                    message.className = "added-message";
+                    message.textContent = "Questa pianta è già nelle tue piante.";
+                    plantBox.appendChild(message);
+                } else {
+                    alert(data.message || "Errore nella aggiunta. Riprova.");
+                }
+            })
+            .catch(error => {
+                console.error('Errore:', error);
+                alert('Errore: ' + error.message);
+            });
+        });
+    });
   });
 
 
