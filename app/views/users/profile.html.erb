@@ -59,9 +59,9 @@
           <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation %>
         </div>
-        <div class="checkbox-container">
-          <%= form.label :nursery, "Vivaio", class: 'checkbox-label' %>
-          <%= form.check_box :nursery, {}, 'true', 'false' %>
+        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
+          <%= form.label :password, "Nuovo Indirizzo di Casa", class: 'form-label' %>
+          <%= form.text_field :address, value: @user.address, required: true %>
         </div>
         <% if flash[:alert].present? %>
           <div class="alert alert-danger">
