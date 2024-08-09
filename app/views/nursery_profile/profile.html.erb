@@ -97,15 +97,20 @@
             <p><strong>Descrizione:</strong> <%= plant.description %></p>
             <p style="text-align: center; margin-top: 2%;"><strong>Disponibiltà:</strong> <%= plant.disp %></p>
             <p style="text-align: center;"><strong>Ordinazioni:</strong> <%= plant.res %></p>
-
-            <p><strong>Utenti che hanno prenotato questa pianta:</strong></p>
+            <br>
             <% emails = @reservations[plant.nursery_plant_id] %>
             <% if emails %>
+              <p><strong>Utenti che hanno prenotato questa pianta:</strong></p>
+              <% email_counts = Hash.new(0) %>
               <% emails.each do |email| %>
-                <p><%= email[0] %></p>
+                <% email_counts[email[0]] += 1 %>
+              <% end %>
+
+              <% email_counts.each do |email, count| %>
+                <p><%= email %>: <%= count %> </p>
               <% end %>
             <% else %>
-              <p>Nessuna prenotazione.</p>
+              <p><strong>Nessuna prenotazione.</strong></p>
             <% end %>
           </div>
 
