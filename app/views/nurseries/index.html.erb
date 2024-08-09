@@ -7,7 +7,7 @@
 
   <%= form_with url: nurseries_path, method: :get, local: true, class: 'nursery-search-form' do |form| %>
     <%= text_field_tag :query, params[:query], placeholder: 'Cerca...', class: 'nursery-search-bar' %>
-    <%= form.submit "Search" %>
+    <%= form.submit "Cerca" %>
   <% end %>
 
   <div id="map-container">
