@@ -25,4 +25,15 @@ class User < ApplicationRecord
       end
     end
   end
+
+  validate :valid_address_format
+
+  private
+
+  def valid_address_format
+    unless address =~ /\A(via|viale|v\.le)\s.+,\s.*\z/i
+      errors.add(:address, "Indirizzo non valido: deve iniziare con Via, Viale, o V.le e contenere una virgola. Esempio: Via Roma 1, Albano Laziale")
+    end
+  end
+
 end

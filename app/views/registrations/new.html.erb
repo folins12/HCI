@@ -41,11 +41,19 @@
         <div class="button-container">
           <button type="submit" class="button">Register</button>
         </div>
-        <div>
-          <a href="/login" class="link">Clicca qui per effettuare il login</a>
+      <% end %>
+      <div>
+        <a href="/login" class="link">Clicca qui per effettuare il login</a>
+      </div>
+      <% if @user.errors.any? %>
+        <div class="error-messages">
+          <ul>
+            <script type="text/javascript">
+              alert("Si sono verificati i seguenti errori:\n<%= @user.errors.full_messages.join('\n') %>");
+            </script>
+          </ul>
         </div>
       <% end %>
-
     </div>
   </div>
 </body>
