@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
     @myplants = Plant.where(id: plant_ids)
     if @user
-      plant_ids = Myplant.where(std_user_id: @user.id).pluck(:plant_id)
+      plant_ids = Myplant.where(user_id: @user.id).pluck(:plant_id)
       @myplants = Plant.where(id: plant_ids)
     else
       redirect_to root_path, alert: 'Utente non trovato.'
