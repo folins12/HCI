@@ -1,4 +1,3 @@
-# app/controllers/registrations_controller.rb
 class RegistrationsController < ApplicationController
   def new
     @user = User.new
@@ -29,6 +28,6 @@ class RegistrationsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery)
+    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :address)
   end
 end

@@ -4,7 +4,8 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
   validates :nome, presence: true
   validates :cognome, presence: true
-  validates :nursery, inclusion: { in: [true, false] } # Validazione per booleano
+  validates :nursery, inclusion: { in: [true, false] }
+  validates :address, presence: true  # Usa address qui, se necessario
 
   has_many :nurseries
   has_many :myplants
@@ -13,7 +14,6 @@ class User < ApplicationRecord
 
   validate :validate_passwords
 
-  # Metodo per la validazione delle password
   def validate_passwords
     if password.present? || password_confirmation.present?
       if password == current_password
@@ -25,5 +25,4 @@ class User < ApplicationRecord
       end
     end
   end
-
 end

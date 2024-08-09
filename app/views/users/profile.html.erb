@@ -170,12 +170,11 @@
 
           if (data.weather) {
             const weather = data.weather;
-            const iconCode = weather.weather[0].icon;
+            const descriptionInEnglish = weather.weather[0].description.toLowerCase();
+            const iconCode = weatherIconMapping[descriptionInEnglish] || "01d";
             const iconUrl = weatherIcons[iconCode];
-    
-            const descriptionInEnglish = weather.weather[0].description;
 
-            const descriptionInItalian = weatherDescriptions[descriptionInEnglish.toLowerCase()] || descriptionInEnglish;
+            const descriptionInItalian = weatherDescriptions[descriptionInEnglish] || descriptionInEnglish;
 
             const widgetContent = `
               <h2 style="color: #004d00;">Meteo Nella Tua Zona</h2>
@@ -196,6 +195,8 @@
         });
     }
 
+
+
     const weatherIcons = {
       "01d": "<%= asset_path('weather-icons/01d.png') %>",
       "02d": "<%= asset_path('weather-icons/02d.png') %>",
@@ -213,8 +214,36 @@
       "broken clouds": "nuvoloso",
       "shower rain": "pioggia leggera",
       "rain": "pioggia",
-      "thunderstorm": "temporale"
+      "thunderstorm": "temporale",
+      "haze": "foschia",
+      "fog": "nebbia",
+      "overcast clouds": "nuvoloso",
+      "light rain": "pioggia leggera",
+      "heavy rain": "pioggia intensa",
+      "drizzle": "pioviggine",
+      "dust": "polvere",
+      "sand": "sabbia"
     };
+
+    const weatherIconMapping = {
+      "clear sky": "01d",
+      "few clouds": "02d",
+      "scattered clouds": "03d",
+      "broken clouds": "04d",
+      "shower rain": "09d",
+      "rain": "10d",
+      "thunderstorm": "11d",
+      "haze": "02d",
+      "fog": "02d",
+      "overcast clouds": "04d",
+      "light rain": "09d",
+      "heavy rain": "10d",
+      "drizzle": "09d",
+      "dust": "02d", 
+      "sand": "02d"
+    };
+
+
 
   </script>
 
