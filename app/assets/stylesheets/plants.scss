@@ -189,6 +189,31 @@
   background-color: #0c3a08;
 }
 
+
+.btn-addmyplant {
+  display: inline-block;
+  background-color: #134509;
+  color: white;
+  padding: 0px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-addmyplant p {
+  color: white;
+  transition: 0.2s;
+}
+
+.btn-addmyplant:hover {
+  background-color: #0a3b00;
+  transform: scale(1.02);
+  transition: 0.2s;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
   .plant-title {

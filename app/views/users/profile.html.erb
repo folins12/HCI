@@ -7,30 +7,6 @@
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
 
-<style>
-  .btn-removemyplant {
-    display: inline-block;
-    background-color: #134509;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-removemyplant p {
-    color: white;
-  }
-  
-  .btn-removemyplant:hover {
-    background-color: #0a3b00;
-    transform: scale(1.05);
-    transition: 0.2s;
-  }
-</style>
-
 </head>
 <body>
   <div class="profile-container">
@@ -132,10 +108,10 @@
             <p><strong>Clima:</strong> <%= plant.climate %></p>
             <p><strong>Uso:</strong> <%= plant.use %></p>
             <p><strong>Descrizione:</strong> <%= plant.description %></p>
-
-            <div class="btn-removemyplant" data-myplant-id="<%= plant.id %>">
-                <p>RIMUOVI DALLE MIE PIANTE</p>
-            </div>
+          </div>
+          
+          <div class="btn-removemyplant" data-myplant-id="<%= plant.id %>">
+            <p>Rimuovi</p>
           </div>
         </div>
       <% end %>
@@ -148,47 +124,44 @@
 
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
-        const reserveButtons = document.querySelectorAll(".btn-removemyplant");
-        
-        reserveButtons.forEach(button => {
-            button.addEventListener("click", function() {
-                const myplantId = this.dataset.myplantId;
-                // Disabilita il bottone per evitare clic ripetuti
-                this.style.pointerEvents = "none";
-                fetch('/removemyplant', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                    },
-                    body: JSON.stringify({ plant_id: myplantId }) // Modifica questo campo se necessario
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        return response.text().then(text => {
-                            throw new Error(text);
-                        });
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success) {
-                        this.querySelector('p').textContent = "Pianta rimossa con successo!";
-                        
-                    } else {
-                        alert(data.message || "Errore nella rimozione. Riprova.");
-                    }
-                })
-                .catch(error => {
-                    console.error('Errore:', error);
-                    alert('Errore: ' + error.message);
-                })
-                .finally(() => {
-                    // Riabilita il bottone in caso di errore o successo
-                    this.style.pointerEvents = "auto"; // Riabilita i clic
-                });
-            });
-        });
+      const reserveButtons = document.querySelectorAll(".btn-removemyplant");
+    
+      reserveButtons.forEach(button => {
+          button.addEventListener("click", function() {
+              const myplantId = this.dataset.myplantId;
+              const plantBox = this.closest('.plant-box');
+              this.style.pointerEvents = "none";
+              fetch('/removemyplant', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                  },
+                  body: JSON.stringify({ plant_id: myplantId }) 
+              })
+              .then(response => {
+                  if (!response.ok) {
+                      return response.text().then(text => {
+                          throw new Error(text);
+                      });
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  if (data.success) {
+                      plantBox.remove(); 
+                  } else {
+                      alert(data.message || "Errore nella rimozione. Riprova.");
+                      this.style.pointerEvents = "auto"; 
+                  }
+              })
+              .catch(error => {
+                  console.error('Errore:', error);
+                  alert('Errore: ' + error.message);
+                  this.style.pointerEvents = "auto";
+              });
+          });
+      });
     });
 
 
