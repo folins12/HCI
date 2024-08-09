@@ -63,17 +63,18 @@
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>          
         </div>
-
+      
         <% if current_user %>
           <% if @user_plants.exclude?(plant.id) %>
             <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
               <p>Aggiungi Alla Mia Collezione</p>
             </div>
           <% else %>
-            <p style="color: black !important;">Questa pianta è già nelle tue piante.</p>
+            <p class="added-message">Questa pianta è già nelle tue piante.</p>
           <% end %>
         <% end %>
       </div>
+
     <% end %>
   <% else %>
     <p class="no-results">Non ci sono piante con questi filtri</p>
