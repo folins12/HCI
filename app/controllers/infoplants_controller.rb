@@ -2,6 +2,9 @@
 class InfoplantsController < ApplicationController
 
   def index
+    @nrs_users = User.where(nursery: 1)
+    @std_users = User.where(nursery: 0)
+
     @plants = Plant.search(
       query: params[:query],
       typology: params[:typology],
