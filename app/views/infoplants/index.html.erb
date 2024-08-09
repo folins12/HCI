@@ -69,7 +69,7 @@
             <% if @nursery_plants && @nursery_plants.include?(plant.id) %>
               <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
             <% else %>
-              <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
+              <div class="btn-addmyplant" data-plant-id="<%= plant.id %>">
                 <% if @nrs_users.include?(current_user) %>
                   <p>Aggiungi al mio vivaio</p>
                 <% else %>
@@ -119,10 +119,12 @@
 
     reserveButtons.forEach(button => {
       button.addEventListener("click", function() {
-        const myplantId = this.dataset.myplantId;
+        const myplantId = button.getAttribute('data-plant-id');
+        //const myplantId = this.dataset.myplant-id;
+        console.log(myplantId)
         this.style.pointerEvents = "none"; // Disabilita il bottone per evitare clic ripetuti
 
-        fetch('/add_to_nursery', { // Assicurati che l'endpoint sia corretto
+        fetch('/addmyplant', { // Assicurati che l'endpoint sia corretto
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

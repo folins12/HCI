@@ -150,6 +150,23 @@
 
   <hr class="separator">
 
+  <% if @myplants.any? %>
+    <% @myplants.each do |plant| %>
+    
+      <% emails = @reservations[plant.nursery_plant_id] %>
+      <% if emails %>
+        <% email_counts = Hash.new(0) %>
+
+        <% emails.each do |email| %>
+          <% email_counts[email[0]] += 1 %>
+        <% end %>
+        <% email_counts.each do |email, count| %>
+          <%= plant.name %> <%= email %>: <%= count %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
   <script type="text/javascript">
 
     document.addEventListener("DOMContentLoaded", function() {

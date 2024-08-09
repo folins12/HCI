@@ -10,7 +10,7 @@ class MyplantsController < ApplicationController
   end
 
   def addmyplant
-    myplant = Myplant.new(plant_id: params[:myplant_id], user_id: current_user.id)
+    myplant = Myplant.new(plant_id: params[:plant_id], user_id: current_user.id)
     if myplant.save
       render json: { success: true }
     else
