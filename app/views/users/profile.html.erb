@@ -10,19 +10,20 @@
 <body>
   <div class="profile-container">
     <div class="welcome-message">
-      Benvenuto nel tuo profilo <%= @user.nome %>!
+      Benvenuto nel tuo profilo <%= @user.nome.capitalize %>!
     </div>
+
 
     <div id="profile-view" style="<%= @user.errors.any? ? 'display: none;' : 'display: block;' %>">
       <div class="profile-table">
         <table>
           <tr>
             <th>Nome</th>
-            <td><%= @user.nome %></td>
+            <td><%= @user.nome.capitalize %></td>
           </tr>
           <tr>
             <th>Cognome</th>
-            <td><%= @user.cognome %></td>
+            <td><%= @user.cognome.capitalize %></td>
           </tr>
           <tr>
             <th>Email</th>
@@ -40,11 +41,11 @@
       <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
-          <%= form.text_field :nome, value: @user.nome, required: true %>
+          <%= form.text_field :nome, value: @user.nome.capitalize, required: true %>
         </div>
         <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
           <%= form.label :cognome, "Cognome", class: 'form-label' %>
-          <%= form.text_field :cognome, value: @user.cognome, required: true %>
+          <%= form.text_field :cognome, value: @user.cognome.capitalize, required: true %>
         </div>
         <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
           <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
