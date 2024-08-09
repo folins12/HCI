@@ -10,8 +10,7 @@ class MyplantsController < ApplicationController
   end
 
   def addmyplant
-    myplant = Myplant.find_by(id: params[:myplant_id])
-    myplant = Myplant.new(plant_id: myplant.id, user_id: current_user.id)
+    myplant = Myplant.new(plant_id: params[:myplant_id], user_id: current_user.id)
     if myplant.save
       render json: { success: true }
     else
@@ -23,6 +22,7 @@ class MyplantsController < ApplicationController
     myplant = Myplant.find_by(plant_id: params[:plant_id], user_id: current_user.id)
     if myplant && myplant.destroy
       render json: { success: true }
+      #qui
     else
       render json: { success: false, message: "Errore nella rimozione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
     end

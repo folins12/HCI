@@ -112,13 +112,11 @@
 
 
 
-
+  <% if @myplants.any? %>
   <div class="plant-message">
     Queste sono le tue piante:
   </div>
-  
-  <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
-    <% if @myplants.any? %>
+    <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
       <% @myplants.each do |plant| %>
         <div class="plant-box">
           <div class="plant-image">
@@ -142,10 +140,9 @@
         </div>
       <% end %>
     <% else %>
-      <p class="no-results">Non ci sono piante</p>
-    <% end %>
-  </div>
-
+      <p class="no-results">Non hai ancora piante, aggiungile nella sezione delle piante</p>
+    </div>
+  <% end %>
   
   
 
@@ -177,6 +174,7 @@
                 .then(data => {
                     if (data.success) {
                         this.querySelector('p').textContent = "Pianta rimossa con successo!";
+                        location.reload();
                     } else {
                         alert(data.message || "Errore nella rimozione. Riprova.");
                     }
