@@ -13,27 +13,27 @@
     <div class="filters-container">
       <div class="filter">
         <%= label_tag :typology, 'Tipologia' %>
-        <%= select_tag :typology, options_for_select(Plant.pluck(:typology).uniq, params[:typology]), include_blank: true %>
+        <%= select_tag :typology, options_for_select([['', '', { style: 'color: lightgray;' }]] + Plant.pluck(:typology).uniq, params[:typology]), include_blank: false %>
       </div>
       <div class="filter">
         <%= label_tag :climate, 'Clima' %>
-        <%= select_tag :climate, options_for_select(Plant.pluck(:climate).uniq, params[:climate]), include_blank: true %>
+        <%= select_tag :climate, options_for_select([['', '', { style: 'color: lightgray;' }]] + Plant.pluck(:climate).uniq, params[:climate]), include_blank: false %>
       </div>
-      <div class="filter">
+        <div class="filter">
         <%= label_tag :use, 'Uso' %>
-        <%= select_tag :use, options_for_select(Plant.pluck(:use).uniq, params[:use]), include_blank: true %>
+        <%= select_tag :use, options_for_select([['', '', { style: 'color: lightgray;' }]] + Plant.pluck(:use).uniq, params[:use]), include_blank: false %>
       </div>
       <div class="filter">
         <%= label_tag :light, "Luce" %>
-        <%= select_tag :light, options_for_select([['ombra completa', 1], ['ombra parziale', 2], ['luce indiretta', 3], ['sole diretto', 4]], params[:light]), include_blank: true %>
+        <%= select_tag :light, options_for_select([['', '', { style: 'color: lightgray;' }], ['Ombra completa', 1], ['Ombra Parziale', 2], ['Luce Indiretta', 3], ['Sole Diretto', 4]], params[:light]), include_blank: false %>
       </div>
       <div class="filter">
         <%= label_tag :size, "Dimensione" %>
-        <%= select_tag :size, options_for_select([['piccola', 1], ['media', 2], ['grande', 3]], params[:size]), include_blank: true %>
+        <%= select_tag :size, options_for_select([['', '', { style: 'color: lightgray;' }], ['Piccola', 1], ['Media', 2], ['Grande', 3]], params[:size]), include_blank: false %>
       </div>
       <div class="filter">
         <%= label_tag :irrigation, "Irrigazione" %>
-        <%= select_tag :irrigation, options_for_select([['raramente', 1], ['ogni tanto', 2], ['frequentemente', 3]], params[:irrigation]), include_blank: true %>
+        <%= select_tag :irrigation, options_for_select([['', '', { style: 'color: lightgray;' }], ['Raramente', 1], ['Ogni Tanto', 2], ['Frequentemente', 3]], params[:irrigation]), include_blank: false %>
       </div>
       <div class="apply-filters">
         <%= form.submit "Applica", class: "apply-button" %>
@@ -42,7 +42,7 @@
         <%= button_tag "Cancella", type: 'button', class: "clear-button", onclick: "clearFilters()" %>
       </div>
     </div>
-  <% end %>
+  <%end%>
 </div>
 
 <div class="plants-grid">
@@ -66,13 +66,17 @@
 
         <% if current_user %>
           <% if @user_plants.exclude?(plant.id) %>
-            <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
-              <% if @nrs_users.include?(current_user) %>
-                <p>Aggiungi al mio vivaio</p>
-              <% else %>
-                <p>Aggiungi Alla Mia Collezione</p>
-              <% end %>
-            </div>
+            <% if @nursery_plants && @nursery_plants.include?(plant.id) %>
+              <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
+            <% else %>
+              <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
+                <% if @nrs_users.include?(current_user) %>
+                  <p>Aggiungi al mio vivaio</p>
+                <% else %>
+                  <p>Aggiungi Alla Mia Collezione</p>
+                <% end %>
+              </div>
+            <% end %>
           <% else %>
             <p class="added-message">
               <% if @nrs_users.include?(current_user) %>
@@ -84,18 +88,14 @@
           <% end %>
         <% end %>
 
-
-
-
-
-
       </div>
-
     <% end %>
   <% else %>
     <p class="no-results">Non ci sono piante con questi filtri</p>
   <% end %>
 </div>
+
+
 
 <% if params[:query].present? || params[:typology].present? || params[:climate].present? || params[:use].present? || params[:light].present? || params[:size].present? || params[:irrigation].present? %>
   <div class="back-button-container">
@@ -116,51 +116,54 @@
 
   document.addEventListener("DOMContentLoaded", function() {
     const reserveButtons = document.querySelectorAll(".btn-addmyplant");
-    
-    reserveButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const myplantId = this.dataset.myplantId;
-            // Disabilita il bottone per evitare clic ripetuti
-            this.style.pointerEvents = "none";
 
-            fetch('/addmyplant', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify({ myplant_id: myplantId })
-            })
-            .then(response => {
-                if (!response.ok) {
-                    return response.text().then(text => {
-                        throw new Error(text);
-                    });
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    // Cambia il testo del pulsante
-                    const plantBox = this.closest(".plant-box");
-                    plantBox.querySelector(".btn-addmyplant").style.display = 'none';
-                    
-                    // Mostra il messaggio "Questa pianta è già nelle tue piante."
-                    const message = document.createElement("p");
-                    message.className = "added-message";
-                    message.textContent = "Questa pianta è già nelle tue piante.";
-                    plantBox.appendChild(message);
-                } else {
-                    alert(data.message || "Errore nella aggiunta. Riprova.");
-                }
-            })
-            .catch(error => {
-                console.error('Errore:', error);
-                alert('Errore: ' + error.message);
+    reserveButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const myplantId = this.dataset.myplantId;
+        this.style.pointerEvents = "none"; // Disabilita il bottone per evitare clic ripetuti
+
+        fetch('/add_to_nursery', { // Assicurati che l'endpoint sia corretto
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ plant_id: myplantId })
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.text().then(text => {
+              throw new Error(text);
             });
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.success) {
+            const plantBox = this.closest(".plant-box");
+            // Cambia il testo del pulsante
+            this.style.display = 'none';
+
+            // Mostra il messaggio "Questa pianta è già nel tuo vivaio."
+            const message = document.createElement("p");
+            message.className = "added-message";
+            message.textContent = "Questa pianta è già nel tuo vivaio.";
+            plantBox.appendChild(message);
+          } else {
+            alert(data.message || "Errore nella aggiunta. Riprova.");
+          }
+        })
+        .catch(error => {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
         });
+      });
     });
   });
+
+
+
+
 
 
     
