@@ -22,7 +22,6 @@ class MyplantsController < ApplicationController
     myplant = Myplant.find_by(plant_id: params[:plant_id], user_id: current_user.id)
     if myplant && myplant.destroy
       render json: { success: true }
-      #qui
     else
       render json: { success: false, message: "Errore nella rimozione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
     end

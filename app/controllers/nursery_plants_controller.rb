@@ -47,7 +47,21 @@ class NurseryPlantsController < ApplicationController
       else
         render json: { success: false }
       end
-      
+    end
+  end
+
+  def removenursplant
+    plant = NurseryPlant.find_by(plant_id: params[:plant_id], nursery_id: params[:nursery_id])
+    if plant
+      if plant.num_reservations<=0
+        if plant.destroy
+          render json: { success: true }
+        end
+      else
+        render json: {success: false, message: "Ci sono degli ordini in sospeso"}
+      end
+    else
+      render json: { success: false, message: "Errore nell'eliminazione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
     end
   end
 end

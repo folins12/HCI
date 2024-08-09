@@ -121,8 +121,12 @@
             <% else %>
               <p><strong>Nessuna prenotazione.</strong></p>
             <% end %>
-          </div>
 
+            <div class="btn-removenursplant" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">
+              <p>RIMUOVI PIANTA</p>
+            </div>
+
+          </div>
         <% end %>
       </div>
     <% else %>
@@ -133,10 +137,49 @@
   <hr class="separator">
 
   <script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const reserveButtons = document.querySelectorAll(".btn-removenursplant");
+    reserveButtons.forEach(button => {
+          button.addEventListener("click", function() {
+              const nurseryId = button.getAttribute('data-nursery-id');
+              const plantId = button.getAttribute('data-plant-id');
+              fetch('/removenursplant', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                  },
+                  body: JSON.stringify({ plant_id: plantId,
+                                         nursery_id: nurseryId
+                   })
+              })
+              .then(response => {
+                  if (!response.ok) {
+                      return response.text().then(text => {
+                          throw new Error(text);
+                      });
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  if (data.success) {
+                    //console.log("rimozione")
+                  } else {
+                    alert(data.message || "Errore nella rimozione. Riprova.");
+                  }
+              })
+              .catch(error => {
+                  console.error('Errore:', error);
+                  alert('Errore: ' + error.message);
+              });
+          });
+      });
+    });
     
-      document.addEventListener("DOMContentLoaded", function() {
-      const reserveButtons = document.querySelectorAll(".btn-incdisp");
-      reserveButtons.forEach(button => {
+    document.addEventListener("DOMContentLoaded", function() {
+    const reserveButtons = document.querySelectorAll(".btn-incdisp");
+    reserveButtons.forEach(button => {
           button.addEventListener("click", function() {
               const nurseryId = button.getAttribute('data-nursery-id');
               const plantId = button.getAttribute('data-plant-id');
@@ -178,9 +221,9 @@
       });
     });
 
-      document.addEventListener("DOMContentLoaded", function() {
-      const reserveButtons = document.querySelectorAll(".btn-decdisp");
-      reserveButtons.forEach(button => {
+    document.addEventListener("DOMContentLoaded", function() {
+    const reserveButtons = document.querySelectorAll(".btn-decdisp");
+    reserveButtons.forEach(button => {
           button.addEventListener("click", function() {
               const nurseryId = button.getAttribute('data-nursery-id');
               const plantId = button.getAttribute('data-plant-id');
