@@ -62,6 +62,14 @@
           <p><strong>Clima:</strong> <%= plant.climate %></p>
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>
+
+          <% if @user_plants.exclude?(plant.id) %>
+            <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
+              <p>AGGIUNGI ALLE MIE PIANTE</p>
+            </div>
+          <% else %>
+            <p>Questa pianta è già nelle tue piante.</p>
+          <% end %>
         </div>
       </div>
     <% end %>
@@ -85,4 +93,53 @@
       select.selectedIndex = 0; // Reset each select to its default option
     });
   }
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+      const reserveButtons = document.querySelectorAll(".btn-addmyplant");
+      
+      reserveButtons.forEach(button => {
+          button.addEventListener("click", function() {
+              const myplantId = this.dataset.myplantId;
+
+              // Disabilita il bottone per evitare clic ripetuti
+              this.style.pointerEvents = "none";
+
+              fetch('/addmyplant', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                  },
+                  body: JSON.stringify({ myplant_id: myplantId }) // Modifica questo campo se necessario
+              })
+              .then(response => {
+                  if (!response.ok) {
+                      return response.text().then(text => {
+                          throw new Error(text);
+                      });
+                  }
+                  return response.json();
+              })
+              .then(data => {
+                  if (data.success) {
+                      this.querySelector('p').textContent = "Pianta aggiunta con successo!";
+                  } else {
+                      alert(data.message || "Errore nella prenotazione. Riprova.");
+                  }
+              })
+              .catch(error => {
+                  console.error('Errore:', error);
+                  alert('Errore: ' + error.message);
+              })
+              .finally(() => {
+                  // Riabilita il bottone in caso di errore o successo
+                  this.style.pointerEvents = "auto"; // Riabilita i clic
+              });
+          });
+      });
+  });
+
+
+    
 </script>

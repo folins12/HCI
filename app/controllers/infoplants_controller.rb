@@ -11,6 +11,7 @@ class InfoplantsController < ApplicationController
       use: params[:use],
       size: params[:size]
     )|| []
+    @user_plants = Myplant.where(user_id: current_user.id).pluck(:plant_id)
   end
 
   def show

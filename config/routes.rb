@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get 'infoplants', to: 'infoplants#index'
   get 'infoplants/:id', to: 'infoplants#show', as: 'infoplant'
+  post 'addmyplant', to: 'myplants#addmyplant'
 
   get 'nurseries', to: 'nurseries#index'
   get 'nurseries/:id', to: 'nurseries#show', as: 'nursery'

@@ -1,14 +1,11 @@
-class CreateMyplants < ActiveRecord::Migration[6.0]
+class CreateMyplants < ActiveRecord::Migration[6.1]
   def change
     create_table :myplants do |t|
-      t.string :pianta, null: false
-      t.string :proprietario, null: false
-      t.integer :disponibilita, default: -1
+      t.references :plant, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end
-
-    add_index :myplants, :proprietario
   end
 end
 
