@@ -232,3 +232,26 @@
 .lo-button:hover {
   background-color: #004d00;
 }
+
+
+.btn-removemyplant {
+  display: inline-block;
+  background-color: #134509;
+  color: white;
+  padding: 0px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-removemyplant p {
+  color: white;
+}
+
+.btn-removemyplant:hover {
+  background-color: #0a3b00;
+  transform: scale(1.02);
+  transition: 0.2s;
+}
