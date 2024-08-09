@@ -11,29 +11,21 @@ class MyplantsController < ApplicationController
 
   def addmyplant
     myplant = Myplant.find_by(id: params[:myplant_id])
-    Rails.logger.info("Parametri della richiesta: #{params.inspect}")
-    Rails.logger.info current_user
-    Rails.logger.info current_user.id
     myplant = Myplant.new(plant_id: myplant.id, user_id: current_user.id)
-
     if myplant.save
       render json: { success: true }
     else
-      # Log degli errori di validazione
-      Rails.logger.error("Errori di validazione: #{myplant.errors.full_messages.join(', ')}")
       render json: { success: false, message: "Errore nel salvataggio della prenotazione.", errors: myplant.errors.full_messages }, status: :unprocessable_entity
     end
-    #if myplant
-    #  if myplant.save
-    #    Myplant.create(plant_id: myplant.id, std_user_id: current_user.id)
-    #    render json: { success: true }
-    #  else
-    #    render json: { success: false, message: "Errore nel salvataggio della prenotazione." }
-    #  end
-    #else
-    #  render json: { success: false, message: "Piantina non trovata." }
-    #end
+  end
 
+  def removemyplant
+    myplant = Myplant.find_by(plant_id: params[:plant_id], user_id: current_user.id)
+    if myplant && myplant.destroy
+      render json: { success: true }
+    else
+      render json: { success: false, message: "Errore nella rimozione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
+    end
   end
   
 

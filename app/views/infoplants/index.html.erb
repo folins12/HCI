@@ -1,3 +1,27 @@
+<style>
+  .btn-addmyplant {
+    display: inline-block;
+    background-color: #134509;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+  
+  .btn-addmyplant p {
+    color: white;
+  }
+  
+  .btn-addmyplant:hover {
+    background-color: #0a3b00;
+    transform: scale(1.05);
+    transition: 0.2s;
+  }
+</style>
+
 <div class="plants-container">
   <p class="plant-title">PlantExplorer</p>
   <p class="intro-text">Esplora e conosci le caratteristiche di queste piante e divertiti a selezionare i filtri per scoprire le piante che si addicono ai tuoi gusti.</p>
@@ -63,13 +87,16 @@
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>
 
-          <% if @user_plants.exclude?(plant.id) %>
-            <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
-              <p>AGGIUNGI ALLE MIE PIANTE</p>
-            </div>
-          <% else %>
-            <p>Questa pianta è già nelle tue piante.</p>
+          <% if current_user %>
+            <% if @user_plants.exclude?(plant.id) %>
+              <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
+                <p>AGGIUNGI ALLE MIE PIANTE</p>
+              </div>
+            <% else %>
+              <p>Questa pianta è già nelle tue piante.</p>
+            <% end %>
           <% end %>
+          
         </div>
       </div>
     <% end %>
@@ -125,7 +152,7 @@
                   if (data.success) {
                       this.querySelector('p').textContent = "Pianta aggiunta con successo!";
                   } else {
-                      alert(data.message || "Errore nella prenotazione. Riprova.");
+                      alert(data.message || "Errore nella aggiunta. Riprova.");
                   }
               })
               .catch(error => {

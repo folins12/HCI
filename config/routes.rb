@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'user_profile', to: 'users#profile'
   patch 'user_profile', to: 'users#update'
+  post 'removemyplant', to: 'myplants#removemyplant'
+
   get 'nursery_profile', to: 'nursery_profile#profile', as: 'nursery_profile'
   resources :users, only: [:show, :update]
   post 'reserve', to: 'nursery_plants#reserve'
