@@ -1,27 +1,3 @@
-<style>
-  .btn-addmyplant {
-    display: inline-block;
-    background-color: #134509;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1.2em;
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-addmyplant p {
-    color: white;
-  }
-  
-  .btn-addmyplant:hover {
-    background-color: #0a3b00;
-    transform: scale(1.05);
-    transition: 0.2s;
-  }
-</style>
-
 <div class="plants-container">
   <p class="plant-title">PlantExplorer</p>
   <p class="intro-text">Esplora e conosci le caratteristiche di queste piante e divertiti a selezionare i filtri per scoprire le piante che si addicono ai tuoi gusti.</p>
@@ -85,19 +61,18 @@
           <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
           <p><strong>Clima:</strong> <%= plant.climate %></p>
           <p><strong>Uso:</strong> <%= plant.use %></p>
-          <p><strong>Descrizione:</strong> <%= plant.description %></p>
-
-          <% if current_user %>
-            <% if @user_plants.exclude?(plant.id) %>
-              <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
-                <p>AGGIUNGI ALLE MIE PIANTE</p>
-              </div>
-            <% else %>
-              <p>Questa pianta è già nelle tue piante.</p>
-            <% end %>
-          <% end %>
-          
+          <p><strong>Descrizione:</strong> <%= plant.description %></p>          
         </div>
+
+        <% if current_user %>
+          <% if @user_plants.exclude?(plant.id) %>
+            <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
+              <p>Aggiungi Alla Mia Collezione</p>
+            </div>
+          <% else %>
+            <p style="color: black !important;">Questa pianta è già nelle tue piante.</p>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
   <% else %>

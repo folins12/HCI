@@ -244,10 +244,12 @@
   font-size: 1.4em;
   margin-top: 10px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .btn-removemyplant p {
   color: white;
+  transition: 0.2s;
 }
 
 .btn-removemyplant:hover {
