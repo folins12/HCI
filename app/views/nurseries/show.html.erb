@@ -23,7 +23,7 @@
             <h3><%= nursery_plant.plant.name %></h3>
             <p><%= nursery_plant.plant.description %></p>
             <p class="availability" data-nursery-plant-id="<%= nursery_plant.id %>">
-              Disponibilità in negozio: <%= nursery_plant.max_disponibility - nursery_plant.num_reservations %>
+              Disponibilità in negozio: <%= [nursery_plant.max_disponibility - nursery_plant.num_reservations, 0].max %>
             </p>
             <div class="btn-reserve" data-nursery-plant-id="<%= nursery_plant.id %>">
               <p>PRENOTA</p>

@@ -10,6 +10,7 @@ class NurseryProfileController < ApplicationController
   end
 
   def profile
+    @nursery = Nursery.find_by(id_owner: current_user.id)
     nursery_ids = Nursery.where(id_owner: current_user.id).pluck(:id)
     nursery_plant_ids = NurseryPlant.where(nursery_id: nursery_ids).pluck(:id)
     @myplants = Plant.joins(:nursery_plants)

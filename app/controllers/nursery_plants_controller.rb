@@ -28,4 +28,26 @@ class NurseryPlantsController < ApplicationController
       render json: { success: false, message: "Errore nel salvataggio della pianta nel vivaio.", errors: nursery_plant.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+  def incdisp
+    puts "...........................................................";
+    nursery_plant = NurseryPlant.find_by(nursery_id: params[:nursery_id], plant_id: params[:plant_id])
+    if nursery_plant
+      nursery_plant.increment!(:max_disponibility)
+      render json: { success: true }
+    end
+  end
+
+  def decdisp
+    nursery_plant = NurseryPlant.find_by(nursery_id: params[:nursery_id], plant_id: params[:plant_id])
+    if nursery_plant
+      if nursery_plant.max_disponibility - nursery_plant.num_reservations > 0
+        nursery_plant.decrement!(:max_disponibility)
+        render json: { success: true }
+      else
+        render json: { success: false }
+      end
+      
+    end
+  end
 end
