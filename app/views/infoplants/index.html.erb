@@ -63,16 +63,32 @@
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>          
         </div>
-      
+
         <% if current_user %>
           <% if @user_plants.exclude?(plant.id) %>
             <div class="btn-addmyplant" data-myplant-id="<%= plant.id %>">
-              <p>Aggiungi Alla Mia Collezione</p>
+              <% if @nrs_users.include?(current_user) %>
+                <p>Aggiungi al mio vivaio</p>
+              <% else %>
+                <p>Aggiungi Alla Mia Collezione</p>
+              <% end %>
             </div>
           <% else %>
-            <p class="added-message">Questa pianta è già nelle tue piante.</p>
+            <p class="added-message">
+              <% if @nrs_users.include?(current_user) %>
+                Questa pianta è già nel tuo vivaio.
+              <% else %>
+                Questa pianta è già nelle tue piante.
+              <% end %>
+            </p>
           <% end %>
         <% end %>
+
+
+
+
+
+
       </div>
 
     <% end %>

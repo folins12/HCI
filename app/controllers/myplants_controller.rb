@@ -2,7 +2,7 @@
 class MyplantsController < ApplicationController
   def index
     @myplants = Myplant.all
-    
+
   end
 
   def show
@@ -27,7 +27,6 @@ class MyplantsController < ApplicationController
       render json: { success: false, message: "Errore nella rimozione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
     end
   end
-  
+
 
 end
-
