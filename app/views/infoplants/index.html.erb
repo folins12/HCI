@@ -64,29 +64,31 @@
           <p><strong>Descrizione:</strong> <%= plant.description %></p>          
         </div>
 
+        <% if current_user&.nursery? %>
+          <% if @nursery_plants&.include?(plant.id) %>
+            <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
+          <% else %>
+            <div class="btn-addnurseryplant" data-plant-id="<%= plant.id %>">
+              <p>Aggiungi al mio vivaio</p>
+            </div>
+          <% end %>
+        <% end %>
+
+
+
         <% if current_user %>
           <% if @user_plants.exclude?(plant.id) %>
-            <% if @nursery_plants && @nursery_plants.include?(plant.id) %>
-              <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
+            <% if @my_plants && @my_plants.include?(plant.id) %>
+              <p class="added-message">Questa pianta è già nella tua collezione.</p>
             <% else %>
               <div class="btn-addmyplant" data-plant-id="<%= plant.id %>">
-                <% if @nrs_users.include?(current_user) %>
-                  <p>Aggiungi al mio vivaio</p>
-                <% else %>
-                  <p>Aggiungi Alla Mia Collezione</p>
+                <% if @std_users.include?(current_user) %>
+                  <p>Aggiungi alla mia collezione</p>
                 <% end %>
               </div>
             <% end %>
-          <% else %>
-            <p class="added-message">
-              <% if @nrs_users.include?(current_user) %>
-                Questa pianta è già nel tuo vivaio.
-              <% else %>
-                Questa pianta è già nelle tue piante.
-              <% end %>
-            </p>
-          <% end %>
-        <% end %>
+          <%end%>
+        <%end%>
 
       </div>
     <% end %>
@@ -115,9 +117,9 @@
 
 
   document.addEventListener("DOMContentLoaded", function() {
-    const reserveButtons = document.querySelectorAll(".btn-addmyplant");
+    const reserveStdButtons = document.querySelectorAll(".btn-addmyplant");
 
-    reserveButtons.forEach(button => {
+    reserveStdButtons.forEach(button => {
       button.addEventListener("click", function() {
         const myplantId = button.getAttribute('data-plant-id');
         //const myplantId = this.dataset.myplant-id;
@@ -146,10 +148,10 @@
             // Cambia il testo del pulsante
             this.style.display = 'none';
 
-            // Mostra il messaggio "Questa pianta è già nel tuo vivaio."
+            // Mostra il messaggio "Questa pianta è stata inserita nella tua collezione."
             const message = document.createElement("p");
             message.className = "added-message";
-            message.textContent = "Questa pianta è già nel tuo vivaio.";
+            message.textContent = "Questa pianta è stata inserita nella tua collezione.";
             plantBox.appendChild(message);
           } else {
             alert(data.message || "Errore nella aggiunta. Riprova.");
@@ -161,6 +163,55 @@
         });
       });
     });
+
+
+    const reserveNrsButtons = document.querySelectorAll(".btn-addnurseryplant");
+
+    reserveNrsButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const nurseryplantId = button.getAttribute('data-plant-id');
+        //const myplantId = this.dataset.myplant-id;
+        console.log(nurseryplantId)
+        this.style.pointerEvents = "none"; // Disabilita il bottone per evitare clic ripetuti
+
+        fetch('/add_to_nursery', { // Assicurati che l'endpoint sia corretto
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ plant_id: nurseryplantId })
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.text().then(text => {
+              throw new Error(text);
+            });
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.success) {
+            const plantBox = this.closest(".plant-box");
+            // Cambia il testo del pulsante
+            this.style.display = 'none';
+
+            // Mostra il messaggio "Questa pianta è stata inserita nel tuo vivaio."
+            const message = document.createElement("p");
+            message.className = "added-message";
+            message.textContent = "Questa pianta è stata inserita nel tuo vivaio.";
+            plantBox.appendChild(message);
+          } else {
+            alert(data.message || "Errore nella aggiunta. Riprova.");
+          }
+        })
+        .catch(error => {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
+        });
+      });
+    });
+
   });
 
 

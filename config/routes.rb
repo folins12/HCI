@@ -31,12 +31,14 @@ Rails.application.routes.draw do
   post 'removemyplant', to: 'myplants#removemyplant'
 
   post 'add_to_nursery', to: 'nursery_plants#add_to_nursery'
+  post 'addtonursery', to: 'nursery_plants#add_to_nursery'
+
 
   get 'nursery_profile', to: 'nursery_profile#profile', as: 'nursery_profile'
   post 'incdisp', to: 'nursery_plants#incdisp'
   post 'decdisp', to: 'nursery_plants#decdisp'
   post 'removenursplant', to: 'nursery_plants#removenursplant'
-  
+
   resources :users, only: [:show, :update]
   post 'reserve', to: 'nursery_plants#reserve'
 end
