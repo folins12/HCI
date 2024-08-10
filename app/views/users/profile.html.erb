@@ -127,23 +127,105 @@
           <th>Pianta</th>
           <th>Email Vivaio</th>
           <th>Quantità</th>
+          <th>Azioni</th> <!-- Nuova colonna per le azioni -->
         </tr>
       </thead>
       <tbody>
         <% @user_reservations.each do |reservation| %>
-          <tr>
+          <tr id="reservation-<%= reservation.id %>">
             <td><%= reservation.plant_name %></td>
             <td><%= reservation.nursery_email %></td>
-            <td><%= reservation.quantity %></td>
+            <td id="quantity-<%= reservation.id %>"><%= reservation.quantity %></td>
+            <td>
+              <button class="btn-increase" data-reservation-id="<%= reservation.id %>">Aumenta</button>
+              <button class="btn-decrease" data-reservation-id="<%= reservation.id %>">Riduci</button>
+              <button class="btn-remove" data-reservation-id="<%= reservation.id %>">Rimuovi</button>
+            </td>
           </tr>
         <% end %>
       </tbody>
     </table>
   </div>
 
+
   
 
   <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      document.querySelectorAll('.btn-increase').forEach(button => {
+        button.addEventListener('click', function() {
+          const reservationId = this.dataset.reservationId;
+          updateReservationQuantity(reservationId, 'increase');
+        });
+      });
+
+      document.querySelectorAll('.btn-decrease').forEach(button => {
+        button.addEventListener('click', function() {
+          const reservationId = this.dataset.reservationId;
+          updateReservationQuantity(reservationId, 'decrease');
+        });
+      });
+
+      document.querySelectorAll('.btn-remove').forEach(button => {
+        button.addEventListener('click', function() {
+          const reservationId = this.dataset.reservationId;
+          removeReservation(reservationId);
+        });
+      });
+
+      function updateReservationQuantity(reservationId, action) {
+        fetch(`/update_reservation_quantity`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({ reservation_id: reservationId, action: action })
+      })
+
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById(`quantity-${reservationId}`).textContent = data.new_quantity;
+            if (data.new_quantity === 0) {
+              document.getElementById(`reservation-${reservationId}`).remove();
+            }
+          } else {
+            alert(data.message || 'Errore durante l\'aggiornamento della prenotazione.');
+          }
+        })
+        .catch(error => {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
+        });
+      }
+
+      function removeReservation(reservationId) {
+        fetch(`/remove_reservation`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ reservation_id: reservationId })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            document.getElementById(`reservation-${reservationId}`).remove();
+          } else {
+            alert(data.message || 'Errore durante la rimozione della prenotazione.');
+          }
+        })
+        .catch(error => {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
+        });
+      }
+    });
+
+
+
     document.addEventListener("DOMContentLoaded", function() {
       const reserveButtons = document.querySelectorAll(".btn-removemyplant");
     
