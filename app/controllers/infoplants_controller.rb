@@ -15,10 +15,9 @@ class InfoplantsController < ApplicationController
 
     if current_user
       @user_plants = Myplant.where(user_id: current_user.id).pluck(:plant_id)
-
-      if current_user.nursery == 1
-        @nursery_id = Nursery.find_by(id_owner: current_user.id)&.id
-        @nursery_plants = NurseryPlant.where(nursery_id: @nursery_id).pluck(:plant_id) if @nursery_id
+      if current_user.nursery == true
+        @nursery = Nursery.find_by(id_owner: current_user.id)
+        @nursery_plants = NurseryPlant.where(nursery_id: @nursery.id).pluck(:plant_id)
       end
     end
   end
