@@ -122,14 +122,18 @@
   transition: 0.2s;
 }
 
+/* Media Queries */
+
+/* Due box per fila su schermi medi */
 @media (max-width: 992px) {
-  .plant-box {
+  .nursery-plant-box {
     width: calc(50% - 20px); 
   }
 }
 
+/* Un box per fila su schermi piccoli */
 @media (max-width: 576px) {
-  .plant-box {
+  .nursery-plant-box {
     width: calc(100% - 20px);
   }
 }
