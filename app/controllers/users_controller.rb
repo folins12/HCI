@@ -11,16 +11,33 @@ class UsersController < ApplicationController
   def edit
   end
 
+
   def profile
+    # Recupera le piante dell'utente
     plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
     @myplants = Plant.where(id: plant_ids)
+
     if @user
-      plant_ids = Myplant.where(user_id: @user.id).pluck(:plant_id)
-      @myplants = Plant.where(id: plant_ids)
+      # Recupera le prenotazioni dell'utente
+      sql_query = <<-SQL
+        SELECT p.name AS plant_name, n.email AS nursery_email, COUNT(*) AS quantity
+        FROM reservations r
+        JOIN nursery_plants np ON np.id = r.nursery_plant_id
+        JOIN plants p ON p.id = np.plant_id
+        JOIN nurseries n ON n.id = np.nursery_id
+        WHERE r.user_email = ?
+        GROUP BY p.name, n.email
+      SQL
+
+      @user_reservations = Reservation.find_by_sql([sql_query, @user.email])
     else
       redirect_to root_path, alert: 'Utente non trovato.'
     end
   end
+
+
+
+
 
   def update
     if @user && password_update_valid?

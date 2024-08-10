@@ -1,7 +1,7 @@
 .profile-container {
   text-align: center;
   padding: 40px 30px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('home.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('sfondo-profilo.jpg');
   margin-top: 3%;
   margin-bottom: 3%;
   height: auto;
@@ -208,6 +208,7 @@
   color: #004d00;
   font-size: 2em;
   margin-top: 4%;
+  margin-bottom: 2%;
 }
 
 .plant-panels {
@@ -334,8 +335,16 @@
   background-color: #134509;
 }
 
+
+
+
+
+.plant-section {
+  margin-bottom: 30px; /* Aggiunge uno spazio tra i box delle piante e la tabella delle prenotazioni */
+}
+
 .table-reservations {
-  margin-top: 30px; 
+  margin-top: 30px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -343,6 +352,8 @@
   color: #000000 !important;
   margin-bottom: 30px;
 }
+
+
 
 .table-reservations table {
   width: 100%;
@@ -362,6 +373,37 @@
 }
 
 .table-reservations tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.user-reservations {
+  margin-top: 30px; 
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #000000 !important;
+  margin-bottom: 30px;
+}
+
+.user-reservations table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.user-reservations th, .user-reservations td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  font-size: 1.1em;
+}
+
+.user-reservations th {
+  background-color: #1a5e0d;
+  color: white;
+}
+
+.user-reservations tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
@@ -497,6 +539,16 @@
   .weather-widget {
     width: 100%;
   }
+
+  .plants-grid {
+    display: flex;
+    flex-direction: column; /* Stack the plant boxes vertically */
+    gap: 20px;
+  }
+
+  .table-reservations {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -522,11 +574,10 @@
     font-size: 2.5em;
   }
 
-  /* Assicurarsi che il box occupi l'intera larghezza */
   .plant-panel {
     width: 100%;
     height: auto;
-    margin: 10px 0; /* Aggiunta di margine tra i box */
+    margin: 10px 0; 
   }
 
   .btn {

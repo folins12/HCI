@@ -1,6 +1,8 @@
 class Nursery < ApplicationRecord
   has_many :nursery_plants
   has_many :plants, through: :nursery_plants
+  has_many :reservations, through: :nursery_plants
+
   belongs_to :user
 
   def self.search(query)
