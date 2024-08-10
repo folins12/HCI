@@ -57,8 +57,8 @@
           <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation %>
         </div>
-        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
-          <%= form.label :password, "Nuovo Indirizzo di Casa", class: 'form-label' %>
+        <div class="input-group <%= 'has-error' if @user.errors[:address].any? %>">
+          <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
         </div>
         <% if flash[:alert].present? %>
@@ -72,9 +72,7 @@
         </div>
       <% end %>
     </div>
-  
   </div>
-
 
   <div class="profile-nursery-header">
     <p class="profile-nursery-name"><%= @nursery.name %></p>
@@ -98,74 +96,78 @@
       <div class="nursery-plants-container">
         <% @myplants.each do |plant| %>
         
-          <div class="nursery-plant-box" style="text-align: left;">
-            <%= image_tag "#{plant.name}.jpg", alt: plant.name, class:"nursery-plant-image" %>
-          
-            <h3 class="nome" style="text-align: center;"><strong><%= plant.name %></strong></h3>
-            <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-            <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
-            <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
-            <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
-            <p><strong>Clima:</strong> <%= plant.climate %></p>
-            <p><strong>Uso:</strong> <%= plant.use %></p>
-            <p><strong>Descrizione:</strong> <%= plant.description %></p>
-            <p style="text-align: center; margin-top: 2%;">
-              <strong>Disponibilità: <span id="disp-<%= plant.id %>"><%= plant.disp %></span></strong>
-              <span class="btn-incdisp" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>" style="display: inline-block; margin-left: 10px; cursor: pointer;">
-                +
-              </span>
-              <span class="btn-decdisp" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>" style="display: inline-block; margin-left: 10px; cursor: pointer;">
-                -
-              </span>
-              
-             </p>
-            <p style="text-align: center;"><strong>Ordinazioni:</strong> <%= plant.res %></p>
-            <br>
-            <% emails = @reservations[plant.nursery_plant_id] %>
+          <div class="nursery-plant-box">
+            <%= image_tag "#{plant.name}.jpg", alt: plant.name, class: "nursery-plant-image" %>
+
+            <div class="plant-info">
+              <h3 class="nome" style="text-align: center; font-size: 2.5em;"><strong><%= plant.name %></strong></h3>
+              <p><strong>Tipologia:</strong> <%= plant.typology %></p>
+              <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
+              <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
+              <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
+              <p><strong>Clima:</strong> <%= plant.climate %></p>
+              <p><strong>Uso:</strong> <%= plant.use %></p>
+              <p><strong>Descrizione:</strong> <%= plant.description %></p>
+            </div>
+
+            <div class="plant-controls">
+              <div class="plant-availability">
+                <p><strong>Disponibilità:</strong></p>
+                <div class="availability-controls">
+                  <p id="disp-<%= plant.id %>"><%= plant.disp %></p>
+                  <span class="btn-incdisp" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">+</span>
+                  <span class="btn-decdisp" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">-</span>
+                </div>
+              </div>
+
+              <p class="plant-reservations"><strong>Ordinazioni:</strong> <%= plant.res %></p>
+            </div>
+
+            <!-- Aggiungi il pulsante "Rimuovi dal Commercio" -->
+            <div class="btn-removenursplant" style="text-align:" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">
+              <p>Rimuovi Dal Commercio</p>
+            </div>
+          </div>
+
+        <% end %>
+      </div>
+    <% else %>
+      <p>Nessuna pianta disponibile per il momento.</p>
+    <% end %>
+  </div>
+
+  <div class="table-reservations">
+    <h2>Prenotazioni delle Piante</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pianta</th>
+          <th>Email Utente</th>
+          <th>Quantità</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @myplants.any? %>
+          <% @myplants.each do |plant| %>
+            <% emails = @reservations[plant.id] %>
             <% if emails %>
-              <p><strong>Utenti che hanno prenotato questa pianta:</strong></p>
               <% email_counts = Hash.new(0) %>
               <% emails.each do |email| %>
                 <% email_counts[email[0]] += 1 %>
               <% end %>
-
               <% email_counts.each do |email, count| %>
-                <p><%= email %>: <%= count %> </p>
+                <tr>
+                  <td><%= plant.name %></td>
+                  <td><%= email %></td>
+                  <td><%= count %></td>
+                </tr>
               <% end %>
-            <% else %>
-              <p><strong>Nessuna prenotazione.</strong></p>
             <% end %>
-
-            <div class="btn-removenursplant" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">
-              <p>Rimuovi Dal Commercio</p>
-            </div>
-
-          </div>
+          <% end %>
         <% end %>
-      </div>
-    <% else %>
-      <p class="no-results">Non ci sono piante</p>
-    <% end %>
+      </tbody>
+    </table>
   </div>
-
-  <hr class="separator">
-
-  <% if @myplants.any? %>
-    <% @myplants.each do |plant| %>
-    
-      <% emails = @reservations[plant.nursery_plant_id] %>
-      <% if emails %>
-        <% email_counts = Hash.new(0) %>
-
-        <% emails.each do |email| %>
-          <% email_counts[email[0]] += 1 %>
-        <% end %>
-        <% email_counts.each do |email, count| %>
-          <%= plant.name %> <%= email %>: <%= count %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
 
   <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {

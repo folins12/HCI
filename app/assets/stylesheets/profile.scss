@@ -259,7 +259,7 @@
 }
 
 
-.btn-removemyplant, .btn-removenursplant {
+.btn-removemyplant {
   display: inline-block;
   background-color: #134509;
   color: white;
@@ -272,13 +272,120 @@
   transition: 0.2s;
 }
 
-.btn-removemyplant p, .btn-removenursplant p {
+.btn-removemyplant p {
   color: white;
   transition: 0.2s;
 }
 
-.btn-removemyplant:hover, .btn-removenursplant:hover {
+.btn-removemyplant:hover {
   background-color: #0a3b00;
   transform: scale(1.02);
   transition: 0.2s;
+}
+
+
+.plant-info {
+  text-align: left;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.plant-info p {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+.plant-controls {
+  text-align: left;
+}
+
+.plant-availability {
+  display: flex;
+  text-align: left;
+  align-items: center; 
+  gap: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Distanza dal contenuto sottostante */
+}
+
+.availability-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Spazio tra i pulsanti */
+}
+
+.availability-controls span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #1a5e0d;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  transition: background-color 0.3s ease;
+}
+
+.availability-controls span:hover {
+  background-color: #134509;
+}
+
+.table-reservations {
+  margin-top: 30px; /* Distanza dal resto del contenuto */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #000000 !important;
+}
+
+.table-reservations table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-reservations th, .table-reservations td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.table-reservations th {
+  background-color: #1a5e0d;
+  color: white;
+}
+
+.table-reservations tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+
+.btn-removenursplant {
+  display: inline-block;
+  background-color: #ff0000de;
+  color: white !important;
+  margin-top: 3%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-removenursplant p {
+  color: white !important;
+}
+
+.btn-removenursplant:hover {
+  background-color: #ab0000e4;
+  transform: scale(1.02);
+}
+
+.no-results {
+  font-size: 1.5em;
+  color: #004d00;
+  text-align: center;
+  margin-top: 20px;
 }
