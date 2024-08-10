@@ -13,16 +13,18 @@ class NurseryProfileController < ApplicationController
     @nursery = Nursery.find_by(id_owner: current_user.id)
     nursery_ids = Nursery.where(id_owner: current_user.id).pluck(:id)
     nursery_plant_ids = NurseryPlant.where(nursery_id: nursery_ids).pluck(:id)
+
     @myplants = Plant.joins(:nursery_plants)
-                  .where(nursery_plants: { id: nursery_plant_ids })
-                  .select('plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
-                          typology, light, size, irrigation, use, climate, irrigation, description')
+                     .where(nursery_plants: { id: nursery_plant_ids })
+                     .select('plants.id, plants.name, nursery_plants.id as nursery_plant_id, nursery_plants.max_disponibility as disp, nursery_plants.num_reservations as res,
+                              typology, light, size, irrigation, use, climate, irrigation, description')
 
     @reservations = Reservation.joins(:nursery_plant)
-                      .where(nursery_plants: { id: nursery_plant_ids })
-                      .pluck(:user_email, :nursery_plant_id)
-                      .group_by { |email, id| id }
+                               .where(nursery_plants: { id: nursery_plant_ids })
+                               .pluck(:user_email, :nursery_plant_id)
+                               .group_by { |email, id| id }
   end
+
 
   private
 

@@ -137,7 +137,7 @@
   </div>
 
   <div class="table-reservations">
-    <h2>Prenotazioni delle Piante</h2>
+    <h2 style="font-size: 2em;">Prenotazioni delle Piante</h2>
     <table>
       <thead>
         <tr>
@@ -147,27 +147,26 @@
         </tr>
       </thead>
       <tbody>
-        <% if @myplants.any? %>
-          <% @myplants.each do |plant| %>
-            <% emails = @reservations[plant.id] %>
-            <% if emails %>
-              <% email_counts = Hash.new(0) %>
-              <% emails.each do |email| %>
-                <% email_counts[email[0]] += 1 %>
-              <% end %>
-              <% email_counts.each do |email, count| %>
-                <tr>
-                  <td><%= plant.name %></td>
-                  <td><%= email %></td>
-                  <td><%= count %></td>
-                </tr>
-              <% end %>
+        <% @myplants.each do |plant| %>
+          <% if @reservations[plant.nursery_plant_id] %>
+            <% email_counts = Hash.new(0) %>
+            <% @reservations[plant.nursery_plant_id].each do |email, _| %>
+              <% email_counts[email] += 1 %>
+            <% end %>
+            <% email_counts.each do |email, count| %>
+              <tr>
+                <td><%= plant.name %></td>
+                <td><%= email %></td>
+                <td><%= count %></td>
+              </tr>
             <% end %>
           <% end %>
         <% end %>
       </tbody>
     </table>
   </div>
+
+
 
   <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
