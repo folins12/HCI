@@ -77,8 +77,6 @@
     </div>
   </div>
 
-
-
   
   <div class="weather-widget" id="weather-widget">
     <p>Caricamento meteo...</p>
@@ -86,12 +84,10 @@
 
 
 
-
-
   <% if @myplants.any? %>
-  <div class="plant-message">
-    Queste sono le tue piante:
-  </div>
+    <div class="plant-message">
+      Queste sono le tue piante:
+    </div>
     <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
       <% @myplants.each do |plant| %>
         <div class="plant-box">
@@ -115,11 +111,36 @@
           </div>
         </div>
       <% end %>
-    <% else %>
-      <p class="no-results">La tua collezione è vuota. Aggiungi le piante dalla pagina "PIANTE".</p>
     </div>
+  <% else %>
+      <p class="no-results">La tua collezione è vuota. Aggiungi le piante dalla pagina "PIANTE".</p>
+    
   <% end %>
+
+
   
+  <div class="table-reservations">
+    <h2 style="font-size: 2em;">Le Tue Prenotazioni di Piante</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Pianta</th>
+          <th>Email Vivaio</th>
+          <th>Quantità</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @user_reservations.each do |reservation| %>
+          <tr>
+            <td><%= reservation.plant_name %></td>
+            <td><%= reservation.nursery_email %></td>
+            <td><%= reservation.quantity %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
   
 
   <script type="text/javascript">

@@ -2,6 +2,7 @@ class Plant < ApplicationRecord
   has_many :nursery_plants
   has_many :nurseries, through: :nursery_plants
   has_many :myplants
+  has_many :reservations, through: :nursery_plants
 
   validates :light, inclusion: { in: 1..4 }
   validates :irrigation, inclusion: { in: 1..3 }
