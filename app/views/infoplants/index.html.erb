@@ -63,9 +63,8 @@
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>          
         </div>
-
         <% if current_user&.nursery? %>
-          <% if @nursery_plants&.include?(plant.id) %>
+          <% if @nursery_plants.present? && @nursery_plants.include?(plant.id) %>
             <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
           <% else %>
             <div class="btn-addnurseryplant" data-plant-id="<%= plant.id %>">
