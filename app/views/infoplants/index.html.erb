@@ -63,30 +63,28 @@
           <p><strong>Uso:</strong> <%= plant.use %></p>
           <p><strong>Descrizione:</strong> <%= plant.description %></p>          
         </div>
-        <% if current_user&.nursery? %>
-          <% if @nursery_plants.present? && @nursery_plants.include?(plant.id) %>
-            <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
-          <% else %>
-            <div class="btn-addnurseryplant" data-plant-id="<%= plant.id %>">
-              <p>Aggiungi al mio vivaio</p>
-            </div>
-          <% end %>
-        <% end %>
-
-
 
         <% if current_user %>
-          <% if @user_plants.exclude?(plant.id) %>
-            <% if @my_plants && @my_plants.include?(plant.id) %>
+
+          <% if current_user&.nursery? %>
+            <% if @nursery_plants.present? && @nursery_plants.include?(plant.id) %>
+              <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
+            <% else %>
+              <div class="btn-addnurseryplant" data-plant-id="<%= plant.id %>">
+                <p>Aggiungi al mio vivaio</p>
+              </div>
+            <% end %>
+          <% else %>
+            <% if @myplants.present? && @myplants.include?(plant.id) %>
               <p class="added-message">Questa pianta è già nella tua collezione.</p>
             <% else %>
               <div class="btn-addmyplant" data-plant-id="<%= plant.id %>">
-                <% if @std_users.include?(current_user) %>
-                  <p>Aggiungi alla mia collezione</p>
-                <% end %>
+                <p>Aggiungi alla mia collezione</p>
               </div>
             <% end %>
-          <%end%>
+          
+          <% end %>
+
         <%end%>
 
       </div>

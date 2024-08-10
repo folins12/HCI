@@ -25,9 +25,11 @@
             <p class="availability" data-nursery-plant-id="<%= nursery_plant.id %>">
               Disponibilità in negozio: <%= [nursery_plant.max_disponibility - nursery_plant.num_reservations, 0].max %>
             </p>
-            <div class="btn-reserve" data-nursery-plant-id="<%= nursery_plant.id %>">
-              <p>PRENOTA</p>
-            </div>
+            <% if current_user.nursery == false %>
+              <div class="btn-reserve" data-nursery-plant-id="<%= nursery_plant.id %>">
+                <p>PRENOTA</p>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>

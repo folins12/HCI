@@ -2,6 +2,7 @@ class InfoplantsController < ApplicationController
   def index
     @nrs_users = User.where(nursery: 1)
     @std_users = User.where(nursery: 0)
+    
 
     @plants = Plant.search(
       query: params[:query],
@@ -14,7 +15,7 @@ class InfoplantsController < ApplicationController
     ) || []
 
     if current_user
-      @user_plants = Myplant.where(user_id: current_user.id).pluck(:plant_id)
+      @myplants = Myplant.where(user_id: current_user.id).pluck(:plant_id)
       if current_user.nursery == true
         @nursery = Nursery.find_by(id_owner: current_user.id)
         @nursery_plants = NurseryPlant.where(nursery_id: @nursery.id).pluck(:plant_id)
