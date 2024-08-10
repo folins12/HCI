@@ -259,7 +259,7 @@
 }
 
 
-.btn-removemyplant {
+.btn-removemyplant, .btn-removenursplant {
   display: inline-block;
   background-color: #134509;
   color: white;
@@ -272,12 +272,12 @@
   transition: 0.2s;
 }
 
-.btn-removemyplant p {
+.btn-removemyplant p, .btn-removenursplant p {
   color: white;
   transition: 0.2s;
 }
 
-.btn-removemyplant:hover {
+.btn-removemyplant:hover, .btn-removenursplant:hover {
   background-color: #0a3b00;
   transform: scale(1.02);
   transition: 0.2s;

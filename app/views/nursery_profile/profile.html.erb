@@ -137,7 +137,7 @@
             <% end %>
 
             <div class="btn-removenursplant" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">
-              <p>RIMUOVI PIANTA</p>
+              <p>Rimuovi Dal Commercio</p>
             </div>
 
           </div>
@@ -168,128 +168,126 @@
   <% end %>
 
   <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+    const reserveRemoveButtons = document.querySelectorAll(".btn-removenursplant");
+    reserveRemoveButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const nurseryId = button.getAttribute('data-nursery-id');
+        const plantId = button.getAttribute('data-plant-id');
+        const plantBox = button.closest('.nursery-plant-box'); // Cambia qui il selettore
 
-    document.addEventListener("DOMContentLoaded", function() {
-    const reserveButtons = document.querySelectorAll(".btn-removenursplant");
-    reserveButtons.forEach(button => {
-          button.addEventListener("click", function() {
-              const nurseryId = button.getAttribute('data-nursery-id');
-              const plantId = button.getAttribute('data-plant-id');
-              fetch('/removenursplant', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                  },
-                  body: JSON.stringify({ plant_id: plantId,
-                                         nursery_id: nurseryId
-                   })
-              })
-              .then(response => {
-                  if (!response.ok) {
-                      return response.text().then(text => {
-                          throw new Error(text);
-                      });
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  if (data.success) {
-                    //console.log("rimozione")
-                  } else {
-                    alert(data.message || "Errore nella rimozione. Riprova.");
-                  }
-              })
-              .catch(error => {
-                  console.error('Errore:', error);
-                  alert('Errore: ' + error.message);
+        if (plantBox) {
+          button.style.pointerEvents = "none";
+          fetch('/removenursplant', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ plant_id: plantId, nursery_id: nurseryId })
+          })
+          .then(response => {
+            if (!response.ok) {
+              return response.text().then(text => {
+                throw new Error(text);
               });
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.success) {
+              plantBox.remove(); // Rimuovi l'elemento
+            } else {
+              alert(data.message || "Errore nella rimozione. Riprova.");
+              button.style.pointerEvents = "auto";
+            }
+          })
+          .catch(error => {
+            console.error('Errore:', error);
+            alert('Errore: ' + error.message);
+            button.style.pointerEvents = "auto";
           });
-      });
-    });
-    
-    document.addEventListener("DOMContentLoaded", function() {
-    const reserveButtons = document.querySelectorAll(".btn-incdisp");
-    reserveButtons.forEach(button => {
-          button.addEventListener("click", function() {
-              const nurseryId = button.getAttribute('data-nursery-id');
-              const plantId = button.getAttribute('data-plant-id');
-              const disponibilityElement = document.getElementById(`disp-${plantId}`);
-
-              fetch('/incdisp', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                  },
-                  body: JSON.stringify({ plant_id: plantId,
-                                         nursery_id: nurseryId
-                   })
-              })
-              .then(response => {
-                  if (!response.ok) {
-                      return response.text().then(text => {
-                          throw new Error(text);
-                      });
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  if (data.success) {
-                    if (disponibilityElement) {
-                        let currentDisponibility = parseInt(disponibilityElement.textContent, 10);
-                        disponibilityElement.textContent = currentDisponibility + 1; // Incrementa di 1
-                    }
-                  } else {
-                      alert(data.message || "Errore nell'incremento. Riprova.");
-                  }
-              })
-              .catch(error => {
-                  console.error('Errore:', error);
-                  alert('Errore: ' + error.message);
-              });
-          });
+        } else {
+          console.error("Elemento non trovato.");
+        }
       });
     });
 
-    document.addEventListener("DOMContentLoaded", function() {
-    const reserveButtons = document.querySelectorAll(".btn-decdisp");
-    reserveButtons.forEach(button => {
-          button.addEventListener("click", function() {
-              const nurseryId = button.getAttribute('data-nursery-id');
-              const plantId = button.getAttribute('data-plant-id');
-              const disponibilityElement = document.getElementById(`disp-${plantId}`);
-              fetch('/decdisp', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                  },
-                  body: JSON.stringify({ plant_id: plantId,
-                                         nursery_id: nurseryId
-                   })
-              })
-              .then(response => {
-                  if (!response.ok) {
-                      return response.text().then(text => {
-                          throw new Error(text);
-                      });
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  if (data.success) {
-                    if (disponibilityElement) {
-                        let currentDisponibility = parseInt(disponibilityElement.textContent, 10);
-                        disponibilityElement.textContent = currentDisponibility - 1;
-                    }
-                  }
-              })
-              .catch(error => {
-                  console.error('Errore:', error);
-                  alert('Errore: ' + error.message);
-              });
-          });
+    const reserveIncButtons = document.querySelectorAll(".btn-incdisp");
+    reserveIncButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const nurseryId = button.getAttribute('data-nursery-id');
+        const plantId = button.getAttribute('data-plant-id');
+        const disponibilityElement = document.getElementById(`disp-${plantId}`);
+
+        fetch('/incdisp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ plant_id: plantId, nursery_id: nurseryId })
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.text().then(text => {
+              throw new Error(text);
+            });
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.success) {
+            if (disponibilityElement) {
+              let currentDisponibility = parseInt(disponibilityElement.textContent, 10);
+              disponibilityElement.textContent = currentDisponibility + 1;
+            }
+          } else {
+            alert(data.message || "Errore nell'incremento. Riprova.");
+          }
+        })
+        .catch(error => {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
+        });
+      });
+    });
+
+    const reserveDecButtons = document.querySelectorAll(".btn-decdisp");
+    reserveDecButtons.forEach(button => {
+      button.addEventListener("click", function() {
+        const nurseryId = button.getAttribute('data-nursery-id');
+        const plantId = button.getAttribute('data-plant-id');
+        const disponibilityElement = document.getElementById(`disp-${plantId}`);
+
+        fetch('/decdisp', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({ plant_id: plantId, nursery_id: nurseryId })
+        })
+        .then(response => {
+          if (!response.ok) {
+            return response.text().then(text => {
+              throw new Error(text);
+            });
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.success) {
+            if (disponibilityElement) {
+              let currentDisponibility = parseInt(disponibilityElement.textContent, 10);
+              disponibilityElement.textContent = currentDisponibility - 1;
+            }
+          }
+        })
+        .catch(error => {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
+        });
       });
     });
 
@@ -302,6 +300,8 @@
       document.getElementById("profile-edit").style.display = "none";
       document.getElementById("profile-view").style.display = "block";
     }
-  </script>
+  });
+</script>
+
 </body>
 </html>
