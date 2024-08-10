@@ -4,8 +4,8 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('home.jpg');
   margin-top: 3%;
   margin-bottom: 3%;
-  height: 80%;
-  max-width: 60%;
+  height: auto;
+  max-width: 90%;
   border-radius: 15px;
   align-items: center;
   border: 5px solid #006400;
@@ -13,7 +13,7 @@
 
 .welcome-message {
   color: #ffffff;
-  font-size: 4em;
+  font-size: 3em;
   margin-bottom: 2%;
 }
 
@@ -28,7 +28,7 @@
 .profile-table th, .profile-table td {
   padding: 20px;
   border: 3px solid #ffffff;
-  font-size: 1.6em;
+  font-size: 1.3em;
   color: #ffffff !important;
 }
 
@@ -40,15 +40,15 @@
 
 #profile-edit .form-label {
   color: #ffffff;
-  font-size: 1.4em;
-  margin-right: 15px; 
+  font-size: 1.2em;
+  margin-right: 15px;
   width: 30%; 
   text-align: right;
 }
 
 #profile-edit input[type="text"], 
 #profile-edit input[type="password"] {
-  width: 40%;
+  width: 60%;
   padding: 5px;
   font-size: 1.2em;
   border-radius: 5px;
@@ -146,6 +146,7 @@
   justify-content: center;
   gap: 30px;
   margin: 20px 0;
+  flex-wrap: wrap;
 }
 
 .weather-widget {
@@ -179,25 +180,25 @@
 }
 
 .profile-nursery-name {
-  font-size: 4.5em;
+  font-size: 3em;
   color: #134509;
 }
 
 .profile-location {
-  margin-top: -60px;
-  margin-bottom: 5px;
-  font-size: 2.5em;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  font-size: 2em;
   color: #134509;
 }
 
 .profile-nursery-details {
-  font-size: 1.5em;
+  font-size: 1.4em;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
   border-radius: 10px;
   display: inline-block;
   text-align: left;
-  max-width: 600px;
+  max-width: 90%;
   margin: 0 auto;
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -205,19 +206,20 @@
 
 .plant-message {
   color: #004d00;
-  font-size: 2.5em;
+  font-size: 2em;
   margin-top: 4%;
 }
 
 .plant-panels {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1%;
 }
 
 .plant-panel {
-  width: 250px;
-  height: 220px;
+  width: 200px;
+  height: 200px;
   background-color: inherit;
   border: 2px solid #004d00;
   border-radius: 10px;
@@ -333,7 +335,7 @@
 }
 
 .table-reservations {
-  margin-top: 30px; /* Distanza dal resto del contenuto */
+  margin-top: 30px; 
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -351,7 +353,7 @@
   padding: 10px;
   border: 1px solid #ddd;
   text-align: left;
-  font-size: 1.3em;
+  font-size: 1.1em;
 }
 
 .table-reservations th {
@@ -390,4 +392,155 @@
   color: #004d00;
   text-align: center;
   margin-top: 20px;
+}
+
+
+/* Media Queries per il responsive design */
+
+@media (max-width: 1200px) {
+  .profile-container {
+    max-width: 80%;
+    padding: 30px 20px;
+  }
+
+  .profile-nursery-name {
+    font-size: 3.5em;
+  }
+
+  .profile-location {
+    font-size: 2em;
+  }
+
+  .profile-nursery-details {
+    font-size: 1.3em;
+  }
+
+  .welcome-message {
+    font-size: 3.5em;
+  }
+
+  .plant-panels {
+    gap: 2%;
+  }
+
+  .plant-panel {
+    width: 220px;
+    height: 200px;
+  }
+
+  .table-reservations th, .table-reservations td {
+    font-size: 1.2em;
+  }
+}
+
+/* Modifiche esistenti e media queries... */
+
+/* Media Queries per il responsive design */
+
+@media (max-width: 768px) {
+  .profile-container {
+    max-width: 90%;
+    padding: 20px 15px;
+  }
+
+  .profile-nursery-name {
+    font-size: 3em;
+  }
+
+  .profile-location {
+    font-size: 1.8em;
+  }
+
+  .profile-nursery-details {
+    font-size: 1.2em;
+  }
+
+  .welcome-message {
+    font-size: 3em;
+  }
+
+  /* Modifica: Più di un box si trasforma in uno solo */
+  .plant-panels {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .plant-panel {
+    width: 100%; /* Box occupa l'intera larghezza */
+    height: auto;
+    margin: 10px 0; /* Aggiunta di margine tra i box */
+  }
+
+  .profile-buttons {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .table-reservations th, .table-reservations td {
+    font-size: 1.1em;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 1em;
+  }
+
+  #profile-edit .form-label {
+    font-size: 1.2em;
+  }
+
+  #profile-edit input[type="text"], 
+  #profile-edit input[type="password"] {
+    width: 100%;
+  }
+
+  .weather-widget {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    max-width: 95%;
+    padding: 15px 10px;
+  }
+
+  .profile-nursery-name {
+    font-size: 2.5em;
+  }
+
+  .profile-location {
+    font-size: 1.5em;
+  }
+
+  .profile-nursery-details {
+    font-size: 1em;
+    padding: 15px;
+  }
+
+  .welcome-message {
+    font-size: 2.5em;
+  }
+
+  /* Assicurarsi che il box occupi l'intera larghezza */
+  .plant-panel {
+    width: 100%;
+    height: auto;
+    margin: 10px 0; /* Aggiunta di margine tra i box */
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.9em;
+  }
+
+  .table-reservations th, .table-reservations td {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  .btn-removenursplant {
+    font-size: 1em;
+    padding: 8px 14px;
+  }
 }
