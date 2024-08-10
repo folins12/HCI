@@ -9,7 +9,7 @@
 <body>
   <div class="profile-container">
     <div class="welcome-message">
-      Benvenuto nel tuo vivaio <%= @user.nome %>!
+      Benvenuto nel tuo vivaio <%= @user.nome.capitalize %>!
     </div>
 
     <div id="profile-view" style="<%= @user.errors.any? ? 'display: none;' : 'display: block;' %>">
