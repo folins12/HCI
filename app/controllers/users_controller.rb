@@ -43,7 +43,7 @@ class UsersController < ApplicationController
           nursery_plant = NurseryPlant.find_by(id: reserve.first.nursery_plant_id)
           new_value = [nursery_plant.num_reservations - 1, 0].max
           nursery_plant.update(num_reservations: new_value)
-          render json: { success: true , message: "prenotazione avvenuta con successo."}
+          render json: { success: true , message: "rimozione prenotazione avvenuta con successo."}
         else
           render json: { success: false, message: "Errore nella cancellazione della prenotazione.", errors: reserve.errors.full_messages }, status: :unprocessable_entity
         end
