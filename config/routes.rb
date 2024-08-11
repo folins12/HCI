@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   post 'add_to_nursery', to: 'nursery_plants#add_to_nursery'
   post 'addtonursery', to: 'nursery_plants#add_to_nursery'
-
+  post 'decreserve', to: 'users#decreserve'
 
   get 'nursery_profile', to: 'nursery_profile#profile', as: 'nursery_profile'
   post 'incdisp', to: 'nursery_plants#incdisp'
