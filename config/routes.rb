@@ -30,8 +30,6 @@ Rails.application.routes.draw do
   patch 'user_profile', to: 'users#update'
   post 'removemyplant', to: 'myplants#removemyplant'
 
-  post 'decreserve', to: 'users#decreserve'
-
   post 'add_to_nursery', to: 'nursery_plants#add_to_nursery'
   post 'addtonursery', to: 'nursery_plants#add_to_nursery'
 
