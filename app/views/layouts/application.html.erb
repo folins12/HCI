@@ -24,11 +24,13 @@
       </div>
       <% if session[:user_id] %>
         <div class="nav-item">
-          <%= link_to 'Profilo', current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+          <% if current_user.nursery == true %>
+            <%= link_to 'Il mio Negozio', current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Profilo', current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+          <% end %>
         </div>
-        <!--<div class="nav-item">
-          <%= link_to 'Logout', logout_path, method: :delete, class: 'nav-link' %>
-        </div>-->
+        
       <% else %>
         <div class="nav-item">
           <%= link_to 'Login', login_path, class: 'nav-link' %>
