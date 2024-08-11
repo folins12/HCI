@@ -1,0 +1,96 @@
+.login-background {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('sfondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-formcontainer {
+    border: 3px solid #006400;
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    background-color: white;
+    opacity: 0.95;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.login-logo {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-logo img {
+    max-width: 150px;
+}
+
+.login-input-group {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.login-input-group input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 2px solid #006400;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.login-input-group input:focus {
+    outline: none;
+    border-color: #004d00;
+}
+
+.login-button-container {
+    display: flex; 
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.login-button {
+    background-color: #006400;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-size: 1.6em;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.login-button:hover {
+    background-color: #004d00;
+    transform: translateY(-3px) scale(1.05);
+    transition: 0.3s;
+}
+
+
+.login-link {
+    color: #006400;
+    text-decoration: none;
+    font-size: 1.3em; 
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+}
+
+
+@media (max-width: 600px) {
+    .login-formcontainer {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .login-button {
+        font-size: 20px;
+    }
+}
