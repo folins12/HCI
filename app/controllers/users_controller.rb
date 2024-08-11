@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user
       # Recupera le prenotazioni dell'utente
       sql_query = <<-SQL
-        SELECT p.name AS plant_name, n.email AS nursery_email, COUNT(*) AS quantity
+        SELECT p.name AS plant_name, n.email AS nursery_email, r.id AS resid, COUNT(*) AS quantity
         FROM reservations r
         JOIN nursery_plants np ON np.id = r.nursery_plant_id
         JOIN plants p ON p.id = np.plant_id
@@ -35,9 +35,25 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
+  def decreserve
+    reserve = Reservation.where(id: params[:reservation_id])
+    if reserve
+      if reserve.first
+        if reserve.first.destroy
+          nursery_plant = NurseryPlant.find_by(id: reserve.first.nursery_plant_id)
+          new_value = [nursery_plant.num_reservations - 1, 0].max
+          nursery_plant.update(num_reservations: new_value)
+          render json: { success: true , message: "prenotazione avvenuta con successo."}
+        else
+          render json: { success: false, message: "Errore nella cancellazione della prenotazione.", errors: reserve.errors.full_messages }, status: :unprocessable_entity
+        end
+      else
+        render json: { success: false, message: "Errore nella cancellazione della prenotazione."}
+      end
+    else
+      render json: { success: false, message: "Errore nella cancellazione della prenotazione."}
+    end
+  end
 
   def update
     if @user && password_update_valid?
