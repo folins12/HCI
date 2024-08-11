@@ -161,14 +161,12 @@
           const quantityCell = row.querySelector('td:nth-child(3)');
           const currentQuantity = parseInt(quantityCell.textContent, 10);
 
-          // Funzione per aggiornare la quantità
           const updateQuantity = (newQuantity) => {
             quantityCell.textContent = newQuantity;
           };
 
-          // Funzione per gestire la richiesta di decremento
           const handleDecrement = () => {
-            this.style.pointerEvents = "none"; // Disabilita il pulsante
+            this.style.pointerEvents = "none"; 
 
             fetch('/decreserve', {
               method: 'POST',
@@ -187,15 +185,15 @@
               return response.json();
             })
             .then(data => {
-              console.log("Risposta dal server:", data); // Log risposta
+              console.log("Risposta dal server:", data); 
 
               if (data.success) {
                 const newQuantity = currentQuantity - 1;
 
                 if (newQuantity <= 0) {
-                  row.remove(); // Rimuovi la riga se la quantità è 0 o meno
+                  row.remove(); 
                 } else {
-                  updateQuantity(newQuantity); // Aggiorna la quantità nel DOM
+                  updateQuantity(newQuantity);
                 }
               } else {
                 alert(data.message || "Errore nella modifica della prenotazione. Riprova.");
@@ -206,13 +204,12 @@
               alert('Errore: ' + error.message);
             })
             .finally(() => {
-              this.style.pointerEvents = "auto"; // Riabilita il pulsante
+              this.style.pointerEvents = "auto";
             });
           };
 
-          // Se la quantità è 1 o meno, chiedi conferma per rimuovere la riga
           if (currentQuantity <= 1) {
-            if (confirm('La quantità è 1 e verrà rimossa. Confermi?')) {
+            if (confirm('Sei sicuro di voler rimuovere la prenotazione di questa pianta?')) {
               handleDecrement();
             }
           } else {
