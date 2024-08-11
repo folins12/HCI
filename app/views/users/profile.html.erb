@@ -121,28 +121,39 @@
   
   <div class="table-reservations">
     <h2 style="font-size: 2em;">Le Tue Prenotazioni</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Pianta</th>
-          <th>Email Vivaio</th>
-          <th>Quantità</th>
-          <th>Riduci</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @user_reservations.each do |reservation| %>
+
+    <% if @user_reservations.empty? %>
+      <div class="btn-nurs">
+        <p>Ancora nessuna prenotazione</p>
+        <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
+      </div>
+
+    <% else %>
+      <table>
+        <thead>
           <tr>
-            <td><%= reservation.plant_name %></td>
-            <td><%= reservation.nursery_email %></td>
-            <td><%= reservation.quantity %></td>
-            <td><div class="btn-decreserve" data-reservation-id="<%= reservation.resid %>" data-nursery-plant-id="<%=reservation.np_id%>" data-user-email-id="<%=reservation.user_email%>">
-              -
-            </div></td>
+            <th>Pianta</th>
+            <th>Email Vivaio</th>
+            <th>Quantità</th>
+            <th>Riduci</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @user_reservations.each do |reservation| %>
+            <tr>
+              <td><%= reservation.plant_name %></td>
+              <td><%= reservation.nursery_email %></td>
+              <td><%= reservation.quantity %></td>
+              <td>
+                <div class="btn-decreserve" data-reservation-id="<%= reservation.resid %>" data-nursery-plant-id="<%= reservation.np_id %>" data-user-email-id="<%= reservation.user_email %>">
+                  -
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 
   
