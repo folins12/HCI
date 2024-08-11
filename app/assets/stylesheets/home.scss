@@ -125,10 +125,11 @@
 .section {
     margin-bottom: 40px;
     width: 80%;
+    transition: 0.2s;
 }
 
 .section:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     transition: 0.2s;
 }
 
@@ -223,6 +224,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
+    transition: 0.2s;
 }
 
 .footer .social a:hover {
