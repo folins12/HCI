@@ -9,7 +9,6 @@ class User < ApplicationRecord
 
   has_many :nurseries
   has_many :myplants
-  has_many :reservations, dependent: :destroy
 
   attr_accessor :current_password
 
