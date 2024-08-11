@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user
       # Recupera le prenotazioni dell'utente
       sql_query = <<-SQL
-        SELECT p.name AS plant_name, n.email AS nursery_email, r.id AS resid, COUNT(*) AS quantity
+        SELECT p.name AS plant_name, n.email AS nursery_email, r.id AS resid, np.id AS np_id, r.user_email AS user_email, COUNT(*) AS quantity
         FROM reservations r
         JOIN nursery_plants np ON np.id = r.nursery_plant_id
         JOIN plants p ON p.id = np.plant_id
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def decreserve
     Rails.logger.debug "ID Prenotazione ricevuto: #{params[:reservation_id]}"
-    reservation = Reservation.find_by(id: params[:reservation_id])
+    reservation = Reservation.find_by(nursery_plant_id: params[:nurseryplant_id], user_email: params[:user_email])
 
     if reservation
       if reservation.destroy

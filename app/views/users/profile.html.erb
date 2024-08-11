@@ -136,7 +136,7 @@
             <td><%= reservation.plant_name %></td>
             <td><%= reservation.nursery_email %></td>
             <td><%= reservation.quantity %></td>
-            <td><div class="btn-decreserve" data-reservation-id="<%= reservation.resid %>">
+            <td><div class="btn-decreserve" data-reservation-id="<%= reservation.resid %>" data-nursery-plant-id="<%=reservation.np_id%>" data-user-email-id="<%=reservation.user_email%>">
               -
             </div></td>
           </tr>
@@ -154,7 +154,8 @@
       reserveDecButtons.forEach(button => {
         button.addEventListener("click", function() {
           const reservationId = button.getAttribute('data-reservation-id');
-          console.log("ID Prenotazione:", reservationId); // Log ID
+          const nurseryplantId = button.getAttribute('data-nursery-plant-id');
+          const useremail = button.getAttribute('data-user-email-id');
 
           const row = this.closest('tr');
           const quantityCell = row.querySelector('td:nth-child(3)');
@@ -175,7 +176,7 @@
                 'Content-Type': 'application/json',
                 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
               },
-              body: JSON.stringify({ reservation_id: reservationId })
+              body: JSON.stringify({ reservation_id: reservationId, nurseryplant_id: nurseryplantId, user_email: useremail })
             })
             .then(response => {
               if (!response.ok) {
