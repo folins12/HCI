@@ -149,48 +149,81 @@
 
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
-      const reserveButtons = document.querySelectorAll(".btn-decreserve");    
-      reserveButtons.forEach(button => {
-          button.addEventListener("click", function() {
-              const reservationId = button.getAttribute('data-reservation-id');
-              fetch('/decreserve', {
-                  method: 'POST',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                  },
-                  body: JSON.stringify({ reservation_id: reservationId }) 
-              })
-              .then(response => {
-                  if (!response.ok) {
-                      return response.text().then(text => {
-                          throw new Error(text);
-                      });
-                  }
-                  return response.json();
-              })
-              .then(data => {
-                  if (data.success) {
-                    alert(data.message);
-                  } else {
-                      alert(data.message || "Errore nella aggiunta della prenotazione. Riprova.");
-                      this.style.pointerEvents = "auto"; 
-                  }
-              })
-              .catch(error => {
-                  console.error('Errore:', error);
-                  alert('Errore: ' + error.message);
-                  this.style.pointerEvents = "auto";
-              });
-          });
+      const reserveDecButtons = document.querySelectorAll(".btn-decreserve");
+
+      reserveDecButtons.forEach(button => {
+        button.addEventListener("click", function() {
+          const reservationId = button.getAttribute('data-reservation-id');
+          console.log("ID Prenotazione:", reservationId); // Log ID
+
+          const row = this.closest('tr');
+          const quantityCell = row.querySelector('td:nth-child(3)');
+          const currentQuantity = parseInt(quantityCell.textContent, 10);
+
+          // Funzione per aggiornare la quantità
+          const updateQuantity = (newQuantity) => {
+            quantityCell.textContent = newQuantity;
+          };
+
+          // Funzione per gestire la richiesta di decremento
+          const handleDecrement = () => {
+            this.style.pointerEvents = "none"; // Disabilita il pulsante
+
+            fetch('/decreserve', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+              },
+              body: JSON.stringify({ reservation_id: reservationId })
+            })
+            .then(response => {
+              if (!response.ok) {
+                return response.text().then(text => {
+                  throw new Error(text);
+                });
+              }
+              return response.json();
+            })
+            .then(data => {
+              console.log("Risposta dal server:", data); // Log risposta
+
+              if (data.success) {
+                const newQuantity = currentQuantity - 1;
+
+                if (newQuantity <= 0) {
+                  row.remove(); // Rimuovi la riga se la quantità è 0 o meno
+                } else {
+                  updateQuantity(newQuantity); // Aggiorna la quantità nel DOM
+                }
+              } else {
+                alert(data.message || "Errore nella modifica della prenotazione. Riprova.");
+              }
+            })
+            .catch(error => {
+              console.error('Errore:', error);
+              alert('Errore: ' + error.message);
+            })
+            .finally(() => {
+              this.style.pointerEvents = "auto"; // Riabilita il pulsante
+            });
+          };
+
+          // Se la quantità è 1 o meno, chiedi conferma per rimuovere la riga
+          if (currentQuantity <= 1) {
+            if (confirm('La quantità è 1 e verrà rimossa. Confermi?')) {
+              handleDecrement();
+            }
+          } else {
+            handleDecrement();
+          }
+        });
       });
-    });
 
 
-    document.addEventListener("DOMContentLoaded", function() {
-      const reserveButtons = document.querySelectorAll(".btn-removemyplant");
+      const reserveRemButtons = document.querySelectorAll(".btn-removemyplant");
     
-      reserveButtons.forEach(button => {
+      reserveRemButtons.forEach(button => {
           button.addEventListener("click", function() {
               const myplantId = this.dataset.myplantId;
               const plantBox = this.closest('.plant-box');
@@ -226,6 +259,7 @@
               });
           });
       });
+
     });
 
 
