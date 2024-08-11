@@ -97,14 +97,36 @@ a.btn-outline-light:hover {
   margin-right: 40px;
   text-decoration: none;
   position: relative;
-  border: 1px solid #ffffff;
+  border: 1px solid #ffffff; /* Mantiene il bordo per i link testuali */
   border-radius: 10%;
+}
+
+.nav-link i {
+  border: none; /* Rimuove il bordo solo per le icone */
 }
 
 .nav-link:hover {
   background-color: #fff; /* Cambia il colore di sfondo dell'hover della nav-link per migliorare la visibilità */
   color: #343a40;
+  border-color: #ffffff; /* Mantiene il bordo bianco durante l'hover */
 }
+
+.nav-link i:hover {
+  color: #343a40; /* Cambia il colore dell'icona quando si passa sopra con il mouse */
+  border: none; /* Assicura che le icone non abbiano il bordo durante l'hover */
+}
+
+
+.nav-icon {
+  border: none; /* Rimuove il bordo dalle icone */
+  color: #ffffff !important; /* Mantiene il colore bianco per le icone */
+}
+
+.nav-icon:hover {
+  color: #343a40; /* Cambia il colore dell'icona quando si passa sopra */
+}
+
+
 
 .content {
   padding-top: 0;

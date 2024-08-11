@@ -24,12 +24,17 @@
       </div>
       <% if session[:user_id] %>
         <div class="nav-item">
-          <% if current_user.nursery == true %>
-            <%= link_to 'Il mio Negozio', current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
-          <% else %>
-            <%= link_to 'Profilo', current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' %>
+        <% if current_user.nursery == true %>
+          <%= link_to current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' do %>
+            <i class="fas fa-store nav-icon"></i> <!-- Icona di negozio -->
           <% end %>
-        </div>
+        <% else %>
+          <%= link_to current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' do %>
+            <i class="fas fa-user nav-icon"></i> <!-- Icona di profilo -->
+          <% end %>
+        <% end %>
+      </div>
+
         
       <% else %>
         <div class="nav-item">
