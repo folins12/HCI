@@ -13,12 +13,10 @@ class UsersController < ApplicationController
 
 
   def profile
-    # Recupera le piante dell'utente
     plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
     @myplants = Plant.where(id: plant_ids)
 
     if @user
-      # Recupera le prenotazioni dell'utente
       sql_query = <<-SQL
         SELECT p.name AS plant_name, n.email AS nursery_email, r.id AS resid, np.id AS np_id, r.user_email AS user_email, COUNT(*) AS quantity
         FROM reservations r

@@ -78,6 +78,9 @@
   </div>
 
   
+  <div class="weather-message">
+    Controlla il meteo nella tua zona per decidere se irrigare oggi.
+  </div>
   <div class="weather-widget" id="weather-widget">
     <p>Caricamento meteo...</p>
   </div>
@@ -113,7 +116,10 @@
       <% end %>
     </div>
   <% else %>
-      <p class="no-results">La tua collezione è vuota. Aggiungi le piante dalla pagina "PIANTE".</p>
+    <div class="btn-nurs">
+      <p class="no-results">La tua collezione di piante è vuota.<br> Aggiungi le piante che hai a casa dalla pagina "PIANTE".</p>
+      <%= link_to 'PIANTE', infoplants_path, class: 'nav-link btn-primary' %>
+    </div>
     
   <% end %>
 

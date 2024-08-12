@@ -26,11 +26,14 @@
         <div class="nav-item">
         <% if current_user.nursery == true %>
           <%= link_to current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' do %>
-            <i class="fas fa-store nav-icon"></i> <!-- Icona di negozio -->
+            <i class="fas fa-store-alt nav-icon"></i> 
+            <!-- <i class="fas fa-store nav-icon"></i> -->
+            <!-- <i class="fas fa-seedling nav-icon"></i> -->
+            <!-- <i class="fas fa-leaf nav-icon"></i> -->
           <% end %>
         <% else %>
           <%= link_to current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' do %>
-            <i class="fas fa-user nav-icon"></i> <!-- Icona di profilo -->
+            <i class="fas fa-user nav-icon"></i>
           <% end %>
         <% end %>
       </div>

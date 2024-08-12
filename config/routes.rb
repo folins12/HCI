@@ -41,4 +41,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :update]
   post 'reserve', to: 'nursery_plants#reserve'
+
+  resources :nursery_profile do
+    post 'satisfy_order', on: :collection
+  end
+
 end

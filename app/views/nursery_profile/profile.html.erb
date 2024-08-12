@@ -123,7 +123,6 @@
               <p class="plant-reservations"><strong>Ordinazioni:</strong> <%= plant.res %></p>
             </div>
 
-            <!-- Aggiungi il pulsante "Rimuovi dal Commercio" -->
             <div class="btn-removenursplant" style="text-align:" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">
               <p>Rimuovi Dal Commercio</p>
             </div>
@@ -150,6 +149,7 @@
             <th>Pianta</th>
             <th>Email Utente</th>
             <th>Quantità</th>
+            <th>Soddisfa</th>
           </tr>
         </thead>
         <tbody>
@@ -164,6 +164,9 @@
                   <td><%= plant.name %></td>
                   <td><%= email %></td>
                   <td><%= count %></td>
+                  <td>
+                    <%= check_box_tag "satisfied_#{plant.id}_#{email}", true, false, class: "satisfy-order", data: { plant_id: plant.nursery_plant_id, email: email } %>
+                  </td>
                 </tr>
               <% end %>
             <% end %>
@@ -175,12 +178,48 @@
 
   <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
+    const satisfyOrderCheckboxes = document.querySelectorAll(".satisfy-order");
+    satisfyOrderCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", function() {
+        const plantId = checkbox.getAttribute('data-plant-id');
+        const email = checkbox.getAttribute('data-email');
+
+        if (checkbox.checked) {
+          fetch('/nursery_profile/satisfy_order', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({ plant_id: plantId, email: email })
+          })
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              if (confirm('Sei sicuro di aver soddisfatto tutte le prenotazioni per questa pianta?')) {
+                checkbox.closest('tr').remove();
+              }
+            } else {
+              alert(data.message || "Errore nella soddisfazione dell'ordine.");
+              checkbox.checked = false;
+            }
+          })
+          .catch(error => {
+            console.error('Errore:', error);
+            alert('Errore: ' + error.message);
+            checkbox.checked = false;
+          });
+        }
+      });
+    });
+
+
     const reserveRemoveButtons = document.querySelectorAll(".btn-removenursplant");
     reserveRemoveButtons.forEach(button => {
       button.addEventListener("click", function() {
         const nurseryId = button.getAttribute('data-nursery-id');
         const plantId = button.getAttribute('data-plant-id');
-        const plantBox = button.closest('.nursery-plant-box'); // Cambia qui il selettore
+        const plantBox = button.closest('.nursery-plant-box'); 
 
         if (plantBox) {
           button.style.pointerEvents = "none";
@@ -202,7 +241,7 @@
           })
           .then(data => {
             if (data.success) {
-              plantBox.remove(); // Rimuovi l'elemento
+              plantBox.remove();
             } else {
               alert(data.message || "Errore nella rimozione. Riprova.");
               button.style.pointerEvents = "auto";
