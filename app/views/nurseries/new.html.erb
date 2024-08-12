@@ -11,34 +11,58 @@
     <div class="register-formcontainer">
       <h2 style="color: #006400;">Inserisci i dati del tuo vivaio</h2>
       <%= form_with model: @nursery, url: nurseries_path, local: true do |form| %>
-        <div class="register-input-group">
-            <%= form.text_field :name, placeholder: 'Nome', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:name].any? %>">
+          <%= form.text_field :name, placeholder: 'Nome', required: true %>
+          <% if @nursery.errors[:name].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:name].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.text_field :number, placeholder: 'Numero di telefono', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:number].any? %>">
+          <%= form.text_field :number, placeholder: 'Numero di telefono', required: true %>
+          <% if @nursery.errors[:number].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:number].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.email_field :email, placeholder: 'Email', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:email].any? %>">
+          <%= form.email_field :email, placeholder: 'Email', required: true %>
+          <% if @nursery.errors[:email].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:email].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.text_field :address, placeholder: 'Indirizzo', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:address].any? %>">
+          <%= form.text_field :address, placeholder: 'Indirizzo', required: true %>
+          <% if @nursery.errors[:address].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:address].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.text_field :location, placeholder: 'Città', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:location].any? %>">
+          <%= form.text_field :location, placeholder: 'Città', required: true %>
+          <% if @nursery.errors[:location].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:location].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.text_field :open_time, placeholder: 'Orario di Apertura (es. 9)', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:base].any? %>">
+          <%= form.text_field :open_time, placeholder: 'Orario di Apertura (es. 9)', required: true %>
+          <% if @nursery.errors[:base].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:base].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.text_field :close_time, placeholder: 'Orario di Chiusura (es. 18)', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:base].any? %>">
+          <%= form.text_field :close_time, placeholder: 'Orario di Chiusura (es. 18)', required: true %>
+          <% if @nursery.errors[:base].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:base].first %></span>
+          <% end %>
         </div>
-        <div class="register-input-group">
-            <%= form.text_area :description, placeholder: 'Descrizione', required: true %>
+        <div class="register-input-group <%= 'has-error' if @nursery.errors[:description].any? %>">
+          <%= form.text_area :description, placeholder: 'Descrizione', required: true %>
+          <% if @nursery.errors[:description].any? %>
+            <span class="register-error-message"><%= @nursery.errors[:description].first %></span>
+          <% end %>
         </div>
         <div class="register-button-container">
-            <button type="submit" class="register-button">Registra Vivaio</button>
+          <button type="submit" class="register-button">Registra Vivaio</button>
         </div>
-        <% end %>
+      <% end %>
     </div>
   </div>
 </body>
