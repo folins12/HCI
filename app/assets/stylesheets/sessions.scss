@@ -94,3 +94,12 @@
         font-size: 20px;
     }
 }
+.login-input-group.has-error input {
+    border-color: red;
+}
+
+.login-error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}

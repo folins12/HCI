@@ -17,16 +17,16 @@
       </div>
       <%= form_with url: login_path, local: true do |form| %>
         <div class="login-input-group <%= 'has-error' if flash[:email_error] %>">
-          <%= form.email_field :email, value: params[:email], placeholder: 'Email', required: true %>
-            <% if flash[:email_error] %>
-              <span class="login-error-message"><%= flash[:email_error] %></span>
-            <% end %>
+          <%= form.email_field :email, value: flash[:email] || params[:email], placeholder: 'Email', required: true %>
+          <% if flash[:email_error] %>
+            <span class="login-error-message"><%= flash[:email_error] %></span>
+          <% end %>
         </div>
         <div class="login-input-group <%= 'has-error' if flash[:password_error] %>">
           <%= form.password_field :password, placeholder: 'Password', required: true %>
-            <% if flash[:password_error] %>
-              <span class="login-error-message"><%= flash[:password_error] %></span>
-            <% end %>
+          <% if flash[:password_error] %>
+            <span class="login-error-message"><%= flash[:password_error] %></span>
+          <% end %>
         </div>
         <div class="login-button-container">
           <button type="submit" class="login-button">Login</button>

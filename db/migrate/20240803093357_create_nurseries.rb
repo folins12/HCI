@@ -9,6 +9,7 @@ class CreateNurseries < ActiveRecord::Migration[6.1]
       t.integer :open_time
       t.integer :close_time
       t.text :description
+      t.references :user, foreign_key: true # Associa con la tabella utenti se necessario
 
       t.timestamps
     end

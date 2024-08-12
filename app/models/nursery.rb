@@ -3,7 +3,8 @@ class Nursery < ApplicationRecord
   has_many :plants, through: :nursery_plants
   has_many :reservations, through: :nursery_plants
 
-  belongs_to :user
+  belongs_to :user, foreign_key: 'id_owner'
+  validates :name, :number, :email, :address, :location, :open_time, :close_time, :description, presence: true
 
   def self.search(query)
     if query.present?

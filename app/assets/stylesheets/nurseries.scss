@@ -199,3 +199,29 @@
   transition: 0.2s;
   background-color: #0a3b00;
 }
+
+
+.register-input-group {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.register-input-group input,
+.register-input-group textarea {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 2px solid #006400;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+.register-input-group.has-error input,
+.register-input-group.has-error textarea {
+  border-color: red; // Colore rosso per i bordi dei campi con errori
+}
+
+.register-error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}

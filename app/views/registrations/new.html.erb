@@ -15,45 +15,54 @@
           <img src="<%= asset_path 'logo.jpeg' %>" alt="Logo">
         <% end %>
       </div>
-        <%= form_with model: @user, url: register_path, local: true do |form| %>
-          <div class="register-input-group">
-            <%= form.text_field :nome, value: @user.nome, placeholder: 'Nome', required: true %>
-          </div>
-          <div class="register-input-group">
-            <%= form.text_field :cognome, value: @user.cognome, placeholder: 'Cognome', required: true %>
-          </div>
-          <div class="register-input-group">
-            <%= form.email_field :email, value: @user.email, placeholder: 'Email', required: true %>
-          </div>
-          <div class="register-input-group">
-            <%= form.password_field :password, placeholder: 'Password', required: true %>
-          </div>
-          <div class="register-input-group">
-            <%= form.password_field :password_confirmation, placeholder: 'Conferma Password', required: true %>
-          </div>
-          <div class="register-input-group">
-            <%= form.text_field :address, value: @user.address, placeholder: 'Via/Viale Roma 1, Ciampino', required: true %>
-          </div>
-          <div class="register-checkbox-container">
-            <%= form.check_box :nursery, {}, 'true', 'false' %>
-            <%= form.label :nursery, "Vivaio" %>
-          </div>
-          <div class="register-button-container">
-            <button type="submit" class="register-button">Registrati</button>
-          </div>
-        <% end %>
+      <%= form_with model: @user, url: register_path, local: true do |form| %>
+        <div class="register-input-group <%= 'has-error' if @user.errors[:nome].any? %>">
+          <%= form.text_field :nome, value: @user.nome, placeholder: 'Nome'%>
+          <% if @user.errors[:nome].any? %>
+            <span class="register-error-message"><%= @user.errors[:nome].first %></span>
+          <% end %>
+        </div>
+        <div class="register-input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
+          <%= form.text_field :cognome, value: @user.cognome, placeholder: 'Cognome'%>
+          <% if @user.errors[:cognome].any? %>
+            <span class="register-error-message"><%= @user.errors[:cognome].first %></span>
+          <% end %>
+        </div>
+        <div class="register-input-group <%= 'has-error' if @user.errors[:email].any? %>">
+          <%= form.email_field :email, value: @user.email, placeholder: 'Email', required: true %>
+          <% if @user.errors[:email].any? %>
+            <span class="register-error-message"><%= @user.errors[:email].first %></span>
+          <% end %>
+        </div>
+        <div class="register-input-group <%= 'has-error' if @user.errors[:password].any? %>">
+          <%= form.password_field :password, placeholder: 'Password', required: true %>
+          <% if @user.errors[:password].any? %>
+            <span class="register-error-message"><%= @user.errors[:password].first %></span>
+          <% end %>
+        </div>
+        <div class="register-input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
+          <%= form.password_field :password_confirmation, placeholder: 'Conferma Password', required: true %>
+          <% if @user.errors[:password_confirmation].any? %>
+            <span class="register-error-message"><%= @user.errors[:password_confirmation].first %></span>
+          <% end %>
+        </div>
+        <div class="register-input-group <%= 'has-error' if @user.errors[:address].any? %>">
+          <%= form.text_field :address, value: @user.address, placeholder: 'Indirizzo', required: true %>
+          <% if @user.errors[:address].any? %>
+            <span class="register-error-message"><%= @user.errors[:address].first %></span>
+          <% end %>
+        </div>
+        <div class="register-checkbox-container">
+          <%= form.check_box :nursery, {}, 'true', 'false' %>
+          <%= form.label :nursery, "Vivaio" %>
+        </div>
+        <div class="register-button-container">
+          <button type="submit" class="register-button">Registrati</button>
+        </div>
+      <% end %>
       <div>
         <a href="/login" class="register-link">Clicca qui per effettuare il login</a>
       </div>
-      <% if @user.errors.any? %>
-        <div class="error-messages">
-          <ul>
-            <script type="text/javascript">
-              alert("Si sono verificati i seguenti errori:\n<%= @user.errors.full_messages.join('\n') %>");
-            </script>
-          </ul>
-        </div>
-      <% end %>
     </div>
   </div>
 </body>

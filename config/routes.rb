@@ -17,21 +17,26 @@ Rails.application.routes.draw do
 
   get 'nurseries', to: 'nurseries#index'
   get 'nurseries/:id', to: 'nurseries#show', as: 'nursery'
+  post 'nurseries', to: 'nurseries#create'
   #get 'locations/get_coordinates', to: 'locations#get_coordinates'
 
   get 'register', to: 'registrations#new'
   post 'register', to: 'registrations#create'
+
+  get 'register_nursery', to: 'nurseries#new', as: 'new_nursery'
+  post 'register_nursery', to: 'nurseries#create', as: 'create_nursery'
+
   get 'users/fetch_weather', to: 'users#fetch_weather'
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
+
   get 'user_profile', to: 'users#profile'
   patch 'user_profile', to: 'users#update'
   post 'removemyplant', to: 'myplants#removemyplant'
 
   post 'add_to_nursery', to: 'nursery_plants#add_to_nursery'
-  post 'addtonursery', to: 'nursery_plants#add_to_nursery'
   post 'decreserve', to: 'users#decreserve'
 
   get 'nursery_profile', to: 'nursery_profile#profile', as: 'nursery_profile'
@@ -45,5 +50,7 @@ Rails.application.routes.draw do
   resources :nursery_profile do
     post 'satisfy_order', on: :collection
   end
+
+  resources :nurseries, only: [:new, :create]
 
 end
