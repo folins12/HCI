@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registra Vivaio</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="register-background">
+    <div class="register-formcontainer">
+      <h2 style="color: #006400;">Inserisci i dati del tuo vivaio</h2>
+      <%= form_with model: @nursery, url: nurseries_path, local: true do |form| %>
+        <div class="register-input-group">
+            <%= form.text_field :name, placeholder: 'Nome', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.text_field :number, placeholder: 'Numero di telefono', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.email_field :email, placeholder: 'Email', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.text_field :address, placeholder: 'Indirizzo', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.text_field :location, placeholder: 'Città', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.text_field :open_time, placeholder: 'Orario di Apertura (es. 9)', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.text_field :close_time, placeholder: 'Orario di Chiusura (es. 18)', required: true %>
+        </div>
+        <div class="register-input-group">
+            <%= form.text_area :description, placeholder: 'Descrizione', required: true %>
+        </div>
+        <div class="register-button-container">
+            <button type="submit" class="register-button">Registra Vivaio</button>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</body>
+</html>

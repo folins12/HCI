@@ -21,7 +21,11 @@ class RegistrationsController < ApplicationController
     else
       if @user.save
         session[:user_id] = @user.id
-        redirect_to root_path, notice: "Registrazione avvenuta con successo"
+        if @user.nursery
+          redirect_to new_nursery_path
+        else
+          redirect_to root_path, notice: "Registrazione avvenuta con successo"
+        end
       else
         render :new
       end
