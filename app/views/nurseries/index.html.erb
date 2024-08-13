@@ -38,7 +38,11 @@
     <div class="nursery-box">
       <%= link_to nursery_path(nursery) do %>
         <% image_number = [nursery.id, @max_id].min %>
-        <%= image_tag "vivaio#{image_number}.jpg", alt: nursery.name %>
+        <% if Rails.application.assets.find_asset("vivaio#{image_number}.jpg") %>
+          <%= image_tag "vivaio#{image_number}.jpg" %>
+        <% else %>
+          <%= nursery.name %>
+        <% end %>
         <h3><%= nursery.name %></h3>
         <p><%= nursery.location %></p>
       <% end %>
