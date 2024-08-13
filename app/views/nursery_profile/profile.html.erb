@@ -33,7 +33,6 @@
       <%= form_with(model: @nursery, url: update_nursery_image_path(@nursery), method: :patch, local: true, html: { multipart: true }) do |form| %>
         <%= form.label :nursery_image, "Update Image" %>
         <%= form.file_field :nursery_image %>
-
         <%= form.submit "Aggiungi immagine" %>
       <% end %>
 

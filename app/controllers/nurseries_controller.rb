@@ -98,9 +98,31 @@ class NurseriesController < ApplicationController
       nursery.open_time = ''  # Svuota il campo open_time
       nursery.close_time = '' # Svuota il campo close_time
     end
+
+    #controllo nursery.address
+    if nursery.address.blank?
+      nursery.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo")
+      nursery.address = ''  # Svuota il campo address
+    else
+      # Verifica la validità dell'indirizzo
+      unless valid_address?(nursery.address)
+        nursery.errors.add(:address, "L'indirizzo inserito non è valido.")
+        nursery.address = ''  # Svuota il campo address
+      end
+    end
   end
 
   def valid_time?(time)
     time.present? && time.to_i.between?(0, 24)
+  end
+
+  def valid_address?(address)
+    # Usa Geocoder per verificare l'indirizzo
+    results = geo(address)
+    results.present? && results.first.coordinates.present?
+  end
+
+  def geo (address)
+    return Geocoder.search(address)
   end
 end

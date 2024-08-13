@@ -79,5 +79,29 @@ class RegistrationsController < ApplicationController
       user.errors.add(:password_confirmation, "La password confermata è diversa da quella inserita precedentemente")
       user.password_confirmation = ''  # Svuota il campo password_confirmation
     end
+
+    #controllo su user.address
+    if user.address.blank?
+      user.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo")
+      user.address = ''  # Svuota il campo address
+    else
+      # Verifica la validità dell'indirizzo
+      unless valid_address?(user.address)
+        user.errors.add(:address, "L'indirizzo inserito non è valido.")
+        user.address = ''  # Svuota il campo address
+      end
+    end
+    
   end
+
+  def valid_address?(address)
+    # Usa Geocoder per verificare l'indirizzo
+    results = geo(address)
+    results.present? && results.first.coordinates.present?
+  end
+
+  def geo (address)
+    return Geocoder.search(address)
+  end
+
 end
