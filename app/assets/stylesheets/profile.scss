@@ -1,3 +1,19 @@
+.image-nursery-container {
+  width: 150px; /* Larghezza del quadrato */
+  height: 150px; /* Altezza del quadrato */
+  overflow: hidden; /* Nasconde le parti dell'immagine che escono dal quadrato */
+  display: flex;
+  align-items: center; /* Centra l'immagine verticalmente */
+  justify-content: center; /* Centra l'immagine orizzontalmente */
+}
+
+.square-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Rende l'immagine riempire il contenitore mantenendo le proporzioni */
+}
+
+
 .profile-container {
   text-align: center;
   padding: 40px 30px;

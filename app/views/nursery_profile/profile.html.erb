@@ -34,11 +34,13 @@
         <%= form.label :nursery_image, "Update Image" %>
         <%= form.file_field :nursery_image %>
 
-        <%= form.submit "Update Nursery" %>
+        <%= form.submit "Aggiungi immagine" %>
       <% end %>
 
       <% if @nursery.nursery_image.attached? %>
-        <%= image_tag @nursery.nursery_image %>
+        <div class="image-nursery-container">
+          <%= image_tag @nursery.nursery_image, class: "square-image" %>
+        </div>
       <% else %>
         <p>No profile image available</p>
       <% end %>
