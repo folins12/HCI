@@ -56,11 +56,36 @@ class NurseriesController < ApplicationController
       end
     end
   end
+  
+  def update
+    if @nursery.update(nursery_params)
+      redirect_to @nursery, notice: 'Nursery was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def edit_image
+    @nursery = Nursery.find(params[:id])
+  end
+
+  def update_image
+    @nursery = Nursery.find(params[:id])
+    if @nursery.update(nursery_image_params)
+      redirect_to @nursery, notice: 'Image was successfully updated.'
+    else
+      render :edit_image
+    end
+  end
 
   private
 
   def nursery_params
     params.require(:nursery).permit(:name, :number, :email, :address, :location, :open_time, :close_time, :description)
+  end
+
+  def nursery_image_params
+    params.require(:nursery).permit(:nursery_image)
   end
 
   def valid_time?(time)

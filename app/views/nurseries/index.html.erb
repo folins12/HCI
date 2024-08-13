@@ -13,45 +13,42 @@
   <div id="map-container">
     <div id="map"></div>
   </div>
-</div><!-- questo div si toglie e si mette dopo -->
-
-  <% if params[:query].present? && @nurseries.empty? %>
-    <p class="nursery-search-failure">Nessun vivaio presente con questo nome o in questa zona.</p>
-    <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
-  <% elsif params[:query].present? %>
-    <div class="nurseries-container">
-      <% @nurseries.each do |nursery| %>
-        <div class="nursery-box">
-          <%= link_to nursery_path(nursery) do %>
-            <% image_number = [nursery.id, @max_id].min %>
-            <%= image_tag "vivaio#{image_number}.jpg", alt: nursery.name %>
-            <h3><%= nursery.name %></h3>
-            <p><%= nursery.location %></p>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-    <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
-  <% else %>
-    <div class="nurseries-container <%= 'single-item' if @nurseries.size == 1 %>">
-  <% @nurseries.each do |nursery| %>
-    <div class="nursery-box">
-      <%= link_to nursery_path(nursery) do %>
-        <% image_number = [nursery.id, @max_id].min %>
-        <% if Rails.application.assets.find_asset("vivaio#{image_number}.jpg") %>
-          <%= image_tag "vivaio#{image_number}.jpg" %>
-        <% else %>
-          <%= nursery.name %>
-        <% end %>
-        <h3><%= nursery.name %></h3>
-        <p><%= nursery.location %></p>
-      <% end %>
-    </div>
-  <% end %>
 </div>
 
-  <% end %>
-<!-- div -->
+<% if params[:query].present? && @nurseries.empty? %>
+  <p class="nursery-search-failure">Nessun vivaio presente con questo nome o in questa zona.</p>
+  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+<% elsif params[:query].present? %>
+  <div class="nurseries-container">
+    <% @nurseries.each do |nursery| %>
+      <div class="nursery-box">
+        <%= link_to nursery_path(nursery) do %>
+          <% image_number = [nursery.id, @max_id].min %>
+          <%= image_tag "vivaio#{image_number}.jpg", alt: nursery.name %>
+          <h3><%= nursery.name %></h3>
+          <p><%= nursery.location %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+<% else %>
+  <div class="nurseries-container <%= 'single-item' if @nurseries.size == 1 %>">
+    <% @nurseries.each do |nursery| %>
+      <div class="nursery-box">
+        <%= link_to nursery_path(nursery) do %>
+          <% if nursery.nursery_image.attached? %>  <!-- Usa nursery invece di @nursery -->
+            <%= image_tag nursery.nursery_image %> <!-- Usa nursery invece di @nursery -->
+          <% else %>
+            <%= nursery.name %>
+          <% end %>
+          <h3><%= nursery.name %></h3>
+          <p><%= nursery.location %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
 
 <script type="text/javascript">

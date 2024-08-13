@@ -29,6 +29,20 @@
           </tr>
         </table>
       </div>
+
+      <%= form_with(model: @nursery, url: update_nursery_image_path(@nursery), method: :patch, local: true, html: { multipart: true }) do |form| %>
+        <%= form.label :nursery_image, "Update Image" %>
+        <%= form.file_field :nursery_image %>
+
+        <%= form.submit "Update Nursery" %>
+      <% end %>
+
+      <% if @nursery.nursery_image.attached? %>
+        <%= image_tag @nursery.nursery_image %>
+      <% else %>
+        <p>No profile image available</p>
+      <% end %>
+      
       <div class="profile-buttons">
         <button id="edit-profile-button" class="btn btn-primary">Modifica profilo</button>
         <%= link_to 'Logout', logout_path, method: :delete, id: 'logout-button', class: 'btn btn-danger' %>

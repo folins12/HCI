@@ -1,4 +1,6 @@
 class Nursery < ApplicationRecord
+  has_one_attached :nursery_image
+
   has_many :nursery_plants
   has_many :plants, through: :nursery_plants
   has_many :reservations, through: :nursery_plants
