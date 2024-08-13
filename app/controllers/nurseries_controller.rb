@@ -11,6 +11,7 @@ class NurseriesController < ApplicationController
   end
 
   def new
+    @hide_navbar = true
     @nursery = Nursery.new
   end
 
