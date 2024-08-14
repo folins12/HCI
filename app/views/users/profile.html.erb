@@ -43,38 +43,57 @@
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome.capitalize, required: true %>
+          <% @user.errors[:nome].each do |error| %>
+            <div class="error-message"><%= error %></div>
+          <% end %>
         </div>
+
         <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
           <%= form.label :cognome, "Cognome", class: 'form-label' %>
           <%= form.text_field :cognome, value: @user.cognome.capitalize, required: true %>
+          <% @user.errors[:cognome].each do |error| %>
+            <div class="error-message"><%= error %></div>
+          <% end %>
         </div>
+
         <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
           <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
           <%= form.password_field :current_password, required: true %>
+          <% @user.errors[:current_password].each do |error| %>
+            <div class="error-message"><%= error %></div>
+          <% end %>
         </div>
+
         <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
-          <%= form.label :password, "Nuova Password", class: 'form-label' %>
-          <%= form.password_field :password %>
+          <%= form.label :password, "Nuova Password", class: 'form-label'%>
+          <%= form.password_field :password, placeholder: "Lascia vuoto se non vuoi cambiare" %>
+          <% @user.errors[:password].each do |error| %>
+            <div class="error-message"><%= error %></div>
+          <% end %>
         </div>
+
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
           <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
-          <%= form.password_field :password_confirmation %>
+          <%= form.password_field :password_confirmation, placeholder: "Lascia vuoto se non vuoi cambiare" %>
+          <% @user.errors[:password_confirmation].each do |error| %>
+            <div class="error-message"><%= error %></div>
+          <% end %>
         </div>
-        <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
-          <%= form.label :password, "Nuovo Indirizzo di Casa", class: 'form-label' %>
+
+        <div class="input-group">
+          <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
         </div>
-        <% if flash[:alert].present? %>
-          <div class="alert alert-danger">
-            <%= flash[:alert] %>
-          </div>
-        <% end %>
+
+
         <div class="profile-buttons">
           <%= form.submit "Invia", class: "btn btn-primary" %>
           <button id="cancel-edit-button" class="btn btn-secondary" onclick="cancelEdit()">Annulla</button>
         </div>
       <% end %>
     </div>
+
+
   </div>
 
   
@@ -87,7 +106,7 @@
 
 
 
-  <% if @myplants.any? %>
+  <% if @myplants.present? && @myplants.any? %>
     <div class="plant-message">
       Queste sono le tue piante:
     </div>
@@ -128,38 +147,45 @@
   <div class="table-reservations">
     <h2 style="font-size: 2em;">Le Tue Prenotazioni</h2>
 
-    <% if @user_reservations.empty? %>
+    <% if @user_reservations.present? && @user_reservations.empty? %>
       <div class="btn-nurs">
         <p>Ancora nessuna prenotazione</p>
         <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
       </div>
 
     <% else %>
-      <table>
-        <thead>
-          <tr>
-            <th>Pianta</th>
-            <th>Email Vivaio</th>
-            <th>Quantità</th>
-            <th>Riduci</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @user_reservations.each do |reservation| %>
+      <% if @user_reservations.present? %>
+        <table>
+          <thead>
             <tr>
-              <td><%= reservation.plant_name %></td>
-              <td><%= reservation.nursery_email %></td>
-              <td><%= reservation.quantity %></td>
-              <td>
-                <div class="btn-decreserve" data-reservation-id="<%= reservation.resid %>" data-nursery-plant-id="<%= reservation.np_id %>" data-user-email-id="<%= reservation.user_email %>">
-                  -
-                </div>
-              </td>
+              <th>Pianta</th>
+              <th>Email Vivaio</th>
+              <th>Quantità</th>
+              <th>Riduci</th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
+          </thead>
+          <tbody>
+            <% @user_reservations.each do |reservation| %>
+              <tr>
+                <td><%= reservation.plant_name %></td>
+                <td><%= reservation.nursery_email %></td>
+                <td><%= reservation.quantity %></td>
+                <td>
+                  <div class="btn-decreserve" data-reservation-id="<%= reservation.resid %>" data-nursery-plant-id="<%= reservation.np_id %>" data-user-email-id="<%= reservation.user_email %>">
+                    -
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="btn-nurs">
+          <p>Ancora nessuna prenotazione</p>
+          <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
+        </div>
+      <% end %>
+    <%end%>
   </div>
 
   

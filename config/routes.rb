@@ -49,6 +49,8 @@ Rails.application.routes.draw do
   post 'decdisp', to: 'nursery_plants#decdisp'
   post 'removenursplant', to: 'nursery_plants#removenursplant'
 
+  patch 'nursery_profile/update', to: 'nursery_profile#update_profile', as: 'update_nursery_profile'
+
   resources :users, only: [:show, :update]
   post 'reserve', to: 'nursery_plants#reserve'
 

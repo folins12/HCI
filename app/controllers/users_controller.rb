@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   def edit
   end
 
-
   def profile
     plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
     @myplants = Plant.where(id: plant_ids)
@@ -60,26 +59,29 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
-
-
-
-
   def update
-    if @user && password_update_valid?
+    # Rimuovi la password e la conferma della password se non sono state inserite
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
+  
+    # Se la validazione della password non è riuscita, rimani sulla stessa pagina
+    if password_update_valid?
       if @user.update(user_params)
         redirect_to user_profile_path, notice: 'Profilo aggiornato con successo.'
       else
+        # Se l'aggiornamento dell'utente fallisce, visualizza la pagina di profilo con errori
+        flash.now[:alert] = @user.errors.full_messages.join(', ')
         render :profile
       end
     else
-      flash.now[:alert] = @error_message
+      # Se la validazione della password non è riuscita, visualizza la pagina di profilo con errori
+      flash.now[:alert] = @user.errors.full_messages.join(', ')
       render :profile
     end
   end
-
+  
   def fetch_weather
     lat = params[:lat]
     lon = params[:lon]
@@ -115,31 +117,57 @@ class UsersController < ApplicationController
     end
   end
 
-
   def user_params
     params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :indirizzo)
   end
 
   def password_update_valid?
-    current_password = params[:user][:current_password]
-    new_password = params[:user][:password]
-    password_confirmation = params[:user][:password_confirmation]
-
-    if new_password.present? && (new_password == current_password)
-      @error_message = "La nuova password non può essere uguale a quella vecchia."
-      @user.errors.add(:password, @error_message)
-      return false
-    elsif new_password.present? && new_password != password_confirmation
-      @error_message = "La password confermata è diversa da quella precedentemente inserita."
-      @user.errors.add(:password_confirmation, @error_message)
-      return false
-    elsif new_password.blank? && password_confirmation.present?
-      @error_message = "Se la conferma della password è presente, la nuova password deve essere compilata."
-      @user.errors.add(:password, @error_message)
-      return false
-    else
-      @error_message = nil
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      if params[:user][:current_password].present?
+        unless @user.authenticate(params[:user][:current_password])
+          @user.errors.add(:current_password, 'Password errata!')
+          return false
+        end
+      end
+      # Se non c'è password attuale da verificare o è corretta, non cambiare la password e ritorna true.
       return true
     end
+  
+    if params[:user][:current_password].blank?
+      @user.errors.add(:current_password, 'La password attuale è richiesta.')
+      return false
+    end
+  
+    # Verifica la password attuale
+    unless @user.authenticate(params[:user][:current_password])
+      @user.errors.add(:current_password, 'Password errata!')
+      return false
+    end
+  
+    # Verifica se la nuova password è uguale alla precedente
+    if params[:user][:password] == params[:user][:current_password]
+      @user.errors.add(:password, 'La nuova password non può essere uguale alla precedente')
+      return false
+    end
+  
+    # Verifica la complessità della nuova password
+    unless valid_password?(params[:user][:password])
+      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: - almeno una maiuscola; - almeno una minuscola; - almeno un numero; - almeno un carattere speciale.')
+      return false
+    end
+  
+    # Verifica se la conferma della password corrisponde
+    unless params[:user][:password] == params[:user][:password_confirmation]
+      @user.errors.add(:password_confirmation, 'La password confermata deve essere uguale a quella nuova precedentemente inserita')
+      return false
+    end
+  
+    true
   end
+
+  def valid_password?(password)
+    # Controlla che la password contenga almeno una maiuscola, una minuscola, un numero e un carattere speciale
+    password.match?(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}\z/)
+  end
+
 end

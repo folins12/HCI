@@ -5,6 +5,7 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css">
 </head>
 <body>
   <div class="profile-container">
@@ -51,7 +52,7 @@
     </div>
 
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
-      <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
+      <%= form_with model: @user, url: nursery_profile_path, local: true do |form| %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome, required: true %>
@@ -72,7 +73,7 @@
           <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation %>
         </div>
-        <div class="input-group <%= 'has-error' if @user.errors[:address].any? %>">
+        <div class="input-group">
           <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
         </div>
@@ -95,19 +96,61 @@
   </div>
 
   <div class="profile-nursery-details">
-    <p><strong>Indirizzo:</strong> <%= @nursery.address %></p>
-    <p><strong>Telefono:</strong> +39 <%= @nursery.number %></p>
-    <p><strong>Email:</strong> <%= @nursery.email %></p>
-    <p><strong>Orario:</strong> <%= @nursery.open_time %> - <%= @nursery.close_time %></p>
-    <p><strong>Descrizione:</strong> <%= @nursery.description %></p>
+    <%= form_with(model: @nursery, url: update_nursery_profile_path(@nursery), method: :patch, local: true) do |form| %>
+      <div>
+        <p><strong>Indirizzo:</strong> 
+          <span id="address-display"><%= @nursery.address %></span>
+          <%= form.text_field :address, value: @nursery.address, id: "address-input", style: "display: none;" %>
+          <span class="error-message" id="address-error"></span>
+        </p>
+      </div>
+      <div>
+        <p><strong>Telefono:</strong> 
+          <span id="number-display">+39 <%= @nursery.number %></span>
+          <%= form.text_field :number, value: @nursery.number, id: "number-input", style: "display: none;" %>
+          <span class="error-message" id="number-error"></span>
+        </p>
+      </div>
+      <div>
+        <p><strong>Email:</strong> 
+          <span id="email-display"><%= @nursery.email %></span>
+          <%= form.text_field :email, value: @nursery.email, id: "email-input", style: "display: none;" %>
+          <span class="error-message" id="email-error"></span>
+        </p>
+      </div>
+      <div>
+        <p><strong>Orario:</strong> 
+          <span id="open_time-display">
+            <%= format_time(@nursery.open_time) %>
+          </span> - 
+          <span id="close_time-display">
+            <%= format_time(@nursery.close_time) %>
+          </span>
+          <%= form.time_field :open_time, value: format_time(@nursery.open_time), id: "open_time-input", style: "display: none;" %>
+          <%= form.time_field :close_time, value: format_time(@nursery.close_time), id: "close_time-input", style: "display: none;" %>
+      </div>
+
+      <div>
+        <p><strong>Descrizione:</strong> 
+          <span id="description-display"><%= @nursery.description %></span>
+          <%= form.text_area :description, value: @nursery.description, id: "description-input", style: "display: none;" %>
+          <span class="error-message" id="description-error"></span>
+        </p>
+      </div>
+      
+      <div class="profile-buttons">
+        <button type="button" id="edit-button" class="btn btn-primary">Modifica informazioni</button>
+        <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: true %>
+      </div>
+    <% end %>
   </div>
 
   <div class="plant-message">
     Le tue piante in vendita:
   </div>
 
-  <div class="nursery-plants-available <%= 'single-item' if @myplants.size == 1 %>">
-    <% if @myplants.any? %>
+  <div class="nursery-plants-available <%= 'single-item' if @myplants.present? && @myplants.size == 1 %>">
+    <<% if @myplants.present? %>
       <div class="nursery-plants-container">
         <% @myplants.each do |plant| %>
         
@@ -151,44 +194,50 @@
   </div>
 
   
-  <% if @reservations.empty? %>
+  <% if @reservations.present? && @reservations.empty? %>
     <div class="btn-nurs">
       <h2 style="font-size: 2em; color: black !important;">Ancora Nessuna Prenotazione</h2>
     </div>
   <% else %>
-    <div class="table-reservations">
-      <h2 style="font-size: 2em;">Prenotazioni delle Piante</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Pianta</th>
-            <th>Email Utente</th>
-            <th>Quantità</th>
-            <th>Soddisfa</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @myplants.each do |plant| %>
-            <% if @reservations[plant.nursery_plant_id] %>
-              <% email_counts = Hash.new(0) %>
-              <% @reservations[plant.nursery_plant_id].each do |email, _| %>
-                <% email_counts[email] += 1 %>
-              <% end %>
-              <% email_counts.each do |email, count| %>
-                <tr>
-                  <td><%= plant.name %></td>
-                  <td><%= email %></td>
-                  <td><%= count %></td>
-                  <td>
-                    <%= check_box_tag "satisfied_#{plant.id}_#{email}", true, false, class: "satisfy-order", data: { plant_id: plant.nursery_plant_id, email: email } %>
-                  </td>
-                </tr>
+    <% if @reservations.present? %>
+      <div class="table-reservations">
+        <h2 style="font-size: 2em;">Prenotazioni delle Piante</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Pianta</th>
+              <th>Email Utente</th>
+              <th>Quantità</th>
+              <th>Soddisfa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @myplants.each do |plant| %>
+              <% if @reservations[plant.nursery_plant_id] %>
+                <% email_counts = Hash.new(0) %>
+                <% @reservations[plant.nursery_plant_id].each do |email, _| %>
+                  <% email_counts[email] += 1 %>
+                <% end %>
+                <% email_counts.each do |email, count| %>
+                  <tr>
+                    <td><%= plant.name %></td>
+                    <td><%= email %></td>
+                    <td><%= count %></td>
+                    <td>
+                      <%= check_box_tag "satisfied_#{plant.id}_#{email}", true, false, class: "satisfy-order", data: { plant_id: plant.nursery_plant_id, email: email } %>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <div class="btn-nurs">
+        <h2 style="font-size: 2em; color: black !important;">Ancora Nessuna Prenotazione</h2>
+      </div>
+    <% end %>
   <% end %>
 
   <script type="text/javascript">
@@ -360,6 +409,43 @@
       document.getElementById("profile-edit").style.display = "none";
       document.getElementById("profile-view").style.display = "block";
     }
+    const editButton = document.getElementById("edit-button");
+    const saveButton = document.getElementById("save-button");
+
+    const displayFields = {
+      address: document.getElementById("address-display"),
+      number: document.getElementById("number-display"),
+      email: document.getElementById("email-display"),
+      open_time: document.getElementById("open_time-display"),
+      close_time: document.getElementById("close_time-display"),
+      description: document.getElementById("description-display")
+    };
+
+    const inputFields = {
+      address: document.getElementById("address-input"),
+      number: document.getElementById("number-input"),
+      email: document.getElementById("email-input"),
+      open_time: document.getElementById("open_time-input"),
+      close_time: document.getElementById("close_time-input"),
+      description: document.getElementById("description-input")
+    };
+
+    editButton.addEventListener("click", function() {
+      toggleEdit(true);
+    });
+
+    function toggleEdit(editing) {
+      for (let key in displayFields) {
+        displayFields[key].style.display = editing ? "none" : "inline";
+        inputFields[key].style.display = editing ? "inline" : "none";
+      }
+
+      saveButton.disabled = !editing;
+      editButton.disabled = editing;
+    }
+    
+    // Inizializza con modalità non modificabile
+    toggleEdit(false);
   });
 </script>
 

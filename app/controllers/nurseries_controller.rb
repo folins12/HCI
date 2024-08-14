@@ -1,12 +1,13 @@
 class NurseriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_nursery, only: [:show, :edit_image, :update_image, :update]
+
   def index
     @nurseries = params[:query].present? ? Nursery.search(params[:query]) : Nursery.order(:position)
     @max_id = Nursery.maximum(:id)
   end
 
   def show
-    @nursery = Nursery.find(params[:id])
     @plants = @nursery.plants
   end
   
@@ -43,29 +44,37 @@ class NurseriesController < ApplicationController
       end
     end
   end
-  
+
   def update
     if @nursery.update(nursery_params)
-      redirect_to @nursery, notice: 'Nursery was successfully updated.'
+      flash[:notice] = "Informazioni aggiornate con successo."
+      redirect_to nursery_profile_path
     else
-      render :edit
+      # Gestione degli errori
+      respond_to do |format|
+        format.html { render :edit }
+        format.js { render 'update_errors' }
+      end
     end
   end
 
   def edit_image
-    @nursery = Nursery.find(params[:id])
+    # @nursery è già impostato dal before_action :set_nursery
   end
 
   def update_image
-    @nursery = Nursery.find(params[:id])
     if @nursery.update(nursery_image_params)
-      redirect_to @nursery, notice: 'Image was successfully updated.'
+      redirect_to @nursery, notice: 'Immagine aggiornata con successo.'
     else
       render :edit_image
     end
   end
 
   private
+
+  def set_nursery
+    @nursery = Nursery.find(params[:id])
+  end
 
   def nursery_params
     params.require(:nursery).permit(:name, :number, :email, :address, :location, :open_time, :close_time, :description)
@@ -76,38 +85,33 @@ class NurseriesController < ApplicationController
   end
   
   def validate_nursery(nursery)
-    # Converti il numero di telefono in stringa
     number_str = nursery.number.to_s
 
-    # Controlla il numero di telefono
     if number_str.blank? || number_str.length != 10
       nursery.errors.add(:number, "Il numero di telefono inserito non è valido. Deve essere di 10 cifre.")
-      nursery.number = ''  # Svuota il campo numero
+      nursery.number = ''  
     elsif Nursery.exists?(number: number_str)
       nursery.errors.add(:number, "Questo numero appartiene già ad un altro vivaio, pertanto non può essere utilizzato!")
-      nursery.number = ''  # Svuota il campo numero
+      nursery.number = ''  
     end
 
-    # Controlla gli orari di apertura e chiusura
     if !valid_time?(nursery.open_time) || !valid_time?(nursery.close_time)
       nursery.errors.add(:base, "L'ora inserita non è valida. Deve essere compresa tra 0 e 24.")
-      nursery.open_time = ''  # Svuota il campo open_time
-      nursery.close_time = '' # Svuota il campo close_time
+      nursery.open_time = ''  
+      nursery.close_time = '' 
     elsif nursery.open_time.to_i >= nursery.close_time.to_i
       nursery.errors.add(:base, "La fascia oraria inserita non è accettabile.")
-      nursery.open_time = ''  # Svuota il campo open_time
-      nursery.close_time = '' # Svuota il campo close_time
+      nursery.open_time = ''  
+      nursery.close_time = '' 
     end
 
-    #controllo nursery.address
     if nursery.address.blank?
       nursery.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo")
-      nursery.address = ''  # Svuota il campo address
+      nursery.address = ''  
     else
-      # Verifica la validità dell'indirizzo
       unless valid_address?(nursery.address)
         nursery.errors.add(:address, "L'indirizzo inserito non è valido.")
-        nursery.address = ''  # Svuota il campo address
+        nursery.address = ''  
       end
     end
   end
@@ -117,12 +121,11 @@ class NurseriesController < ApplicationController
   end
 
   def valid_address?(address)
-    # Usa Geocoder per verificare l'indirizzo
     results = geo(address)
     results.present? && results.first.coordinates.present?
   end
 
-  def geo (address)
-    return Geocoder.search(address)
+  def geo(address)
+    Geocoder.search(address)
   end
 end

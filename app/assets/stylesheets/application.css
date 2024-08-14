@@ -211,3 +211,16 @@ a.btn-outline-light:hover {
   background-color: inherit;
   text-decoration: none;
 }
+
+/*Errori modifica profilo*/
+.input-group.has-error input {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px;
+  margin-top: 5px;
+  border-radius: 3px;
+}
