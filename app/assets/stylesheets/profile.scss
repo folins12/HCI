@@ -84,10 +84,6 @@
   border-radius: 5px;
 }
 
-.has-error input {
-  border-color: #ff0000;
-}
-
 .form-group {
   margin-bottom: 20px;
 }
@@ -675,4 +671,14 @@
     font-size: 1em;
     padding: 8px 14px;
   }
+}
+
+/* Input con errore */
+.has-error input {
+  border: 1px solid red; /* Bordo rosso per gli errori */
+}
+
+.error-message {
+  color: red; /* Colore del testo dell'errore */
+  font-size: 15px;
 }

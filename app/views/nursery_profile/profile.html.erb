@@ -52,7 +52,7 @@
     </div>
 
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
-      <%= form_with model: @user, url: nursery_profile_path, local: true do |form| %>
+      <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome, required: true %>
@@ -106,18 +106,20 @@
       </div>
       <div>
         <p><strong>Telefono:</strong> 
-          <span id="number-display">+39 <%= @nursery.number %></span>
-          <%= form.text_field :number, value: @nursery.number, id: "number-input", style: "display: none;" %>
-          <span class="error-message" id="number-error"></span>
+          <span id="number-display">+39 <%= @nursery.number.to_s %></span>
+          <%= form.text_field :number, value: @nursery.number.to_s, id: "number-input", style: "display: none;", class: "form-control #{'has-error' if @nursery.errors[:number].present?}" %>
+          <span class="error-message" id="number-error"><%= @nursery.errors[:number].join(', ') if @nursery.errors[:number].present? %></span>
         </p>
       </div>
+
       <div>
         <p><strong>Email:</strong> 
-          <span id="email-display"><%= @nursery.email %></span>
-          <%= form.text_field :email, value: @nursery.email, id: "email-input", style: "display: none;" %>
-          <span class="error-message" id="email-error"></span>
+          <span id="email-display"><%= @nursery.email.to_s %></span>
+          <%= form.text_field :email, value: @nursery.email.to_s, id: "email-input", style: "display: none;", class: "form-control #{'has-error' if @nursery.errors[:email].present?}" %>
+          <span class="error-message" id="email-error"><%= @nursery.errors[:email].join(', ') if @nursery.errors[:email].present? %></span>
         </p>
       </div>
+
       <div>
         <p><strong>Orario:</strong> 
           <span id="open_time-display">
@@ -128,22 +130,24 @@
           </span>
           <%= form.time_field :open_time, value: format_time(@nursery.open_time), id: "open_time-input", style: "display: none;" %>
           <%= form.time_field :close_time, value: format_time(@nursery.close_time), id: "close_time-input", style: "display: none;" %>
+        </p>
       </div>
 
       <div>
         <p><strong>Descrizione:</strong> 
-          <span id="description-display"><%= @nursery.description %></span>
-          <%= form.text_area :description, value: @nursery.description, id: "description-input", style: "display: none;" %>
-          <span class="error-message" id="description-error"></span>
+          <span id="description-display"><%= @nursery.description.to_s %></span>
+          <%= form.text_area :description, value: @nursery.description.to_s, id: "description-input", style: "display: none;" %>
+          <span class="error-message" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
-      
+
       <div class="profile-buttons">
         <button type="button" id="edit-button" class="btn btn-primary">Modifica informazioni</button>
-        <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: true %>
+        <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: !form.object.valid? %>
       </div>
     <% end %>
   </div>
+
 
   <div class="plant-message">
     Le tue piante in vendita:
