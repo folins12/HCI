@@ -83,8 +83,8 @@
           </div>
         <% end %>
         <div class="profile-buttons">
-          <%= form.submit "Invia", class: "btn btn-primary" %>
-          <button id="cancel-edit-button" class="btn btn-secondary" onclick="cancelEdit()">Annulla</button>
+          <%= form.submit "Invia", class: "btn btn-primary", id: "save-button" %>
+          <button id="cancel-edit-button" type="button" class="btn btn-secondary" onclick="cancelEdit()">Annulla</button>
         </div>
       <% end %>
     </div>

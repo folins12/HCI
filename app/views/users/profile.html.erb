@@ -83,6 +83,9 @@
         <div class="input-group">
           <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
+          <% @user.errors[:address].each do |error| %>
+            <div class="error-message"><%= error %></div>
+          <% end %>
         </div>
 
 
