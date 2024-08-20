@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     end
   
     # Se la validazione della password non è riuscita, rimani sulla stessa pagina
-    if password_update_valid?
+    if password_update_valid? && valid_address_updpro?
       if @user.update(user_params)
         redirect_to user_profile_path, notice: 'Profilo aggiornato con successo.'
       else
@@ -76,10 +76,26 @@ class UsersController < ApplicationController
         render :profile
       end
     else
-      # Se la validazione della password non è riuscita, visualizza la pagina di profilo con errori
+      # Se la validazione della password o dell'indirizzo non è riuscita, visualizza la pagina di profilo con errori
       flash.now[:alert] = @user.errors.full_messages.join(', ')
       render :profile
     end
+  end
+
+  def valid_address_updpro?
+    # Usa Geocoder per verificare l'indirizzo
+    puts "XXXXXXXXXXXXXXXX"
+    results = geo((params[:user][:address]))
+    if results.present? && results.first.coordinates.present?
+      return true
+    else
+      @user.errors.add(:address, 'indirizzo errato!')
+      return false
+    end
+  end
+
+  def geo (address)
+    return Geocoder.search(address)
   end
   
   def fetch_weather
@@ -118,7 +134,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :indirizzo)
+    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :address)
   end
 
   def password_update_valid?
