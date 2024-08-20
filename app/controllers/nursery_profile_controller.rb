@@ -2,6 +2,28 @@ class NurseryProfileController < ApplicationController
   before_action :set_user, only: [:profile, :update_profile]
   before_action :set_nursery, only: [:profile, :update_profile]
 
+  def satisfy_order
+    plant_id = params[:plant_id]
+    user_email = params[:email]
+
+    reservations = Reservation.where(nursery_plant_id: plant_id, user_email: user_email)
+
+    if reservations.any?
+      num_reservations_to_remove = reservations.count
+
+      nursery_plant = NurseryPlant.find_by(id: plant_id)
+      if nursery_plant
+        nursery_plant.decrement!(:num_reservations, num_reservations_to_remove)
+      end
+
+      reservations.destroy_all
+
+      render json: { success: true }
+    else
+      render json: { success: false, message: 'Prenotazioni non trovate' }
+    end
+  end
+
   def profile
     load_nursery_data
   end
