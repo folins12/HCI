@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+  <p>Ciao <%= @user.nome %>,</p>
+
+  <% if @purpose == 'registrazione' %>
+    <p>Grazie per esserti registrato! Ecco il tuo codice OTP per completare la registrazione:</p>
+  <% elsif @purpose == 'login' %>
+    <p>Per completare il login, inserisci il seguente codice OTP:</p>
+  <% else %>
+    <p>Il tuo codice OTP è:</p>
+  <% end %>
+
+  <h3><%= @otp_code %></h3>
+
+  <p>Inserisci questo codice nel modulo di verifica per continuare.</p>
+
+  <p>Grazie,<br>Il team di PlantTracker</p>
+</body>
+</html>

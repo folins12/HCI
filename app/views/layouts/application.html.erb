@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <% unless @hide_navbar%>
+  <% unless @hide_navbar %>
     <nav class="navbar-custom">
       <a class="navbar-brand" href="<%= root_path %>">
         <img src="<%= asset_path 'logo.jpeg' %>" alt="Logo">
@@ -23,26 +23,21 @@
         <div class="nav-item">
           <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
         </div>
-        <% if session[:user_id] %>
+        <% if user_signed_in? %>
           <div class="nav-item">
-          <% if current_user.nursery == true %>
-            <%= link_to current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' do %>
-              <i class="fas fa-store-alt nav-icon"></i> 
-              <!-- <i class="fas fa-store nav-icon"></i> -->
-              <!-- <i class="fas fa-seedling nav-icon"></i> -->
-              <!-- <i class="fas fa-leaf nav-icon"></i> -->
+            <% if current_user.nursery? %>
+              <%= link_to nursery_profile_path, class: 'nav-link' do %>
+                <i class="fas fa-store-alt nav-icon"></i>
+              <% end %>
+            <% else %>
+              <%= link_to user_profile_path, class: 'nav-link' do %>
+                <i class="fas fa-user nav-icon"></i>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to current_user&.nursery ? nursery_profile_path : user_profile_path, class: 'nav-link' do %>
-              <i class="fas fa-user nav-icon"></i>
-            <% end %>
-          <% end %>
-        </div>
-
-          
+          </div>
         <% else %>
           <div class="nav-item">
-            <%= link_to 'Login', login_path, class: 'nav-link' %>
+            <%= link_to 'Login', new_user_session_path, class: 'nav-link' %>
           </div>
         <% end %>
       </div>
@@ -50,7 +45,6 @@
   <% end %>
   <div class="container mt-4 content">
     <%= yield %>
-    
   </div>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'reservations', 'data-turbolinks-track': 'reload' %>

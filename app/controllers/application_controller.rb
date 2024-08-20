@@ -1,11 +1,9 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end
+  protected
 
-  def authenticate_user!
-    redirect_to login_path, alert: "Devi effettuare il login per accedere a questa pagina." unless current_user
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :cognome, :address])
   end
 end

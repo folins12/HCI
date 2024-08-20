@@ -1,0 +1,750 @@
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (24.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records"[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "myplants"[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "plant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (18.3ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "nurseries"[0m
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "id_owner" integer NOT NULL, "number" integer, "email" varchar, "address" varchar, "location" varchar, "open_time" integer, "close_time" integer, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "nursery_plants"[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer, "num_reservations" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants"[0m
+  [1m[35m (14.2ms)[0m  [1m[35mCREATE TABLE "plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "typology" varchar, "light" integer, "irrigation" integer, "size" integer, "climate" varchar, "use" text, "created_at" datetime(6) NOT NULL, "description" text, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations"[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_plant_id" integer NOT NULL, "user_email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (13.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "nome" varchar, "cognome" varchar, "address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nursery" boolean DEFAULT 0 NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "otp_secret" varchar, "otp_required_for_login" boolean)[0m
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (2.6ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_variant_records_uniqueness" ON "aactive_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "aactive_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "active_storage_variant_records"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "aactive_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_variant_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+, CONSTRAINT "fk_rails_995d9da64f"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (11.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "anurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "nurseries"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "nurseries"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c6d5291776"
+FOREIGN KEY ("id_owner")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "nurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "anurseries"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "anurseries"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+, CONSTRAINT "fk_rails_6154c0bf97"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areservations_on_nursery_plant_id" ON "areservations" ("nursery_plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "areservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7caa96fe89"
+FOREIGN KEY ("nursery_plant_id")
+  REFERENCES "nursery_plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "reservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (6.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240816152105)[0m
+  [1m[35m (6.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20240729162124),
+(20240802102602),
+(20240803093357),
+(20240804102052),
+(20240804150805),
+(20240805103122),
+(20240805112104),
+(20240805143929),
+(20240813143402),
+(20240816151637);
+
+[0m
+  [1m[35m (17.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2024-08-16 15:46:52.250837"], ["updated_at", "2024-08-16 15:46:52.250837"]]
+  [1m[36mTRANSACTION (12.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "48238ce57a93cb939f400c15d30fb78715a78d1c"], ["created_at", "2024-08-16 15:46:52.272726"], ["updated_at", "2024-08-16 15:46:52.272726"]]
+  [1m[36mTRANSACTION (14.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (32.4ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (16.6ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (28.7ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (26.9ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (32.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records"[0m
+  [1m[35m (22.8ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records"[0m
+  [1m[35m (34.9ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (20.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (32.3ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "myplants"[0m
+  [1m[35m (24.5ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "myplants"[0m
+  [1m[35m (31.4ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "plant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (34.7ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "plant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (29.3ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "nurseries"[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "nurseries"[0m
+  [1m[35m (30.5ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "id_owner" integer NOT NULL, "number" integer, "email" varchar, "address" varchar, "location" varchar, "open_time" integer, "close_time" integer, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "nursery_plants"[0m
+  [1m[35m (29.2ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "id_owner" integer NOT NULL, "number" integer, "email" varchar, "address" varchar, "location" varchar, "open_time" integer, "close_time" integer, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "nursery_plants"[0m
+  [1m[35m (16.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer, "num_reservations" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (32.6ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer, "num_reservations" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (25.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (25.6ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (24.9ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants"[0m
+  [1m[35m (29.6ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants"[0m
+  [1m[35m (36.2ms)[0m  [1m[35mCREATE TABLE "plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "typology" varchar, "light" integer, "irrigation" integer, "size" integer, "climate" varchar, "use" text, "created_at" datetime(6) NOT NULL, "description" text, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations"[0m
+  [1m[35m (35.8ms)[0m  [1m[35mCREATE TABLE "plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "typology" varchar, "light" integer, "irrigation" integer, "size" integer, "climate" varchar, "use" text, "created_at" datetime(6) NOT NULL, "description" text, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations"[0m
+  [1m[35m (38.9ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_plant_id" integer NOT NULL, "user_email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (33.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_plant_id" integer NOT NULL, "user_email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (20.2ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (23.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "nome" varchar, "cognome" varchar, "address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nursery" boolean DEFAULT 0 NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "otp_secret" varchar, "otp_required_for_login" boolean)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (24.7ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (33.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "password_digest" varchar, "nome" varchar, "cognome" varchar, "address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nursery" boolean DEFAULT 0 NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "otp_secret" varchar, "otp_required_for_login" boolean)[0m
+  [1m[35m (38.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (32.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (4.2ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (29.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (19.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_variant_records_uniqueness" ON "aactive_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "active_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (3.3ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "aactive_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_variant_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (27.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (24.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_variant_records_uniqueness" ON "aactive_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "active_storage_variant_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "active_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "aactive_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aactive_storage_variant_records"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (27.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.5ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (23.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (3.6ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+, CONSTRAINT "fk_rails_995d9da64f"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (26.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[36mTRANSACTION (19.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+, CONSTRAINT "fk_rails_995d9da64f"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "nurseries"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (1.4ms)[0m  [1m[35mDROP TABLE "nurseries"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c6d5291776"
+FOREIGN KEY ("id_owner")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "anurseries"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "anurseries"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (26.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "nurseries"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "nurseries"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c6d5291776"
+FOREIGN KEY ("id_owner")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "nurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "anurseries"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "anurseries"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (34.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (2.3ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (18.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (28.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (18.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+, CONSTRAINT "fk_rails_6154c0bf97"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (4.8ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+, CONSTRAINT "fk_rails_6154c0bf97"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (19.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (26.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areservations_on_nursery_plant_id" ON "areservations" ("nursery_plant_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "areservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7caa96fe89"
+FOREIGN KEY ("nursery_plant_id")
+  REFERENCES "nursery_plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areservations_on_nursery_plant_id" ON "areservations" ("nursery_plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "areservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "reservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "areservations"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (3.5ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7caa96fe89"
+FOREIGN KEY ("nursery_plant_id")
+  REFERENCES "nursery_plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "reservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "areservations"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (23.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[36mTRANSACTION (42.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (20.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (30.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240816152105)[0m
+  [1m[35m (22.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240816152105)[0m
+  [1m[35m (21.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20240729162124),
+(20240802102602),
+(20240803093357),
+(20240804102052),
+(20240804150805),
+(20240805103122),
+(20240805112104),
+(20240805143929),
+(20240813143402),
+(20240816151637);
+
+[0m
+  [1m[35m (21.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20240729162124),
+(20240802102602),
+(20240803093357),
+(20240804102052),
+(20240804150805),
+(20240805103122),
+(20240805112104),
+(20240805143929),
+(20240813143402),
+(20240816151637);
+
+[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (21.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2024-08-16 15:46:53.402800"], ["updated_at", "2024-08-16 15:46:53.402800"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2024-08-16 15:46:53.403716"], ["updated_at", "2024-08-16 15:46:53.403716"]]
+  [1m[36mTRANSACTION (30.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (30.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "48238ce57a93cb939f400c15d30fb78715a78d1c"], ["created_at", "2024-08-16 15:46:53.439100"], ["updated_at", "2024-08-16 15:46:53.439100"]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "48238ce57a93cb939f400c15d30fb78715a78d1c"], ["created_at", "2024-08-16 15:46:53.442959"], ["updated_at", "2024-08-16 15:46:53.442959"]]
+  [1m[36mTRANSACTION (28.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (26.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTruncate Tables (121.1ms)[0m  [1m[31mDELETE FROM "active_storage_blobs";
+DELETE FROM "plants";
+DELETE FROM "users";
+DELETE FROM "active_storage_attachments";
+DELETE FROM "active_storage_variant_records";
+DELETE FROM "myplants";
+DELETE FROM "nurseries";
+DELETE FROM "nursery_plants";
+DELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTruncate Tables (167.8ms)[0m  [1m[31mDELETE FROM "active_storage_blobs";
+DELETE FROM "plants";
+DELETE FROM "users";
+DELETE FROM "active_storage_attachments";
+DELETE FROM "active_storage_variant_records";
+DELETE FROM "myplants";
+DELETE FROM "nurseries";
+DELETE FROM "nursery_plants";
+DELETE FROM "reservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m

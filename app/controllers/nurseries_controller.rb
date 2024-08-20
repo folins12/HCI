@@ -1,5 +1,4 @@
 class NurseriesController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_nursery, only: [:show, :edit_image, :update_image, :update]
 
   def index
@@ -8,40 +7,34 @@ class NurseriesController < ApplicationController
   end
 
   def show
-    @plants = @nursery.plants
+    # Logica per visualizzare il vivaio
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Il vivaio richiesto non è stato trovato."
+    redirect_to nurseries_path # Reindirizza a una pagina di elenco dei vivai o alla home
   end
-  
+
   def new
     @nursery = Nursery.new
-  end
+  end  
 
   def create
     @nursery = Nursery.new(nursery_params)
-
-    # Recupera i dati utente dalla sessione
-    user_data = session[:temporary_user_data]
-    @user = User.new(user_data)
-
-    # Esegui i controlli sul vivaio
+    @user = User.find_by(id: session[:otp_user_id])
+    
+    Rails.logger.info "Trying to create a nursery with params: #{nursery_params.inspect}"
+    Rails.logger.info "Current user ID: #{session[:otp_user_id]}, User found: #{@user.inspect}"
+  
     validate_nursery(@nursery)
-
-    if @nursery.errors.any?
-      render :new
+  
+    @nursery.user = @user # Associa il vivaio all'utente
+  
+    if @nursery.errors.empty? && @nursery.save
+      Rails.logger.info "Nursery successfully saved: #{@nursery.inspect}"
+      @user.update(nursery: @nursery) # Aggiorna l'utente per associarlo al vivaio
+      redirect_to verify_otp_path # Reindirizza alla verifica OTP
     else
-      ActiveRecord::Base.transaction do
-        if @user.save
-          @nursery.id_owner = @user.id
-          if @nursery.save
-            session[:user_id] = @user.id
-            session.delete(:temporary_user_data)  # Rimuovi i dati temporanei dalla sessione
-            redirect_to root_path, notice: "Registrazione completata con successo."
-          else
-            raise ActiveRecord::Rollback
-          end
-        else
-          raise ActiveRecord::Rollback
-        end
-      end
+      Rails.logger.error "Nursery could not be saved: #{@nursery.errors.full_messages.join(', ')}"
+      render :new
     end
   end
 
@@ -50,7 +43,6 @@ class NurseriesController < ApplicationController
       flash[:notice] = "Informazioni aggiornate con successo."
       redirect_to nursery_profile_path
     else
-      # Gestione degli errori
       respond_to do |format|
         format.html { render :edit }
         format.js { render 'update_errors' }
@@ -59,7 +51,6 @@ class NurseriesController < ApplicationController
   end
 
   def edit_image
-    # @nursery è già impostato dal before_action :set_nursery
   end
 
   def update_image
@@ -73,9 +64,15 @@ class NurseriesController < ApplicationController
   private
 
   def set_nursery
+    Rails.logger.info "Setting nursery with ID: #{params[:id]}"
     @nursery = Nursery.find(params[:id])
+    Rails.logger.info "Nursery found: #{@nursery.inspect}"
+  rescue ActiveRecord::RecordNotFound
+    Rails.logger.error "Nursery not found with ID: #{params[:id]}"
+    flash[:alert] = "Il vivaio richiesto non è stato trovato."
+    redirect_to nurseries_path # Reindirizza a una pagina di elenco dei vivai o alla home
   end
-
+  
   def nursery_params
     params.require(:nursery).permit(:name, :number, :email, :address, :location, :open_time, :close_time, :description)
   end
@@ -83,7 +80,7 @@ class NurseriesController < ApplicationController
   def nursery_image_params
     params.require(:nursery).permit(:nursery_image)
   end
-  
+
   def validate_nursery(nursery)
     number_str = nursery.number.to_s
 
@@ -116,16 +113,15 @@ class NurseriesController < ApplicationController
     end
   end
 
-  def valid_time?(time)
-    time.present? && time.to_i.between?(0, 24)
+  def valid_time?(time_str)
+    time = time_str.to_i
+    time.between?(0, 24)
   end
 
   def valid_address?(address)
-    results = geo(address)
-    results.present? && results.first.coordinates.present?
-  end
-
-  def geo(address)
-    Geocoder.search(address)
+    # Implementa qui la logica di validazione dell'indirizzo
+    # Ad esempio, puoi fare un controllo semplice come
+    # address.present? && address.length > 5
+    true # Placeholder, sostituisci con la tua logica
   end
 end

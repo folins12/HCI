@@ -1,0 +1,54 @@
+<div class="register-background">
+  <div class="register-formcontainer">
+
+    <div class="weather-message">
+      Per registrarti correttamente inserisci il codice OTP inviato alla tua email.
+    </div>
+
+    <%= form_with url: verify_otp_path, method: :post do %>
+      <div class="register-input-group">
+        <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
+        <%= text_field_tag :otp_attempt %>
+      </div>
+      <div class="register-button-container">
+        <%= submit_tag "Verifica", class: "register-button" %>
+      </div>
+    <% end %>
+
+    <div class="register-button-container">
+      <%= link_to "Richiedi un altro codice OTP", verify_otp_path, method: :post, class: "register-link" %>
+    </div>
+
+    <% if flash[:alert] %>
+      <div class="register-error-message">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <p style="text-align: center; font-size: 1.2em; color: #006400; margin-top: 15px;">
+      Il codice OTP scadrà tra: <span id="otp-timer">3:00</span>
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var timerElement = document.getElementById('otp-timer');
+    var timeLeft = 180; // 3 minuti in secondi
+
+    var timerInterval = setInterval(function() {
+      var minutes = Math.floor(timeLeft / 60);
+      var seconds = timeLeft % 60;
+
+      seconds = seconds < 10 ? '0' + seconds : seconds;
+      timerElement.textContent = minutes + ':' + seconds;
+
+      if (timeLeft <= 0) {
+        clearInterval(timerInterval);
+        timerElement.textContent = '00:00';
+      }
+
+      timeLeft--;
+    }, 1000);
+  });
+</script>

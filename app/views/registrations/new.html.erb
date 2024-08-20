@@ -15,7 +15,7 @@
           <img src="<%= asset_path 'logo.jpeg' %>" alt="Logo">
         <% end %>
       </div>
-      <%= form_with model: @user, url: register_path, local: true do |form| %>
+      <%= form_with model: @user, url: new_user_registration_path, local: true do |form| %>
         <div class="register-input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.text_field :nome, value: @user.nome, placeholder: 'Nome'%>
           <% if @user.errors[:nome].any? %>

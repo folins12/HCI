@@ -1,39 +1,68 @@
 class User < ApplicationRecord
-  has_secure_password
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+
   validates :email, presence: true, uniqueness: true
-  validates :password, presence: true, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
   validates :nome, presence: true
   validates :cognome, presence: true
-  validates :nursery, inclusion: { in: [true, false] }
-  validates :address, presence: true  # Usa address qui, se necessario
-
-  has_many :nurseries
-  has_many :myplants
+  validates :address, presence: true
 
   attr_accessor :current_password
 
-  validate :validate_passwords
+  before_create :generate_otp_secret, :set_otp_required
 
-  def validate_passwords
-    if password.present? || password_confirmation.present?
-      if password == current_password
-        errors.add(:password, "Password analoga a quella precedente! Inserire una nuova password!") if password.present?
-      elsif password.present? && password_confirmation.blank?
-        errors.add(:password_confirmation, "La conferma della password è necessaria.")
-      elsif password.present? && password != password_confirmation
-        errors.add(:password_confirmation, "Password diversa da quella nuova inserita nella casella precedente.")
-      end
+  def generate_otp_secret
+    self.otp_secret = ROTP::Base32.random_base32
+  end  
+
+  def generate_otp
+    if otp_secret.present?
+      self.otp_sent_at = Time.current
+      totp = ROTP::TOTP.new(otp_secret, digits: 8)
+      otp = totp.now
+      update(otp_generated: otp, otp_sent_at: Time.current)
+      otp
+    else
+      errors.add(:base, "OTP secret non è stato impostato.")
+      nil
     end
   end
 
-  validate :valid_address_format
+  def verify_otp(otp_attempt)
+    otp_attempt = otp_attempt.strip
+    return false if otp_expired?
+
+    totp = ROTP::TOTP.new(otp_secret, digits: 8)
+    is_verified = totp.verify(otp_attempt, drift_behind: 60)
+    is_verified
+  end
+
+  def otp_expired?
+    otp_sent_at < 3.minutes.ago
+  end
+
+  def invalidate_otp
+    update(otp_generated: nil)
+  end
+
+  def send_reset_password_instructions
+    token = set_reset_password_token
+    UserMailer.reset_password_email(self, token).deliver_now
+  end  
 
   private
 
-  def valid_address_format
-    unless address =~ /\A(via|viale|v\.le)\s.+,\s.*\z/i
-      errors.add(:address, "Indirizzo non valido: deve iniziare con Via, Viale, o V.le e contenere una virgola. Esempio: Via Roma 1, Albano Laziale")
-    end
+  def set_otp_required
+    self.otp_required_for_login = true
   end
+
+  def set_reset_password_token
+    raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
+    self.reset_password_token = enc
+    self.reset_password_sent_at = Time.now.utc
+    save(validate: false)
+    enc
+  end
+  
+  
 
 end

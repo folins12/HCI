@@ -124,7 +124,7 @@ class UsersController < ApplicationController
   def password_update_valid?
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       if params[:user][:current_password].present?
-        unless @user.authenticate(params[:user][:current_password])
+        unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
           @user.errors.add(:current_password, 'Password errata!')
           return false
         end
@@ -139,7 +139,7 @@ class UsersController < ApplicationController
     end
   
     # Verifica la password attuale
-    unless @user.authenticate(params[:user][:current_password])
+    unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
       @user.errors.add(:current_password, 'Password errata!')
       return false
     end
@@ -152,7 +152,11 @@ class UsersController < ApplicationController
   
     # Verifica la complessità della nuova password
     unless valid_password?(params[:user][:password])
-      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: - almeno una maiuscola; - almeno una minuscola; - almeno un numero; - almeno un carattere speciale.')
+      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: 
+      - almeno una maiuscola; 
+      - almeno una minuscola; 
+      - almeno un numero; 
+      - almeno un carattere speciale.')
       return false
     end
   
@@ -164,6 +168,7 @@ class UsersController < ApplicationController
   
     true
   end
+  
 
   def valid_password?(password)
     # Controlla che la password contenga almeno una maiuscola, una minuscola, un numero e un carattere speciale

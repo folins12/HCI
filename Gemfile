@@ -60,3 +60,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Gemfile
 gem 'bootstrap', '~> 5.2.0'
 gem 'jquery-rails'
+
+
+gem 'devise'
+gem 'devise-two-factor'
+gem 'rqrcode' # per generare il QR code
+gem 'twilio-ruby' # se vuoi usare SMS come fattore di autenticazione
+gem 'dotenv-rails', groups: [:development, :test]
+

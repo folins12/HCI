@@ -15,24 +15,31 @@
           <img src="<%= asset_path 'logo.jpeg' %>" alt="Logo">
         <% end %>
       </div>
-      <%= form_with url: login_path, local: true do |form| %>
-        <div class="login-input-group <%= 'has-error' if flash[:email_error] %>">
-          <%= form.email_field :email, value: flash[:email] || params[:email], placeholder: 'Email', required: true %>
-          <% if flash[:email_error] %>
-            <span class="login-error-message"><%= flash[:email_error] %></span>
+      <%= form_with url: user_session_path, local: true, scope: :user do |form| %>
+        <div class="login-input-group <%= 'has-error' if flash[:alert].present? && flash[:alert].include?("email") %>">
+          <%= form.email_field :email, placeholder: 'Email', required: true, value: params.dig(:user, :email) %>
+          <% if flash[:alert].present? && flash[:alert].include?("email") %>
+            <div class="login-error-message">
+              <%= flash[:alert] %>
+            </div>
           <% end %>
         </div>
-        <div class="login-input-group <%= 'has-error' if flash[:password_error] %>">
+        <div class="login-input-group <%= 'has-error' if flash[:alert].present? && flash[:alert].include?("Password") %>">
           <%= form.password_field :password, placeholder: 'Password', required: true %>
-          <% if flash[:password_error] %>
-            <span class="login-error-message"><%= flash[:password_error] %></span>
+          <% if flash[:alert].present? && flash[:alert].include?("Password") %>
+            <div class="login-error-message">
+              <%= flash[:alert] %>
+            </div>
           <% end %>
         </div>
         <div class="login-button-container">
           <button type="submit" class="login-button">Login</button>
         </div>
         <div>
-          <a href="/register" class="login-link">Clicca qui per registrarti</a>
+          <%= link_to 'Clicca qui per registrarti', new_user_registration_path, class: 'login-link' %>
+        </div>
+        <div>
+          <%= link_to 'Hai dimenticato la password?', new_password_reset_path, class: 'login-link' %>
         </div>
       <% end %>
     </div>

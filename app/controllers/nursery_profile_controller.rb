@@ -94,7 +94,11 @@ class NurseryProfileController < ApplicationController
     end
   
     unless valid_password?(params[:nursery_user][:password])
-      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: - almeno una maiuscola; - almeno una minuscola; - almeno un numero; - almeno un carattere speciale.')
+      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: 
+      - almeno una maiuscola; 
+      - almeno una minuscola; 
+      - almeno un numero; 
+      - almeno un carattere speciale.')
       return false
     end
   

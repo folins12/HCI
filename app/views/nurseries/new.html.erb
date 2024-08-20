@@ -10,7 +10,7 @@
   <div class="register-background">
     <div class="register-formcontainer">
       <h2 style="color: #006400;">Inserisci i dati del tuo vivaio</h2>
-      <%= form_with model: @nursery, url: nurseries_path, local: true do |form| %>
+      <%= form_with model: @nursery, url: register_nursery_path, local: true do |form| %>
         <div class="register-input-group <%= 'has-error' if @nursery.errors[:name].any? %>">
           <%= form.text_field :name, placeholder: 'Nome', required: true %>
           <% if @nursery.errors[:name].any? %>

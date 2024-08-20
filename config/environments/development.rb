@@ -33,10 +33,22 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
-
+   # Configura Action Mailer per inviare email tramite Gmail in ambiente di sviluppo
+  config.action_mailer.raise_delivery_errors = true # Imposta su true per rilevare errori di invio
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_caching = false
+ 
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com', # Indirizzo del server SMTP di Gmail
+    port:                 587, # Porta SMTP per TLS
+    domain:               'localhost', # Dominio dell'app (può essere il nome del tuo dominio o localhost)
+    user_name:            'planttracker0@gmail.com',
+    password:             'rykb fnhz ejgv wmat',
+    authentication:       'plain', # Tipo di autenticazione
+    enable_starttls_auto: true # Abilita TLS
+  }
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

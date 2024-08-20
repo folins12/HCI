@@ -1,25 +1,133 @@
-class SessionsController < ApplicationController
-  def new
-  end
+class SessionsController < Devise::SessionsController
+  before_action :find_user, only: [:create, :confirm_otp]
 
   def create
-    user = User.find_by(email: params[:email])
-    if user.nil?
-      flash.now[:email_error] = "Non esiste un account registrato con questa email, prova con un'altra oppure effettua la registrazione."
-      flash.now[:email] = params[:email]
-      render :new
-    elsif user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to root_path, notice: 'Logged in!'
+    if @user.nil?
+      flash[:alert] = "Non esiste nessun account registrato con questo indirizzo email."
+      render :new and return
+    elsif !@user.valid_password?(params[:user][:password])
+      flash[:alert] = "Password errata per questo indirizzo."
+      render :new and return
     else
-      flash.now[:password_error] = "Password errata per questo indirizzo email!"
-      flash.now[:email] = params[:email]
-      render :new
+      if @user.otp_required_for_login
+        otp_code = @user.generate_otp
+        UserMailer.otp_email(@user, otp_code, 'login').deliver_now
+
+        session[:otp_user_id] = @user.id
+        redirect_to login_verify_otp_path and return
+      else
+        sign_in(@user)
+        redirect_to root_path, notice: 'Login effettuato con successo!'
+      end
+    end
+  end
+  
+
+  def verify_otp
+    @user = User.find_by(id: session[:otp_user_id])
+  
+    unless @user
+      flash[:alert] = "Utente non trovato. Per favore, riprova."
+      redirect_to new_user_registration_path and return
+    end
+  
+    # Evita di inviare un nuovo OTP se la sessione è già impostata per un altro scopo
+    if request.get? && session[:otp_user_id].present? && !@user.new_record?
+      flash[:notice] = "Un codice OTP è già stato inviato."
+      return render :verify_otp
+    end
+  
+    if request.post?
+      otp_attempt = params[:otp_attempt].strip
+  
+      if @user.verify_otp(otp_attempt)
+        clear_temporary_session_data
+        sign_in_and_redirect @user, event: :authentication
+      else
+        flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
+        render :verify_otp
+      end
+    elsif request.get?
+      send_otp_and_start_timer(@user, 'registrazione')
+      flash[:notice] = "Un nuovo codice OTP è stato inviato."
+      render :verify_otp
+    end
+  end  
+
+  def new_password_reset
+    # Questo metodo può essere opzionalmente rimosso se non serve più
+    render :password_reset
+  end
+
+  def edit_password_reset
+    render :edit_password_reset
+  end
+  
+  def reset_password
+    Rails.logger.info "Received reset_token: #{params[:reset_token]}"
+    
+    user = User.find_by(reset_password_token: params[:reset_token])
+    
+    if user
+      Rails.logger.info "Found user with reset_token: #{params[:reset_token]}"
+      
+      # Controlla se la nuova password è valida
+      if valid_password?(params[:new_password])
+        if params[:new_password] == params[:confirm_password]
+          user.password = params[:new_password]
+          user.reset_password_token = nil
+          if user.save
+            Rails.logger.info "Password successfully updated for user with reset_token: #{params[:reset_token]}"
+            sign_in_and_redirect user, event: :authentication
+          else
+            Rails.logger.info "Error saving new password for user with reset_token: #{params[:reset_token]}"
+            flash.now[:alert] = "Errore nel salvare la nuova password."
+            render :edit_password_reset
+          end
+        else
+          Rails.logger.info "Password and confirmation do not match for reset_token: #{params[:reset_token]}"
+          flash.now[:alert] = "La password confermata è diversa da quella inserita precedentemente."
+          render :edit_password_reset
+        end
+      else
+        flash.now[:alert] = "La password inserita non è valida. Crea una password che rispetti i seguenti requisiti: 
+          - Almeno 8 caratteri 
+          - Deve contenere almeno una lettera maiuscola 
+          - Deve contenere almeno un numero 
+          - Deve contenere almeno un carattere speciale."
+        render :edit_password_reset
+      end
+    else
+      Rails.logger.info "Invalid reset token: #{params[:reset_token]}"
+      flash.now[:alert] = "Il token inserito è errato. Puoi cliccare sul link sottostante per richiederne un altro."
+      render :edit_password_reset
     end
   end
 
-  def destroy
-    session.delete(:user_id)
-    redirect_to root_path, notice: 'Logged out!'
+  def send_reset_password_token
+    user = User.find_by(email: params[:email])
+    if user.present?
+      user.send_reset_password_instructions
+      flash[:notice] = "Token di reset inviato alla tua email."
+      redirect_to edit_password_reset_path # Reindirizza alla vista per inserire la nuova password
+    else
+      flash[:alert] = "Non esiste alcun account corrispondente a questo indirizzo email."
+      redirect_to new_password_reset_path
+    end
+  end  
+  
+
+  private
+
+  def find_user
+    @user = User.find_by(email: params[:user][:email].downcase.strip)
   end
+
+  def valid_password?(password)
+    # Verifica se la password rispetta i requisiti minimi
+    password.present? && password.length >= 8 && 
+      password.match?(/[A-Z]/) && password.match?(/\d/) && 
+      password.match?(/[!@#$%^&*(),.?":{}|<>]/)
+  end
+
 end
