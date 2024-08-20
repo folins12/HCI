@@ -53,6 +53,7 @@
 
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
       <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
+        <%= hidden_field_tag :return_to, request.fullpath %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome, required: true %>
@@ -84,7 +85,7 @@
         <% end %>
         <div class="profile-buttons">
           <%= form.submit "Invia", class: "btn btn-primary" %>
-          <button id="cancel-edit-button" class="btn btn-secondary" onclick="cancelEdit()">Annulla</button>
+          <button id="cancel-edit-button" class="btn btn-secondary" type="button" onclick="cancelEdit()">Annulla</button>
         </div>
       <% end %>
     </div>
@@ -142,7 +143,7 @@
       </div>
 
       <div class="profile-buttons">
-        <button type="button" id="edit-button" class="btn btn-primary">Modifica informazioni</button>
+        <button type="button" id="edit-button" status=1 class="btn btn-primary">Modifica informazioni</button>
         <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: !form.object.valid? %>
       </div>
     <% end %>
@@ -245,39 +246,40 @@
   <% end %>
 
   <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function() {
-    const satisfyOrderCheckboxes = document.querySelectorAll(".satisfy-order");
-    satisfyOrderCheckboxes.forEach(checkbox => {
-      checkbox.addEventListener("change", function() {
-        const plantId = checkbox.getAttribute('data-plant-id');
-        const email = checkbox.getAttribute('data-email');
+    document.addEventListener("DOMContentLoaded", function() {
+      const satisfyOrderCheckboxes = document.querySelectorAll(".satisfy-order");
+      satisfyOrderCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener("change", function() {
+          const plantId = checkbox.getAttribute('data-plant-id');
+          const email = checkbox.getAttribute('data-email');
 
-        if (checkbox.checked) {
-          fetch('/nursery_profile/satisfy_order', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            },
-            body: JSON.stringify({ plant_id: plantId, email: email })
-          })
-          .then(response => response.json())
-          .then(data => {
-            if (data.success) {
-              if (confirm('Sei sicuro di aver soddisfatto tutte le prenotazioni per questa pianta?')) {
-                checkbox.closest('tr').remove();
+          if (checkbox.checked) {
+            fetch('/nursery_profile/satisfy_order', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+              },
+              body: JSON.stringify({ plant_id: plantId, email: email })
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                if (confirm('Sei sicuro di aver soddisfatto tutte le prenotazioni per questa pianta?')) {
+                  checkbox.closest('tr').remove();
+                }
+              } else {
+                alert(data.message || "Errore nella soddisfazione dell'ordine.");
+                checkbox.checked = false;
               }
-            } else {
-              alert(data.message || "Errore nella soddisfazione dell'ordine.");
+            })
+            .catch(error => {
+              console.error('Errore:', error);
+              alert('Errore: ' + error.message);
               checkbox.checked = false;
-            }
-          })
-          .catch(error => {
-            console.error('Errore:', error);
-            alert('Errore: ' + error.message);
-            checkbox.checked = false;
-          });
-        }
+            });
+          }
+        });
       });
     });
 
@@ -413,45 +415,53 @@
       document.getElementById("profile-edit").style.display = "none";
       document.getElementById("profile-view").style.display = "block";
     }
-    const editButton = document.getElementById("edit-button");
-    const saveButton = document.getElementById("save-button");
+  document.addEventListener("DOMContentLoaded", function () {
+      const editButton = document.getElementById("edit-button");
+      const saveButton = document.getElementById("save-button");
 
-    const displayFields = {
-      address: document.getElementById("address-display"),
-      number: document.getElementById("number-display"),
-      email: document.getElementById("email-display"),
-      open_time: document.getElementById("open_time-display"),
-      close_time: document.getElementById("close_time-display"),
-      description: document.getElementById("description-display")
-    };
+      const displayFields = {
+          address: document.getElementById("address-display"),
+          number: document.getElementById("number-display"),
+          email: document.getElementById("email-display"),
+          open_time: document.getElementById("open_time-display"),
+          close_time: document.getElementById("close_time-display"),
+          description: document.getElementById("description-display")
+      };
+      const inputFields = {
+          address: document.getElementById("address-input"),
+          number: document.getElementById("number-input"),
+          email: document.getElementById("email-input"),
+          open_time: document.getElementById("open_time-input"),
+          close_time: document.getElementById("close_time-input"),
+          description: document.getElementById("description-input")
+      };
+      let isEditing = false;
 
-    const inputFields = {
-      address: document.getElementById("address-input"),
-      number: document.getElementById("number-input"),
-      email: document.getElementById("email-input"),
-      open_time: document.getElementById("open_time-input"),
-      close_time: document.getElementById("close_time-input"),
-      description: document.getElementById("description-input")
-    };
+    editButton.addEventListener("click", function () {
+        isEditing = !isEditing;
+        toggleEdit(isEditing);
+        saveButton.style.display = isEditing ? "inline" : "none";
+    });
 
-    editButton.addEventListener("click", function() {
-      toggleEdit(true);
+    saveButton.addEventListener("click", function () {
+        isEditing = false;
+        toggleEdit(false);
+        saveButton.style.display = "none"; // Nasconde il pulsante "Salva" dopo aver salvato
     });
 
     function toggleEdit(editing) {
-      for (let key in displayFields) {
-        displayFields[key].style.display = editing ? "none" : "inline";
-        inputFields[key].style.display = editing ? "inline" : "none";
-      }
-
-      saveButton.disabled = !editing;
-      editButton.disabled = editing;
+        for (let key in displayFields) {
+            displayFields[key].style.display = editing ? "none" : "inline";
+            inputFields[key].style.display = editing ? "inline" : "none";
+        }
     }
-    
-    // Inizializza con modalità non modificabile
+
+    // Inizializza con modalità non modificabile e nasconde il pulsante "Salva"
     toggleEdit(false);
+    saveButton.style.display = "none";
   });
-</script>
+
+  </script>
 
 </body>
 </html>

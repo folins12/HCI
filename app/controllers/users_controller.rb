@@ -69,7 +69,7 @@ class UsersController < ApplicationController
     # Se la validazione della password non è riuscita, rimani sulla stessa pagina
     if password_update_valid? && valid_address_updpro?
       if @user.update(user_params)
-        redirect_to user_profile_path, notice: 'Profilo aggiornato con successo.'
+        redirect_to params[:return_to] || user_profile_path, notice: 'Profilo aggiornato con successo.'
       else
         # Se l'aggiornamento dell'utente fallisce, visualizza la pagina di profilo con errori
         flash.now[:alert] = @user.errors.full_messages.join(', ')
