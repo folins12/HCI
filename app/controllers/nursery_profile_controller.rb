@@ -29,6 +29,7 @@ class NurseryProfileController < ApplicationController
   end
 
   def update_profile
+    puts "XXXXXXXXXXXXXXXXXx"
     if params[:nursery_user]
       if profile_update_valid?
         @user.update(user_params)
@@ -39,7 +40,7 @@ class NurseryProfileController < ApplicationController
       end
     end
   
-    if params[:nursery]
+    if params[:nursery] && valid_address_updpro?
       if nursery_update_valid?
         @nursery.update(nursery_params)
         flash[:notice] = "Profilo aggiornato con successo."
@@ -52,10 +53,19 @@ class NurseryProfileController < ApplicationController
     end
   end
   
-  
+  def valid_address_updpro?
+    puts "YYYYYYYYYYYYYYYYYY"
+    results = geo((params[:nursery][:address]))
+    if results.present? && results.first.coordinates.present?
+      return true
+    else
+      @user.errors.add(:address, 'indirizzo errato!')
+      return false
+    end
+  end
 
-  def edit_profile
-    # Render the edit profile view
+  def geo (address)
+    return Geocoder.search(address)
   end
 
   private

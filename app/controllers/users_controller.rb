@@ -83,8 +83,6 @@ class UsersController < ApplicationController
   end
 
   def valid_address_updpro?
-    # Usa Geocoder per verificare l'indirizzo
-    puts "XXXXXXXXXXXXXXXX"
     results = geo((params[:user][:address]))
     if results.present? && results.first.coordinates.present?
       return true

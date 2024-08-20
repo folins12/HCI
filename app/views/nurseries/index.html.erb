@@ -46,7 +46,6 @@
   function initMap() {
     geocoder = new google.maps.Geocoder();
     const address = "<%= j current_user&.address.to_s %>";
-    console.log(address)
     geocodeAddress(address).then(location => {
 
       // Inizializza la mappa centrata sulla tua casa
@@ -121,12 +120,12 @@
         const latitude = location.lat;
         const longitude = location.lon;
         var MyLocation = { lat: parseFloat(latitude), lng: parseFloat(longitude) };
-        //console.log(address);console.log(MyLocation);
         return MyLocation;
       } 
       console.log(address+" not found");
       return null;
     } catch (error) {
+      console.log(address+" not found")
       console.error('Error fetching geocode data:', error);
       return null;
     }
