@@ -18,6 +18,7 @@ class NurseriesController < ApplicationController
   end  
 
   def create
+    
     @nursery = Nursery.new(nursery_params)
     @user = User.find_by(id: session[:otp_user_id])
     
@@ -119,9 +120,16 @@ class NurseriesController < ApplicationController
   end
 
   def valid_address?(address)
-    # Implementa qui la logica di validazione dell'indirizzo
-    # Ad esempio, puoi fare un controllo semplice come
-    # address.present? && address.length > 5
-    true # Placeholder, sostituisci con la tua logica
+    results = geo(address)
+    puts "sto qua"
+    if results.present? && results.first.coordinates.present?
+      return true
+    else
+      return false
+    end
+  end
+
+  def geo(address)
+    Geocoder.search(address)
   end
 end
