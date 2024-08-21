@@ -44,13 +44,15 @@ class NurseryProfileController < ApplicationController
       if nursery_update_valid?
         @nursery.update(nursery_params)
         flash[:notice] = "Profilo aggiornato con successo."
-        redirect_to nursery_profile_path
+        redirect_to nursery_profile_path and return
       else
         load_nursery_data
         flash.now[:alert] = "Errore nell'aggiornamento del vivaio. Verifica i dati inseriti."
-        render :profile
+        render :profile and return
       end
     end
+    flash.now[:alert2] = @user.errors.full_messages.join(', ')
+    render :profile unless performed?
   end
   
   def valid_address_updpro?
@@ -90,7 +92,9 @@ class NurseryProfileController < ApplicationController
   end
 
   def set_nursery
-    @nursery = Nursery.find_by(id_owner: current_user.id)
+    if current_user
+      @nursery = Nursery.find_by(id_owner: current_user.id)
+    end
   end
 
   def nursery_params

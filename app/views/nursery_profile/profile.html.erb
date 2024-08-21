@@ -67,11 +67,11 @@
           <%= form.password_field :current_password, required: true %>
         </div>
         <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
-          <%= form.label :password, "Nuova Password", class: 'form-label' %>
+          <%= form.label :password, "Nuova Password", class: 'form-label' ,placeholder: "Lascia vuoto se non vuoi cambiare"%>
           <%= form.password_field :password %>
         </div>
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
-          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
+          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' ,placeholder: "Lascia vuoto se non vuoi cambiare"%>
           <%= form.password_field :password_confirmation %>
         </div>
         <div class="input-group">
@@ -124,10 +124,10 @@
       <div>
         <p><strong>Orario:</strong> 
           <span id="open_time-display">
-            <%= format_time(@nursery.open_time) %>
+            <%= @nursery.open_time %>
           </span> - 
           <span id="close_time-display">
-            <%= format_time(@nursery.close_time) %>
+            <%= @nursery.close_time %>
           </span>
           <%= form.time_field :open_time, value: format_time(@nursery.open_time), id: "open_time-input", style: "display: none;" %>
           <%= form.time_field :close_time, value: format_time(@nursery.close_time), id: "close_time-input", style: "display: none;" %>
@@ -141,7 +141,11 @@
           <span class="error-message" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
-
+      <% if flash[:alert2].present? %>
+        <div class="alert alert-danger">
+          <%= flash[:alert2] %>
+        </div>
+      <% end %>
       <div class="profile-buttons">
         <button type="button" id="edit-button" status=1 class="btn btn-primary">Modifica informazioni</button>
         <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: !form.object.valid? %>
