@@ -21,7 +21,11 @@
           <%= link_to 'Piante', infoplants_path, class: 'nav-link' %>
         </div>
         <div class="nav-item">
-          <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
+          <% if user_signed_in? %>
+            <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
+          <% else %>
+            <%= link_to 'Vivai', new_user_session_path, class: 'nav-link' %>
+          <% end %>
         </div>
         <% if user_signed_in? %>
           <div class="nav-item">

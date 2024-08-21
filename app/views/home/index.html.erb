@@ -47,8 +47,8 @@
 
 
     <div class="section">
-      
-      <%= link_to nurseries_path, class: 'section-link' do %>
+      <% link_path = user_signed_in? ? nurseries_path : new_user_session_path %>
+      <%= link_to link_path, class: 'section-link' do %>
         <h2 class="section-title">VIVAI</h2>
         <div class="section-content">
           <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
