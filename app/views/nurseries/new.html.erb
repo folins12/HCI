@@ -42,13 +42,13 @@
           <% end %>
         </div>
         <div class="register-input-group <%= 'has-error' if @nursery.errors[:base].any? %>">
-          <%= form.time_field :open_time, placeholder: 'Orario di Apertura (es. 9)', required: true %>
+          <%= form.text_field :open_time, placeholder: 'Orario di Apertura (es. 9)', required: true %>
           <% if @nursery.errors[:base].any? %>
             <span class="register-error-message"><%= @nursery.errors[:base].first %></span>
           <% end %>
         </div>
         <div class="register-input-group <%= 'has-error' if @nursery.errors[:base].any? %>">
-          <%= form.time_field :close_time, placeholder: 'Orario di Chiusura (es. 18)', required: true %>
+          <%= form.text_field :close_time, placeholder: 'Orario di Chiusura (es. 18)', required: true %>
           <% if @nursery.errors[:base].any? %>
             <span class="register-error-message"><%= @nursery.errors[:base].first %></span>
           <% end %>

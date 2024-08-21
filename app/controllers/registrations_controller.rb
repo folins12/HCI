@@ -46,6 +46,9 @@ class RegistrationsController < Devise::RegistrationsController
       if @user.verify_otp(otp_attempt)
         clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
+        if @user.nursery==1
+          redirect_to nursery_profile_path
+        end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."
         render :verify_otp
