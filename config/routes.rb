@@ -92,6 +92,7 @@ Rails.application.routes.draw do
     get 'reset_password', to: 'sessions#edit_password_reset', as: :edit_password_reset
     post 'reset_password', to: 'sessions#reset_password', as: :reset_password
     get 'resend_reset_password_token', to: 'sessions#resend_reset_password_token'
+    post 'resend_reset_password_token', to: 'sessions#resend_reset_password_token'
 
   end
 
