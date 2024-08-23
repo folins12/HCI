@@ -10,17 +10,21 @@ class SessionsController < Devise::SessionsController
       render :new and return
     else
       if @user.otp_required_for_login
-        otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, 'login').deliver_now
-
+        # Invia l'OTP solo se non è già stato inviato per questa sessione
+        unless session[:otp_user_id].present? && session[:otp_for] == 'login'
+          otp_code = @user.generate_otp
+          UserMailer.otp_email(@user, otp_code, 'login').deliver_now
+        end
+        
         session[:otp_user_id] = @user.id
+        session[:otp_for] = 'login'
         redirect_to login_verify_otp_path and return
       else
         sign_in(@user)
         redirect_to root_path, notice: 'Login effettuato con successo!'
       end
     end
-  end
+  end  
   
 
   def verify_otp
@@ -29,12 +33,6 @@ class SessionsController < Devise::SessionsController
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
-    end
-  
-    # Evita di inviare un nuovo OTP se la sessione è già impostata per un altro scopo
-    if request.get? && session[:otp_user_id].present? && !@user.new_record?
-      flash[:notice] = "Un codice OTP è già stato inviato."
-      return render :verify_otp
     end
   
     if request.post?
@@ -48,11 +46,16 @@ class SessionsController < Devise::SessionsController
         render :verify_otp
       end
     elsif request.get?
-      send_otp_and_start_timer(@user, 'registrazione')
-      flash[:notice] = "Un nuovo codice OTP è stato inviato."
+      # Invia un nuovo OTP solo se esplicitamente richiesto dall'utente
+      if params[:resend_otp] == "true"
+        @user.invalidate_otp
+        otp_code = @user.generate_otp
+        UserMailer.otp_email(@user, otp_code, 'login').deliver_now
+        flash[:notice] = "Un nuovo codice OTP è stato inviato."
+      end
       render :verify_otp
     end
-  end  
+  end    
 
   def new_password_reset
     # Questo metodo può essere opzionalmente rimosso se non serve più
@@ -128,6 +131,11 @@ class SessionsController < Devise::SessionsController
     password.present? && password.length >= 8 && 
       password.match?(/[A-Z]/) && password.match?(/\d/) && 
       password.match?(/[!@#$%^&*(),.?":{}|<>]/)
+  end
+
+  def clear_temporary_session_data
+    session.delete(:temporary_user_data)
+    session.delete(:otp_user_id)
   end
 
 end
