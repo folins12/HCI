@@ -1,5 +1,4 @@
 class NurseryProfileController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_user, only: [:profile, :update_profile]
   before_action :set_nursery, only: [:profile, :update_profile]
 
@@ -30,10 +29,10 @@ class NurseryProfileController < ApplicationController
   end
 
   def update_profile
+    puts "XXXXXXXXXXXXXXXXXx"
     if params[:nursery_user]
       if profile_update_valid?
         @user.update(user_params)
-        flash[:notice] = "Password aggiornata con successo!"
       else
         load_nursery_data
         flash.now[:alert] = "Errore nell'aggiornamento del profilo. Verifica i dati inseriti."
@@ -44,7 +43,7 @@ class NurseryProfileController < ApplicationController
     if params[:nursery] && valid_address_updpro?
       if nursery_update_valid?
         @nursery.update(nursery_params)
-        flash[:notice] ||= "Profilo aggiornato con successo."
+        flash[:notice] = "Profilo aggiornato con successo."
         redirect_to nursery_profile_path and return
       else
         load_nursery_data
@@ -52,11 +51,9 @@ class NurseryProfileController < ApplicationController
         render :profile and return
       end
     end
-    
     flash.now[:alert2] = @user.errors.full_messages.join(', ')
     render :profile unless performed?
   end
-  
   
   def valid_address_updpro?
     puts "YYYYYYYYYYYYYYYYYY"
@@ -76,8 +73,6 @@ class NurseryProfileController < ApplicationController
   private
 
   def load_nursery_data
-    return unless current_user
-
     nursery_ids = Nursery.where(id_owner: current_user.id).pluck(:id)
     nursery_plant_ids = NurseryPlant.where(nursery_id: nursery_ids).pluck(:id)
   

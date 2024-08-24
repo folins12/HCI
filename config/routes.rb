@@ -78,11 +78,11 @@ Rails.application.routes.draw do
     get 'signup', to: 'registrations#new', as: :new_user_registration
     post 'signup', to: 'registrations#create', as: :user_registration
 
-    get 'login/verify_otp', to: 'sessions#verify_otp', as: :login_verify_otp
-    post 'login/verify_otp', to: 'sessions#verify_otp'
-  
-    get 'signup/verify_otp', to: 'registrations#verify_otp', as: :register_verify_otp
-    post 'signup/verify_otp', to: 'registrations#verify_otp'
+    get 'verify_otp', to: 'registrations#verify_otp'
+    post 'verify_otp', to: 'registrations#verify_otp'
+
+    get 'verify_otp', to: 'sessions#verify_otp'
+    post 'verify_otp', to: 'sessions#verify_otp', as: :login_verify_otp 
 
     get 'register_nursery', to: 'nurseries#new', as: 'register_nursery'
     post 'register_nursery', to: 'nurseries#create'
@@ -92,7 +92,6 @@ Rails.application.routes.draw do
     get 'reset_password', to: 'sessions#edit_password_reset', as: :edit_password_reset
     post 'reset_password', to: 'sessions#reset_password', as: :reset_password
     get 'resend_reset_password_token', to: 'sessions#resend_reset_password_token'
-    post 'resend_reset_password_token', to: 'sessions#resend_reset_password_token'
 
   end
 

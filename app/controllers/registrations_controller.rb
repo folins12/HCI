@@ -16,23 +16,21 @@ class RegistrationsController < Devise::RegistrationsController
       @user.generate_otp_secret unless @user.otp_secret.present?
   
       if @user.save
-        session[:otp_user_id] = @user.id
-        session[:otp_for] = 'registration'
-  
         if @user.nursery
           session[:temporary_user_data] = @user.attributes.slice('nome', 'cognome', 'email', 'password', 'address', 'nursery')
+          session[:otp_user_id] = @user.id
           redirect_to register_nursery_path
         else
-          # Invio OTP solo se l'utente non è già nella fase di verifica
           send_otp_and_start_timer(@user, 'registrazione')
-          redirect_to register_verify_otp_path
+          session[:otp_user_id] = @user.id
+          redirect_to verify_otp_path
         end
       else
         render :new
       end
     end
   end  
-
+  
 
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
@@ -48,20 +46,19 @@ class RegistrationsController < Devise::RegistrationsController
       if @user.verify_otp(otp_attempt)
         clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
-        redirect_to nursery_profile_path if @user.nursery == 1
+        if @user.nursery==1
+          redirect_to nursery_profile_path
+        end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."
         render :verify_otp
       end
     elsif request.get?
-      # Invia un nuovo OTP solo se l'utente richiede un nuovo codice
-      if params[:resend_otp] == "true"
-        send_otp_and_start_timer(@user, 'registrazione')
-        flash[:notice] = "Un nuovo codice OTP è stato inviato."
-      end
+      send_otp_and_start_timer(@user, 'registrazione')
+      flash[:notice] = "Un nuovo codice OTP è stato inviato."
       render :verify_otp
     end
-  end    
+  end  
   
 
   private
