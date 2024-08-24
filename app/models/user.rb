@@ -44,6 +44,10 @@ class User < ApplicationRecord
     update(otp_generated: nil)
   end
 
+  def set_otp_required
+    self.otp_required_for_login = true
+  end
+
   def send_reset_password_instructions
     token = set_reset_password_token
     UserMailer.reset_password_email(self, token).deliver_now
