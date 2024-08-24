@@ -26,4 +26,8 @@ class InfoplantsController < ApplicationController
   def show
     @plant = Plant.find(params[:id])
   end
+
+  def prova
+    render json: { success: true }, status: :ok
+  end
 end

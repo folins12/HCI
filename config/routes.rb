@@ -97,5 +97,6 @@ Rails.application.routes.draw do
   end
 
   post 'auth/login', to: 'jwt#login'
+  post 'testprova', to: 'infoplants#prova'
 
 end
