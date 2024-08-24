@@ -8,56 +8,59 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <div class="verify-otp-background">
-  <div class="verify-otp-formcontainer">
-    <div class="verify-otp-message">
-      Per accedere al tuo profilo inserisci il codice OTP inviato alla tua email.
+  <div class="register-background">
+    <div class="register-formcontainer">
+
+      <div class="weather-message">
+        Per accedere al tuo profilo inserisci il codice OTP inviato alla tua email.
+      </div>
+
+      <%= form_with url: login_verify_otp_path, method: :post do %>
+        <div class="register-input-group <%= 'has-error' if flash[:alert] %>">
+          <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
+          <%= text_field_tag :otp_attempt, nil, required: true %>
+        </div>
+        <div class="register-button-container">
+          <%= submit_tag "Verifica", class: "register-button" %>
+        </div>
+      <% end %>
+
+      <div class="register-button-container">
+        <%= link_to "Richiedi un altro codice OTP.", login_verify_otp_path(resend_otp: true), method: :post, class: "register-link" %>
+      </div>
+
+      <% if flash[:alert] %>
+        <div class="register-error-message">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <p style="text-align: center; font-size: 1.2em; color: #006400; margin-top: 15px;">
+        Il codice OTP scadrà tra: <span id="otp-timer">3:00</span>
+      </p>
     </div>
-
-    <%= form_with url: login_verify_otp_path, method: :post do %>
-      <div class="verify-otp-input-group <%= 'has-error' if flash[:alert] %>">
-        <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
-        <%= text_field_tag :otp_attempt, nil, required: true %>
-      </div>
-      <div class="verify-otp-button-container">
-        <%= submit_tag "Verifica", class: "verify-otp-button" %>
-      </div>
-    <% end %>
-
-    <div class="verify-otp-button-container">
-      <%= link_to "Richiedi un altro codice OTP.", login_verify_otp_path, method: :post, class: "verify-otp-link" %>
-    </div>
-
-    <% if flash[:alert] %>
-      <div class="verify-otp-error-message">
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-
-    <p style="text-align: center; font-size: 1.2em; color: #006400; margin-top: 15px;">
-      Il codice OTP scadrà tra: <span id="otp-timer">3:00</span>
-    </p>
   </div>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var timerElement = document.getElementById('otp-timer');
-    var timeLeft = 180; // 3 minuti in secondi
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var timerElement = document.getElementById('otp-timer');
+      var timeLeft = 180; // 3 minuti in secondi
 
-    var timerInterval = setInterval(function() {
-      var minutes = Math.floor(timeLeft / 60);
-      var seconds = timeLeft % 60;
+      var timerInterval = setInterval(function() {
+        var minutes = Math.floor(timeLeft / 60);
+        var seconds = timeLeft % 60;
 
-      seconds = seconds < 10 ? '0' + seconds : seconds;
-      timerElement.textContent = minutes + ':' + seconds;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        timerElement.textContent = minutes + ':' + seconds;
 
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-        timerElement.textContent = '00:00';
-      }
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timerElement.textContent = '00:00';
+        }
 
-      timeLeft--;
-    }, 1000);
-  });
-</script>
+        timeLeft--;
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

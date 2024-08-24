@@ -5,7 +5,7 @@
       Per registrarti correttamente inserisci il codice OTP inviato alla tua email.
     </div>
 
-    <%= form_with url: verify_otp_path, method: :post do %>
+    <%= form_with url: register_verify_otp_path, method: :post do %>
       <div class="register-input-group">
         <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
         <%= text_field_tag :otp_attempt %>
@@ -16,7 +16,7 @@
     <% end %>
 
     <div class="register-button-container">
-      <%= link_to "Richiedi un altro codice OTP", verify_otp_path, method: :post, class: "register-link" %>
+      <%= link_to "Richiedi un altro codice OTP", register_verify_otp_path(resend_otp: true), method: :post, class: "register-link" %>
     </div>
 
     <% if flash[:alert] %>

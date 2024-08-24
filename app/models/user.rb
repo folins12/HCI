@@ -49,24 +49,23 @@ class User < ApplicationRecord
   end
 
   def send_reset_password_instructions
-    token = set_reset_password_token
-    UserMailer.reset_password_email(self, token).deliver_now
-  end  
+    raw_token = generate_reset_password_token
+    UserMailer.reset_password_email(self, raw_token).deliver_now
+  end
+
+  def verify_reset_password_token(raw_token)
+    return false if reset_password_token.blank?
+
+    BCrypt::Password.new(reset_password_token) == raw_token
+  end
 
   private
 
-  def set_otp_required
-    self.otp_required_for_login = true
+  def generate_reset_password_token
+    raw_token = rand(100000..999999).to_s # Genera un token a 6 cifre
+    enc_token = BCrypt::Password.create(raw_token) # Cifra il token
+    update(reset_password_token: enc_token, reset_password_sent_at: Time.now.utc)
+    raw_token
   end
-
-  def set_reset_password_token
-    raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
-    self.reset_password_token = enc
-    self.reset_password_sent_at = Time.now.utc
-    save(validate: false)
-    enc
-  end
-  
-  
 
 end

@@ -10,17 +10,21 @@ class SessionsController < Devise::SessionsController
       render :new and return
     else
       if @user.otp_required_for_login
-        otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, 'login').deliver_now
-
+        # Invia l'OTP solo se non è già stato inviato per questa sessione
+        unless session[:otp_user_id].present? && session[:otp_for] == 'login'
+          otp_code = @user.generate_otp
+          UserMailer.otp_email(@user, otp_code, 'login').deliver_now
+        end
+        
         session[:otp_user_id] = @user.id
+        session[:otp_for] = 'login'
         redirect_to login_verify_otp_path and return
       else
         sign_in(@user)
         redirect_to root_path, notice: 'Login effettuato con successo!'
       end
     end
-  end
+  end  
   
 
   def verify_otp
@@ -29,12 +33,6 @@ class SessionsController < Devise::SessionsController
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
-    end
-  
-    # Evita di inviare un nuovo OTP se la sessione è già impostata per un altro scopo
-    if request.get? && session[:otp_user_id].present? && !@user.new_record?
-      flash[:notice] = "Un codice OTP è già stato inviato."
-      return render :verify_otp
     end
   
     if request.post?
@@ -48,11 +46,16 @@ class SessionsController < Devise::SessionsController
         render :verify_otp
       end
     elsif request.get?
-      send_otp_and_start_timer(@user, 'registrazione')
-      flash[:notice] = "Un nuovo codice OTP è stato inviato."
+      # Invia un nuovo OTP solo se esplicitamente richiesto dall'utente
+      if params[:resend_otp] == "true"
+        @user.invalidate_otp
+        otp_code = @user.generate_otp
+        UserMailer.otp_email(@user, otp_code, 'login').deliver_now
+        flash[:notice] = "Un nuovo codice OTP è stato inviato."
+      end
       render :verify_otp
     end
-  end  
+  end    
 
   def new_password_reset
     # Questo metodo può essere opzionalmente rimosso se non serve più
@@ -65,44 +68,48 @@ class SessionsController < Devise::SessionsController
   
   def reset_password
     Rails.logger.info "Received reset_token: #{params[:reset_token]}"
-    
-    user = User.find_by(reset_password_token: params[:reset_token])
-    
-    if user
-      Rails.logger.info "Found user with reset_token: #{params[:reset_token]}"
-      
-      # Controlla se la nuova password è valida
-      if valid_password?(params[:new_password])
-        if params[:new_password] == params[:confirm_password]
-          user.password = params[:new_password]
-          user.reset_password_token = nil
-          if user.save
-            Rails.logger.info "Password successfully updated for user with reset_token: #{params[:reset_token]}"
-            sign_in_and_redirect user, event: :authentication
+  
+    User.all.each do |user|
+      if user.verify_reset_password_token(params[:reset_token])
+        Rails.logger.info "Token verified successfully for user: #{user.email}"
+  
+        if valid_password?(params[:new_password])
+          if params[:new_password] == params[:confirm_password]
+            user.password = params[:new_password]
+            user.reset_password_token = nil
+            
+            if user.save
+              Rails.logger.info "Password successfully updated for user: #{user.email}"
+              sign_in_and_redirect user, event: :authentication
+            else
+              Rails.logger.error "Failed to save new password for user: #{user.email}"
+              flash.now[:alert] = "Errore nel salvare la nuova password."
+              render :edit_password_reset
+            end
           else
-            Rails.logger.info "Error saving new password for user with reset_token: #{params[:reset_token]}"
-            flash.now[:alert] = "Errore nel salvare la nuova password."
+            Rails.logger.info "Password confirmation does not match."
+            flash.now[:alert] = "La password confermata è diversa da quella inserita precedentemente."
             render :edit_password_reset
           end
         else
-          Rails.logger.info "Password and confirmation do not match for reset_token: #{params[:reset_token]}"
-          flash.now[:alert] = "La password confermata è diversa da quella inserita precedentemente."
-          render :edit_password_reset
-        end
-      else
-        flash.now[:alert] = "La password inserita non è valida. Crea una password che rispetti i seguenti requisiti: 
+          Rails.logger.info "Invalid password format."
+          flash.now[:alert] = "La password inserita non è valida. Crea una password che rispetti i seguenti requisiti: 
           - Almeno 8 caratteri 
           - Deve contenere almeno una lettera maiuscola 
           - Deve contenere almeno un numero 
           - Deve contenere almeno un carattere speciale."
-        render :edit_password_reset
+          render :edit_password_reset
+        end
+  
+        return
       end
-    else
-      Rails.logger.info "Invalid reset token: #{params[:reset_token]}"
-      flash.now[:alert] = "Il token inserito è errato. Puoi cliccare sul link sottostante per richiederne un altro."
-      render :edit_password_reset
     end
+  
+    Rails.logger.info "No user found with the given reset_password_token."
+    flash.now[:alert] = "Il token inserito è errato."
+    render :edit_password_reset
   end
+  
 
   def send_reset_password_token
     user = User.find_by(email: params[:email])
@@ -128,6 +135,11 @@ class SessionsController < Devise::SessionsController
     password.present? && password.length >= 8 && 
       password.match?(/[A-Z]/) && password.match?(/\d/) && 
       password.match?(/[!@#$%^&*(),.?":{}|<>]/)
+  end
+
+  def clear_temporary_session_data
+    session.delete(:temporary_user_data)
+    session.delete(:otp_user_id)
   end
 
 end

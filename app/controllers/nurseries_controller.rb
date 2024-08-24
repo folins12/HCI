@@ -32,7 +32,7 @@ class NurseriesController < ApplicationController
     if @nursery.errors.empty? && @nursery.save
       Rails.logger.info "Nursery successfully saved: #{@nursery.inspect}"
       @user.update(nursery: @nursery) # Aggiorna l'utente per associarlo al vivaio
-      redirect_to verify_otp_path # Reindirizza alla verifica OTP
+      redirect_to register_verify_otp_path # Reindirizza alla verifica OTP
     else
       Rails.logger.error "Nursery could not be saved: #{@nursery.errors.full_messages.join(', ')}"
       render :new
