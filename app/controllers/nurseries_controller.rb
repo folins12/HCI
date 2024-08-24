@@ -55,8 +55,13 @@ class NurseriesController < ApplicationController
   end
 
   def update_image
+    if params[:nursery].nil? || params[:nursery][:nursery_image].nil?
+      flash[:error] = "Parametri mancanti."
+      redirect_to nursery_profile_path and return
+    end
+  
     if @nursery.update(nursery_image_params)
-      redirect_to @nursery, notice: 'Immagine aggiornata con successo.'
+      redirect_to nursery_profile_path, notice: 'Immagine aggiornata con successo.'
     else
       render :edit_image
     end
