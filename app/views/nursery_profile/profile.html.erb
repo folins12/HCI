@@ -129,8 +129,8 @@
           <span id="close_time-display">
             <%= @nursery.close_time %>
           </span>
-          <%= form.time_field :open_time, value: format_time(@nursery.open_time), id: "open_time-input", style: "display: none;" %>
-          <%= form.time_field :close_time, value: format_time(@nursery.close_time), id: "close_time-input", style: "display: none;" %>
+          <%= form.text_field :open_time, value: (@nursery.open_time).to_s, id: "open_time-input", style: "display: none;" %>
+          <%= form.text_field :close_time, value: (@nursery.close_time).to_s, id: "close_time-input", style: "display: none;" %>
         </p>
       </div>
 
@@ -442,7 +442,15 @@
       let isEditing = false;
 
     editButton.addEventListener("click", function () {
+        var button = this;
         isEditing = !isEditing;
+
+        if (isEditing == "1") {
+            button.innerText = "Annulla";
+        } else {
+            button.innerText = "Modifica informazioni";
+        }
+
         toggleEdit(isEditing);
         saveButton.style.display = isEditing ? "inline" : "none";
     });
