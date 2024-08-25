@@ -101,14 +101,15 @@
       <div>
         <p><strong>Indirizzo:</strong> 
           <span id="address-display"><%= @nursery.address %></span>
-          <%= form.text_field :address, value: @nursery.address, id: "address-input", style: "display: none;" %>
+          <%= form.text_field :address, value: @nursery.address, id: "address-input", style: "display: none;", class: "edit-field"  %>
           <span class="error-message" id="address-error"></span>
         </p>
       </div>
+
       <div>
         <p><strong>Telefono:</strong> 
           <span id="number-display">+39 <%= @nursery.number.to_s %></span>
-          <%= form.text_field :number, value: @nursery.number.to_s, id: "number-input", style: "display: none;", class: "form-control #{'has-error' if @nursery.errors[:number].present?}" %>
+          <%= form.text_field :number, value: @nursery.number.to_s, id: "number-input", style: "display: none;", class: "edit-field small-input #{'has-error' if @nursery.errors[:number].present?}" %>
           <span class="error-message" id="number-error"><%= @nursery.errors[:number].join(', ') if @nursery.errors[:number].present? %></span>
         </p>
       </div>
@@ -116,39 +117,40 @@
       <div>
         <p><strong>Email:</strong> 
           <span id="email-display"><%= @nursery.email.to_s %></span>
-          <%= form.text_field :email, value: @nursery.email.to_s, id: "email-input", style: "display: none;", class: "form-control #{'has-error' if @nursery.errors[:email].present?}" %>
+          <%= form.text_field :email, value: @nursery.email.to_s, id: "email-input", style: "display: none;", class: "edit-field #{'has-error' if @nursery.errors[:email].present?}" %>
           <span class="error-message" id="email-error"><%= @nursery.errors[:email].join(', ') if @nursery.errors[:email].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Orario:</strong> 
-          <span id="open_time-display">
-            <%= @nursery.open_time %>
-          </span> - 
-          <span id="close_time-display">
-            <%= @nursery.close_time %>
-          </span>
-          <%= form.text_field :open_time, value: (@nursery.open_time).to_s, id: "open_time-input", style: "display: none;" %>
-          <%= form.text_field :close_time, value: (@nursery.close_time).to_s, id: "close_time-input", style: "display: none;" %>
+          <span id="open_time-display"><%= @nursery.open_time %></span>
+          <span id="time-dash"> - </span> 
+          <span id="close_time-display"><%= @nursery.close_time %></span>
+          <div class="time-input-container hidden">
+            <%= form.text_field :open_time, value: @nursery.open_time.to_s, id: "open_time-input", style: "display: none;", class: "edit-field small-input" %>
+            <%= form.text_field :close_time, value: @nursery.close_time.to_s, id: "close_time-input", style: "display: none;", class: "edit-field small-input" %>
+          </div>
         </p>
       </div>
 
       <div>
         <p><strong>Descrizione:</strong> 
           <span id="description-display"><%= @nursery.description.to_s %></span>
-          <%= form.text_area :description, value: @nursery.description.to_s, id: "description-input", style: "display: none;" %>
+          <%= form.text_area :description, value: @nursery.description.to_s, id: "description-input", style: "display: none;", class: "edit-field"  %>
           <span class="error-message" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
+
       <% if flash[:alert2].present? %>
         <div class="alert alert-danger">
           <%= flash[:alert2] %>
         </div>
       <% end %>
+
       <div class="profile-buttons">
         <button type="button" id="edit-button" status=1 class="btn btn-primary" style="font-size: 1em;">Modifica informazioni</button>
-        <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: !form.object.valid? %>
+        <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", style: "font-size: 1em;", disabled: !form.object.valid? %>
       </div>
     <% end %>
   </div>
@@ -422,7 +424,8 @@
       document.getElementById("profile-edit").style.display = "none";
       document.getElementById("profile-view").style.display = "block";
     }
-  document.addEventListener("DOMContentLoaded", function () {
+
+    document.addEventListener("DOMContentLoaded", function () {
       const editButton = document.getElementById("edit-button");
       const saveButton = document.getElementById("save-button");
 
@@ -442,39 +445,44 @@
           close_time: document.getElementById("close_time-input"),
           description: document.getElementById("description-input")
       };
+
+      const timeDash = document.getElementById("time-dash");
+      const timeInputContainer = document.querySelector(".time-input-container");
       let isEditing = false;
 
-    editButton.addEventListener("click", function () {
-        var button = this;
-        isEditing = !isEditing;
+      editButton.addEventListener("click", function () {
+          isEditing = !isEditing;
+          toggleEdit(isEditing);
+          saveButton.style.display = isEditing ? "inline" : "none";
+      });
 
-        if (isEditing == "1") {
-            button.innerText = "Annulla";
-        } else {
-            button.innerText = "Modifica informazioni";
-        }
+      saveButton.addEventListener("click", function () {
+          isEditing = false;
+          toggleEdit(false);
+          saveButton.style.display = "none";
+      });
 
-        toggleEdit(isEditing);
-        saveButton.style.display = isEditing ? "inline" : "none";
+      function toggleEdit(editing) {
+          for (let key in displayFields) {
+              displayFields[key].style.display = editing ? "none" : "inline";
+              inputFields[key].style.display = editing ? "inline" : "none";
+          }
+          if (editing) {
+              timeInputContainer.classList.remove("hidden");
+              timeDash.style.display = "none";
+              editButton.innerText = "Annulla";
+          } else {
+              timeInputContainer.classList.add("hidden");
+              timeDash.style.display = "inline";
+              editButton.innerText = "Modifica informazioni";
+          }
+      }
+
+      toggleEdit(false);
+      saveButton.style.display = "none";
     });
 
-    saveButton.addEventListener("click", function () {
-        isEditing = false;
-        toggleEdit(false);
-        saveButton.style.display = "none"; // Nasconde il pulsante "Salva" dopo aver salvato
-    });
 
-    function toggleEdit(editing) {
-        for (let key in displayFields) {
-            displayFields[key].style.display = editing ? "none" : "inline";
-            inputFields[key].style.display = editing ? "inline" : "none";
-        }
-    }
-
-    // Inizializza con modalità non modificabile e nasconde il pulsante "Salva"
-    toggleEdit(false);
-    saveButton.style.display = "none";
-  });
 
   </script>
 

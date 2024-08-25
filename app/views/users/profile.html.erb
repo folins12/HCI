@@ -101,7 +101,7 @@
 
   
   <div class="weather-message">
-    Controlla il meteo nella tua zona per decidere se irrigare oggi.
+    Controlla il meteo nella tua zona per decidere se irrigare oggi
   </div>
   <div class="weather-widget" id="weather-widget">
     <p>Caricamento meteo...</p>
@@ -111,7 +111,7 @@
 
   <% if @myplants.present? && @myplants.any? %>
     <div class="plant-message">
-      Queste sono le tue piante:
+      La tua collezione di piante:
     </div>
     <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
       <% @myplants.each do |plant| %>
@@ -140,7 +140,7 @@
   <% else %>
     <div class="btn-nurs">
       <p class="no-results">La tua collezione di piante è vuota.<br> Aggiungi le piante che hai a casa, cliccando qui</p>
-      <%= link_to 'collezione', infoplants_path, class: 'nav-link btn-primary' %>
+      <%= link_to 'catalogo', infoplants_path, class: 'nav-link btn-primary' %>
     </div>
     
   <% end %>
@@ -152,7 +152,7 @@
 
     <% if @user_reservations.present? && @user_reservations.empty? %>
       <div class="btn-nurs">
-        <p>Ancora nessuna prenotazione</p>
+        <p style="font-size: 1.3em;">Non hai nessun ordine in sospeso al momento</p>
         <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
       </div>
 
@@ -184,7 +184,7 @@
         </table>
       <% else %>
         <div class="btn-nurs">
-          <p>Ancora nessuna prenotazione</p>
+          <p style="font-size: 1.3em;">Non hai nessun ordine in sospeso al momento</p>
           <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
         </div>
       <% end %>
@@ -362,7 +362,7 @@
             const descriptionInItalian = weatherDescriptions[descriptionInEnglish] || descriptionInEnglish;
 
             const widgetContent = `
-              <h2 style="color: #004d00;">Meteo Nella Tua Zona</h2>
+              <h2 style="color: #004d00;">Meteo</h2>
               <img src="${iconUrl}" alt="Icona meteo" class="weather-icon" style="width: 100px; height: 100px;">
               <p><strong style="color: #004d00;">Temperatura:</strong> ${weather.main.temp}°C</p>
               <p><strong style="color: #004d00;">Condizioni:</strong> ${descriptionInItalian}</p>

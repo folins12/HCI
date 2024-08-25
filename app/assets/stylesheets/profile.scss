@@ -216,11 +216,50 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.profile-nursery-details .edit-field {
+  width: 100%;
+  font-size: 1em;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.profile-nursery-details .small-input {
+  width: auto;
+  font-size: 1em;
+  padding: 5px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.profile-nursery-details .time-input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-nursery-details .time-input-container .edit-field {
+  width: 48%;
+}
+
+.profile-nursery-details .time-input-container.hidden {
+  display: none;
+}
+
+
+
+
 .weather-message {
   color: #004d00;
   font-size: 2em;
   margin-top: 4%;
   margin-bottom: 2%;
+  font-weight: bold;
 }
 
 .plant-message {
@@ -228,6 +267,7 @@
   font-size: 2em;
   margin-top: 4%;
   margin-bottom: 2%;
+  font-weight: bold;
 }
 
 .plant-panels {
@@ -383,7 +423,7 @@
 .btn-nurs .nav-link {
   display: inline-block;
   padding: 10px 20px;
-  font-size: 1em;
+  font-size: 1.1em;
   color: #fff;
   background-color: #1a5e0d;
   border: none;
