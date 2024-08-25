@@ -748,3 +748,1646 @@ DELETE FROM "nursery_plants";
 DELETE FROM "reservations"[0m
   [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
   [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_attachments"[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_blobs"[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "active_storage_variant_records"[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "myplants"[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "plant_id" integer, "user_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "nurseries"[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "id_owner" integer NOT NULL, "number" integer, "email" varchar, "address" varchar, "location" varchar, "open_time" integer, "close_time" integer, "description" text, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "nursery_plants"[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer, "num_reservations" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "plants"[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "plants" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "typology" varchar, "light" integer, "irrigation" integer, "size" integer, "climate" varchar, "use" text, "created_at" datetime(6) NOT NULL, "description" text, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "reservations"[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "nursery_plant_id" integer NOT NULL, "user_email" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users"[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar, "encrypted_password" varchar, "nome" varchar, "cognome" varchar, "address" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "nursery" boolean DEFAULT 0 NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime, "remember_created_at" datetime, "otp_secret" varchar, "otp_required_for_login" boolean, "otp_generated" varchar, "otp_sent_at" datetime)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_attachments_uniqueness" ON "aactive_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_aactive_storage_attachments_on_blob_id" ON "aactive_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "active_storage_attachments"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "active_storage_attachments"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer NOT NULL PRIMARY KEY, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" integer NOT NULL, "blob_id" integer NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_attachments" ("id","name","record_type","record_id","blob_id","created_at")
+                     SELECT "id","name","record_type","record_id","blob_id","created_at" FROM "aactive_storage_attachments"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "aactive_storage_attachments"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aactive_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_aactive_storage_variant_records_uniqueness" ON "aactive_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aactive_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "active_storage_variant_records"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "active_storage_variant_records"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer NOT NULL PRIMARY KEY, "blob_id" integer NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "active_storage_variant_records" ("id","blob_id","variation_digest")
+                     SELECT "id","blob_id","variation_digest" FROM "aactive_storage_variant_records"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mDROP TABLE "aactive_storage_variant_records"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "amyplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_amyplants_on_proprietario" ON "amyplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "amyplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "myplants"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "myplants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "myplants" ("id" integer NOT NULL PRIMARY KEY, "plant_id" integer DEFAULT NULL, "user_id" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_1885e1d76a"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+, CONSTRAINT "fk_rails_995d9da64f"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_myplants_on_proprietario" ON "myplants" ("user_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("id","plant_id","user_id","created_at","updated_at")
+                     SELECT "id","plant_id","user_id","created_at","updated_at" FROM "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "amyplants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "anurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "nurseries"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "nurseries"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "nurseries" ("id" integer NOT NULL PRIMARY KEY, "name" varchar DEFAULT NULL, "id_owner" integer NOT NULL, "number" integer DEFAULT NULL, "email" varchar DEFAULT NULL, "address" varchar DEFAULT NULL, "location" varchar DEFAULT NULL, "open_time" integer DEFAULT NULL, "close_time" integer DEFAULT NULL, "description" text DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_c6d5291776"
+FOREIGN KEY ("id_owner")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nurseries" ("id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at")
+                     SELECT "id","name","id_owner","number","email","address","location","open_time","close_time","description","created_at","updated_at" FROM "anurseries"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "anurseries"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "anursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_plant_id" ON "anursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_anursery_plants_on_nursery_id" ON "anursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "anursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "nursery_plants"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "nursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "nursery_plants" ("id" integer NOT NULL PRIMARY KEY, "nursery_id" integer NOT NULL, "plant_id" integer NOT NULL, "max_disponibility" integer DEFAULT NULL, "num_reservations" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_bf91332259"
+FOREIGN KEY ("nursery_id")
+  REFERENCES "nurseries" ("id")
+, CONSTRAINT "fk_rails_6154c0bf97"
+FOREIGN KEY ("plant_id")
+  REFERENCES "plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_nursery_id" ON "nursery_plants" ("nursery_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_nursery_plants_on_plant_id" ON "nursery_plants" ("plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "nursery_plants" ("id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at")
+                     SELECT "id","nursery_id","plant_id","max_disponibility","num_reservations","created_at","updated_at" FROM "anursery_plants"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE "anursery_plants"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "areservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "tindex_areservations_on_nursery_plant_id" ON "areservations" ("nursery_plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "areservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "reservations"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "reservations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "reservations" ("id" integer NOT NULL PRIMARY KEY, "nursery_plant_id" integer NOT NULL, "user_email" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_7caa96fe89"
+FOREIGN KEY ("nursery_plant_id")
+  REFERENCES "nursery_plants" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_reservations_on_nursery_plant_id" ON "reservations" ("nursery_plant_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "reservations" ("id","nursery_plant_id","user_email","created_at","updated_at")
+                     SELECT "id","nursery_plant_id","user_email","created_at","updated_at" FROM "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "areservations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (3.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (3.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20240818145637)[0m
+  [1m[35m (3.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20240729162124),
+(20240802102602),
+(20240803093357),
+(20240804102052),
+(20240804150805),
+(20240805103122),
+(20240805112104),
+(20240805143929),
+(20240813143402),
+(20240816151637),
+(20240816152105),
+(20240817100718),
+(20240817100951),
+(20240817101302);
+
+[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2024-08-25 12:24:26.092274"], ["updated_at", "2024-08-25 12:24:26.092274"]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "2358fac1104d4c409db8f55c89d7069381261b7f"], ["created_at", "2024-08-25 12:24:26.098940"], ["updated_at", "2024-08-25 12:24:26.098940"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 14:24:26 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 1491.7ms | Allocations: 106498)
+  Rendered layout layouts/application.html.erb (Duration: 1492.0ms | Allocations: 106536)
+Completed 500 Internal Server Error in 1968ms (ActiveRecord: 0.7ms | Allocations: 121191)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 14:26:28 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 1186.6ms | Allocations: 11635)
+  Rendered layout layouts/application.html.erb (Duration: 1187.0ms | Allocations: 11673)
+Completed 500 Internal Server Error in 1550ms (ActiveRecord: 0.7ms | Allocations: 25510)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 14:32:29 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 1168.2ms | Allocations: 11634)
+  Rendered layout layouts/application.html.erb (Duration: 1168.5ms | Allocations: 11672)
+Completed 500 Internal Server Error in 1524ms (ActiveRecord: 0.9ms | Allocations: 25513)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 14:33:57 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 8191.8ms | Allocations: 155462)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+yarn run v1.22.22
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+
+
+warning package.json: No license field
+warning package.json: No license field
+error Command "webpack" not found.
+
+  Rendered layout layouts/application.html.erb (Duration: 9560.7ms | Allocations: 159237)
+Completed 500 Internal Server Error in 9848ms (ActiveRecord: 0.7ms | Allocations: 173072)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 14:50:00 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 7043.2ms | Allocations: 140266)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+warning package.json: No license field
+warning ../../../package.json: No license field
+/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:93
+				throw err;
+				^
+
+Error: Cannot find module '@rails/webpacker'
+Require stack:
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/environment.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/development.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack/bin/webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:815:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:667:27)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/environment.js:1:87)
+    at Module._compile (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/development.js:3:21)
+    at Module._compile (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at WEBPACK_OPTIONS (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:114:13)
+    at requireConfig (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:116:6)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:123:17
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:121:15)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:71:45
+    at Object.parse (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/yargs/yargs.js:576:18)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:49:8
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:366:3)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/environment.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/development.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack/bin/webpack.js'
+  ]
+}
+
+  Rendered layout layouts/application.html.erb (Duration: 8728.4ms | Allocations: 144172)
+Completed 500 Internal Server Error in 9212ms (ActiveRecord: 0.8ms | Allocations: 158007)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 14:54:38 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 7044.9ms | Allocations: 140742)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+warning package.json: No license field
+warning ../../../package.json: No license field
+/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:93
+				throw err;
+				^
+
+Error: Cannot find module '@rails/webpacker'
+Require stack:
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/environment.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/development.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js
+- /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack/bin/webpack.js
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:815:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:667:27)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/environment.js:1:87)
+    at Module._compile (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/development.js:3:21)
+    at Module._compile (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:192:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:708:14)
+    at Module.require (internal/modules/cjs/loader.js:887:19)
+    at require (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/v8-compile-cache/v8-compile-cache.js:159:20)
+    at WEBPACK_OPTIONS (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:114:13)
+    at requireConfig (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:116:6)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:123:17
+    at Array.forEach (<anonymous>)
+    at module.exports (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js:121:15)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:71:45
+    at Object.parse (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/yargs/yargs.js:576:18)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:49:8
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js:366:3)
+    at Module._compile (internal/modules/cjs/loader.js:999:30)
+    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1027:10)
+    at Module.load (internal/modules/cjs/loader.js:863:32) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/environment.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/config/webpack/development.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/utils/convert-argv.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack-cli/bin/cli.js',
+    '/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/webpack/bin/webpack.js'
+  ]
+}
+
+  Rendered layout layouts/application.html.erb (Duration: 8477.7ms | Allocations: 144648)
+Completed 500 Internal Server Error in 9330ms (ActiveRecord: 0.8ms | Allocations: 158485)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:52:10 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 2224ms (Views: 0.4ms | ActiveRecord: 0.7ms | Allocations: 1064997)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:52:12 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 11ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 2476)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:53:46 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 284ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 370560)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:53:46 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 2320)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:55:06 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 284ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 370614)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:55:06 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 5ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2320)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:55:54 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 281ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 370619)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:55:55 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 2320)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:56:27 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 301ms (Views: 0.3ms | ActiveRecord: 1.5ms | Allocations: 370626)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:56:28 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2322)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:57:36 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 296ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 370618)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:57:37 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 8ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2322)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:57:50 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 302ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 370619)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:57:50 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 5ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2324)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:58:11 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 306ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 370621)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:58:12 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2324)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:59:05 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 374ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 370846)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 15:59:06 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2540)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:06:25 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 310ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 370843)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:06:25 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 8ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 2540)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started POST "/signup" for 127.0.0.1 at 2024-08-25 16:10:00 +0200
+Processing by RegistrationsController#create as HTML
+  Parameters: {"user"=>{"nome"=>"Mario", "cognome"=>"Rossi", "email"=>"mario.rossi@example.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "address"=>"Via Roma 123", "nursery"=>"false"}}
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering registrations/new.html.erb within layouts/application
+  Rendered registrations/new.html.erb within layouts/application (Duration: 5918.1ms | Allocations: 98550)
+[Webpacker] Compiling...
+[Webpacker] Compilation failed:
+Hash: 40e02c6c2f255d18e906
+Version: webpack 4.47.0
+Time: 506ms
+Built at: 08/25/2024 4:10:09 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-14465282756d373ea761.js    9.1 KiB  application  [emitted] [immutable]  application
+js/application-14465282756d373ea761.js.map   3.53 KiB  application  [emitted] [dev]        application
+                             manifest.json  384 bytes               [emitted]              
+Entrypoint application = js/application-14465282756d373ea761.js js/application-14465282756d373ea761.js.map
+[./app/javascript/packs/application.js] 5.2 KiB {application} [built] [failed] [1 error]
+
+ERROR in ./app/javascript/packs/application.js
+Module build failed (from ./node_modules/babel-loader/lib/index.js):
+Error: Cannot find package '@babel/plugin-proposal-private-methods' imported from /home/federico/Documents/GitHub/PlantTracker-labAssi/babel-virtual-resolve-base.js
+    at new NodeError (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:195:5)
+    at packageResolve (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:899:9)
+    at moduleResolve (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:939:18)
+    at defaultResolve (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1017:15)
+    at resolve (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/vendor/import-meta-resolve.js:1030:12)
+    at tryImportMetaResolve (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:142:45)
+    at resolveStandardizedNameForImport (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:164:19)
+    at resolveStandardizedName (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:173:22)
+    at loadPlugin (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/files/plugins.js:52:20)
+    at loadPlugin.next (<anonymous>)
+    at createDescriptor (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:140:16)
+    at createDescriptor.next (<anonymous>)
+    at step (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:261:32)
+    at evaluateAsync (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:44:11
+    at Array.forEach (<anonymous>)
+    at Function.async (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:43:15)
+    at Function.all (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:216:13)
+    at Generator.next (<anonymous>)
+    at createDescriptors (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:102:41)
+    at createDescriptors.next (<anonymous>)
+    at createPluginDescriptors (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-descriptors.js:99:17)
+    at createPluginDescriptors.next (<anonymous>)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/gensync-utils/functional.js:39:27
+    at Generator.next (<anonymous>)
+    at mergeChainOpts (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:349:34)
+    at mergeChainOpts.next (<anonymous>)
+    at chainWalker (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:316:14)
+    at chainWalker.next (<anonymous>)
+    at loadFileChain (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:191:24)
+    at loadFileChain.next (<anonymous>)
+    at buildRootChain (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/config-chain.js:77:27)
+    at buildRootChain.next (<anonymous>)
+    at loadPrivatePartialConfig (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:72:62)
+    at loadPrivatePartialConfig.next (<anonymous>)
+    at loadPartialConfig (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/partial.js:115:25)
+    at loadPartialConfig.next (<anonymous>)
+    at step (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:269:25)
+    at evaluateAsync (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:291:5)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:93:9
+    at new Promise (<anonymous>)
+    at async (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/gensync/index.js:92:14)
+    at stopHiding - secret - don't use this - v1 (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/errors/rewrite-stack-trace.js:47:12)
+    at loadPartialConfigAsync (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/@babel/core/lib/config/index.js:34:85)
+    at Object.<anonymous> (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:126:26)
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:3:103)
+    at _next (/home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:194)
+    at /home/federico/Documents/GitHub/PlantTracker-labAssi/node_modules/babel-loader/lib/index.js:4:364
+    at new Promise (<anonymous>)
+
+
+warning package.json: No license field
+warning ../../../package.json: No license field
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8630.3ms | Allocations: 103753)
+Completed 500 Internal Server Error in 9069ms (ActiveRecord: 1.0ms | Allocations: 118978)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:19:06 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.5ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 348ms (Views: 0.3ms | ActiveRecord: 1.7ms | Allocations: 370798)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:19:06 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 5ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2540)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:19:42 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 316ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 370806)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:19:42 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 6ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2543)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:19:59 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 313ms (Views: 0.3ms | ActiveRecord: 1.1ms | Allocations: 371020)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:19:59 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 5ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2760)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:21:01 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 312ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 371023)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:21:01 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 6ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 2760)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:22:34 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 393ms (Views: 0.3ms | ActiveRecord: 1.3ms | Allocations: 371243)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:22:35 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2980)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$iAcQK0D5qTtOs9M3J118..J9B1U8A8b.OsCVR1QrUBbfk5CmApD8S"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:25:38.137786"], ["updated_at", "2024-08-25 14:25:38.137786"], ["otp_secret", "REGDWZEQHZHGMZPP3UQUU4L46MOI4K7E"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:25:38 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 307ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 370564)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$msu1AgPpOFYthREIXXeKXOZ6HYSpcPiMkcB.Orts9r1ubl4fX7CCe"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:25:38.483554"], ["updated_at", "2024-08-25 14:25:38.483554"], ["otp_secret", "HM73OXHWHGG2CB4CVM46ZHPXMGAZ7INH"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:25:38 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 8ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 2762)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$Uj9vHr8OFZqgY4BNubkSAuxSgdAXIS5rucDcpd4C4tz3xBCXdAPfa"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:26:39.328953"], ["updated_at", "2024-08-25 14:26:39.328953"], ["otp_secret", "2VNWP3I5XXJCX5XXWKA6QQE2VUZ5XUQV"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:26:39 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 301ms (Views: 0.3ms | ActiveRecord: 1.2ms | Allocations: 370606)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$E6tVCcQfoRHpUJFLPWVrAOx3/q6S5GsH1jYcR4fjxSVEOndnR8VEy"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:26:39.665829"], ["updated_at", "2024-08-25 14:26:39.665829"], ["otp_secret", "5PJW7RWENYLFOIS57PFIVDMFPEDC72RP"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:26:39 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 193)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$Gcm5s1gbzFD5Cf1oCtNccuK8nuPjWx6Y8BMVjARa.I9qHC6HvGg2a"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:27:08.728783"], ["updated_at", "2024-08-25 14:27:08.728783"], ["otp_secret", "Z244QWRR3VKHWGYJ5YZGKPTVFWVBOWNU"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:27:08 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2229)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$Je1MorKwIhihK1/w33z3cOFmqkuB4vfRqeJcoc6OTJBo/NT2wXNwG"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:27:08.766844"], ["updated_at", "2024-08-25 14:27:08.766844"], ["otp_secret", "YTPK537AXGWR2SUJ4NAMNOWVBYEGSL35"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:27:08 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms | Allocations: 189)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$y.kDSi5T.WUUi7n80eHPduXbkB1uVg3Zb8Nez81jr4nqZ1FWteGwi"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:28:34.814140"], ["updated_at", "2024-08-25 14:28:34.814140"], ["otp_secret", "3MIVL2OL4DIRJLJMWFJFS4ZI4BNCL7HZ"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:28:34 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 321ms (Views: 0.4ms | ActiveRecord: 1.4ms | Allocations: 370568)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$Zw7hvg6pbF1TxQeF6JpkQeQIdPSHSi/Tg8w6TpFXJM/fpZWA5yFCW"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:28:35.171377"], ["updated_at", "2024-08-25 14:28:35.171377"], ["otp_secret", "3VIXY2TGR3465IPDZAL7V3NEONYCTPJH"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:28:35 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 6ms (Views: 0.7ms | ActiveRecord: 0.0ms | Allocations: 2769)
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$hmdCVYOiaN9i99SQlLTiiuiopIFaNcwba.KMOJjKQYW0LozS1lxnW"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:30:08.656304"], ["updated_at", "2024-08-25 14:30:08.656304"], ["otp_secret", "HKZ75SZYD47AEH6QDISBRNG3U75YQYRM"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:30:08 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 309ms (Views: 0.3ms | ActiveRecord: 1.4ms | Allocations: 370567)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$3HMLiz36X6G1IR2.wEOIjefUjEB7lS93P.ike.x2cHY00VxmreNIq"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:30:08.999354"], ["updated_at", "2024-08-25 14:30:08.999354"], ["otp_secret", "VTXQ4FRYXTG6XTHXBR4UBV6DK4X7UXQZ"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:30:09 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 2772)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$t7hxjaobbQf4CxTmiHT5OuBtul.nA.0k5lragT6x9uwguc1j6RI72"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:33:51.219856"], ["updated_at", "2024-08-25 14:33:51.219856"], ["otp_secret", "IXNXNFIOM5NCFTSCJZ4PFILG4GWBYRGH"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:33:51 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 422 Unprocessable Entity in 312ms (Views: 0.3ms | ActiveRecord: 1.9ms | Allocations: 370999)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$1c89cxbX8eD2Ndu7ViQ/9OWuKmac5DlcGAgO/8l0oiz7HtTKCfKvm"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:33:51.575763"], ["updated_at", "2024-08-25 14:33:51.575763"], ["otp_secret", "W47Z7Z7B6YWJABGOYHSOROK7NXQ4PS2J"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:33:51 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 10ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 3027)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$0g1yOmiEV6S/YUDInxPijOw9RjGvUnfEeNNMeY2qE6R9nVImrLZdC"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:39:29.502650"], ["updated_at", "2024-08-25 14:39:29.502650"], ["otp_secret", "LMZFLOJLYONV2VR3IKZEKLZSESSITFUM"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:39:29.529109"], ["updated_at", "2024-08-25 14:39:29.529109"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:39:29 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.3ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (1.3ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:39:29.564461"], ["updated_at", "2024-08-25 14:39:29.564461"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 23ms (Views: 1.0ms | ActiveRecord: 2.4ms | Allocations: 8280)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$nRlkH5kMsXBcT35PFLpSmu.1fENl7O62WoMkof9XihF.kgPDa22HW"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:39:29.577898"], ["updated_at", "2024-08-25 14:39:29.577898"], ["otp_secret", "C3IKGAXNEYW7EXCUHQZIJHHAJXQB34R3"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:39:29 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 0.5ms | ActiveRecord: 0.0ms | Allocations: 3026)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$u9NOMK6P9N/pNMlTIfoCXeCusKx.xjaX5QNVYvx3C27rxdphXicbG"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:49:13.052407"], ["updated_at", "2024-08-25 14:49:13.052407"], ["otp_secret", "BWULW2QYO4T73EICSLKPRXGTYJ2DHD47"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:49:13.078908"], ["updated_at", "2024-08-25 14:49:13.078908"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:49:13 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:49:13.110984"], ["updated_at", "2024-08-25 14:49:13.110984"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 7824)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$RY21QRj1tcughJAMFpJND.VlT3nTBDpStDnlUPYAKI0AA0CWWgQba"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:50:36.615543"], ["updated_at", "2024-08-25 14:50:36.615543"], ["otp_secret", "WSVY7FYH6EUZSZXRGZUF7UU2N2RACLBF"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:50:36.633147"], ["updated_at", "2024-08-25 14:50:36.633147"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:50:36 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:50:36.670618"], ["updated_at", "2024-08-25 14:50:36.670618"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 1.0ms | Allocations: 7824)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$UF26hx8KHDzl6Z790FmQeucuY0xJj2oeTZ9U4hPT4NYHEpOmv6o0C"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:52:05.775112"], ["updated_at", "2024-08-25 14:52:05.775112"], ["otp_secret", "WV62HOLKSWTGNLN2RY2KECSHMWEY7TPV"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:52:05.792599"], ["updated_at", "2024-08-25 14:52:05.792599"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:52:05.803203"], ["updated_at", "2024-08-25 14:52:05.803203"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:52:05 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.2ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:52:05.833336"], ["updated_at", "2024-08-25 14:52:05.833336"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 10ms (Views: 0.2ms | ActiveRecord: 0.7ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$gPF5CJYOc3DK/CJ9N2fuRuBtpm.is8ujj/TFwf7u94.ydxA5Pb9Xe"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:52:05.840871"], ["updated_at", "2024-08-25 14:52:05.840871"], ["otp_secret", "CYG2NE66PFPZODN4LJBSHNH7JBQLPPUV"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:52:05.842898"], ["updated_at", "2024-08-25 14:52:05.842898"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:52:05.845796"], ["updated_at", "2024-08-25 14:52:05.845796"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/removemyplant" for 127.0.0.1 at 2024-08-25 16:52:05 +0200
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$DHvY3j8fs81eSOJfH3q4UuolrI4mkqyRF7dqidjzGY0eBfOcPvisW"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:52:41.348499"], ["updated_at", "2024-08-25 14:52:41.348499"], ["otp_secret", "GJA34RGQMHOTKVDPIKNBX7KAVZVMDEES"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:52:41.364661"], ["updated_at", "2024-08-25 14:52:41.364661"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:52:41.375139"], ["updated_at", "2024-08-25 14:52:41.375139"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:52:41 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:52:41.404267"], ["updated_at", "2024-08-25 14:52:41.404267"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$PPkHW5B/zWK3w2glBkmOTuTGqB/Ow2KWMn5DcCOew.84RgguSk8zO"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:52:41.411864"], ["updated_at", "2024-08-25 14:52:41.411864"], ["otp_secret", "DRAOSNW74R6OBY4DETYP73MC3H6UPWVR"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:52:41.414208"], ["updated_at", "2024-08-25 14:52:41.414208"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.3ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:52:41.417216"], ["updated_at", "2024-08-25 14:52:41.417216"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/removemyplant" for 127.0.0.1 at 2024-08-25 16:52:41 +0200
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$nstFMBXWb1B1A5m0iJELmexDkneY5RrlrYE8F/Y9UxVw.yFbuLxny"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:55:29.233272"], ["updated_at", "2024-08-25 14:55:29.233272"], ["otp_secret", "MDC2AUFYBWK56F2NOSURGK5LDLIEUAI2"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:55:29.253345"], ["updated_at", "2024-08-25 14:55:29.253345"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:55:29.264896"], ["updated_at", "2024-08-25 14:55:29.264896"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:55:29 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:55:29.295913"], ["updated_at", "2024-08-25 14:55:29.295913"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$wiEPZW5T19Ynr4a2.9rQfuNnM2J7UGJS9Z5C0J7XTVXEMsseDHlvC"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:55:29.303546"], ["updated_at", "2024-08-25 14:55:29.303546"], ["otp_secret", "C4BQLGZWFGGQF7LP6ZSTQ5FHZDG65I5I"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:55:29.305773"], ["updated_at", "2024-08-25 14:55:29.305773"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:55:29.308527"], ["updated_at", "2024-08-25 14:55:29.308527"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/removemyplant" for 127.0.0.1 at 2024-08-25 16:55:29 +0200
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$tB.xUuv1W6gw0jLQUfhNCuXZ27l063r7/WrWsMIrw79r5PbkvFMny"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:57:01.116343"], ["updated_at", "2024-08-25 14:57:01.116343"], ["otp_secret", "AUWDEQ4NMBIJKGTYSD4FEPOGWBCLDLAM"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.4ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:57:01.137114"], ["updated_at", "2024-08-25 14:57:01.137114"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:57:01.148364"], ["updated_at", "2024-08-25 14:57:01.148364"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:57:01 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:57:01.178185"], ["updated_at", "2024-08-25 14:57:01.178185"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$jFpINW.LhSBJDllErApoAOPdfuHPHlTsbg0EzUBQtE5q407Yy4RpS"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:57:01.185718"], ["updated_at", "2024-08-25 14:57:01.185718"], ["otp_secret", "H6TWL4EDNFYW2JX4PZ24CQDFDK7PT5WI"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:57:01.187716"], ["updated_at", "2024-08-25 14:57:01.187716"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:57:01.190689"], ["updated_at", "2024-08-25 14:57:01.190689"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/removemyplant" for 127.0.0.1 at 2024-08-25 16:57:01 +0200
+Processing by MyplantsController#removemyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."plant_id" = ? AND "myplants"."user_id" = ? LIMIT ?[0m  [["plant_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "myplants" WHERE "myplants"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 0.6ms | Allocations: 1234)
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."user_id" = ? AND "myplants"."plant_id" = ? LIMIT ?[0m  [["user_id", 1], ["plant_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$j77owOaqVQiaZhJnjlVO5uFyJMHhwQC/ryR0Sqb0CCLU1f/O5GlD."], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:57:34.784737"], ["updated_at", "2024-08-25 14:57:34.784737"], ["otp_secret", "WGG4T6JECIIO5D2BHBRI7UTO3M37D6D5"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:57:34.800592"], ["updated_at", "2024-08-25 14:57:34.800592"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.3ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:57:34.810635"], ["updated_at", "2024-08-25 14:57:34.810635"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 16:57:34 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:57:34.841847"], ["updated_at", "2024-08-25 14:57:34.841847"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$GgTvsnGN0YtkIjDeO0QKz.N.g9oYvDXlaWrAYlnEm11DXlLEpuS1u"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 14:57:34.849155"], ["updated_at", "2024-08-25 14:57:34.849155"], ["otp_secret", "5QIH6AKTCXEQRG72DXRHLVBMAGLDL6UR"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 14:57:34.851750"], ["updated_at", "2024-08-25 14:57:34.851750"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 14:57:34.854716"], ["updated_at", "2024-08-25 14:57:34.854716"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/removemyplant" for 127.0.0.1 at 2024-08-25 16:57:34 +0200
+Processing by MyplantsController#removemyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mMyplant Load (0.3ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."plant_id" = ? AND "myplants"."user_id" = ? LIMIT ?[0m  [["plant_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Destroy (0.3ms)[0m  [1m[31mDELETE FROM "myplants" WHERE "myplants"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 1.1ms | Allocations: 1004)
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."user_id" = ? AND "myplants"."plant_id" = ? LIMIT ?[0m  [["user_id", 1], ["plant_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$D62RwMik//8zvIoty0G.lOxqwwFc3a/ZZN6iFHKY6liP1TF6Dcsry"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:13:18.842002"], ["updated_at", "2024-08-25 15:13:18.842002"], ["otp_secret", "MIJKYCLFZMQ5V3BT3JUGA3RRSMELKPGT"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:13:18.861794"], ["updated_at", "2024-08-25 15:13:18.861794"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.6ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:13:18.871819"], ["updated_at", "2024-08-25 15:13:18.871819"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 17:13:18 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:13:18.905330"], ["updated_at", "2024-08-25 15:13:18.905330"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.5ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$tdmPSg6KCdpqwmkFpSi4ZeCleSYf4q4053djzinuuH0aBLi1QbVGC"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:13:18.913222"], ["updated_at", "2024-08-25 15:13:18.913222"], ["otp_secret", "5N44OYYACLY6YCID3S5VPVTZGX7U6SOS"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:13:18.916269"], ["updated_at", "2024-08-25 15:13:18.916269"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:13:18.919440"], ["updated_at", "2024-08-25 15:13:18.919440"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 17:13:18 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 2319)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$xpcJ0IUTqXnpTSNpESCpDePQVDRrjigVDEbavq53KL3LjGBFo2BCu"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:13:18.950492"], ["updated_at", "2024-08-25 15:13:18.950492"], ["otp_secret", "H7LCBTKWG5CJZIN72CPAEBWLW5EJNRA6"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:13:18.952383"], ["updated_at", "2024-08-25 15:13:18.952383"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:13:18.956892"], ["updated_at", "2024-08-25 15:13:18.956892"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/removemyplant" for 127.0.0.1 at 2024-08-25 17:13:18 +0200
+Processing by MyplantsController#removemyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."plant_id" = ? AND "myplants"."user_id" = ? LIMIT ?[0m  [["plant_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "myplants" WHERE "myplants"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1004)
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."user_id" = ? AND "myplants"."plant_id" = ? LIMIT ?[0m  [["user_id", 1], ["plant_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$i9A/DhiELNwBEQHIGatY..zmBk0KGDoFRYNfg2d05mqcZp/bXmIQK"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:19.812362"], ["updated_at", "2024-08-25 15:14:19.812362"], ["otp_secret", "VVZV43JLJ7HBF4XGN5XY7NAKIUCEG2XP"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.3ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:19.830749"], ["updated_at", "2024-08-25 15:14:19.830749"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:19.841870"], ["updated_at", "2024-08-25 15:14:19.841870"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 17:14:19 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:19.870701"], ["updated_at", "2024-08-25 15:14:19.870701"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$o5R.yeAMEqLhFai6.cJGMe8NYRMdCbbonxQuSeFSCDwALyiim60Fa"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:19.877795"], ["updated_at", "2024-08-25 15:14:19.877795"], ["otp_secret", "FA7ZJB4GSMRWDROP7AUQLEVQUNCU32SA"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:19.879678"], ["updated_at", "2024-08-25 15:14:19.879678"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:19.882543"], ["updated_at", "2024-08-25 15:14:19.882543"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 17:14:19 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 6ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 2319)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$qqUAKgQ9Z0Si3EQR8tHApubuJ02bxFS7xQVYocbTHCa8jBz5D7fh."], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:19.911403"], ["updated_at", "2024-08-25 15:14:19.911403"], ["otp_secret", "4W7DNV4ALZAS3RUB4DS57PR6ISZWYF7B"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.5ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:19.915112"], ["updated_at", "2024-08-25 15:14:19.915112"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:19.918849"], ["updated_at", "2024-08-25 15:14:19.918849"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/removemyplant" for 127.0.0.1 at 2024-08-25 17:14:19 +0200
+Processing by MyplantsController#removemyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."plant_id" = ? AND "myplants"."user_id" = ? LIMIT ?[0m  [["plant_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Destroy (0.1ms)[0m  [1m[31mDELETE FROM "myplants" WHERE "myplants"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1004)
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."user_id" = ? AND "myplants"."plant_id" = ? LIMIT ?[0m  [["user_id", 1], ["plant_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$Rdvg7fZNLBCta/Na.sJxsOyBvRLwOCHpZ7Y44MEPmzbK1Od7/gkbK"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:19.957584"], ["updated_at", "2024-08-25 15:14:19.957584"], ["otp_secret", "INPQG7VCZTBZY5U473FQC6DD7SW5XTXI"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:19.960987"], ["updated_at", "2024-08-25 15:14:19.960987"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:19.963458"], ["updated_at", "2024-08-25 15:14:19.963458"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/removemyplant" for 127.0.0.1 at 2024-08-25 17:14:19 +0200
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$pvbdaA195DLCkfInofsmZOGl1RmZNR/oSSEdZCwe.N.FweVFXk1Zq"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:31.835839"], ["updated_at", "2024-08-25 15:14:31.835839"], ["otp_secret", "TYR7JIBHBTO6JICTPRIFHQYWGCSWR6IB"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:31.857600"], ["updated_at", "2024-08-25 15:14:31.857600"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.2ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:31.867500"], ["updated_at", "2024-08-25 15:14:31.867500"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 17:14:31 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPlant Load (0.1ms)[0m  [1m[34mSELECT "plants".* FROM "plants" WHERE "plants"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMyplant Create (0.1ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:31.896839"], ["updated_at", "2024-08-25 15:14:31.896839"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 3888)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$H7pb3tPNsyjVRv3DQ8a/bOHux9E8fh7X6UQ8rVMrhVNuauMbD89Yu"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:31.904421"], ["updated_at", "2024-08-25 15:14:31.904421"], ["otp_secret", "VPWBMJSF2UMADOMEQKNINQSYM2VI2VWD"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:31.906766"], ["updated_at", "2024-08-25 15:14:31.906766"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.3ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:31.910072"], ["updated_at", "2024-08-25 15:14:31.910072"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/addmyplant" for 127.0.0.1 at 2024-08-25 17:14:31 +0200
+Processing by MyplantsController#addmyplant as JSON
+  Parameters: {"plant_id"=>nil}
+Completed 422 Unprocessable Entity in 7ms (Views: 1.2ms | ActiveRecord: 0.0ms | Allocations: 2319)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$Hvvj3egUnhfGu7fz22mLhelYXEqU6y80zvx04tIDftdqtJbmZc3pC"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:31.940024"], ["updated_at", "2024-08-25 15:14:31.940024"], ["otp_secret", "HSW73IPKZ6ESALGJC7WMV6SGRB4DBFLZ"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.6ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:31.942941"], ["updated_at", "2024-08-25 15:14:31.942941"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.8ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:31.948246"], ["updated_at", "2024-08-25 15:14:31.948246"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/removemyplant" for 127.0.0.1 at 2024-08-25 17:14:31 +0200
+Processing by MyplantsController#removemyplant as JSON
+  Parameters: {"plant_id"=>"1"}
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."plant_id" = ? AND "myplants"."user_id" = ? LIMIT ?[0m  [["plant_id", 1], ["user_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Destroy (0.2ms)[0m  [1m[31mDELETE FROM "myplants" WHERE "myplants"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 1004)
+  [1m[36mMyplant Load (0.2ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."user_id" = ? AND "myplants"."plant_id" = ? LIMIT ?[0m  [["user_id", 1], ["plant_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "mario.rossi@example.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "nome", "cognome", "address", "created_at", "updated_at", "otp_secret", "otp_required_for_login") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["email", "mario.rossi@example.com"], ["encrypted_password", "$2a$04$NM19Wh1YYbBDitB/eGyqxuCiwfsBDVCTjnrigNFGs43LcPwbBxfDS"], ["nome", "Mario"], ["cognome", "Rossi"], ["address", "Via Roma 123"], ["created_at", "2024-08-25 15:14:31.970898"], ["updated_at", "2024-08-25 15:14:31.970898"], ["otp_secret", "FG5WVCMSONOFVD4OCGOTMS45C7PI5UCX"], ["otp_required_for_login", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mPlant Create (0.2ms)[0m  [1m[32mINSERT INTO "plants" ("name", "typology", "light", "irrigation", "size", "climate", "use", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["name", "Aloe Vera"], ["typology", "Da Appartamento"], ["light", 2], ["irrigation", 1], ["size", 1], ["climate", "Arido"], ["use", "Medicinale"], ["created_at", "2024-08-25 15:14:31.974817"], ["updated_at", "2024-08-25 15:14:31.974817"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mMyplant Create (0.3ms)[0m  [1m[32mINSERT INTO "myplants" ("plant_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["plant_id", 1], ["user_id", 1], ["created_at", "2024-08-25 15:14:31.977057"], ["updated_at", "2024-08-25 15:14:31.977057"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/removemyplant" for 127.0.0.1 at 2024-08-25 17:14:32 +0200
+Processing by MyplantsController#removemyplant as JSON
+  Parameters: {"plant_id"=>"999"}
+  [1m[36mMyplant Load (0.1ms)[0m  [1m[34mSELECT "myplants".* FROM "myplants" WHERE "myplants"."plant_id" = ? AND "myplants"."user_id" = ? LIMIT ?[0m  [["plant_id", 999], ["user_id", 1], ["LIMIT", 1]]
+Completed 422 Unprocessable Entity in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 646)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
