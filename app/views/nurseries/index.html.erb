@@ -19,13 +19,29 @@
   <p class="nursery-search-failure">Nessun vivaio presente con questo nome o in questa zona.</p>
   <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
 <% elsif params[:query].present? %>
-  <% else %>
+  <div class="nurseries-container">
+    <% @nurseries.each do |nursery| %>
+      <div class="nursery-box">
+        <%= link_to nursery_path(nursery) do %>
+          <% if nursery.nursery_image.attached? %> 
+            <%= image_tag nursery.nursery_image %>
+          <% else %>
+            <%= nursery.name %>
+          <% end %>
+          <h3><%= nursery.name %></h3>
+          <p><%= nursery.location %></p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+<% else %>
   <div class="nurseries-container <%= 'single-item' if @nurseries.size == 1 %>">
     <% @nurseries.each do |nursery| %>
       <div class="nursery-box">
         <%= link_to nursery_path(nursery) do %>
-          <% if nursery.nursery_image.attached? %>  <!-- Usa nursery invece di @nursery -->
-            <%= image_tag nursery.nursery_image %> <!-- Usa nursery invece di @nursery -->
+          <% if nursery.nursery_image.attached? %> 
+            <%= image_tag nursery.nursery_image %>
           <% else %>
             <%= nursery.name %>
           <% end %>
