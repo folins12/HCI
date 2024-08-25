@@ -147,7 +147,7 @@
         </div>
       <% end %>
       <div class="profile-buttons">
-        <button type="button" id="edit-button" status=1 class="btn btn-primary">Modifica informazioni</button>
+        <button type="button" id="edit-button" status=1 class="btn btn-primary" style="font-size: 1em;">Modifica informazioni</button>
         <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", disabled: !form.object.valid? %>
       </div>
     <% end %>
@@ -159,7 +159,7 @@
   </div>
 
   <div class="nursery-plants-available <%= 'single-item' if @myplants.present? && @myplants.size == 1 %>">
-    <<% if @myplants.present? %>
+    <% if @myplants.present? %>
       <div class="nursery-plants-container">
         <% @myplants.each do |plant| %>
         
@@ -198,14 +198,17 @@
         <% end %>
       </div>
     <% else %>
-      <p>Nessuna pianta disponibile per il momento.</p>
+      <div class="btn-nurs" style="margin-top: -10px;">
+        <p class="no-results">Non hai messo in vendita nessuna pianta ancora.<br> Aggiungile dal catalogo qui sotto</p>
+        <%= link_to 'catalogo', infoplants_path, class: 'nav-link btn-primary' %>
+      </div>
     <% end %>
   </div>
 
   
   <% if @reservations.present? && @reservations.empty? %>
     <div class="btn-nurs">
-      <h2 style="font-size: 2em; color: black !important;">Ancora Nessuna Prenotazione</h2>
+      <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
     </div>
   <% else %>
     <% if @reservations.present? %>
@@ -244,7 +247,7 @@
       </div>
     <% else %>
       <div class="btn-nurs">
-        <h2 style="font-size: 2em; color: black !important;">Ancora Nessuna Prenotazione</h2>
+        <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
       </div>
     <% end %>
   <% end %>
