@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
 */
-
-@import "bootstrap/scss/bootstrap";
+/*
+@import "bootstrap/scss/bootstrap";*/
 
 /* CSS GENERALI */
 html, body {

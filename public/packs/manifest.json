@@ -1,24 +1,24 @@
 {
-  "application.js": "/packs/js/application-3095143c9360212337e0.js",
-  "application.js.map": "/packs/js/application-3095143c9360212337e0.js.map",
+  "application.js": "/packs/js/application-e03fb8a167bc0858acf5.js",
+  "application.js.map": "/packs/js/application-e03fb8a167bc0858acf5.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-3095143c9360212337e0.js"
+        "/packs/js/application-e03fb8a167bc0858acf5.js"
       ],
       "js.map": [
-        "/packs/js/application-3095143c9360212337e0.js.map"
+        "/packs/js/application-e03fb8a167bc0858acf5.js.map"
       ]
     },
     "reservations": {
       "js": [
-        "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js"
+        "/packs/js/reservations-2c83951982715ae0fb52.js"
       ],
       "js.map": [
-        "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js.map"
+        "/packs/js/reservations-2c83951982715ae0fb52.js.map"
       ]
     }
   },
-  "reservations.js": "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js",
-  "reservations.js.map": "/packs/js/reservations-0f40edb7a5ee6b9d5ec3.js.map"
+  "reservations.js": "/packs/js/reservations-2c83951982715ae0fb52.js",
+  "reservations.js.map": "/packs/js/reservations-2c83951982715ae0fb52.js.map"
 }
