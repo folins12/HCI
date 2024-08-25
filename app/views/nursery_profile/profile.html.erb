@@ -219,52 +219,56 @@
     <% end %>
   </div>
 
-  
-  <% if @reservations.present? && @reservations.empty? %>
-    <div class="btn-nurs">
-      <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
-    </div>
-  <% else %>
-    <% if @reservations.present? %>
-      <div class="table-reservations">
-        <h2 style="font-size: 2em;">Prenotazioni delle Piante</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Pianta</th>
-              <th>Email Utente</th>
-              <th>Quantità</th>
-              <th>Soddisfa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @myplants.each do |plant| %>
-              <% if @reservations[plant.nursery_plant_id] %>
-                <% email_counts = Hash.new(0) %>
-                <% @reservations[plant.nursery_plant_id].each do |email, _| %>
-                  <% email_counts[email] += 1 %>
-                <% end %>
-                <% email_counts.each do |email, count| %>
-                  <tr>
-                    <td><%= plant.name %></td>
-                    <td><%= email %></td>
-                    <td><%= count %></td>
-                    <td>
-                      <%= check_box_tag "satisfied_#{plant.id}_#{email}", true, false, class: "satisfy-order", data: { plant_id: plant.nursery_plant_id, email: email } %>
-                    </td>
-                  </tr>
-                <% end %>
-              <% end %>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    <% else %>
+
+  <div class="table-reservations">
+    <h2 style="font-size: 2em;">Prenotazioni dei Clienti</h2>
+
+    <% if @reservations.present? && @reservations.empty? %>
       <div class="btn-nurs">
         <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
       </div>
+    <% else %>
+      <% if @reservations.present? %>
+        
+          <h2 style="font-size: 2em;">Prenotazioni dei Clienti</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Pianta</th>
+                <th>Email Utente</th>
+                <th>Quantità</th>
+                <th>Soddisfa</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @myplants.each do |plant| %>
+                <% if @reservations[plant.nursery_plant_id] %>
+                  <% email_counts = Hash.new(0) %>
+                  <% @reservations[plant.nursery_plant_id].each do |email, _| %>
+                    <% email_counts[email] += 1 %>
+                  <% end %>
+                  <% email_counts.each do |email, count| %>
+                    <tr>
+                      <td><%= plant.name %></td>
+                      <td><%= email %></td>
+                      <td><%= count %></td>
+                      <td>
+                        <%= check_box_tag "satisfied_#{plant.id}_#{email}", true, false, class: "satisfy-order", data: { plant_id: plant.nursery_plant_id, email: email } %>
+                      </td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        
+      <% else %>
+        <div class="btn-nurs">
+          <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
   <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function() {
