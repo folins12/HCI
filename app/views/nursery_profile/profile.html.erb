@@ -31,21 +31,33 @@
         </table>
       </div>
 
-      <%= form_with(model: @nursery, url: update_nursery_image_path(@nursery), method: :patch, local: true, html: { multipart: true }) do |form| %>
-        <%= form.label :nursery_image, "Update Image" %>
-        <%= form.file_field :nursery_image %>
-        <%= form.submit "Aggiungi immagine" %>
-      <% end %>
+      <div class="form-container">
+        <%= form_with(model: @nursery, url: update_nursery_image_path(@nursery), method: :patch, local: true, html: { multipart: true }) do |form| %>
+          <%= form.label :nursery_image, "Seleziona l'immagine del tuo vivaio", style: "font-size: 1.4em; font-weight: bold;" %>
+
+          <div class="custom-file-upload">
+            <label for="file-upload" class="custom-file-upload-button" id="select-image-button">
+              Scegli Immagine
+            </label>
+            <%= form.file_field :nursery_image, id: "file-upload", style: "display: none;" %>
+            <span id="file-selected"></span>
+          </div>
+
+          <%= form.submit "Aggiungi", class: "custom-submit-button", id: "submit-button", style: "display: none;" %>
+        <% end %>
+      </div>
+
+
 
       <% if @nursery.nursery_image.attached? %>
         <div class="image-nursery-container">
-          <%= image_tag @nursery.nursery_image, class: "square-image" %>
+          <%= image_tag @nursery.nursery_image, class: "circle-image" %>
         </div>
       <% else %>
-        <p>No profile image available</p>
+        <p style="text-align: center;">Nessuna immagine del profilo disponibile</p>
       <% end %>
       
-      <div class="profile-buttons">
+      <div class="profile-buttons" style="text-align: center;">
         <button id="edit-profile-button" class="btn btn-primary">Modifica profilo</button>
         <%= link_to 'Logout', destroy_user_session_path, method: :get, id: 'logout-button', class: 'btn btn-danger' %>
       </div>
@@ -255,6 +267,33 @@
   <% end %>
 
   <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+      const fileUploadInput = document.getElementById("file-upload");
+      const fileSelectedText = document.getElementById("file-selected");
+      const selectImageButton = document.getElementById("select-image-button");
+      const submitButton = document.getElementById("submit-button");
+
+      // Funzione per aggiornare la visibilità dei pulsanti
+      function updateButtonVisibility() {
+        if (fileUploadInput.files.length > 0) {
+          selectImageButton.style.display = "none";
+          submitButton.style.display = "inline-block";
+        } else {
+          selectImageButton.style.display = "inline-block";
+          submitButton.style.display = "none";
+          fileSelectedText.textContent = "";
+        }
+      }
+
+      // Aggiungi listener per l'input file
+      fileUploadInput.addEventListener("change", updateButtonVisibility);
+
+      // Verifica lo stato dell'input file al caricamento della pagina
+      updateButtonVisibility();
+    });
+
+
+
     document.addEventListener("DOMContentLoaded", function() {
       const satisfyOrderCheckboxes = document.querySelectorAll(".satisfy-order");
       satisfyOrderCheckboxes.forEach(checkbox => {

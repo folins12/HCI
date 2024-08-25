@@ -1,17 +1,71 @@
 .image-nursery-container {
-  width: 150px; /* Larghezza del quadrato */
-  height: 150px; /* Altezza del quadrato */
-  overflow: hidden; /* Nasconde le parti dell'immagine che escono dal quadrato */
-  display: flex;
-  align-items: center; /* Centra l'immagine verticalmente */
-  justify-content: center; /* Centra l'immagine orizzontalmente */
+  text-align: center;
+  margin-top: 20px;
 }
 
-.square-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Rende l'immagine riempire il contenitore mantenendo le proporzioni */
+.circle-image {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.form-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-file-upload {
+  text-align: center;
+  margin: 10px auto;
+}
+
+.custom-file-upload-button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  background-color: #6b6b6b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
+
+.custom-file-upload-button:hover {
+  background-color: #444444;
+  transform: scale(1.1);
+}
+
+#file-selected {
+  display: block;
+  margin-top: 10px;
+  font-size: 1em;
+  color: #888;
+}
+
+.custom-submit-button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  color: white;
+  background-color: #6b6b6b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s;
+}
+
+.custom-submit-button:hover {
+  background-color: #444444;
+  transform: scale(1.1);
+}
+
+
 
 
 .profile-container {
