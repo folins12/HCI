@@ -33,13 +33,15 @@ class NurseryPlantsController < ApplicationController
     nursery_plant = NurseryPlant.find_by(nursery_id: params[:nursery_id], plant_id: params[:plant_id])
     if nursery_plant
       nursery_plant.increment!(:max_disponibility)
-      render json: { success: true }
+      render json: { success: true , max_disponibility:nursery_plant.max_disponibility}
+    else
+      render json: { success: false }
     end
   end
 
   def reserve
     nursery_plant = NurseryPlant.find_by(id: params[:nursery_plant_id])
-    if nursery_plant.max_disponibility - nursery_plant.num_reservations > 0
+    if nursery_plant && nursery_plant.max_disponibility - nursery_plant.num_reservations > 0
       nursery_plant.num_reservations += 1
       if nursery_plant.save
         Reservation.create(nursery_plant_id: nursery_plant.id, user_email: current_user.email)
@@ -57,10 +59,12 @@ class NurseryPlantsController < ApplicationController
     if nursery_plant
       if nursery_plant.max_disponibility - nursery_plant.num_reservations > 0
         nursery_plant.decrement!(:max_disponibility)
-        render json: { success: true }
+        render json: { success: true ,max_disponibility: nursery_plant.max_disponibility}
       else
-        render json: { success: false }
+        render json: { success: false , message: "cant decrease more."}
       end
+    else
+      render json: { success: false , message: "nursery_plant not found."}
     end
   end
 
@@ -75,7 +79,7 @@ class NurseryPlantsController < ApplicationController
         render json: {success: false, message: "Ci sono degli ordini in sospeso"}
       end
     else
-      render json: { success: false, message: "Errore nell'eliminazione della pianta.", errors: plant ? plant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
+      render json: { success: false, message: "Errore nell'eliminazione della pianta.", errors: plant ? plant.errors.full_messages : "Pianta non trovata" }, status: :unprocessable_entity
     end
   end
 end

@@ -9,8 +9,6 @@ RSpec.describe "DB comunications", type: :request do
                               irrigation: '1', size: '1', climate: 'Arido', use: 'Medicinale') }
   let!(:myplant) { Myplant.create(user_id: user1.id, plant_id: plant.id) }
 
-
-
   before do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
   end
@@ -145,6 +143,110 @@ RSpec.describe "DB comunications", type: :request do
       end
     end
 
-  end  
+  end
+
+  let(:np) {NurseryPlant.create(nursery_id: nursery.id, plant_id: plant.id, max_disponibility: 1, num_reservations: 0)}
+  let(:reservation) {Reservation.create(nursery_plant_id: np.id, user_email: user1.email)}
+  
+  describe "POST /reserve" do
+    context "when the request is valid" do
+      it "make a reservarion and returns success" do
+        post '/reserve', params: { nursery_plant_id: np.id }, headers: { 'ACCEPT' => 'application/json' }
+
+        expect(response).to have_http_status(:ok)
+        json_response = JSON.parse(response.body)
+        expect(json_response['new_availability']).to eq((np.max_disponibility-np.num_reservations)-1)
+        expect(json_response['success']).to be_truthy
+      end
+    end
+
+    context "when the request is not valid" do
+      it "returns an error" do
+        post '/reserve', params: { nursery_plant_id: 99 }, headers: { 'ACCEPT' => 'application/json' }
+        
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_falsey
+      end
+    end
+  end
+
+  describe "POST /removenursplant" do
+    context "when the request is valid" do
+      it "delete a reservarion and returns success" do
+        post '/removenursplant', params: { plant_id: np.plant_id, nursery_id: np.nursery_id}, headers: { 'ACCEPT' => 'application/json' }
+
+        expect(response).to have_http_status(:ok)
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_truthy
+      end
+    end
+
+    context "when the request is not valid" do
+      it "returns an error con pianta sbagliata" do
+        post '/removenursplant', params: { plant_id: 99, nursery_id: np.nursery_id }, headers: { 'ACCEPT' => 'application/json' }
+        
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_falsey
+        expect(json_response['message']).to eq("Errore nell'eliminazione della pianta.")
+        expect(json_response['errors']).to eq("Pianta non trovata")
+      end
+
+    end
+  end
+
+  describe "POST /incdisp" do
+    context "when the request is valid" do
+      it "increase disponibility and returns success" do
+        post '/incdisp', params: { nursery_id: np.nursery_id, plant_id: np.plant_id }, headers: { 'ACCEPT' => 'application/json' }
+
+        expect(response).to have_http_status(:ok)
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_truthy
+        expect(json_response['max_disponibility']).to eq(np.max_disponibility+1)
+      end
+    end
+
+    context "when the request is not valid" do
+      it "returns an error" do
+        post '/incdisp', params: { nursery_id: np.nursery_id, plant_id: 3 }, headers: { 'ACCEPT' => 'application/json' }
+        
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_falsey
+      end
+    end
+  end
+
+  describe "POST /decdisp" do
+    context "when the request is valid" do
+      it "increase disponibility and returns success" do
+        post '/decdisp', params: { nursery_id: np.nursery_id, plant_id: np.plant_id }, headers: { 'ACCEPT' => 'application/json' }
+
+        expect(response).to have_http_status(:ok)
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_truthy
+        expect(json_response['max_disponibility']).to eq(np.max_disponibility-1)
+      end
+    end
+
+    context "when the request is not valid" do
+      it "returns an error when cant find the nursery_plant" do
+        post '/decdisp', params: { nursery_id: np.nursery_id, plant_id: 3 }, headers: { 'ACCEPT' => 'application/json' }
+        
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_falsey
+        expect(json_response['message']).to eq("nursery_plant not found.")
+      end
+
+      it "returns an error when cant decrease" do
+        post '/decdisp', params: { nursery_id: np.nursery_id, plant_id: np.plant_id }, headers: { 'ACCEPT' => 'application/json' }
+        post '/decdisp', params: { nursery_id: np.nursery_id, plant_id: np.plant_id }, headers: { 'ACCEPT' => 'application/json' }
+
+        json_response = JSON.parse(response.body)
+        expect(json_response['success']).to be_falsey
+        expect(json_response['message']).to eq("cant decrease more.")
+      end
+    end
+
+  end
 
 end
