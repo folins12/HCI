@@ -1,12 +1,13 @@
 # spec/requests/addplant_request.rb
 require 'rails_helper'
 
-RSpec.describe "DB comunications", type: :request do  let!(:user1) { User.create( nome: 'Mario', cognome: 'Rossi', email: 'mario.rossi@example.com',
-                            password: 'Password1!', password_confirmation: 'Password1!',
+RSpec.describe "DB comunications", type: :request do
+  let!(:user1) { User.create!( id:1,  nome: 'Mario', cognome: 'Rossi', email: 'mario.rossi@gmail.com',
+                            password: 'Password1!',
                             address: 'Via Roma 123', nursery: false) }
   let!(:plant) { Plant.create( name: 'Aloe Vera', typology: 'Da Appartamento', light: '2',
                               irrigation: '1', size: '1', climate: 'Arido', use: 'Medicinale') }
-  let!(:myplant) { Myplant.create(user: user1, plant: plant) }  
+  let!(:myplant) { Myplant.create(user_id: user1.id, plant_id: plant.id) }
 
 
 
@@ -68,7 +69,7 @@ RSpec.describe "DB comunications", type: :request do  let!(:user1) { User.create
 
   end
 
-  let!(:user2) { User.create( nome: 'Luigi', cognome: 'Bianchi', email: 'luigi.bianchi@example.com',
+  let!(:user2) { User.create( nome: 'Luigi', cognome: 'Bianchi', email: 'luigi.bianchi@gmail.com',
   password: 'Password2!', password_confirmation: 'Password2!',
   address: 'Via Milano 321', nursery: true) }
 
@@ -118,9 +119,6 @@ RSpec.describe "DB comunications", type: :request do  let!(:user1) { User.create
     end
   end
 
-  
-  
-  
   describe "POST /removenursplant" do
     context "when the myplant exists" do
       it "removes the Myplant and returns success" do
