@@ -1,22 +1,13 @@
 # README
 
 
-* Ruby version: 
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Ruby version: 2.7.2
+* Rails version: 6.1.7.8
+* NodeJs version: 16.20.2
 
 
-comandi test:
-bundle exec rspec spec/requests/addplant_request.rb --format documentation
+* How to run the test suite: bundle exec rspec spec/requests/alldb_request.rb --format documentation
+
+* Deployment instructions: bin/rails server, localhost:3000
+
+
