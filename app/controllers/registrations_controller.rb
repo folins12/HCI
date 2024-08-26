@@ -9,12 +9,11 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     normalize_and_validate_user(@user)
-  
     if @user.errors.any?
+      puts "User errors: #{@user.errors.full_messages}"
       render :new
     else
       @user.generate_otp_secret unless @user.otp_secret.present?
-  
       if @user.save
         session[:otp_user_id] = @user.id
         session[:otp_for] = 'registration'
@@ -23,31 +22,33 @@ class RegistrationsController < Devise::RegistrationsController
           session[:temporary_user_data] = @user.attributes.slice('nome', 'cognome', 'email', 'password', 'address', 'nursery')
           redirect_to register_nursery_path
         else
-          # Invio OTP solo se l'utente non è già nella fase di verifica
           send_otp_and_start_timer(@user, 'registrazione')
+          puts "Redirecting to OTP verification"
           redirect_to register_verify_otp_path
         end
       else
+        logger.debug "User save failed: #{@user.errors.full_messages}"
         render :new
       end
     end
   end  
 
   def verify_otp
+    
     @user = User.find_by(id: session[:otp_user_id])
-  
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
     end
-  
     if request.post?
       otp_attempt = params[:otp_attempt].strip
-  
+      puts "quasi finito?"
       if @user.verify_otp(otp_attempt)
+        puts "finito?"
         clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
         redirect_to nursery_profile_path if @user.nursery == 1
+        #render json: { success: true }
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."
         render :verify_otp
@@ -113,7 +114,6 @@ class RegistrationsController < Devise::RegistrationsController
         - Deve contenere almeno un numero 
         - Deve contenere almeno un carattere speciale")
     end
-
     user.errors.add(:password_confirmation, "La password confermata è diversa da quella inserita precedentemente") if user.password != user.password_confirmation
 
     user.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo") if user.address.blank?
