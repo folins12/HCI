@@ -8,8 +8,8 @@ class UserMailer < ApplicationMailer
     subject_line = case @purpose
                     when 'registrazione'
                       'Il tuo codice OTP per la registrazione'
-                    when 'login'
-                      'Il tuo codice OTP per il login'
+                    when 'vivaio'
+                      'Il tuo codice OTP per modificare le informazioni del vivaio'
                     when 'profilo'
                       'Il tuo codice OTP per modificare il profilo'
                     else

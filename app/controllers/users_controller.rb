@@ -80,7 +80,11 @@ class UsersController < ApplicationController
       else
         @user.update(user_params)
         flash[:notice] = "Profilo aggiornato con successo."
-        redirect_to user_profile_path and return
+        if params[:nursery] == 1  
+          redirect_to user_profile_path and return
+        else
+          redirect_to nursery_profile_path and return
+        end
       end
     else
       flash.now[:alert] = @user.errors.full_messages.join(', ')
@@ -109,7 +113,11 @@ class UsersController < ApplicationController
           @user.update(session[:pending_user_params])
           clear_temporary_session_data
           flash[:notice] = "Profilo aggiornato con successo!"
-          redirect_to user_profile_path
+          if params[:nursery] == 1  
+            redirect_to user_profile_path and return
+          else
+            redirect_to nursery_profile_path and return
+          end
         else
           clear_temporary_session_data
           flash[:alert] = "Nessuna modifica da applicare."
