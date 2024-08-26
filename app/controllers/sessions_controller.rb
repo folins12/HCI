@@ -9,53 +9,10 @@ class SessionsController < Devise::SessionsController
       flash[:alert] = "Password errata per questo indirizzo."
       render :new and return
     else
-      if @user.otp_required_for_login
-        # Invia l'OTP solo se non è già stato inviato per questa sessione
-        unless session[:otp_user_id].present? && session[:otp_for] == 'login'
-          otp_code = @user.generate_otp
-          UserMailer.otp_email(@user, otp_code, 'login').deliver_now
-        end
-        
-        session[:otp_user_id] = @user.id
-        session[:otp_for] = 'login'
-        redirect_to login_verify_otp_path and return
-      else
-        sign_in(@user)
-        redirect_to root_path, notice: 'Login effettuato con successo!'
-      end
+      sign_in(@user)
+      redirect_to root_path, notice: 'Login effettuato con successo!'
     end
-  end  
-  
-
-  def verify_otp
-    @user = User.find_by(id: session[:otp_user_id])
-  
-    unless @user
-      flash[:alert] = "Utente non trovato. Per favore, riprova."
-      redirect_to new_user_registration_path and return
-    end
-  
-    if request.post?
-      otp_attempt = params[:otp_attempt].strip
-  
-      if @user.verify_otp(otp_attempt)
-        clear_temporary_session_data
-        sign_in_and_redirect @user, event: :authentication
-      else
-        flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
-        render :verify_otp
-      end
-    elsif request.get?
-      # Invia un nuovo OTP solo se esplicitamente richiesto dall'utente
-      if params[:resend_otp] == "true"
-        @user.invalidate_otp
-        otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, 'login').deliver_now
-        flash[:notice] = "Un nuovo codice OTP è stato inviato."
-      end
-      render :verify_otp
-    end
-  end    
+  end      
 
   def new_password_reset
     # Questo metodo può essere opzionalmente rimosso se non serve più

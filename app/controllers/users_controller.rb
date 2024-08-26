@@ -60,42 +60,94 @@ class UsersController < ApplicationController
   end
 
   def update
-    # Rimuovi la password e la conferma della password se non sono state inserite
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
   
-    # Se la validazione della password non è riuscita, rimani sulla stessa pagina
     if password_update_valid? && valid_address_updpro?
-      if @user.update(user_params)
-        redirect_to params[:return_to] || user_profile_path, notice: 'Profilo aggiornato con successo.'
+      if @user.otp_required_for_login
+        # Genera OTP e invia via email
+        otp_code = @user.generate_otp
+        UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
+  
+        # Memorizza i parametri dell'utente nella sessione
+        session[:pending_user_params] = user_params.to_h
+        session[:otp_user_id] = @user.id
+        session[:otp_for] = 'profilo'
+        
+        redirect_to login_verify_otp_path and return
       else
-        # Se l'aggiornamento dell'utente fallisce, visualizza la pagina di profilo con errori
-        flash.now[:alert] = @user.errors.full_messages.join(', ')
-        render :profile
+        @user.update(user_params)
+        flash[:notice] = "Profilo aggiornato con successo."
+        redirect_to user_profile_path and return
       end
     else
-      # Se la validazione della password o dell'indirizzo non è riuscita, visualizza la pagina di profilo con errori
       flash.now[:alert] = @user.errors.full_messages.join(', ')
       render :profile
     end
   end
+  
+
+  def verify_otp
+    @user = User.find_by(id: session[:otp_user_id])
+    Rails.logger.debug "User trovato: #{@user.inspect}"
+    
+    unless @user
+      flash[:alert] = "Utente non trovato. Per favore, riprova."
+      redirect_to new_user_registration_path and return
+    end
+    
+    if request.post?
+      otp_attempt = params[:otp_attempt].strip
+      Rails.logger.debug "OTP Attempt: #{otp_attempt}"
+    
+      if @user.verify_otp(otp_attempt)
+        Rails.logger.debug "OTP Verified Successfully"
+        if session[:pending_user_params]
+          Rails.logger.debug "Parametri utente pendenti: #{session[:pending_user_params]}"
+          @user.update(session[:pending_user_params])
+          clear_temporary_session_data
+          flash[:notice] = "Profilo aggiornato con successo!"
+          redirect_to user_profile_path
+        else
+          clear_temporary_session_data
+          flash[:alert] = "Nessuna modifica da applicare."
+          redirect_to user_profile_path
+        end
+      else
+        Rails.logger.debug "OTP Verification Failed"
+        flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
+        render 'sessions/verify_otp'
+      end
+    elsif request.get?
+      if params[:resend_otp] == "true"
+        Rails.logger.debug "Resending OTP"
+        @user.invalidate_otp
+        otp_code = @user.generate_otp
+        UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
+        flash[:notice] = "Un nuovo codice OTP è stato inviato."
+      end
+      render 'sessions/verify_otp'
+    end
+  end
+  
+  
 
   def valid_address_updpro?
-    results = geo((params[:user][:address]))
+    results = geo(params[:user][:address])
     if results.present? && results.first.coordinates.present?
-      return true
+      true
     else
       @user.errors.add(:address, 'indirizzo errato!')
-      return false
+      false
     end
   end
 
-  def geo (address)
-    return Geocoder.search(address)
+  def geo(address)
+    Geocoder.search(address)
   end
-  
+
   def fetch_weather
     lat = params[:lat]
     lon = params[:lon]
@@ -132,7 +184,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :address)
+    params.require(:user).permit(:nome, :cognome, :email, :current_password, :password, :password_confirmation, :address)
   end
 
   def password_update_valid?
@@ -143,28 +195,24 @@ class UsersController < ApplicationController
           return false
         end
       end
-      # Se non c'è password attuale da verificare o è corretta, non cambiare la password e ritorna true.
       return true
     end
-  
+
     if params[:user][:current_password].blank?
       @user.errors.add(:current_password, 'La password attuale è richiesta.')
       return false
     end
-  
-    # Verifica la password attuale
+
     unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
       @user.errors.add(:current_password, 'Password errata!')
       return false
     end
-  
-    # Verifica se la nuova password è uguale alla precedente
+
     if params[:user][:password] == params[:user][:current_password]
       @user.errors.add(:password, 'La nuova password non può essere uguale alla precedente')
       return false
     end
-  
-    # Verifica la complessità della nuova password
+
     unless valid_password?(params[:user][:password])
       @user.errors.add(:password, 'La nuova password non rispetta i requisiti: 
       - almeno una maiuscola; 
@@ -173,20 +221,23 @@ class UsersController < ApplicationController
       - almeno un carattere speciale.')
       return false
     end
-  
-    # Verifica se la conferma della password corrisponde
+
     unless params[:user][:password] == params[:user][:password_confirmation]
       @user.errors.add(:password_confirmation, 'La password confermata deve essere uguale a quella nuova precedentemente inserita')
       return false
     end
-  
+
     true
   end
-  
 
   def valid_password?(password)
-    # Controlla che la password contenga almeno una maiuscola, una minuscola, un numero e un carattere speciale
     password.match?(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}\z/)
   end
 
+  def clear_temporary_session_data
+    session.delete(:pending_user_params)
+    session.delete(:otp_user_id)
+    session.delete(:otp_for)
+  end
+  
 end
