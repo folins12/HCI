@@ -10,15 +10,14 @@
 <body>
   <div class="register-background">
     <div class="register-formcontainer">
-
       <div class="weather-message">
-        Per accedere al tuo profilo inserisci il codice OTP inviato alla tua email.
+        Per completare la modifica del tuo profilo inserisci il codice OTP inviato alla tua email.
       </div>
 
       <%= form_with url: login_verify_otp_path, method: :post do %>
         <div class="register-input-group <%= 'has-error' if flash[:alert] %>">
           <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
-          <%= text_field_tag :otp_attempt, nil, required: true %>
+          <%= text_field_tag :otp_attempt, nil%>
         </div>
         <div class="register-button-container">
           <%= submit_tag "Verifica", class: "register-button" %>

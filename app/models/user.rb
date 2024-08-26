@@ -1,7 +1,33 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  validates :email, presence: true, uniqueness: true
+  VALID_DOMAINS = %w[
+    gmail.com
+    yahoo.com
+    outlook.com
+    hotmail.com
+    aol.com
+    icloud.com
+    mail.com
+    msn.com
+    live.com
+    zoho.com
+    protonmail.com
+    gmx.com
+    yandex.com
+    comcast.net
+    att.net
+    sbcglobal.net
+    btinternet.com
+    virginmedia.com
+    tiscali.it
+    libero.it
+    alice.it
+    studenti.uniroma1.it
+  ].freeze
+
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "è invalido" }
+  validate :validate_email_domain
   validates :nome, presence: true
   validates :cognome, presence: true
   validates :address, presence: true
@@ -68,4 +94,10 @@ class User < ApplicationRecord
     raw_token
   end
 
+  def validate_email_domain
+    domain = email.split('@').last
+    unless VALID_DOMAINS.include?(domain)
+      errors.add(:email, "dominio non valido. Usa un dominio accettabile.")
+    end
+  end
 end

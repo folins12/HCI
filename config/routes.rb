@@ -78,8 +78,8 @@ Rails.application.routes.draw do
     get 'signup', to: 'registrations#new', as: :new_user_registration
     post 'signup', to: 'registrations#create', as: :user_registration
 
-    get 'login/verify_otp', to: 'sessions#verify_otp', as: :login_verify_otp
-    post 'login/verify_otp', to: 'sessions#verify_otp'
+    get 'login/verify_otp', to: 'users#verify_otp', as: :login_verify_otp
+    post 'login/verify_otp', to: 'users#verify_otp'
   
     get 'signup/verify_otp', to: 'registrations#verify_otp', as: :register_verify_otp
     post 'signup/verify_otp', to: 'registrations#verify_otp'

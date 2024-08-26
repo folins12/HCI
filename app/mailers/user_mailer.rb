@@ -10,6 +10,8 @@ class UserMailer < ApplicationMailer
                       'Il tuo codice OTP per la registrazione'
                     when 'login'
                       'Il tuo codice OTP per il login'
+                    when 'profilo'
+                      'Il tuo codice OTP per modificare il profilo'
                     else
                       'Il tuo codice OTP'
                     end
