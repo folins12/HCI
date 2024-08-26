@@ -33,7 +33,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end  
 
-
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
   
@@ -62,7 +61,6 @@ class RegistrationsController < Devise::RegistrationsController
       render :verify_otp
     end
   end    
-  
 
   private
 
@@ -120,6 +118,15 @@ class RegistrationsController < Devise::RegistrationsController
 
     user.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo") if user.address.blank?
     user.errors.add(:address, "L'indirizzo inserito non è valido.") unless valid_address?(user.address)
+    
+    if !valid_email_domain?(user.email)
+      user.errors.add(:email, "L'indirizzo email che hai inserito contiene un dominio inesistente!")
+    end
+  end
+
+  def valid_email_domain?(email)
+    domain = email.split('@').last
+    User::VALID_DOMAINS.include?(domain)
   end
 
   def valid_address?(address)
