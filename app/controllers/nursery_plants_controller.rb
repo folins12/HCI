@@ -75,7 +75,7 @@ class NurseryPlantsController < ApplicationController
         render json: {success: false, message: "Ci sono degli ordini in sospeso"}
       end
     else
-      render json: { success: false, message: "Errore nell'eliminazione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
+      render json: { success: false, message: "Errore nell'eliminazione della pianta.", errors: plant ? plant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
     end
   end
 end
