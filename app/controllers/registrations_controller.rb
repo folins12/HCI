@@ -23,7 +23,6 @@ class RegistrationsController < Devise::RegistrationsController
           redirect_to register_nursery_path
         else
           send_otp_and_start_timer(@user, 'registrazione')
-          puts "Redirecting to OTP verification"
           redirect_to register_verify_otp_path
         end
       else
@@ -34,7 +33,6 @@ class RegistrationsController < Devise::RegistrationsController
   end  
 
   def verify_otp
-    
     @user = User.find_by(id: session[:otp_user_id])
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
@@ -42,9 +40,7 @@ class RegistrationsController < Devise::RegistrationsController
     end
     if request.post?
       otp_attempt = params[:otp_attempt].strip
-      puts "quasi finito?"
       if @user.verify_otp(otp_attempt)
-        puts "finito?"
         clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
         redirect_to nursery_profile_path if @user.nursery == 1
