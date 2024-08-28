@@ -40,3 +40,42 @@
 
   <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var reserveButtons = document.querySelectorAll(".btn-reserve");
+    reserveButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var nurseryPlantId = this.dataset.nurseryPlantId;
+        fetch('/reserve', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+          },
+          body: JSON.stringify({
+            nursery_plant_id: nurseryPlantId
+          })
+        }).then(function (response) {
+          if (!response.ok) {
+            return response.text().then(function (text) {
+              throw new Error(text);
+            });
+          }
+          return response.json();
+        }).then(function (data) {
+          if (data.success) {
+            alert("Prenotazione effettuata con successo!");
+            var availabilityElement = document.querySelector(".availability[data-nursery-plant-id=\"".concat(nurseryPlantId, "\"]"));
+            availabilityElement.textContent = "Disponibilit\xE0 in negozio: ".concat(data.new_availability);
+          } else {
+            alert(data.message || "Errore nella prenotazione. Riprova.");
+          }
+        })["catch"](function (error) {
+          console.error('Errore:', error);
+          alert('Errore: ' + error.message);
+        });
+      });
+    });
+  });
+</script>
