@@ -10,7 +10,6 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.new(user_params)
     normalize_and_validate_user(@user)
     if @user.errors.any?
-      puts "User errors: #{@user.errors.full_messages}"
       render :new
     else
       @user.generate_otp_secret unless @user.otp_secret.present?

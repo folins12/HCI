@@ -18,10 +18,8 @@ class NurseriesController < ApplicationController
   end  
 
   def create
-    
     @nursery = Nursery.new(nursery_params)
     @user = User.find_by(id: session[:otp_user_id])
-    
     Rails.logger.info "Trying to create a nursery with params: #{nursery_params.inspect}"
     Rails.logger.info "Current user ID: #{session[:otp_user_id]}, User found: #{@user.inspect}"
   
@@ -126,7 +124,6 @@ class NurseriesController < ApplicationController
 
   def valid_address?(address)
     results = geo(address)
-    puts "sto qua"
     if results.present? && results.first.coordinates.present?
       return true
     else

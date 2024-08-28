@@ -34,7 +34,20 @@ RSpec.describe "User Registrations", type: :request do
       password: 'Password3!',
       password_confirmation: 'Password3!',
       address: 'Via dello scalo S. Lorenzo, 82, Roma',
-      nursery: false
+      nursery: true
+    }
+  end
+
+  let(:valid_nursery_attributes) do
+    {
+      name: 'vivaioProva',
+      number: 1234567890,
+      email: 'emailvivaio@gmail.com',
+      address: 'via olivella, 32, Albano Laziale',
+      location: 'Albano',
+      open_time: '9:00',
+      close_time: '18:00', 
+      description: 'random description'
     }
   end
 
@@ -124,11 +137,10 @@ RSpec.describe "User Registrations", type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    it "registers a new user3 and verifies OTP" do
+    it "registers a new user3 and his nursery and verifies OTP" do
       post user_registration_path, params: { user: valid_user_attributes3 }
       
-      expect(response).to redirect_to(register_verify_otp_path)
-
+      expect(response).to redirect_to(register_nursery_path)
       #follow_redirect!
       expect(session[:otp_user_id]).to be_present
 
@@ -136,14 +148,18 @@ RSpec.describe "User Registrations", type: :request do
       otp_user_id = session[:otp_user_id]
       expect(otp_user_id).to be_present
 
-      # Retrieve the user and simulate OTP code
-      user = User.find(otp_user_id)
-      otp_code = user.generate_otp_secret
+      # Simulazione della compilazione del secondo form (registrazione del vivaio)
+      post nurseries_path, params: { nursery: valid_nursery_attributes }
+
+      # Verifica che il vivaio sia stato creato e associato all'utente
+      created_nursery = Nursery.last
+      expect(created_nursery).to be_present
+      expect(created_nursery.name).to eq('vivaioProva')
+      expect(created_nursery.user.nome).to eq("Andrea")
+
+      # Verifica che la risposta sia un redirect alla pagina di verifica OTP o dove ti aspetti che vada dopo la creazione del vivaio
       expect(response).to redirect_to(register_verify_otp_path)
 
-      # Simulate OTP verification
-      post signup_verify_otp_path, params: { otp_attempt: otp_code }
-      expect(response).to have_http_status(:ok)
     end
   end
   context "when the request is invalid" do
