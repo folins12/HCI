@@ -36,6 +36,10 @@ class User < ApplicationRecord
 
   before_create :generate_otp_secret, :set_otp_required
 
+  def nursery?
+    self.nursery
+  end
+  
   def generate_otp_secret
     self.otp_secret = ROTP::Base32.random_base32
   end  
