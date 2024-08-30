@@ -56,6 +56,7 @@ Rails.application.routes.draw do
   post 'removenursplant', to: 'nursery_plants#removenursplant'
 
   patch 'nursery_profile/update', to: 'nursery_profile#update_profile', as: 'update_nursery_profile'
+  patch 'nurseries/:id', to: 'nurseries#update', as: 'update_nursery'
 
   resources :users, only: [:show, :edit, :update]
   post 'reserve', to: 'nursery_plants#reserve'

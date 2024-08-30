@@ -108,61 +108,63 @@
     <p class="profile-location"><%= @nursery.location %></p>
   </div>
 
-  <div class="profile-nursery-details">
-    <%= form_with(model: @nursery, url: update_nursery_profile_path(@nursery), method: :patch, local: true) do |form| %>
+  <div class="profile-nursery-details" style="<%= @nursery.errors.any? ? 'display: none;' : 'display: block;' %>">
+    <p><strong>Indirizzo:</strong> <span id="address-display"><%= @nursery.address %></span></p>
+    <p><strong>Telefono:</strong> <span id="number-display">+39 <%= @nursery.number.to_s %></span></p>
+    <p><strong>Email:</strong> <span id="email-display"><%= @nursery.email.to_s %></span></p>
+    <p><strong>Orario:</strong> 
+      <span id="open_time-display"><%= @nursery.open_time %></span> - 
+      <span id="close_time-display"><%= @nursery.close_time %></span>
+    </p>
+    <p><strong>Descrizione:</strong> <span id="description-display"><%= @nursery.description.to_s %></span></p>
+
+    <div class="profile-buttons">
+      <button type="button" id="edit-button" class="btn btn-primary" style="font-size: 1em;" onclick="showNurseryEdit()">Modifica informazioni</button>
+    </div>
+  </div>
+
+  <div class="profile-nursery-edit" style="<%= @nursery.errors.any? ? 'display: block;' : 'display: none;' %>">
+    <%= form_with(model: @nursery, url: update_nursery_path(@nursery), method: :patch) do |form| %>
       <div>
         <p><strong>Indirizzo:</strong> 
-          <span id="address-display"><%= @nursery.address %></span>
-          <%= form.text_field :address, value: @nursery.address, id: "address-input", style: "display: none;", class: "edit-field"  %>
-          <span class="error-message" id="address-error"></span>
+          <%= form.text_field :address, value: @nursery.address, class: "edit-field small-input #{'has-error' if @nursery.errors[:address].present?}" %>
+          <span class="error-message" id="address-error"><%= @nursery.errors[:address].join(', ') if @nursery.errors[:address].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Telefono:</strong> 
-          <span id="number-display">+39 <%= @nursery.number.to_s %></span>
-          <%= form.text_field :number, value: @nursery.number.to_s, id: "number-input", style: "display: none;", class: "edit-field small-input #{'has-error' if @nursery.errors[:number].present?}" %>
+          <%= form.text_field :number, value: @nursery.number.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:number].present?}" %>
           <span class="error-message" id="number-error"><%= @nursery.errors[:number].join(', ') if @nursery.errors[:number].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Email:</strong> 
-          <span id="email-display"><%= @nursery.email.to_s %></span>
-          <%= form.text_field :email, value: @nursery.email.to_s, id: "email-input", style: "display: none;", class: "edit-field #{'has-error' if @nursery.errors[:email].present?}" %>
+          <%= form.text_field :email, value: @nursery.email.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:email].present?}" %>
           <span class="error-message" id="email-error"><%= @nursery.errors[:email].join(', ') if @nursery.errors[:email].present? %></span>
         </p>
       </div>
 
       <div>
-        <p><strong>Orario:</strong> 
-          <span id="open_time-display"><%= @nursery.open_time %></span>
-          <span id="time-dash"> - </span> 
-          <span id="close_time-display"><%= @nursery.close_time %></span>
-          <div class="time-input-container hidden">
-            <%= form.text_field :open_time, value: @nursery.open_time.to_s, id: "open_time-input", style: "display: none;", class: "edit-field small-input" %>
-            <%= form.text_field :close_time, value: @nursery.close_time.to_s, id: "close_time-input", style: "display: none;", class: "edit-field small-input" %>
-          </div>
+        <p><strong>Orario:</strong>
+          <%= form.text_field :open_time, value: @nursery.open_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}" %>
+          -
+          <%= form.text_field :close_time, value: @nursery.close_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}"  %>
+          <span class="error-message" id="time-error"><%= @nursery.errors[:base].join(', ') if @nursery.errors[:base].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Descrizione:</strong> 
-          <span id="description-display"><%= @nursery.description.to_s %></span>
-          <%= form.text_area :description, value: @nursery.description.to_s, id: "description-input", style: "display: none;", class: "edit-field"  %>
+          <%= form.text_area :description, value: @nursery.description.to_s, class: "edit-field #{'has-error' if @nursery.errors[:email].present?}"  %>
           <span class="error-message" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
 
-      <% if flash[:alert2].present? %>
-        <div class="alert alert-danger">
-          <%= flash[:alert2] %>
-        </div>
-      <% end %>
-
       <div class="profile-buttons">
-        <button type="button" id="edit-button" status=1 class="btn btn-primary" style="font-size: 1em;">Modifica informazioni</button>
         <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", style: "font-size: 1em;", disabled: !form.object.valid? %>
+        <button type="button" class="btn btn-secondary" style="font-size: 1em;" id="annulla-btn" onclick="cancelNurseryEdit()">Annulla</button>
       </div>
     <% end %>
   </div>
@@ -468,62 +470,60 @@
       document.getElementById("profile-view").style.display = "block";
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const editButton = document.getElementById("edit-button");
-      const saveButton = document.getElementById("save-button");
+  document.addEventListener("DOMContentLoaded", function() {
+    const editButton = document.getElementById("edit-button");
+    const saveButton = document.getElementById("save-button");
+    const cancelButton = document.getElementById("annulla-btn");
 
-      const displayFields = {
-          address: document.getElementById("address-display"),
-          number: document.getElementById("number-display"),
-          email: document.getElementById("email-display"),
-          open_time: document.getElementById("open_time-display"),
-          close_time: document.getElementById("close_time-display"),
-          description: document.getElementById("description-display")
-      };
-      const inputFields = {
-          address: document.getElementById("address-input"),
-          number: document.getElementById("number-input"),
-          email: document.getElementById("email-input"),
-          open_time: document.getElementById("open_time-input"),
-          close_time: document.getElementById("close_time-input"),
-          description: document.getElementById("description-input")
-      };
+    // Funzione per mostrare il form di modifica
+    function showNurseryEdit() {
+      document.querySelector('.profile-nursery-details').style.display = 'none';
+      document.querySelector('.profile-nursery-edit').style.display = 'block';
+      saveButton.style.display = "inline";  // Mostra il pulsante "Salva modifiche"
+      cancelButton.style.display = "inline"; // Mostra il pulsante "Annulla"
+      editButton.style.display = "none";    // Nascondi il pulsante "Modifica informazioni"
+    }
 
-      const timeDash = document.getElementById("time-dash");
-      const timeInputContainer = document.querySelector(".time-input-container");
-      let isEditing = false;
+    // Funzione per annullare la modifica e tornare alla visualizzazione
+    function cancelNurseryEdit() {
+      document.querySelector('.profile-nursery-details').style.display = 'block';
+      document.querySelector('.profile-nursery-edit').style.display = 'none';
+      saveButton.style.display = "none";    // Nascondi il pulsante "Salva modifiche"
+      cancelButton.style.display = "none";  // Nascondi il pulsante "Annulla"
+      editButton.style.display = "inline";  // Mostra il pulsante "Modifica informazioni"
+    }
 
-      editButton.addEventListener("click", function () {
-          isEditing = !isEditing;
-          toggleEdit(isEditing);
-          saveButton.style.display = isEditing ? "inline" : "none";
-      });
+    // Aggiungi l'evento al pulsante di modifica
+    editButton.addEventListener("click", showNurseryEdit);
 
-      saveButton.addEventListener("click", function () {
-          isEditing = false;
-          toggleEdit(false);
-          saveButton.style.display = "none";
-      });
-
-      function toggleEdit(editing) {
-          for (let key in displayFields) {
-              displayFields[key].style.display = editing ? "none" : "inline";
-              inputFields[key].style.display = editing ? "inline" : "none";
-          }
-          if (editing) {
-              timeInputContainer.classList.remove("hidden");
-              timeDash.style.display = "none";
-              editButton.innerText = "Annulla";
-          } else {
-              timeInputContainer.classList.add("hidden");
-              timeDash.style.display = "inline";
-              editButton.innerText = "Modifica informazioni";
-          }
+    // Gestione della visibilità dei pulsanti in caso di errore
+    document.querySelector('.profile-nursery-edit').addEventListener('submit', function(event) {
+      const hasErrors = document.querySelector('.profile-nursery-edit').querySelector('.error');
+      if (hasErrors) {
+        event.preventDefault(); // Impedisce l'invio del form in caso di errori
+        saveButton.style.display = "inline";  // Mantieni il pulsante "Salva modifiche"
+        cancelButton.style.display = "inline"; // Mantieni il pulsante "Annulla"
+        editButton.style.display = "none";    // Nascondi il pulsante "Modifica informazioni"
+      } else {
+        // Se non ci sono errori, consentire l'invio del form
+        saveButton.style.display = "none";    // Nascondi il pulsante "Salva modifiche"
+        cancelButton.style.display = "none";  // Nascondi il pulsante "Annulla"
+        editButton.style.display = "inline";  // Mostra il pulsante "Modifica informazioni"
       }
-
-      toggleEdit(false);
-      saveButton.style.display = "none";
     });
+
+    // All'inizio, determinare quale vista mostrare
+    if (document.querySelector('.profile-nursery-edit').style.display === 'block') {
+      saveButton.style.display = "inline";
+      cancelButton.style.display = "inline";
+      editButton.style.display = "none";
+    } else {
+      saveButton.style.display = "none";
+      cancelButton.style.display = "none";
+      editButton.style.display = "inline";
+    }
+  });
+
 
 
 

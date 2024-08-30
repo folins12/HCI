@@ -24,11 +24,8 @@ class SessionsController < Devise::SessionsController
   end
   
   def reset_password
-    Rails.logger.info "Received reset_token: #{params[:reset_token]}"
-  
     User.all.each do |user|
       if user.verify_reset_password_token(params[:reset_token])
-        Rails.logger.info "Token verified successfully for user: #{user.email}"
   
         if valid_password?(params[:new_password])
           if params[:new_password] == params[:confirm_password]
@@ -36,20 +33,16 @@ class SessionsController < Devise::SessionsController
             user.reset_password_token = nil
             
             if user.save
-              Rails.logger.info "Password successfully updated for user: #{user.email}"
               sign_in_and_redirect user, event: :authentication
             else
-              Rails.logger.error "Failed to save new password for user: #{user.email}"
               flash.now[:alert] = "Errore nel salvare la nuova password."
               render :edit_password_reset
             end
           else
-            Rails.logger.info "Password confirmation does not match."
             flash.now[:alert] = "La password confermata è diversa da quella inserita precedentemente."
             render :edit_password_reset
           end
         else
-          Rails.logger.info "Invalid password format."
           flash.now[:alert] = "La password inserita non è valida. Crea una password che rispetti i seguenti requisiti: 
           - Almeno 8 caratteri 
           - Deve contenere almeno una lettera maiuscola 
@@ -61,8 +54,6 @@ class SessionsController < Devise::SessionsController
         return
       end
     end
-  
-    Rails.logger.info "No user found with the given reset_password_token."
     flash.now[:alert] = "Il token inserito è errato."
     render :edit_password_reset
   end

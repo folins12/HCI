@@ -257,7 +257,7 @@
   color: #134509;
 }
 
-.profile-nursery-details {
+.profile-nursery-details, .profile-nursery-edit {
   font-size: 1.4em;
   background-color: rgba(255, 255, 255, 0.9);
   padding: 20px;
@@ -305,7 +305,37 @@
   display: none;
 }
 
+.profile-nursery-edit .edit-field {
+  width: 100%;
+  font-size: 1em;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
 
+.profile-nursery-edit .small-input {
+  width: 70%;
+  font-size: 1em;
+  padding: 5px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.profile-nursery-edit .edit-field-time {
+    width: 40%;
+    font-size: 1em;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
 
 
 .weather-message {
@@ -767,11 +797,11 @@
 }
 
 /* Input con errore */
-.has-error input {
-  border: 1px solid red; /* Bordo rosso per gli errori */
+.has-error input{
+  border: 2px solid red; /* Bordo rosso per gli errori */
 }
 
 .error-message {
   color: red; /* Colore del testo dell'errore */
-  font-size: 15px;
+  font-size: 25px;
 }

@@ -91,7 +91,6 @@ class UsersController < ApplicationController
 
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
-    Rails.logger.debug "User trovato: #{@user.inspect}"
     
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
@@ -100,12 +99,9 @@ class UsersController < ApplicationController
     
     if request.post?
       otp_attempt = params[:otp_attempt].strip
-      Rails.logger.debug "OTP Attempt: #{otp_attempt}"
     
       if @user.verify_otp(otp_attempt)
-        Rails.logger.debug "OTP Verified Successfully"
         if session[:pending_user_params]
-          Rails.logger.debug "Parametri utente pendenti: #{session[:pending_user_params]}"
           @user.update(session[:pending_user_params])
           clear_temporary_session_data
           flash[:notice] = "Profilo aggiornato con successo!"
@@ -113,16 +109,14 @@ class UsersController < ApplicationController
         else
           clear_temporary_session_data
           flash[:alert] = "Nessuna modifica da applicare."
-          redirect_to user_profile_path
+          redirect_based_on_nursery(@user)
         end
       else
-        Rails.logger.debug "OTP Verification Failed"
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
         render 'sessions/verify_otp'
       end
     elsif request.get?
       if params[:resend_otp] == "true"
-        Rails.logger.debug "Resending OTP"
         @user.invalidate_otp
         otp_code = @user.generate_otp
         UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now

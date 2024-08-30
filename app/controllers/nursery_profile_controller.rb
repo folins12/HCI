@@ -33,15 +33,11 @@ class NurseryProfileController < ApplicationController
     if params[:nursery_user]
       if profile_update_valid?
         if @user.otp_required_for_login
-          # Genera OTP e invia via email
           otp_code = @user.generate_otp
           UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
-  
-          # Memorizza i parametri dell'utente nella sessione
           session[:pending_user_params] = user_params.to_h
           session[:otp_user_id] = @user.id
           session[:otp_for] = 'profilo'
-          
           redirect_to login_verify_otp_path and return
         else
           @user.update(user_params)
@@ -57,8 +53,21 @@ class NurseryProfileController < ApplicationController
   
     if params[:nursery] && valid_address_updpro?
       if nursery_update_valid?
-        @nursery.update(nursery_params)
-        flash[:notice] ||= "Profilo aggiornato con successo."
+        if @nursery.changed?
+          if @user.otp_required_for_login
+            otp_code = @user.generate_otp
+            UserMailer.otp_email(@user, otp_code, 'vivaio').deliver_now
+            session[:pending_nursery_params] = nursery_params.to_h
+            session[:otp_user_id] = @user.id
+            session[:otp_for] = 'vivaio'
+            redirect_to login_verify_otp_path and return
+          else
+            @nursery.update(nursery_params)
+            flash[:notice] = "Vivaio aggiornato con successo!"
+          end
+        else
+          flash[:notice] = "Nessuna modifica apportata."
+        end
         redirect_to nursery_profile_path and return
       else
         load_nursery_data
@@ -69,50 +78,59 @@ class NurseryProfileController < ApplicationController
   
     flash.now[:alert2] = @user.errors.full_messages.join(', ')
     render :profile unless performed?
-  end
+  end  
 
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
-    Rails.logger.debug "User trovato: #{@user.inspect}"
-    
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
     end
-    
     if request.post?
       otp_attempt = params[:otp_attempt].strip
-      Rails.logger.debug "OTP Attempt: #{otp_attempt}"
-    
       if @user.verify_otp(otp_attempt)
-        Rails.logger.debug "OTP Verified Successfully"
-        if session[:pending_user_params]
-          Rails.logger.debug "Parametri utente pendenti: #{session[:pending_user_params]}"
-          @user.update(session[:pending_user_params])
-          clear_temporary_session_data
-          flash[:notice] = "Profilo aggiornato con successo!"
-          redirect_to user_profile_path
+        case session[:otp_for]
+        when 'profilo'
+          if session[:pending_user_params]
+            @user.update(session[:pending_user_params])
+            clear_temporary_session_data
+            flash[:notice] = "Profilo aggiornato con successo!"
+            redirect_to nursery_profile_path
+          else
+            clear_temporary_session_data
+            flash[:alert] = "Nessuna modifica da applicare."
+            redirect_to nursery_profile_path
+          end
+        when 'vivaio'
+          if session[:pending_nursery_params]
+            @nursery.update(session[:pending_nursery_params])
+            clear_temporary_session_data
+            flash[:notice] = "Vivaio aggiornato con successo!"
+            redirect_to nursery_profile_path
+          else
+            clear_temporary_session_data
+            flash[:alert] = "Nessuna modifica da applicare."
+            redirect_to nursery_profile_path
+          end
         else
           clear_temporary_session_data
-          flash[:alert] = "Nessuna modifica da applicare."
-          redirect_to user_profile_path
+          flash[:alert] = "Tipo di aggiornamento non valido."
+          redirect_to nursery_profile_path
         end
       else
-        Rails.logger.debug "OTP Verification Failed"
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
         render :verify_otp
       end
     elsif request.get?
       if params[:resend_otp] == "true"
-        Rails.logger.debug "Resending OTP"
         @user.invalidate_otp
         otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
+        UserMailer.otp_email(@user, otp_code, session[:otp_for]).deliver_now
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
       render :verify_otp
     end
-  end
+  end  
   
   
 
@@ -216,19 +234,28 @@ class NurseryProfileController < ApplicationController
       @nursery.errors.add(:number, 'Il numero di telefono deve essere composto esattamente da 10 cifre.')
       return false
     end
-
-    if @nursery.open_time >= @nursery.close_time
+  
+    open_time = params[:nursery][:open_time].to_i
+    close_time = params[:nursery][:close_time].to_i
+  
+    if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24
+      @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve essere tra 0 e 24.')
+      return false
+    end
+  
+    if open_time >= close_time
       @nursery.errors.add(:base, 'La fascia oraria inserita non è valida.')
       return false
     end
-
+  
     if @nursery.description.blank?
       @nursery.errors.add(:description, 'La descrizione non può essere vuota.')
       return false
     end
-
+  
     true
   end
+  
 
   def valid_password?(password)
     password.length >= 8 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/) && password.match(/[\W_]/)
@@ -236,8 +263,9 @@ class NurseryProfileController < ApplicationController
 
   def clear_temporary_session_data
     session.delete(:pending_user_params)
+    session.delete(:pending_nursery_params)
     session.delete(:otp_user_id)
     session.delete(:otp_for)
-  end
+  end  
   
 end
