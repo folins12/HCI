@@ -29,6 +29,13 @@ class SessionsController < Devise::SessionsController
   
         if valid_password?(params[:new_password])
           if params[:new_password] == params[:confirm_password]
+
+            if user.valid_password?(params[:new_password])
+              flash.now[:alert] = "La nuova password impostata non può essere uguale alla precedente!"
+              render :edit_password_reset
+              return
+            end
+
             user.password = params[:new_password]
             user.reset_password_token = nil
             
