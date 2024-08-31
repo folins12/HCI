@@ -12,7 +12,7 @@
       <h2 style="color: #006400;">Inserisci i dati del tuo vivaio</h2>
       <%= form_with model: @nursery, url: register_nursery_path, local: true do |form| %>
         <div class="register-input-group <%= 'has-error' if @nursery.errors[:name].any? %>">
-          <%= form.text_field :name, placeholder: 'Nome', required: true %>
+          <%= form.text_field :name, placeholder: 'Nome Vivaio', required: true %>
           <% if @nursery.errors[:name].any? %>
             <span class="register-error-message"><%= @nursery.errors[:name].first %></span>
           <% end %>
