@@ -43,7 +43,7 @@
           <% if nursery.nursery_image.attached? %> 
             <%= image_tag nursery.nursery_image %>
           <% else %>
-            <%= nursery.name %>
+            <p>immagine non presente</p>
           <% end %>
           <h3><%= nursery.name %></h3>
           <p><%= nursery.location %></p>

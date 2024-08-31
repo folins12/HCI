@@ -114,7 +114,11 @@
   transition: transform 0.2s;
   box-sizing: border-box;
   min-height: 300px; 
-  width: calc(33.333% - 20px); 
+  width: calc(33.333% - 20px);
+  display: flex;
+  align-items: center; /* Centra verticalmente */
+  justify-content: center; /* Centra orizzontalmente, opzionale */
+  //height: 100%;
 }
 
 .nurseries-container.single-item .nursery-box {
