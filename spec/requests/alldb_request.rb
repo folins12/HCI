@@ -72,7 +72,7 @@ RSpec.describe "DB comunications", type: :request do
   address: 'Via Milano 321', nursery: true) }
 
   let!(:nursery) {Nursery.create( name: 'viaio di luigi', number: 1234567890,
-                  id_owner:user2.id, email: 'emailviacio@example.com',
+                  id_owner:user2.id, email: 'emailviacio@gmail.com',
                   address: 'via Giovanni Giolitti 34, Roma', location: 'Roma',
                   open_time: '9:00', close_time: '18:00', description: 'description' )}
   

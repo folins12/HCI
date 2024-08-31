@@ -92,7 +92,7 @@ RSpec.describe "User Registrations", type: :request do
     allow(UserMailer).to receive_message_chain(:otp_email, :deliver_now)
   end
   
-  context "when the request is valid" do
+  context "when the request is valid, may take a while..." do
     it "registers a new user1 and verifies OTP" do
       post user_registration_path, params: { user: valid_user_attributes1 }
       

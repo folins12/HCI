@@ -35,7 +35,7 @@ class NurseriesController < ApplicationController
       end
       render :new
     end
-  end  
+  end
 
   def update
     if valid_address_updpro? && nursery_update_valid?
@@ -119,6 +119,52 @@ class NurseriesController < ApplicationController
   end
 
   private
+
+  def validate_nursery(nursery)
+    number_str = nursery.number.to_s
+
+    if number_str.blank? || number_str.length != 10
+      nursery.errors.add(:number, "Il numero di telefono inserito non è valido. Deve essere di 10 cifre.")
+      nursery.number = ''  
+    elsif Nursery.exists?(number: number_str)
+      nursery.errors.add(:number, "Questo numero appartiene già ad un altro vivaio, pertanto non può essere utilizzato!")
+      nursery.number = ''  
+    end
+
+    if !valid_time?(nursery.open_time) || !valid_time?(nursery.close_time)
+      nursery.errors.add(:base, "L'ora inserita non è valida. Deve essere compresa tra 0 e 24.")
+      nursery.open_time = ''  
+      nursery.close_time = '' 
+    elsif nursery.open_time.to_i >= nursery.close_time.to_i
+      nursery.errors.add(:base, "La fascia oraria inserita non è accettabile.")
+      nursery.open_time = ''  
+      nursery.close_time = '' 
+    end
+
+    if nursery.address.blank?
+      nursery.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo")
+      nursery.address = ''  
+    else
+      unless valid_address?(nursery.address)
+        nursery.errors.add(:address, "L'indirizzo inserito non è valido.")
+        nursery.address = ''  
+      end
+    end
+  end
+
+  def valid_time?(time_str)
+    time = time_str.to_i
+    time.between?(0, 24)
+  end
+
+  def valid_address?(address)
+    results = geo(address)
+    if results.present? && results.first.coordinates.present?
+      return true
+    else
+      return false
+    end
+  end
 
   def set_nursery
     @nursery = Nursery.find(params[:id])
