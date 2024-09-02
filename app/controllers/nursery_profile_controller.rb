@@ -11,8 +11,8 @@ class NurseryProfileController < ApplicationController
 
     if reservations.any?
       num_reservations_to_remove = reservations.count
-
       nursery_plant = NurseryPlant.find_by(id: plant_id)
+
       if nursery_plant
         nursery_plant.decrement!(:num_reservations, num_reservations_to_remove)
       end
@@ -33,8 +33,7 @@ class NurseryProfileController < ApplicationController
     if params[:nursery_user]
       if profile_update_valid?
         if @user.otp_required_for_login
-          otp_code = @user.generate_otp
-          UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
+          send_otp_email('profilo')
           session[:pending_user_params] = user_params.to_h
           session[:otp_user_id] = @user.id
           session[:otp_for] = 'profilo'
@@ -50,68 +49,58 @@ class NurseryProfileController < ApplicationController
         render :profile and return
       end
     end
-  
-    if params[:nursery] && valid_address_updpro?
-      if nursery_update_valid?
-        if @nursery.changed?
-          if @user.otp_required_for_login
-            otp_code = @user.generate_otp
-            UserMailer.otp_email(@user, otp_code, 'vivaio').deliver_now
-            session[:pending_nursery_params] = nursery_params.to_h
-            session[:otp_user_id] = @user.id
-            session[:otp_for] = 'vivaio'
-            redirect_to login_verify_otp_path and return
+
+    if params[:nursery]
+      if valid_address_updpro?
+        if nursery_update_valid?
+          if @nursery.changed?
+            if @user.otp_required_for_login
+              send_otp_email('vivaio')
+              session[:pending_nursery_params] = nursery_params.to_h
+              session[:otp_user_id] = @user.id
+              session[:otp_for] = 'vivaio'
+              redirect_to login_verify_otp_path and return
+            else
+              @nursery.update(nursery_params)
+              flash[:notice] = "Vivaio aggiornato con successo!"
+            end
           else
-            @nursery.update(nursery_params)
-            flash[:notice] = "Vivaio aggiornato con successo!"
+            flash[:notice] = "Nessuna modifica apportata."
           end
+          redirect_to nursery_profile_path and return
         else
-          flash[:notice] = "Nessuna modifica apportata."
+          load_nursery_data
+          flash.now[:alert] = "Errore nell'aggiornamento del vivaio. Verifica i dati inseriti."
+          render :profile and return
         end
-        redirect_to nursery_profile_path and return
       else
         load_nursery_data
-        flash.now[:alert] = "Errore nell'aggiornamento del vivaio. Verifica i dati inseriti."
+        flash.now[:alert] = "Indirizzo non valido."
         render :profile and return
       end
     end
-  
+
     flash.now[:alert2] = @user.errors.full_messages.join(', ')
     render :profile unless performed?
   end  
 
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
+    
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
     end
+
     if request.post?
       otp_attempt = params[:otp_attempt].strip
+
       if @user.verify_otp(otp_attempt)
         case session[:otp_for]
         when 'profilo'
-          if session[:pending_user_params]
-            @user.update(session[:pending_user_params])
-            clear_temporary_session_data
-            flash[:notice] = "Profilo aggiornato con successo!"
-            redirect_to nursery_profile_path
-          else
-            clear_temporary_session_data
-            flash[:alert] = "Nessuna modifica da applicare."
-            redirect_to nursery_profile_path
-          end
+          update_user_profile
         when 'vivaio'
-          if session[:pending_nursery_params]
-            @nursery.update(session[:pending_nursery_params])
-            clear_temporary_session_data
-            flash[:notice] = "Vivaio aggiornato con successo!"
-            redirect_to nursery_profile_path
-          else
-            clear_temporary_session_data
-            flash[:alert] = "Nessuna modifica da applicare."
-            redirect_to nursery_profile_path
-          end
+          update_nursery_profile
         else
           clear_temporary_session_data
           flash[:alert] = "Tipo di aggiornamento non valido."
@@ -124,22 +113,19 @@ class NurseryProfileController < ApplicationController
     elsif request.get?
       if params[:resend_otp] == "true"
         @user.invalidate_otp
-        otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, session[:otp_for]).deliver_now
+        send_otp_email(session[:otp_for])
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
       render :verify_otp
     end
   end  
-  
-  
 
   def valid_address_updpro?
     results = geo(params[:nursery][:address])
     if results.present? && results.first.coordinates.present?
       true
     else
-      @user.errors.add(:address, 'indirizzo errato!')
+      @user.errors.add(:address, 'Indirizzo errato!')
       false
     end
   end
@@ -255,7 +241,6 @@ class NurseryProfileController < ApplicationController
   
     true
   end
-  
 
   def valid_password?(password)
     password.length >= 8 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/) && password.match(/[\W_]/)
@@ -266,6 +251,36 @@ class NurseryProfileController < ApplicationController
     session.delete(:pending_nursery_params)
     session.delete(:otp_user_id)
     session.delete(:otp_for)
-  end  
-  
+  end
+
+  def send_otp_email(purpose)
+    otp_code = @user.generate_otp
+    UserMailer.otp_email(@user.email, @user.name, otp_code, purpose).deliver_now
+  end
+
+  def update_user_profile
+    if session[:pending_user_params]
+      @user.update(session[:pending_user_params])
+      clear_temporary_session_data
+      flash[:notice] = "Profilo aggiornato con successo!"
+      redirect_to nursery_profile_path
+    else
+      clear_temporary_session_data
+      flash[:alert] = "Nessuna modifica da applicare."
+      redirect_to nursery_profile_path
+    end
+  end
+
+  def update_nursery_profile
+    if session[:pending_nursery_params]
+      @nursery.update(session[:pending_nursery_params])
+      clear_temporary_session_data
+      flash[:notice] = "Vivaio aggiornato con successo!"
+      redirect_to nursery_profile_path
+    else
+      clear_temporary_session_data
+      flash[:alert] = "Nessuna modifica da applicare."
+      redirect_to nursery_profile_path
+    end
+  end
 end

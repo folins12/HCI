@@ -9,62 +9,65 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     @user = User.new(user_params)
     normalize_and_validate_user(@user)
+  
     if @user.errors.any?
       render :new
     else
-      @user.generate_otp_secret unless @user.otp_secret.present?
-      if @user.save
-        session[:otp_user_id] = @user.id
-        session[:otp_for] = 'registration'
+      session[:otp_user_data] = user_params.slice('nome', 'cognome', 'email', 'password', 'password_confirmation', 'address', 'nursery')
+      
+      otp_secret = ROTP::Base32.random_base32
+      totp = ROTP::TOTP.new(otp_secret, digits: 8)
+      otp_code = totp.now
   
-        if @user.nursery
-          session[:temporary_user_data] = @user.attributes.slice('nome', 'cognome', 'email', 'password', 'address', 'nursery')
-          redirect_to register_nursery_path
-        else
-          send_otp_and_start_timer(@user, 'registrazione')
-          redirect_to register_verify_otp_path
-        end
-      else
-        logger.debug "User save failed: #{@user.errors.full_messages}"
-        render :new
-      end
+      session[:otp_secret] = otp_secret
+      session[:otp_code] = otp_code
+  
+      # Passa i dati individuali al mailer
+      UserMailer.otp_email(session[:otp_user_data]['email'], session[:otp_user_data]['nome'], otp_code, 'registrazione').deliver_now
+      
+      redirect_to register_verify_otp_path
     end
-  end  
+  end
+  
 
   def verify_otp
-    @user = User.find_by(id: session[:otp_user_id])
-    unless @user
-      flash[:alert] = "Utente non trovato. Per favore, riprova."
-      redirect_to new_user_registration_path and return
-    end
+    @user_data = session[:otp_user_data]
+    return redirect_to new_user_registration_path, alert: "Sessione scaduta o utente non trovato." unless @user_data
+
+    # Recupera il secret e l'OTP dalla sessione
+    otp_secret = session[:otp_secret]
+    otp_code = session[:otp_code]
+    
     if request.post?
       otp_attempt = params[:otp_attempt].strip
-      if @user.verify_otp(otp_attempt)
+      
+      totp = ROTP::TOTP.new(otp_secret, digits: 8)
+      if totp.verify(otp_attempt, drift_behind: 60)
+        # Verifica OTP e crea l'utente nel database
+        @user = User.new(@user_data)
+        @user.otp_secret = otp_secret  # Imposta il secret sull'utente
+        @user.save(validate: false)  # Salva l'utente
+
         clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
         redirect_to nursery_profile_path if @user.nursery == 1
-        #render json: { success: true }
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."
         render :verify_otp
       end
     elsif request.get?
-      # Invia un nuovo OTP solo se l'utente richiede un nuovo codice
       if params[:resend_otp] == "true"
-        send_otp_and_start_timer(@user, 'registrazione')
+        # Rigenera OTP e invialo
+        otp_code = totp.now
+        session[:otp_code] = otp_code
+        UserMailer.otp_email(@user_data['email'], otp_code, 'registrazione').deliver_now
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
       render :verify_otp
     end
-  end    
+  end
 
   private
-
-  def send_otp_and_start_timer(user, purpose)
-    user.invalidate_otp
-    new_otp = user.generate_otp
-    UserMailer.otp_email(user, new_otp, purpose).deliver_now
-  end
 
   def user_params
     params.require(:user).permit(:nome, :cognome, :email, :password, :password_confirmation, :nursery, :address)
@@ -134,7 +137,8 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def clear_temporary_session_data
-    session.delete(:temporary_user_data)
-    session.delete(:otp_user_id)
+    session.delete(:otp_user_data)
+    session.delete(:otp_secret)
+    session.delete(:otp_code)
   end
 end

@@ -1,6 +1,6 @@
 class UserMailer < ApplicationMailer
-  def otp_email(user, otp_code, purpose)
-    @user = user
+  def otp_email(email, nome, otp_code, purpose)
+    @nome = nome
     @otp_code = otp_code
     @purpose = purpose # "registrazione" o "login"
     
@@ -16,9 +16,9 @@ class UserMailer < ApplicationMailer
                       'Il tuo codice OTP'
                     end
 
-    mail(to: @user.email, subject: subject_line) do |format|
-      format.text { render plain: "Ciao #{@user.nome},\n\nEcco il tuo codice OTP per #{purpose}: #{@otp_code}" }
-      format.html { render html: "<p>Ciao #{@user.nome},</p><p>Ecco il tuo codice OTP per #{purpose}: <strong>#{@otp_code}</strong></p>".html_safe }
+    mail(to: email, subject: subject_line) do |format|
+      format.text { render plain: "Ciao #{@nome},\n\nEcco il tuo codice OTP per #{purpose}: #{@otp_code}" }
+      format.html { render html: "<p>Ciao #{@nome},</p><p>Ecco il tuo codice OTP per #{purpose}: <strong>#{@otp_code}</strong></p>".html_safe }
     end
   end
 
@@ -29,5 +29,4 @@ class UserMailer < ApplicationMailer
       format.html { render 'reset_password_email' }
     end
   end
-
 end

@@ -42,7 +42,7 @@ class NurseriesController < ApplicationController
       if @nursery.update(nursery_params)
         if @user.otp_required_for_login
           otp_code = @user.generate_otp
-          UserMailer.otp_email(@user, otp_code, 'vivaio').deliver_now
+          UserMailer.otp_email(@user.email, @user.nome, otp_code, 'vivaio').deliver_now
           session[:pending_nursery_params] = nursery_params.to_h
           session[:otp_user_id] = @user.id
           session[:otp_for] = 'vivaio'
@@ -53,7 +53,7 @@ class NurseriesController < ApplicationController
         end
       end
     end
-  
+
     load_nursery_data
     flash.now[:alert] = @nursery.errors.full_messages.join(', ')
     render 'nursery_profile/profile'
@@ -111,7 +111,7 @@ class NurseriesController < ApplicationController
       if params[:resend_otp] == "true"
         @user.invalidate_otp
         otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, session[:otp_for]).deliver_now
+        UserMailer.otp_email(@user.email, @user.nome, otp_code, session[:otp_for]).deliver_now
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
       render :verify_otp
@@ -119,6 +119,10 @@ class NurseriesController < ApplicationController
   end
 
   private
+
+  def send_otp_email(user, otp_code, purpose)
+    UserMailer.otp_email(user.email, user.nome, otp_code, purpose).deliver_now
+  end
 
   def validate_nursery(nursery)
     number_str = nursery.number.to_s
@@ -233,7 +237,7 @@ class NurseriesController < ApplicationController
     session.delete(:pending_nursery_params)
     session.delete(:otp_user_id)
     session.delete(:otp_for)
-  end  
+  end 
 
   def load_nursery_data
     return unless current_user

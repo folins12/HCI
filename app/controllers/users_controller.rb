@@ -64,18 +64,18 @@ class UsersController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-  
+
     if password_update_valid? && valid_address_updpro?
       if @user.otp_required_for_login
         # Genera OTP e invia via email
         otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
-  
+        UserMailer.otp_email(@user.email, @user.nome, otp_code, 'profilo').deliver_now
+
         # Memorizza i parametri dell'utente nella sessione
         session[:pending_user_params] = user_params.to_h
         session[:otp_user_id] = @user.id
         session[:otp_for] = 'profilo'
-        
+
         redirect_to login_verify_otp_path and return
       else
         @user.update(user_params)
@@ -87,19 +87,18 @@ class UsersController < ApplicationController
       render :profile
     end
   end
-  
 
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
-    
+
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
     end
-    
+
     if request.post?
       otp_attempt = params[:otp_attempt].strip
-    
+
       if @user.verify_otp(otp_attempt)
         if session[:pending_user_params]
           @user.update(session[:pending_user_params])
@@ -119,21 +118,19 @@ class UsersController < ApplicationController
       if params[:resend_otp] == "true"
         @user.invalidate_otp
         otp_code = @user.generate_otp
-        UserMailer.otp_email(@user, otp_code, 'profilo').deliver_now
+        UserMailer.otp_email(@user.email, @user.nome, otp_code, 'profilo').deliver_now
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
       render 'sessions/verify_otp'
     end
   end
-  
-  
 
   def valid_address_updpro?
     results = geo(params[:user][:address])
     if results.present? && results.first.coordinates.present?
       true
     else
-      @user.errors.add(:address, 'indirizzo errato!')
+      @user.errors.add(:address, 'Indirizzo errato!')
       false
     end
   end
@@ -230,9 +227,9 @@ class UsersController < ApplicationController
 
   def redirect_based_on_nursery(user)
     if user.nursery?
-      redirect_to nursery_profile_path and return
+      redirect_to nursery_profile_path
     else
-      redirect_to user_profile_path and return
+      redirect_to user_profile_path
     end
   end
 
@@ -241,5 +238,4 @@ class UsersController < ApplicationController
     session.delete(:otp_user_id)
     session.delete(:otp_for)
   end
-  
 end
