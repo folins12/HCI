@@ -39,24 +39,22 @@ class NurseriesController < ApplicationController
 
   def update
     if valid_address_updpro? && nursery_update_valid?
-      if @nursery.update(nursery_params)
-        if @user.otp_required_for_login
-          otp_code = @user.generate_otp
-          UserMailer.otp_email(@user.email, @user.nome, otp_code, 'vivaio').deliver_now
-          session[:pending_nursery_params] = nursery_params.to_h
-          session[:otp_user_id] = @user.id
-          session[:otp_for] = 'vivaio'
-          redirect_to login_verify_otp_path and return
-        else
-          flash[:notice] = "Informazioni aggiornate con successo."
-          redirect_to nursery_profile_path and return
-        end
+      if @user.otp_required_for_login
+        otp_code = @user.generate_otp
+        UserMailer.otp_email(@user.email, @user.nome, otp_code, 'vivaio').deliver_now
+        session[:pending_nursery_params] = nursery_params.to_h
+        session[:otp_user_id] = @user.id
+        session[:otp_for] = 'vivaio'
+        redirect_to login_verify_otp_path and return
+      else
+        @nursery.update(nursery_params)
+        flash[:notice] = "Informazioni aggiornate con successo."
+        redirect_to nursery_profile_path and return
       end
+    else
+      flash.now[:alert] = @nursery.errors.full_messages.join(', ')
+      render 'nursery_profile/profile'
     end
-
-    load_nursery_data
-    flash.now[:alert] = @nursery.errors.full_messages.join(', ')
-    render 'nursery_profile/profile'
   end  
 
   def edit_image
@@ -86,26 +84,19 @@ class NurseriesController < ApplicationController
       otp_attempt = params[:otp_attempt].strip
   
       if @user.verify_otp(otp_attempt)
-        case session[:otp_for]
-        when 'vivaio'
-          if session[:pending_nursery_params]
-            @nursery.update(session[:pending_nursery_params])
-            clear_temporary_session_data
-            flash[:notice] = "Vivaio aggiornato con successo!"
-            redirect_to nursery_profile_path
-          else
-            clear_temporary_session_data
-            flash[:alert] = "Nessuna modifica da applicare."
-            redirect_to nursery_profile_path
-          end
+        if session[:pending_nursery_params]
+          @nursery.update(session[:pending_nursery_params])
+          clear_temporary_session_data
+          flash[:notice] = "Vivaio aggiornato con successo!"
+          redirect_to nursery_profile_path
         else
           clear_temporary_session_data
-          flash[:alert] = "Tipo di aggiornamento non valido."
+          flash[:alert] = "Nessuna modifica da applicare."
           redirect_to nursery_profile_path
         end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
-        render :verify_otp
+        render 'sessions/verify_otp'
       end
     elsif request.get?
       if params[:resend_otp] == "true"
@@ -114,7 +105,7 @@ class NurseriesController < ApplicationController
         UserMailer.otp_email(@user.email, @user.nome, otp_code, session[:otp_for]).deliver_now
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
-      render :verify_otp
+      render 'sessions/verify_otp'
     end
   end
 
@@ -233,7 +224,6 @@ class NurseriesController < ApplicationController
   
 
   def clear_temporary_session_data
-    session.delete(:pending_user_params)
     session.delete(:pending_nursery_params)
     session.delete(:otp_user_id)
     session.delete(:otp_for)
