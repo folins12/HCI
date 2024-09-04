@@ -29,4 +29,15 @@ class UserMailer < ApplicationMailer
       format.html { render 'reset_password_email' }
     end
   end
+
+  def order_satisfied_email(user, nursery, plant, quantity)
+    @user = user
+    @nursery = nursery
+    @plant = plant
+    @quantity = quantity
+
+    mail(to: @user.email, subject: "La tua richiesta è stata presa in carico dal vivaio #{@nursery.name}") do |format|
+      format.html { render 'order_satisfied_email' }
+    end
+  end
 end

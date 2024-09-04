@@ -6,24 +6,47 @@ class NurseryProfileController < ApplicationController
   def satisfy_order
     plant_id = params[:plant_id]
     user_email = params[:email]
-
+  
     reservations = Reservation.where(nursery_plant_id: plant_id, user_email: user_email)
-
+  
     if reservations.any?
       num_reservations_to_remove = reservations.count
       nursery_plant = NurseryPlant.find_by(id: plant_id)
-
-      if nursery_plant
+      user = User.find_by(email: user_email)
+      nursery = Nursery.find_by(id: nursery_plant&.nursery_id) # Use safe navigation operator
+  
+      # Log the data for debugging
+      Rails.logger.info "Satisfying order with the following data:"
+      Rails.logger.info "Plant ID: #{plant_id}"
+      Rails.logger.info "User Email: #{user_email}"
+      Rails.logger.info "Number of Reservations to Remove: #{num_reservations_to_remove}"
+      Rails.logger.info "Nursery Plant: #{nursery_plant.inspect}"
+      Rails.logger.info "User: #{user.inspect}"
+      Rails.logger.info "Nursery: #{nursery.inspect}"
+  
+      if nursery_plant && user && nursery
         nursery_plant.decrement!(:num_reservations, num_reservations_to_remove)
+  
+        reservations.destroy_all
+  
+        begin
+          UserMailer.order_satisfied_email(user, nursery, nursery_plant.plant, num_reservations_to_remove).deliver_now
+          Rails.logger.info "Email inviata con successo!"
+        rescue => e
+          Rails.logger.error "Errore durante l'invio dell'email: #{e.message}"
+          Rails.logger.error e.backtrace.join("\n")
+          render json: { success: false, message: 'Errore durante l\'invio dell\'email.' }, status: :internal_server_error and return
+        end
+  
+        render json: { success: true }
+      else
+        Rails.logger.error "Dati mancanti: #{nursery_plant.nil? ? 'NurseryPlant' : ''} #{user.nil? ? 'User' : ''} #{nursery.nil? ? 'Nursery' : ''}"
+        render json: { success: false, message: 'Dati insufficienti per soddisfare la richiesta' }, status: :unprocessable_entity
       end
-
-      reservations.destroy_all
-
-      render json: { success: true }
     else
       render json: { success: false, message: 'Prenotazioni non trovate' }
     end
-  end
+  end  
 
   def profile
     load_nursery_data
