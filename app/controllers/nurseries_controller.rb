@@ -221,7 +221,6 @@ class NurseriesController < ApplicationController
   
     true
   end
-  
 
   def clear_temporary_session_data
     session.delete(:pending_nursery_params)
@@ -242,8 +241,7 @@ class NurseriesController < ApplicationController
 
     @reservations = Reservation.joins(:nursery_plant)
                                .where(nursery_plants: { id: nursery_plant_ids })
-                               .pluck(:user_email, :nursery_plant_id)
-                               .group_by { |email, id| id }
+                               .pluck(:user_email, :date_reservation, :time_reservation, :number_of_plants, :state, :id)
   end
 
 end

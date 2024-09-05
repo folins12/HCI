@@ -80,7 +80,7 @@ class UsersController < ApplicationController
       else
         @user.update(user_params)
         flash[:notice] = "Profilo aggiornato con successo."
-        redirect_based_on_nursery(@user)
+        user_profile_path
       end
     else
       flash.now[:alert] = @user.errors.full_messages.join(', ')
@@ -104,11 +104,11 @@ class UsersController < ApplicationController
           @user.update(session[:pending_user_params])
           clear_temporary_session_data
           flash[:notice] = "Profilo aggiornato con successo!"
-          redirect_based_on_nursery(@user)
+          user_profile_path
         else
           clear_temporary_session_data
           flash[:alert] = "Nessuna modifica da applicare."
-          redirect_based_on_nursery(@user)
+          user_profile_path
         end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
@@ -223,14 +223,6 @@ class UsersController < ApplicationController
 
   def valid_password?(password)
     password.match?(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}\z/)
-  end
-
-  def redirect_based_on_nursery(user)
-    if user.nursery?
-      redirect_to nursery_profile_path
-    else
-      redirect_to user_profile_path
-    end
   end
 
   def clear_temporary_session_data

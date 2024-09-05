@@ -64,7 +64,7 @@
     </div>
 
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
-      <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
+      <%= form_with model: @user, url: update_nursery_profile_path, local: true do |form| %>
         <%= hidden_field_tag :return_to, request.fullpath %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>

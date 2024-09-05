@@ -6,16 +6,15 @@ class NurseryProfileController < ApplicationController
   def satisfy_order
     plant_id = params[:plant_id]
     user_email = params[:email]
-  
+
     reservations = Reservation.where(nursery_plant_id: plant_id, user_email: user_email)
-  
+
     if reservations.any?
       num_reservations_to_remove = reservations.count
       nursery_plant = NurseryPlant.find_by(id: plant_id)
       user = User.find_by(email: user_email)
-      nursery = Nursery.find_by(id: nursery_plant&.nursery_id) # Use safe navigation operator
-  
-      # Log the data for debugging
+      nursery = Nursery.find_by(id: nursery_plant&.nursery_id)
+
       Rails.logger.info "Satisfying order with the following data:"
       Rails.logger.info "Plant ID: #{plant_id}"
       Rails.logger.info "User Email: #{user_email}"
@@ -23,21 +22,20 @@ class NurseryProfileController < ApplicationController
       Rails.logger.info "Nursery Plant: #{nursery_plant.inspect}"
       Rails.logger.info "User: #{user.inspect}"
       Rails.logger.info "Nursery: #{nursery.inspect}"
-  
+
       if nursery_plant && user && nursery
         nursery_plant.decrement!(:num_reservations, num_reservations_to_remove)
-  
+
         reservations.destroy_all
-  
+
         begin
           UserMailer.order_satisfied_email(user, nursery, nursery_plant.plant, num_reservations_to_remove).deliver_now
           Rails.logger.info "Email inviata con successo!"
         rescue => e
           Rails.logger.error "Errore durante l'invio dell'email: #{e.message}"
-          Rails.logger.error e.backtrace.join("\n")
           render json: { success: false, message: 'Errore durante l\'invio dell\'email.' }, status: :internal_server_error and return
         end
-  
+
         render json: { success: true }
       else
         Rails.logger.error "Dati mancanti: #{nursery_plant.nil? ? 'NurseryPlant' : ''} #{user.nil? ? 'User' : ''} #{nursery.nil? ? 'Nursery' : ''}"
@@ -49,67 +47,67 @@ class NurseryProfileController < ApplicationController
   end  
 
   def profile
+    plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
+    @myplants = Plant.where(id: plant_ids)
+
+    if @user
+      sql_query = <<-SQL
+        SELECT p.name AS plant_name, n.email AS nursery_email, r.id AS resid, np.id AS np_id, r.user_email AS user_email, COUNT(*) AS quantity
+        FROM reservations r
+        JOIN nursery_plants np ON np.id = r.nursery_plant_id
+        JOIN plants p ON p.id = np.plant_id
+        JOIN nurseries n ON n.id = np.nursery_id
+        WHERE r.user_email = ?
+        GROUP BY p.name, n.email
+      SQL
+
+      @user_reservations = Reservation.find_by_sql([sql_query, @user.email])
+    else
+      redirect_to root_path, alert: 'Utente non trovato.'
+    end
+
     load_nursery_data
   end
 
   def update_profile
-    if params[:nursery_user]
-      if profile_update_valid?
-        if @user.otp_required_for_login
-          send_otp_email('profilo')
-          session[:pending_user_params] = user_params.to_h
-          session[:otp_user_id] = @user.id
-          session[:otp_for] = 'profilo'
-          redirect_to login_verify_otp_path and return
-        else
-          @user.update(user_params)
-          flash[:notice] = "Profilo aggiornato con successo!"
-          redirect_to nursery_profile_path and return
-        end
-      else
-        load_nursery_data
-        flash.now[:alert] = "Errore nell'aggiornamento del profilo. Verifica i dati inseriti."
-        render :profile and return
-      end
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
     end
-
-    if params[:nursery]
-      if valid_address_updpro?
-        if nursery_update_valid?
-          if @nursery.changed?
-            if @user.otp_required_for_login
-              send_otp_email('vivaio')
-              session[:pending_nursery_params] = nursery_params.to_h
-              session[:otp_user_id] = @user.id
-              session[:otp_for] = 'vivaio'
-              redirect_to login_verify_otp_path and return
-            else
-              @nursery.update(nursery_params)
-              flash[:notice] = "Vivaio aggiornato con successo!"
-            end
+  
+    if params[:user]
+      if password_update_valid?
+        if valid_address_updpro?
+          if @user.otp_required_for_login
+            otp_code = @user.generate_otp
+            UserMailer.otp_email(@user.email, @user.nome, otp_code, 'profilo').deliver_now
+  
+            session[:pending_user_params] = user_params.to_h
+            session[:otp_user_id] = @user.id
+            session[:otp_for] = 'profilo'
+  
+            redirect_to login_verify_otp_path and return
           else
-            flash[:notice] = "Nessuna modifica apportata."
+            @user.update(user_params)
+            flash[:notice] = "Profilo aggiornato con successo."
+            redirect_to nursery_profile_path
           end
-          redirect_to nursery_profile_path and return
         else
           load_nursery_data
-          flash.now[:alert] = "Errore nell'aggiornamento del vivaio. Verifica i dati inseriti."
-          render :profile and return
+          flash.now[:alert] = @user.errors.full_messages.join(', ')
+          render :profile
         end
       else
         load_nursery_data
-        flash.now[:alert] = "Indirizzo non valido."
-        render :profile and return
+        flash.now[:alert] = @user.errors.full_messages.join(', ')
+        render :profile
       end
     end
-
-    flash.now[:alert2] = @user.errors.full_messages.join(', ')
-    render :profile unless performed?
-  end  
+  end    
 
   def verify_otp
     @user = User.find_by(id: session[:otp_user_id])
-    
+
     unless @user
       flash[:alert] = "Utente non trovato. Per favore, riprova."
       redirect_to new_user_registration_path and return
@@ -119,15 +117,15 @@ class NurseryProfileController < ApplicationController
       otp_attempt = params[:otp_attempt].strip
 
       if @user.verify_otp(otp_attempt)
-        case session[:otp_for]
-        when 'profilo'
-          update_user_profile
-        when 'vivaio'
-          update_nursery_profile
+        if session[:pending_user_params]
+          @user.update(session[:pending_user_params])
+          clear_temporary_session_data
+          flash[:notice] = "Profilo aggiornato con successo!"
+          nursery_profile_path
         else
           clear_temporary_session_data
-          flash[:alert] = "Tipo di aggiornamento non valido."
-          redirect_to nursery_profile_path
+          flash[:alert] = "Nessuna modifica da applicare."
+          nursery_profile_path
         end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
@@ -141,21 +139,7 @@ class NurseryProfileController < ApplicationController
       end
       render :verify_otp
     end
-  end  
-
-  def valid_address_updpro?
-    results = geo(params[:nursery][:address])
-    if results.present? && results.first.coordinates.present?
-      true
-    else
-      @user.errors.add(:address, 'Indirizzo errato!')
-      false
-    end
-  end
-
-  def geo(address)
-    Geocoder.search(address)
-  end
+  end    
 
   private
 
@@ -189,15 +173,13 @@ class NurseryProfileController < ApplicationController
   end
 
   def user_params
-    params.require(:nursery_user).permit(:password, :password_confirmation, :current_password)
+    params.require(:user).permit(:nome, :cognome, :email, :current_password, :password, :password_confirmation, :address)
   end
 
-  def profile_update_valid?
-    return true unless params[:nursery_user]
-
-    if params[:nursery_user][:password].blank? && params[:nursery_user][:password_confirmation].blank?
-      if params[:nursery_user][:current_password].present?
-        unless @user.authenticate(params[:nursery_user][:current_password])
+  def password_update_valid?
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      if params[:user][:current_password].present?
+        unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
           @user.errors.add(:current_password, 'Password errata!')
           return false
         end
@@ -205,31 +187,31 @@ class NurseryProfileController < ApplicationController
       return true
     end
 
-    if params[:nursery_user][:current_password].blank?
+    if params[:user][:current_password].blank?
       @user.errors.add(:current_password, 'La password attuale è richiesta.')
       return false
     end
 
-    unless @user.authenticate(params[:nursery_user][:current_password])
+    unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
       @user.errors.add(:current_password, 'Password errata!')
       return false
     end
 
-    if params[:nursery_user][:password] == params[:nursery_user][:current_password]
+    if params[:user][:password] == params[:user][:current_password]
       @user.errors.add(:password, 'La nuova password non può essere uguale alla precedente')
       return false
     end
 
-    unless valid_password?(params[:nursery_user][:password])
-      @user.errors.add(:password, 'La nuova password non rispetta i requisiti:
-      - almeno una maiuscola;
-      - almeno una minuscola;
-      - almeno un numero;
+    unless valid_password?(params[:user][:password])
+      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: 
+      - almeno una maiuscola; 
+      - almeno una minuscola; 
+      - almeno un numero; 
       - almeno un carattere speciale.')
       return false
     end
 
-    unless params[:nursery_user][:password] == params[:nursery_user][:password_confirmation]
+    unless params[:user][:password] == params[:user][:password_confirmation]
       @user.errors.add(:password_confirmation, 'La password confermata deve essere uguale a quella nuova precedentemente inserita')
       return false
     end
@@ -237,36 +219,13 @@ class NurseryProfileController < ApplicationController
     true
   end
 
-  def nursery_update_valid?
-    number = params[:nursery][:number].to_s.strip
-    unless number.length == 10 && number.match?(/\A\d{10}\z/)
-      @nursery.errors.add(:number, 'Il numero di telefono deve essere composto esattamente da 10 cifre.')
-      return false
-    end
-  
-    open_time = params[:nursery][:open_time].to_i
-    close_time = params[:nursery][:close_time].to_i
-  
-    if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24
-      @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve essere tra 0 e 24.')
-      return false
-    end
-  
-    if open_time >= close_time
-      @nursery.errors.add(:base, 'La fascia oraria inserita non è valida.')
-      return false
-    end
-  
-    if @nursery.description.blank?
-      @nursery.errors.add(:description, 'La descrizione non può essere vuota.')
-      return false
-    end
-  
-    true
+  def valid_password?(password)
+    password.match?(/\A(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}\z/)
   end
 
-  def valid_password?(password)
-    password.length >= 8 && password.match(/[A-Z]/) && password.match(/[a-z]/) && password.match(/[0-9]/) && password.match(/[\W_]/)
+  def send_otp_email(otp_for)
+    otp_code = @user.generate_otp
+    UserMailer.otp_email(@user.email, @user.nome, otp_code, otp_for).deliver_now
   end
 
   def clear_temporary_session_data
@@ -276,34 +235,17 @@ class NurseryProfileController < ApplicationController
     session.delete(:otp_for)
   end
 
-  def send_otp_email(purpose)
-    otp_code = @user.generate_otp
-    UserMailer.otp_email(@user.email, @user.name, otp_code, purpose).deliver_now
-  end
-
-  def update_user_profile
-    if session[:pending_user_params]
-      @user.update(session[:pending_user_params])
-      clear_temporary_session_data
-      flash[:notice] = "Profilo aggiornato con successo!"
-      redirect_to nursery_profile_path
+  def valid_address_updpro?
+    results = geo(params[:user][:address])
+    if results.present? && results.first.coordinates.present?
+      true
     else
-      clear_temporary_session_data
-      flash[:alert] = "Nessuna modifica da applicare."
-      redirect_to nursery_profile_path
+      @user.errors.add(:address, 'Indirizzo errato!')
+      false
     end
   end
 
-  def update_nursery_profile
-    if session[:pending_nursery_params]
-      @nursery.update(session[:pending_nursery_params])
-      clear_temporary_session_data
-      flash[:notice] = "Vivaio aggiornato con successo!"
-      redirect_to nursery_profile_path
-    else
-      clear_temporary_session_data
-      flash[:alert] = "Nessuna modifica da applicare."
-      redirect_to nursery_profile_path
-    end
+  def geo(address)
+    Geocoder.search(address)
   end
 end
