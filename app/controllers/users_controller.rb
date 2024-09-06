@@ -119,11 +119,19 @@ class UsersController < ApplicationController
           @user.update(session[:pending_user_params])
           clear_temporary_session_data
           flash[:notice] = "Profilo aggiornato con successo!"
-          user_profile_path
+          if @user.nursery==0
+            redirect_to user_profile_path
+          else
+            redirect_to nursery_profile_path
+          end
         else
           clear_temporary_session_data
           flash[:alert] = "Nessuna modifica da applicare."
-          user_profile_path
+          if @user.nursery==0
+            redirect_to user_profile_path
+          else
+            redirect_to nursery_profile_path
+          end
         end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
