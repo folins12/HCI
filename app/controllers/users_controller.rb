@@ -100,6 +100,21 @@ class UsersController < ApplicationController
       otp_attempt = params[:otp_attempt].strip
 
       if @user.verify_otp(otp_attempt)
+
+        if session[:otp_for] == 'vivaio'
+          if session[:pending_nursery_params]
+            @nursery = Nursery.find_by(id_owner: @user.id)
+            @nursery.update(session[:pending_nursery_params])
+            clear_temporary_session_data
+            flash[:notice] = "Vivaio aggiornato con successo!"
+            redirect_to nursery_profile_path
+          else
+            clear_temporary_session_data
+            flash[:alert] = "Nessuna modifica da applicare."
+            redirect_to nursery_profile_path
+          end
+        end
+
         if session[:pending_user_params]
           @user.update(session[:pending_user_params])
           clear_temporary_session_data

@@ -73,41 +73,41 @@ class NurseriesController < ApplicationController
     end
   end
 
-  def verify_otp
-    @user = User.find_by(id: session[:otp_user_id])
-    unless @user
-      flash[:alert] = "Utente non trovato. Per favore, riprova."
-      redirect_to new_user_registration_path and return
-    end
-  
-    if request.post?
-      otp_attempt = params[:otp_attempt].strip
-  
-      if @user.verify_otp(otp_attempt)
-        if session[:pending_nursery_params]
-          @nursery.update(session[:pending_nursery_params])
-          clear_temporary_session_data
-          flash[:notice] = "Vivaio aggiornato con successo!"
-          redirect_to nursery_profile_path
-        else
-          clear_temporary_session_data
-          flash[:alert] = "Nessuna modifica da applicare."
-          redirect_to nursery_profile_path
-        end
-      else
-        flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
-        render 'sessions/verify_otp'
-      end
-    elsif request.get?
-      if params[:resend_otp] == "true"
-        @user.invalidate_otp
-        otp_code = @user.generate_otp
-        UserMailer.otp_email(@user.email, @user.nome, otp_code, session[:otp_for]).deliver_now
-        flash[:notice] = "Un nuovo codice OTP è stato inviato."
-      end
-      render 'sessions/verify_otp'
-    end
-  end
+  #def verify_otp
+  #  @user = User.find_by(id: session[:otp_user_id])
+  #  unless @user
+  #    flash[:alert] = "Utente non trovato. Per favore, riprova."
+  #    redirect_to new_user_registration_path and return
+  #  end
+  #
+  #  if request.post?
+  #    otp_attempt = params[:otp_attempt].strip
+  #
+  #    if @user.verify_otp(otp_attempt)
+  #      if session[:pending_nursery_params]
+  #        @nursery.update(session[:pending_nursery_params])
+  #        clear_temporary_session_data
+  #        flash[:notice] = "Vivaio aggiornato con successo!"
+  #        redirect_to nursery_profile_path
+  #      else
+  #        clear_temporary_session_data
+  #        flash[:alert] = "Nessuna modifica da applicare."
+  #        redirect_to nursery_profile_path
+  #      end
+  #    else
+  #      flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
+  #      render 'sessions/verify_otp'
+  #    end
+  #  elsif request.get?
+  #    if params[:resend_otp] == "true"
+  #      @user.invalidate_otp
+  #      otp_code = @user.generate_otp
+  #      UserMailer.otp_email(@user.email, @user.nome, otp_code, session[:otp_for]).deliver_now
+  #      flash[:notice] = "Un nuovo codice OTP è stato inviato."
+  #    end
+  #    render 'sessions/verify_otp'
+  #  end
+  #end
 
   private
 
