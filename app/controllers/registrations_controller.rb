@@ -76,10 +76,11 @@ class RegistrationsController < Devise::RegistrationsController
       end
     elsif request.get?
       if params[:resend_otp] == "true"
-        # Rigenera OTP e invialo
+        otp_secret = session[:otp_secret]
+        totp = ROTP::TOTP.new(otp_secret, digits: 8)
         otp_code = totp.now
         session[:otp_code] = otp_code
-        UserMailer.otp_email(@user_data['email'], otp_code, 'registrazione').deliver_now
+        UserMailer.otp_email(@user_data['email'], @user_data['nome'], otp_code, 'registrazione').deliver_now
         flash[:notice] = "Un nuovo codice OTP è stato inviato."
       end
       render :verify_otp
