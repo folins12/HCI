@@ -19,14 +19,14 @@ class NurseriesController < ApplicationController
 
   def create
     @nursery = Nursery.new(nursery_params)
-    @user = User.find_by(id: session[:otp_user_id])
-  
+    #@user = User.find_by(id: session[:otp_user_id])
+    #@nursery.user = @user
+    
     validate_nursery(@nursery)
   
-    @nursery.user = @user
-  
-    if @nursery.errors.empty? && @nursery.save
-      @user.update(nursery: @nursery)
+    if @nursery.errors.empty?
+      #{"name"=>"Federico Angarella", "number"=>"3397791969", "email"=>"federico.angarella@gmail.com", "address"=>"via Lussemburgo 10/C", "location"=>"ciampino", "open_time"=>"1", "close_time"=>"20", "description"=>"desc"}
+      session[:otp_nursery_data] = nursery_params.slice('name','number','email','address','location','open_time','close_time','description')
       redirect_to register_verify_otp_path
     else
       # Aggiungi il messaggio di errore specifico per l'email

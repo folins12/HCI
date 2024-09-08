@@ -113,26 +113,28 @@ class UsersController < ApplicationController
             flash[:alert] = "Nessuna modifica da applicare."
             redirect_to nursery_profile_path
           end
+        else
+
+          if session[:pending_user_params]
+            @user.update(session[:pending_user_params])
+            clear_temporary_session_data
+            flash[:notice] = "Profilo aggiornato con successo!"
+            if @user.nursery==0
+              redirect_to user_profile_path
+            else
+              redirect_to nursery_profile_path
+            end
+          else
+            clear_temporary_session_data
+            flash[:alert] = "Nessuna modifica da applicare."
+            if @user.nursery==0
+              redirect_to user_profile_path
+            else
+              redirect_to nursery_profile_path
+            end
+          end
         end
 
-        if session[:pending_user_params]
-          @user.update(session[:pending_user_params])
-          clear_temporary_session_data
-          flash[:notice] = "Profilo aggiornato con successo!"
-          if @user.nursery==0
-            redirect_to user_profile_path
-          else
-            redirect_to nursery_profile_path
-          end
-        else
-          clear_temporary_session_data
-          flash[:alert] = "Nessuna modifica da applicare."
-          if @user.nursery==0
-            redirect_to user_profile_path
-          else
-            redirect_to nursery_profile_path
-          end
-        end
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
         render 'sessions/verify_otp'

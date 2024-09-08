@@ -13,8 +13,8 @@ class RegistrationsController < Devise::RegistrationsController
     if @user.errors.any?
       render :new
     else
+      #session[:otp_user_id] = @user.id
       session[:otp_user_data] = user_params.slice('nome', 'cognome', 'email', 'password', 'password_confirmation', 'address', 'nursery')
-      
       otp_secret = ROTP::Base32.random_base32
       totp = ROTP::TOTP.new(otp_secret, digits: 8)
       otp_code = totp.now
@@ -25,13 +25,20 @@ class RegistrationsController < Devise::RegistrationsController
       # Passa i dati individuali al mailer
       UserMailer.otp_email(session[:otp_user_data]['email'], session[:otp_user_data]['nome'], otp_code, 'registrazione').deliver_now
       
-      redirect_to register_verify_otp_path
+      if user_params[:nursery]=="true"
+        redirect_to register_nursery_path
+      else
+        redirect_to register_verify_otp_path
+      end
     end
   end
   
 
   def verify_otp
     @user_data = session[:otp_user_data]
+    puts "verify otpHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+    puts @user_data
+
     return redirect_to new_user_registration_path, alert: "Sessione scaduta o utente non trovato." unless @user_data
 
     # Recupera il secret e l'OTP dalla sessione
@@ -47,9 +54,21 @@ class RegistrationsController < Devise::RegistrationsController
         @user = User.new(@user_data)
         @user.otp_secret = otp_secret  # Imposta il secret sull'utente
         @user.save(validate: false)  # Salva l'utente
+        puts "YYYYYYYYYYYYYYYYYy"
+        puts @user
+        puts @user_data
+        if @user_data["nursery"]=="true"
+          puts "XXXXXXXXXXXXXXXXXXXXXX"
+          @nursery_data = session[:otp_nursery_data].merge!('id_owner' => @user.id)
+          puts @nursery_data
+          @nursery=Nursery.new(@nursery_data)
+          @nursery.save()
+        end
+
 
         clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
+        #
         redirect_to nursery_profile_path if @user.nursery == 1
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."
