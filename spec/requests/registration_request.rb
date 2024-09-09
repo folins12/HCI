@@ -89,76 +89,83 @@ RSpec.describe "User Registrations", type: :request do
 
   before do
     # Mocking email delivery to avoid sending real emails
-    allow(UserMailer).to receive_message_chain(:otp_email, :deliver_now)
+    allow(UserMailer).to receive(:otp_email).and_return(double(deliver_now: true))
   end
   
   context "when the request is valid, may take a while..." do
     it "registers a new user1 and verifies OTP" do
       post user_registration_path, params: { user: valid_user_attributes1 }
+
+      expect(session[:otp_user_data]['email']).to eq('mario.rossi@gmail.com')
+      expect(session[:otp_user_data]['nome']).to eq('Mario')
+
+      expect(session[:otp_code]).to be_present
+      expect(session[:otp_secret]).to be_present
+
+      expect(UserMailer).to have_received(:otp_email).with('mario.rossi@gmail.com', 'Mario', session[:otp_code], 'registrazione')
       
       expect(response).to redirect_to(register_verify_otp_path)
 
-      #follow_redirect!
-      expect(session[:otp_user_id]).to be_present
+      post signup_verify_otp_path, params: { otp_attempt: session[:otp_code] }
+      expect(response).to have_http_status(:found)
 
-      # Recupera l'ID dell'utente dalla sessione
-      otp_user_id = session[:otp_user_id]
-      expect(otp_user_id).to be_present
-
-      # Retrieve the user and simulate OTP code
-      user = User.find(otp_user_id)
-      otp_code = user.generate_otp_secret
-      expect(response).to redirect_to(register_verify_otp_path)
-
-      # Simulate OTP verification
-      post signup_verify_otp_path, params: { otp_attempt: otp_code }
-      expect(response).to have_http_status(:ok)
+      user_nursery = User.last
+      expect(user_nursery).to be_present
+      expect(user_nursery.nome).to eq('Mario')
     end
 
     it "registers a new user2 and verifies OTP" do
       post user_registration_path, params: { user: valid_user_attributes2 }
+
+      expect(session[:otp_user_data]['email']).to eq('luigi.biangi@yahoo.com')
+      expect(session[:otp_user_data]['nome']).to eq('Luigi')
+
+      expect(session[:otp_code]).to be_present
+      expect(session[:otp_secret]).to be_present
+
+      expect(UserMailer).to have_received(:otp_email).with('luigi.biangi@yahoo.com', 'Luigi', session[:otp_code], 'registrazione')
       
       expect(response).to redirect_to(register_verify_otp_path)
 
-      #follow_redirect!
-      expect(session[:otp_user_id]).to be_present
-
-      # Recupera l'ID dell'utente dalla sessione
-      otp_user_id = session[:otp_user_id]
-      expect(otp_user_id).to be_present
-
-      # Retrieve the user and simulate OTP code
-      user = User.find(otp_user_id)
-      otp_code = user.generate_otp_secret
-      expect(response).to redirect_to(register_verify_otp_path)
-
       # Simulate OTP verification
-      post signup_verify_otp_path, params: { otp_attempt: otp_code }
-      expect(response).to have_http_status(:ok)
+      post signup_verify_otp_path, params: { otp_attempt: session[:otp_code] }
+      expect(response).to have_http_status(:found)
+
+      user_nursery = User.last
+      expect(user_nursery).to be_present
+      expect(user_nursery.nome).to eq('Luigi')
     end
 
     it "registers a new user3 and his nursery and verifies OTP" do
       post user_registration_path, params: { user: valid_user_attributes3 }
+
+      expect(session[:otp_user_data]['email']).to eq('andrea.folino@studenti.uniroma1.it')
+      expect(session[:otp_user_data]['nome']).to eq('Andrea')
+
+      expect(session[:otp_code]).to be_present
+      expect(session[:otp_secret]).to be_present
+
+      expect(UserMailer).to have_received(:otp_email).with('andrea.folino@studenti.uniroma1.it', 'Andrea', session[:otp_code], 'registrazione')
       
       expect(response).to redirect_to(register_nursery_path)
-      #follow_redirect!
-      expect(session[:otp_user_id]).to be_present
 
-      # Recupera l'ID dell'utente dalla sessione
-      otp_user_id = session[:otp_user_id]
-      expect(otp_user_id).to be_present
+      #reg vivaio
+      post register_nursery_path, params: { nursery: valid_nursery_attributes }
+      expect(session[:otp_nursery_data]).to be_present
 
-      # Simulazione della compilazione del secondo form (registrazione del vivaio)
-      post nurseries_path, params: { nursery: valid_nursery_attributes }
+      expect(response).to redirect_to(register_verify_otp_path)
 
+      post signup_verify_otp_path, params: { otp_attempt: session[:otp_code] }
+      expect(response).to have_http_status(:found)
+
+      user_nursery = User.last
+      expect(user_nursery).to be_present
+      expect(user_nursery.nome).to eq('Andrea')
       # Verifica che il vivaio sia stato creato e associato all'utente
       created_nursery = Nursery.last
       expect(created_nursery).to be_present
       expect(created_nursery.name).to eq('vivaioProva')
       expect(created_nursery.user.nome).to eq("Andrea")
-
-      # Verifica che la risposta sia un redirect alla pagina di verifica OTP o dove ti aspetti che vada dopo la creazione del vivaio
-      expect(response).to redirect_to(register_verify_otp_path)
 
     end
   end

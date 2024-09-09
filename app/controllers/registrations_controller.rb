@@ -36,8 +36,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def verify_otp
     @user_data = session[:otp_user_data]
-    puts "verify otpHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-    puts @user_data
+    #puts "verify otp"
+    #puts @user_data
 
     return redirect_to new_user_registration_path, alert: "Sessione scaduta o utente non trovato." unless @user_data
 
@@ -54,13 +54,9 @@ class RegistrationsController < Devise::RegistrationsController
         @user = User.new(@user_data)
         @user.otp_secret = otp_secret  # Imposta il secret sull'utente
         @user.save(validate: false)  # Salva l'utente
-        puts "YYYYYYYYYYYYYYYYYy"
-        puts @user
-        puts @user_data
         if @user_data["nursery"]=="true"
-          puts "XXXXXXXXXXXXXXXXXXXXXX"
           @nursery_data = session[:otp_nursery_data].merge!('id_owner' => @user.id)
-          puts @nursery_data
+          
           @nursery=Nursery.new(@nursery_data)
           @nursery.save()
         end
