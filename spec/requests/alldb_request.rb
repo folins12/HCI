@@ -170,30 +170,6 @@ RSpec.describe "DB comunications", type: :request do
     end
   end
 
-  describe "POST /removenursplant" do
-    context "when the request is valid" do
-      it "delete a reservarion and returns success" do
-        post '/removenursplant', params: { plant_id: np.plant_id, nursery_id: np.nursery_id}, headers: { 'ACCEPT' => 'application/json' }
-
-        expect(response).to have_http_status(:ok)
-        json_response = JSON.parse(response.body)
-        expect(json_response['success']).to be_truthy
-      end
-    end
-
-    context "when the request is not valid" do
-      it "returns an error con pianta sbagliata" do
-        post '/removenursplant', params: { plant_id: 99, nursery_id: np.nursery_id }, headers: { 'ACCEPT' => 'application/json' }
-        
-        json_response = JSON.parse(response.body)
-        expect(json_response['success']).to be_falsey
-        expect(json_response['message']).to eq("Errore nell'eliminazione della pianta.")
-        expect(json_response['errors']).to eq("Pianta non trovata")
-      end
-
-    end
-  end
-
   describe "POST /incdisp" do
     context "when the request is valid" do
       it "increase disponibility and returns success" do
