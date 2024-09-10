@@ -8,7 +8,7 @@ class NurseriesController < ApplicationController
   end
 
   def show
-  rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound
     flash[:alert] = "Il vivaio richiesto non è stato trovato."
     redirect_to nurseries_path
   end
@@ -19,14 +19,12 @@ class NurseriesController < ApplicationController
 
   def create
     @nursery = Nursery.new(nursery_params)
-    #@user = User.find_by(id: session[:otp_user_id])
-    #@nursery.user = @user
     
     validate_nursery(@nursery)
   
     if @nursery.errors.empty?
-      #{"name"=>"Federico Angarella", "number"=>"3397791969", "email"=>"federico.angarella@gmail.com", "address"=>"via Lussemburgo 10/C", "location"=>"ciampino", "open_time"=>"1", "close_time"=>"20", "description"=>"desc"}
       session[:otp_nursery_data] = nursery_params.slice('name','number','email','address','location','open_time','close_time','description')
+      puts session[:otp_nursery_data]
       redirect_to register_verify_otp_path
     else
       # Aggiungi il messaggio di errore specifico per l'email
@@ -58,9 +56,11 @@ class NurseriesController < ApplicationController
   end  
 
   def edit_image
+    @nursery = Nursery.find(params[:id])
   end
 
   def update_image
+    @nursery = Nursery.find(params[:id])
     if params[:nursery].nil? || params[:nursery][:nursery_image].nil?
       flash[:error] = "Parametri mancanti."
       redirect_to nursery_profile_path and return
@@ -72,42 +72,6 @@ class NurseriesController < ApplicationController
       render :edit_image
     end
   end
-
-  #def verify_otp
-  #  @user = User.find_by(id: session[:otp_user_id])
-  #  unless @user
-  #    flash[:alert] = "Utente non trovato. Per favore, riprova."
-  #    redirect_to new_user_registration_path and return
-  #  end
-  #
-  #  if request.post?
-  #    otp_attempt = params[:otp_attempt].strip
-  #
-  #    if @user.verify_otp(otp_attempt)
-  #      if session[:pending_nursery_params]
-  #        @nursery.update(session[:pending_nursery_params])
-  #        clear_temporary_session_data
-  #        flash[:notice] = "Vivaio aggiornato con successo!"
-  #        redirect_to nursery_profile_path
-  #      else
-  #        clear_temporary_session_data
-  #        flash[:alert] = "Nessuna modifica da applicare."
-  #        redirect_to nursery_profile_path
-  #      end
-  #    else
-  #      flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
-  #      render 'sessions/verify_otp'
-  #    end
-  #  elsif request.get?
-  #    if params[:resend_otp] == "true"
-  #      @user.invalidate_otp
-  #      otp_code = @user.generate_otp
-  #      UserMailer.otp_email(@user.email, @user.nome, otp_code, session[:otp_for]).deliver_now
-  #      flash[:notice] = "Un nuovo codice OTP è stato inviato."
-  #    end
-  #    render 'sessions/verify_otp'
-  #  end
-  #end
 
   private
 

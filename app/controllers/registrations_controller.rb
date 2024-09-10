@@ -36,8 +36,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def verify_otp
     @user_data = session[:otp_user_data]
-    #puts "verify otp"
-    #puts @user_data
+    puts session[:otp_nursery_data]
 
     return redirect_to new_user_registration_path, alert: "Sessione scaduta o utente non trovato." unless @user_data
 
@@ -50,21 +49,22 @@ class RegistrationsController < Devise::RegistrationsController
       
       totp = ROTP::TOTP.new(otp_secret, digits: 8)
       if totp.verify(otp_attempt, drift_behind: 60)
-        # Verifica OTP e crea l'utente nel database
+        
         @user = User.new(@user_data)
         @user.otp_secret = otp_secret  # Imposta il secret sull'utente
-        @user.save(validate: false)  # Salva l'utente
-        if @user_data["nursery"]=="true"
-          @nursery_data = session[:otp_nursery_data].merge!('id_owner' => @user.id)
-          
-          @nursery=Nursery.new(@nursery_data)
-          @nursery.save()
+        if @user.save(validate: false)  # Salva l'utente
+          if @user_data["nursery"]=="true"
+            @nursery_data = session[:otp_nursery_data].merge!('id_owner' => @user.id)
+            puts "XXXXXXXXXXXXXXXXXXXXXXXXX"
+            puts @nursery_data
+            @nursery=Nursery.new(@nursery_data)
+            @nursery.save()
+          end
         end
 
 
-        clear_temporary_session_data
+        #clear_temporary_session_data
         sign_in_and_redirect @user, event: :authentication
-        #
         redirect_to nursery_profile_path if @user.nursery == 1
       else
         flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."

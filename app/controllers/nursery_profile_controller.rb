@@ -105,41 +105,6 @@ class NurseryProfileController < ApplicationController
     end
   end    
 
-  def verify_otp
-    @user = User.find_by(id: session[:otp_user_id])
-
-    unless @user
-      flash[:alert] = "Utente non trovato. Per favore, riprova."
-      redirect_to new_user_registration_path and return
-    end
-
-    if request.post?
-      otp_attempt = params[:otp_attempt].strip
-
-      if @user.verify_otp(otp_attempt)
-        if session[:pending_user_params]
-          @user.update(session[:pending_user_params])
-          clear_temporary_session_data
-          flash[:notice] = "Profilo aggiornato con successo!"
-          nursery_profile_path
-        else
-          clear_temporary_session_data
-          flash[:alert] = "Nessuna modifica da applicare."
-          nursery_profile_path
-        end
-      else
-        flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
-        render :verify_otp
-      end
-    elsif request.get?
-      if params[:resend_otp] == "true"
-        @user.invalidate_otp
-        send_otp_email(session[:otp_for])
-        flash[:notice] = "Un nuovo codice OTP è stato inviato."
-      end
-      render :verify_otp
-    end
-  end    
 
   private
 
