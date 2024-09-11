@@ -106,6 +106,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  width:90%;
 }
 
 #profile-edit .form-label {
@@ -123,6 +124,8 @@
   font-size: 1.2em;
   border-radius: 5px;
   border: 1px solid #ccc; 
+  flex-grow: 1;
+  box-sizing: border-box;
 }
 
 .alert {
@@ -796,12 +799,33 @@
   }
 }
 
-/* Input con errore */
-.has-error input{
-  border: 2px solid red; /* Bordo rosso per gli errori */
+#profile-edit .input-group.has-error input[type="text"], 
+#profile-edit .input-group.has-error input[type="password"] {
+  border: 2px solid red; /* Aggiunge un bordo rosso in caso di errore */
+  width:184%;
+  margin-left:0%;
+}
+
+#profile-edit .input-group.has-error{
+  margin-left:7%;
+  width:100%;
+}
+
+#profile-edit .input-group.has-error .form-label {
+  width:30%;
 }
 
 .error-message {
+  margin-top:2%;
+  margin-bottom:4%;
+  width: 100%;
+  color: red; /* Colore del testo dell'errore */
+  font-size: 20px;
+  border-radius: 10px;
+}
+
+.error-message-nursery {
+  margin-bottom:5%;
   color: red; /* Colore del testo dell'errore */
   font-size: 25px;
 }
