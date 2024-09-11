@@ -15,16 +15,9 @@ class NurseryProfileController < ApplicationController
       user = User.find_by(email: user_email)
       nursery = Nursery.find_by(id: nursery_plant&.nursery_id)
 
-      Rails.logger.info "Satisfying order with the following data:"
-      Rails.logger.info "Plant ID: #{plant_id}"
-      Rails.logger.info "User Email: #{user_email}"
-      Rails.logger.info "Number of Reservations to Remove: #{num_reservations_to_remove}"
-      Rails.logger.info "Nursery Plant: #{nursery_plant.inspect}"
-      Rails.logger.info "User: #{user.inspect}"
-      Rails.logger.info "Nursery: #{nursery.inspect}"
-
       if nursery_plant && user && nursery
         nursery_plant.decrement!(:num_reservations, num_reservations_to_remove)
+        nursery_plant.decrement!(:max_disponibility, num_reservations_to_remove)
 
         reservations.destroy_all
 
@@ -44,7 +37,7 @@ class NurseryProfileController < ApplicationController
     else
       render json: { success: false, message: 'Prenotazioni non trovate' }
     end
-  end  
+  end
 
   def profile
     plant_ids = Myplant.where(user_id: current_user.id).pluck(:plant_id)
@@ -74,18 +67,18 @@ class NurseryProfileController < ApplicationController
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)
     end
-  
+
     if params[:user]
       if password_update_valid?
         if valid_address_updpro?
           if @user.otp_required_for_login
             otp_code = @user.generate_otp
             UserMailer.otp_email(@user.email, @user.nome, otp_code, 'profilo').deliver_now
-  
+
             session[:pending_user_params] = user_params.to_h
             session[:otp_user_id] = @user.id
             session[:otp_for] = 'profilo'
-  
+
             redirect_to login_verify_otp_path and return
           else
             @user.update(user_params)
@@ -103,7 +96,7 @@ class NurseryProfileController < ApplicationController
         render :profile
       end
     end
-  end    
+  end
 
 
   private

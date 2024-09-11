@@ -15,13 +15,13 @@ class NurseriesController < ApplicationController
 
   def new
     @nursery = Nursery.new
-  end  
+  end
 
   def create
     @nursery = Nursery.new(nursery_params)
-    
+
     validate_nursery(@nursery)
-  
+
     if @nursery.errors.empty?
       session[:otp_nursery_data] = nursery_params.slice('name','number','email','address','location','open_time','close_time','description')
       puts session[:otp_nursery_data]
@@ -53,7 +53,7 @@ class NurseriesController < ApplicationController
       flash.now[:alert] = @nursery.errors.full_messages.join(', ')
       render 'nursery_profile/profile'
     end
-  end  
+  end
 
   def edit_image
     @nursery = Nursery.find(params[:id])
@@ -65,7 +65,7 @@ class NurseriesController < ApplicationController
       flash[:error] = "Parametri mancanti."
       redirect_to nursery_profile_path and return
     end
-  
+
     if @nursery.update(nursery_image_params)
       redirect_to nursery_profile_path, notice: 'Immagine aggiornata con successo.'
     else
@@ -84,29 +84,29 @@ class NurseriesController < ApplicationController
 
     if number_str.blank? || number_str.length != 10
       nursery.errors.add(:number, "Il numero di telefono inserito non è valido. Deve essere di 10 cifre.")
-      nursery.number = ''  
+      nursery.number = ''
     elsif Nursery.exists?(number: number_str)
       nursery.errors.add(:number, "Questo numero appartiene già ad un altro vivaio, pertanto non può essere utilizzato!")
-      nursery.number = ''  
+      nursery.number = ''
     end
 
     if !valid_time?(nursery.open_time) || !valid_time?(nursery.close_time)
       nursery.errors.add(:base, "L'ora inserita non è valida. Deve essere compresa tra 0 e 24.")
-      nursery.open_time = ''  
-      nursery.close_time = '' 
+      nursery.open_time = ''
+      nursery.close_time = ''
     elsif nursery.open_time.to_i >= nursery.close_time.to_i
       nursery.errors.add(:base, "La fascia oraria inserita non è accettabile.")
-      nursery.open_time = ''  
-      nursery.close_time = '' 
+      nursery.open_time = ''
+      nursery.close_time = ''
     end
 
     if nursery.address.blank?
       nursery.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo")
-      nursery.address = ''  
+      nursery.address = ''
     else
       unless valid_address?(nursery.address)
         nursery.errors.add(:address, "L'indirizzo inserito non è valido.")
-        nursery.address = ''  
+        nursery.address = ''
       end
     end
   end
@@ -131,7 +131,7 @@ class NurseriesController < ApplicationController
     flash[:alert] = "Il vivaio richiesto non è stato trovato."
     redirect_to nurseries_path
   end
-  
+
   def nursery_params
     params.require(:nursery).permit(:name, :number, :email, :address, :location, :open_time, :close_time, :description)
   end
@@ -165,29 +165,24 @@ class NurseriesController < ApplicationController
       return false
     end
 
-    if open_time_str !~ /^[0-9:-]+$/ || close_time_str !~ /^[0-9:-]+$/
-      @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve contenere solo numeri, ":" o "-".')
-      return false
-    end
-  
     open_time = params[:nursery][:open_time].to_i
     close_time = params[:nursery][:close_time].to_i
-  
-    if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24 
+
+    if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24
       @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve essere tra 0 e 24.')
       return false
     end
-  
+
     if open_time >= close_time
       @nursery.errors.add(:base, 'La fascia oraria inserita non è valida.')
       return false
     end
-  
+
     if @nursery.description.blank?
       @nursery.errors.add(:description, 'La descrizione non può essere vuota.')
       return false
     end
-  
+
     true
   end
 
@@ -195,7 +190,7 @@ class NurseriesController < ApplicationController
     session.delete(:pending_nursery_params)
     session.delete(:otp_user_id)
     session.delete(:otp_for)
-  end 
+  end
 
   def load_nursery_data
     return unless current_user

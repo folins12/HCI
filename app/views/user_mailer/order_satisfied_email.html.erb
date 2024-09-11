@@ -1,11 +1,16 @@
-<p>Ciao <%= @user.nome %>,</p>
-<p>La tua richiesta è stata presa in carico dal vivaio <strong>"<%= @nursery.name %>"</strong>, ed è in arrivo per lei un totale di <strong><%= @quantity %></strong> piante del tipo <strong><%= @plant.name %></strong> che le saranno recapitate al suo indirizzo nei prossimi giorni.</p>
-<p><strong>Dettagli spedizione:</strong></p>
-<ul>
-  <li><strong>Pianta:</strong> <%= @plant.name %></li>
-  <li><strong>Quantità:</strong> <%= @quantity %></li>
-  <li><strong>Indirizzo di partenza:</strong> <%= @nursery.address %></li>
-  <li><strong>Indirizzo di arrivo:</strong> <%= @user.address %></li>
-</ul>
-<p>Per maggiori dettagli sulla spedizione o su come prendersi cura della pianta contattare via email il vivaio <strong><%= @nursery.name %></strong> all'indirizzo <%= @nursery.email %>.</p>
-<p>Grazie per aver usufruito del nostro servizio, il team di PlantTracker.<p>
+<p>Ciao <%= @user.nome %>,
+  <br>
+  Grazie per aver prenotato <strong><%= @quantity %></strong> <strong><%= @plant.name %></strong> dal vivaio <strong>"<%= @nursery.name %>"</strong>. 
+  
+  <% if @quantity == 1 %>
+    La tua pianta è pronta per essere ritirata! 
+  <% else %>
+    Le tue piante sono pronte per essere ritirate! 
+  <%end%>
+  <br>
+  Vieni a trovarci qui: <strong><%=@nursery.address%></strong> dalle ore <strong><%=@nursery.open_time%></strong> alle ore <strong><%=@nursery.close_time%></strong>.
+  <br>
+  Per qualsiasi inconveniente riguardo la sua prenotazione contattare il vivaio <strong><%= @nursery.name %></strong> all'indirizzo <%= @nursery.email %>.
+  <br>
+  Grazie per aver usufruito del nostro servizio, il team di PlantTracker.
+<p>

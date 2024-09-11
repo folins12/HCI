@@ -35,12 +35,22 @@
     </div>
 
     <div class="section">
-      <%= link_to (current_user&.nursery ? nursery_profile_path : user_profile_path), class: 'section-link' do %>
-        <h2 class="section-title">LE MIE PIANTE</h2>
-        <div class="section-content">
-          <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
-          <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
-        </div>
+      <% if current_user && current_user.nursery == true%>
+        <%= link_to (nursery_profile_path), class: 'section-link' do %>
+          <h2 class="section-title">IL MIO VIVAIO</h2>
+          <div class="section-content">
+            <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+            <p class="section-description">Gestisci il tuo catalogo. Aggiungi le piante che vuoi mettere in vendita e visualizza le prenotazioni dei clienti.</p>
+          </div>
+        <% end %>
+      <%else%>
+        <%= link_to (user_profile_path), class: 'section-link' do %>
+          <h2 class="section-title">LE MIE PIANTE</h2>
+          <div class="section-content">
+            <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
+            <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+          </div>
+        <% end %>
       <% end %>
       <div class="home-divider-thin"></div>
     </div>
