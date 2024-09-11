@@ -149,7 +149,7 @@ class NurseriesController < ApplicationController
     if results.present? && results.first.coordinates.present?
       true
     else
-      @nursery.errors.add(:address, 'Indirizzo errato!')
+      @nursery.errors.add(:address, 'L\'indirizzo inserito è errato!')
       false
     end
   end

@@ -145,7 +145,7 @@ class NurseryProfileController < ApplicationController
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       if params[:user][:current_password].present?
         unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
-          @user.errors.add(:current_password, 'Password errata!')
+          @user.errors.add(:current_password, 'La password inserita è errata!')
           return false
         end
       end
@@ -158,7 +158,7 @@ class NurseryProfileController < ApplicationController
     end
 
     unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
-      @user.errors.add(:current_password, 'Password errata!')
+      @user.errors.add(:current_password, 'La password inserita è errata!')
       return false
     end
 
@@ -168,11 +168,12 @@ class NurseryProfileController < ApplicationController
     end
 
     unless valid_password?(params[:user][:password])
-      @user.errors.add(:password, 'La nuova password non rispetta i requisiti: 
-      - almeno una maiuscola; 
-      - almeno una minuscola; 
-      - almeno un numero; 
-      - almeno un carattere speciale.')
+      @user.errors.add(:password, 'La nuova password non rispetta i requisiti:<ul>
+                                    <li>deve avere almeno una lettera maiuscola;</li>
+                                    <li>deve avere almeno una lettera minuscola;</li>
+                                    <li>deve contenere almeno un numero;</li>
+                                    <li>deve contenere almeno un carattere speciale.</li>
+                                  </ul>'.html_safe)
       return false
     end
 
@@ -205,7 +206,7 @@ class NurseryProfileController < ApplicationController
     if results.present? && results.first.coordinates.present?
       true
     else
-      @user.errors.add(:address, 'Indirizzo errato!')
+      @user.errors.add(:address, 'L\'indirizzo inserito non esiste o è stato scritto in modo errato!')
       false
     end
   end

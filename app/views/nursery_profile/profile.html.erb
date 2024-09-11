@@ -65,36 +65,54 @@
 
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
       <%= form_with model: @user, url: update_nursery_profile_path, local: true do |form| %>
-        <%= hidden_field_tag :return_to, request.fullpath %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
-          <%= form.text_field :nome, value: @user.nome, required: true %>
+          <%= form.text_field :nome, value: @user.nome.capitalize, required: true %>
         </div>
+        <% @user.errors[:nome].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
+
         <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
           <%= form.label :cognome, "Cognome", class: 'form-label' %>
-          <%= form.text_field :cognome, value: @user.cognome, required: true %>
+          <%= form.text_field :cognome, value: @user.cognome.capitalize, required: true %>
         </div>
+        <% @user.errors[:cognome].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
+
         <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
           <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
           <%= form.password_field :current_password, required: true %>
         </div>
+        <% @user.errors[:current_password].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
+
         <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
           <%= form.label :password, "Nuova Password", class: 'form-label'%>
           <%= form.password_field :password, placeholder: "Lascia vuoto se non vuoi cambiare" %>
         </div>
+        <% @user.errors[:password].each do |error| %>
+          <div class="error-message"><%= @user.errors[:password].join(', ').html_safe %></div>
+        <% end %>
+
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
-          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label'%>
+          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation, placeholder: "Lascia vuoto se non vuoi cambiare" %>
         </div>
-        <div class="input-group">
+        <% @user.errors[:password_confirmation].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
+
+        <div class="input-group <%= 'has-error' if @user.errors[:address].any? %>">
           <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
         </div>
-        <% if flash[:alert].present? %>
-          <div class="alert alert-danger">
-            <%= flash[:alert] %>
-          </div>
+        <% @user.errors[:address].each do |error| %>
+          <div class="error-message"><%= error %></div>
         <% end %>
+
         <div class="profile-buttons">
           <%= form.submit "Invia", class: "btn btn-primary" %>
           <button id="cancel-edit-button" class="btn btn-secondary" type="button" onclick="cancelEdit()">Annulla</button>
@@ -127,22 +145,22 @@
     <%= form_with(model: @nursery, url: update_nursery_path(@nursery), method: :patch) do |form| %>
       <div>
         <p><strong>Indirizzo:</strong> 
-          <%= form.text_field :address, value: @nursery.address, class: "edit-field small-input #{'has-error' if @nursery.errors[:address].present?}" %>
-          <span class="error-message" id="address-error"><%= @nursery.errors[:address].join(', ') if @nursery.errors[:address].present? %></span>
+          <%= form.text_field :address, value: @nursery.address, class: "edit-field small-input #{'has-error' if @nursery.errors[:address].present?}" %><br>
+          <span class="error-message-nursery" id="address-error"><%= @nursery.errors[:address].join(', ') if @nursery.errors[:address].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Telefono:</strong> 
-          <%= form.text_field :number, value: @nursery.number.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:number].present?}" %>
-          <span class="error-message" id="number-error"><%= @nursery.errors[:number].join(', ') if @nursery.errors[:number].present? %></span>
+          <%= form.text_field :number, value: @nursery.number.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:number].present?}" %><br>
+          <span class="error-message-nursery" id="number-error"><%= @nursery.errors[:number].join(', ') if @nursery.errors[:number].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Email:</strong> 
-          <%= form.text_field :email, value: @nursery.email.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:email].present?}" %>
-          <span class="error-message" id="email-error"><%= @nursery.errors[:email].join(', ') if @nursery.errors[:email].present? %></span>
+          <%= form.text_field :email, value: @nursery.email.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:email].present?}" %><br>
+          <span class="error-message-nursery" id="email-error"><%= @nursery.errors[:email].join(', ') if @nursery.errors[:email].present? %></span>
         </p>
       </div>
 
@@ -150,15 +168,15 @@
         <p><strong>Orario:</strong>
           <%= form.text_field :open_time, value: @nursery.open_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}" %>
           -
-          <%= form.text_field :close_time, value: @nursery.close_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}"  %>
-          <span class="error-message" id="time-error"><%= @nursery.errors[:base].join(', ') if @nursery.errors[:base].present? %></span>
+          <%= form.text_field :close_time, value: @nursery.close_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}"  %><br>
+          <span class="error-message-nursery" id="time-error"><%= @nursery.errors[:base].join(', ') if @nursery.errors[:base].present? %></span>
         </p>
       </div>
 
       <div>
         <p><strong>Descrizione:</strong> 
-          <%= form.text_area :description, value: @nursery.description.to_s, class: "edit-field #{'has-error' if @nursery.errors[:email].present?}"  %>
-          <span class="error-message" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
+          <%= form.text_area :description, value: @nursery.description.to_s, class: "edit-field #{'has-error' if @nursery.errors[:email].present?}"  %><br>
+          <span class="error-message-nursery" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
 

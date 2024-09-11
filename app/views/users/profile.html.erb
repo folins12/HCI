@@ -43,51 +43,50 @@
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
           <%= form.label :nome, "Nome", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome.capitalize, required: true %>
-          <% @user.errors[:nome].each do |error| %>
-            <div class="error-message"><%= error %></div>
-          <% end %>
         </div>
+        <% @user.errors[:nome].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
           <%= form.label :cognome, "Cognome", class: 'form-label' %>
           <%= form.text_field :cognome, value: @user.cognome.capitalize, required: true %>
-          <% @user.errors[:cognome].each do |error| %>
-            <div class="error-message"><%= error %></div>
-          <% end %>
         </div>
+        <% @user.errors[:cognome].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
           <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
           <%= form.password_field :current_password, required: true %>
-          <% @user.errors[:current_password].each do |error| %>
-            <div class="error-message"><%= error %></div>
-          <% end %>
         </div>
+        <% @user.errors[:current_password].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
           <%= form.label :password, "Nuova Password", class: 'form-label'%>
           <%= form.password_field :password, placeholder: "Lascia vuoto se non vuoi cambiare" %>
-          <% @user.errors[:password].each do |error| %>
-            <div class="error-message"><%= error %></div>
-          <% end %>
         </div>
+        <% @user.errors[:password].each do |error| %>
+          <div class="error-message"><%= @user.errors[:password].join(', ').html_safe %></div>
+        <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
           <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation, placeholder: "Lascia vuoto se non vuoi cambiare" %>
-          <% @user.errors[:password_confirmation].each do |error| %>
-            <div class="error-message"><%= error %></div>
-          <% end %>
         </div>
+        <% @user.errors[:password_confirmation].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
 
-        <div class="input-group">
+        <div class="input-group <%= 'has-error' if @user.errors[:address].any? %>">
           <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
-          <% @user.errors[:address].each do |error| %>
-            <div class="error-message"><%= error %></div>
-          <% end %>
         </div>
-
+        <% @user.errors[:address].each do |error| %>
+          <div class="error-message"><%= error %></div>
+        <% end %>
 
         <div class="profile-buttons">
           <%= form.submit "Invia", class: "btn btn-primary" %>
