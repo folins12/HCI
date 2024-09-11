@@ -164,11 +164,16 @@ class NurseriesController < ApplicationController
       @nursery.errors.add(:number, 'Il numero di telefono deve essere composto esattamente da 10 cifre.')
       return false
     end
+
+    if open_time_str !~ /^[0-9:-]+$/ || close_time_str !~ /^[0-9:-]+$/
+      @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve contenere solo numeri, ":" o "-".')
+      return false
+    end
   
     open_time = params[:nursery][:open_time].to_i
     close_time = params[:nursery][:close_time].to_i
   
-    if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24
+    if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24 
       @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve essere tra 0 e 24.')
       return false
     end
