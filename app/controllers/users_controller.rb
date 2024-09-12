@@ -183,7 +183,7 @@ class UsersController < ApplicationController
   private
 
   def fetch_weather_data(lat, lon)
-    api_key = '58a0cdb53732cbf60b00188b157bbdba'
+    api_key = ''
     url = "https://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{lon}&units=metric&appid=#{api_key}"
     response = Net::HTTP.get(URI(url))
     JSON.parse(response)
