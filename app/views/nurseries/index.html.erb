@@ -64,13 +64,11 @@
     const address = "<%= j current_user&.address.to_s %>";
     geocodeAddress(address).then(location => {
 
-      // Inizializza la mappa centrata sulla tua casa
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
         center: location
       });
 
-      //marker casa
       var marker = new google.maps.Marker({
         position: location,
         map: map,
@@ -84,10 +82,8 @@
         }
       });
 
-      //creazione marker sui vivai
       for (var i = 0; i < nurseryNames.length; i++) {
         createNurseryMarker(map,nurseryAddres[i],nurseryID[i],nurseryNames[i])
-        //da mettere eventuale sleep
       }      
     });
   }
@@ -102,22 +98,6 @@
       attachClickEvent(marker, name, id);
     })
   }
-  /*var lastInfoWindow = null;
-  function attachClickEvent(marker, nurseryName, nurseryID) {
-    
-    var imageUrl = "<%= asset_path('Edera.jpg') %>";
-    var infowindowContent = '<div style="color: black; background-image:url(\'' + imageUrl + '\'); background-size: cover; background-position: center;">' +
-                              '<a href="/nurseries/' + nurseryID + '">' + nurseryName + '</a>' +
-                            '</div>';
-    var infowindow = new google.maps.InfoWindow({
-      content: infowindowContent
-    });
-    marker.addListener('click', function() {
-      if (lastInfoWindow) lastInfoWindow.close();
-      infowindow.open(marker.getMap(), marker);
-      lastInfoWindow = infowindow;
-    });
-  }*/
  
   function attachClickEvent(marker, nurseryName, nurseryID) {
     marker.addListener('click', function() {
@@ -150,5 +130,5 @@
 </script>
 
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgX5q9nH4yvlGDQapTpsKDmvBnL9JlHh4&callback=initMap&loading=async" type="text/javascript"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%=ENV[KEY_API]%>&callback=initMap&loading=async" type="text/javascript"></script>
 

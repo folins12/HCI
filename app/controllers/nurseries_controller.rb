@@ -24,7 +24,6 @@ class NurseriesController < ApplicationController
 
     if @nursery.errors.empty?
       session[:otp_nursery_data] = nursery_params.slice('name','number','email','address','location','open_time','close_time','description')
-      puts session[:otp_nursery_data]
       redirect_to register_verify_otp_path
     else
       # Aggiungi il messaggio di errore specifico per l'email

@@ -495,18 +495,18 @@
     function showNurseryEdit() {
       document.querySelector('.profile-nursery-details').style.display = 'none';
       document.querySelector('.profile-nursery-edit').style.display = 'block';
-      saveButton.style.display = "inline";  // Mostra il pulsante "Salva modifiche"
-      cancelButton.style.display = "inline"; // Mostra il pulsante "Annulla"
-      editButton.style.display = "none";    // Nascondi il pulsante "Modifica informazioni"
+      saveButton.style.display = "inline";  
+      cancelButton.style.display = "inline"; 
+      editButton.style.display = "none"; 
     }
 
     // Funzione per annullare la modifica e tornare alla visualizzazione
     function cancelNurseryEdit() {
       document.querySelector('.profile-nursery-details').style.display = 'block';
       document.querySelector('.profile-nursery-edit').style.display = 'none';
-      saveButton.style.display = "none";    // Nascondi il pulsante "Salva modifiche"
-      cancelButton.style.display = "none";  // Nascondi il pulsante "Annulla"
-      editButton.style.display = "inline";  // Mostra il pulsante "Modifica informazioni"
+      saveButton.style.display = "none"; 
+      cancelButton.style.display = "none"; 
+      editButton.style.display = "inline";
     }
 
     // Aggiungi l'evento al pulsante di modifica
@@ -517,15 +517,15 @@
     document.querySelector('.profile-nursery-edit').addEventListener('submit', function(event) {
       const hasErrors = document.querySelector('.profile-nursery-edit').querySelector('.error');
       if (hasErrors) {
-        event.preventDefault(); // Impedisce l'invio del form in caso di errori
-        saveButton.style.display = "inline";  // Mantieni il pulsante "Salva modifiche"
-        cancelButton.style.display = "inline"; // Mantieni il pulsante "Annulla"
-        editButton.style.display = "none";    // Nascondi il pulsante "Modifica informazioni"
+        event.preventDefault(); 
+        saveButton.style.display = "inline"; 
+        cancelButton.style.display = "inline"; 
+        editButton.style.display = "none"; 
       } else {
         // Se non ci sono errori, consentire l'invio del form
-        saveButton.style.display = "none";    // Nascondi il pulsante "Salva modifiche"
-        cancelButton.style.display = "none";  // Nascondi il pulsante "Annulla"
-        editButton.style.display = "inline";  // Mostra il pulsante "Modifica informazioni"
+        saveButton.style.display = "none";
+        cancelButton.style.display = "none";
+        editButton.style.display = "inline";
       }
     });
 
@@ -540,9 +540,6 @@
       editButton.style.display = "inline";
     }
   });
-
-
-
 
   </script>
 

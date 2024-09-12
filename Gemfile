@@ -73,4 +73,3 @@ gem 'devise-two-factor'
 gem 'rqrcode' # per generare il QR code
 gem 'twilio-ruby' # se vuoi usare SMS come fattore di autenticazione
 gem 'dotenv-rails', groups: [:development, :test]
-
