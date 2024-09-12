@@ -175,7 +175,7 @@
 
       <div>
         <p><strong>Descrizione:</strong> 
-          <%= form.text_area :description, value: @nursery.description.to_s, class: "edit-field #{'has-error' if @nursery.errors[:email].present?}"  %><br>
+          <%= form.text_area :description, value: @nursery.description.to_s, required: true, class: "edit-field #{'has-error' if @nursery.errors[:email].present?}"  %><br>
           <span class="error-message-nursery" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
