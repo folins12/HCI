@@ -1,13 +1,13 @@
 <div class="nurseries">
   <div class="spacer-large"></div>
 
-  <p class="nursery-title">Vivai</p>
+  <p class="nursery-title">Nurseries</p>
 
-  <p class="nursery-search-instruction">Cerca i vivai per zona (comune) o per nome utilizzando la barra di ricerca sottostante.</p>
+  <p class="nursery-search-instruction">Search for nurseries by area (municipality) or by name using the search bar below.</p>
 
   <%= form_with url: nurseries_path, method: :get, local: true, class: 'nursery-search-form' do |form| %>
-    <%= text_field_tag :query, params[:query], placeholder: 'Cerca...', class: 'nursery-search-bar' %>
-    <%= form.submit "Cerca" %>
+    <%= text_field_tag :query, params[:query], placeholder: 'Search...', class: 'nursery-search-bar' %>
+    <%= form.submit "Search" %>
   <% end %>
 
   <div id="map-container">
@@ -16,8 +16,8 @@
 </div>
 
 <% if params[:query].present? && @nurseries.empty? %>
-  <p class="nursery-search-failure">Nessun vivaio presente con questo nome o in questa zona.</p>
-  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+  <p class="nursery-search-failure">No nursery found with this name or in this area.</p>
+  <%= link_to 'Back to the full list of nurseries', nurseries_path, class: 'back-to-all' %>
 <% elsif params[:query].present? %>
   <div class="nurseries-container">
     <% @nurseries.each do |nursery| %>
@@ -34,7 +34,7 @@
       </div>
     <% end %>
   </div>
-  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+  <%= link_to 'Back to the full list of nurseries', nurseries_path, class: 'back-to-all' %>
 <% else %>
   <div class="nurseries-container <%= 'single-item' if @nurseries.size == 1 %>">
     <% @nurseries.each do |nursery| %>
@@ -43,7 +43,7 @@
           <% if nursery.nursery_image.attached? %> 
             <%= image_tag nursery.nursery_image %>
           <% else %>
-            <p>immagine non presente</p>
+            <p>image not available</p>
           <% end %>
           <h3><%= nursery.name %></h3>
           <p><%= nursery.location %></p>
@@ -52,6 +52,7 @@
     <% end %>
   </div>
 <% end %>
+
 
 
 <script type="text/javascript">

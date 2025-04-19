@@ -10,18 +10,18 @@
 <body>
   <div class="profile-container">
     <div class="welcome-message">
-      Benvenuto nel tuo vivaio <%= @user.nome.capitalize %>!
+      Welcome to your nursery <%= @user.nome.capitalize %>!
     </div>
 
     <div id="profile-view" style="<%= @user.errors.any? ? 'display: none;' : 'display: block;' %>">
       <div class="profile-table">
         <table>
           <tr>
-            <th>Nome</th>
+            <th>Name</th>
             <td><%= @user.nome %></td>
           </tr>
           <tr>
-            <th>Cognome</th>
+            <th>Surname</th>
             <td><%= @user.cognome %></td>
           </tr>
           <tr>
@@ -33,17 +33,17 @@
 
       <div class="form-container">
         <%= form_with(model: @nursery, url: update_nursery_image_path(@nursery), method: :patch, local: true, html: { multipart: true }) do |form| %>
-          <%= form.label :nursery_image, "Seleziona l'immagine del tuo vivaio", style: "font-size: 1.4em; font-weight: bold;" %>
+          <%= form.label :nursery_image, "Select your nursery profile picture", style: "font-size: 1.4em; font-weight: bold;" %>
 
           <div class="custom-file-upload">
             <label for="file-upload" class="custom-file-upload-button" id="select-image-button">
-              Scegli Immagine
+              Choose the picture
             </label>
             <%= form.file_field :nursery_image, id: "file-upload", style: "display: none;" %>
             <span id="file-selected"></span>
           </div>
 
-          <%= form.submit "Aggiungi", class: "custom-submit-button", id: "submit-button", style: "display: none;" %>
+          <%= form.submit "Add", class: "custom-submit-button", id: "submit-button", style: "display: none;" %>
         <% end %>
       </div>
 
@@ -54,11 +54,11 @@
           <%= image_tag @nursery.nursery_image, class: "circle-image" %>
         </div>
       <% else %>
-        <p style="text-align: center; font-size: 1.4em;">Nessuna immagine del profilo disponibile</p>
+        <p style="text-align: center; font-size: 1.4em;">No profile picture available</p>
       <% end %>
       
       <div class="profile-buttons" style="text-align: center;">
-        <button id="edit-profile-button" class="btn btn-primary">Modifica profilo</button>
+        <button id="edit-profile-button" class="btn btn-primary">Update your profile</button>
         <%= link_to 'Logout', destroy_user_session_path, method: :get, id: 'logout-button', class: 'btn btn-danger' %>
       </div>
     </div>
@@ -66,7 +66,7 @@
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
       <%= form_with model: @user, url: update_nursery_profile_path, local: true do |form| %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
-          <%= form.label :nome, "Nome", class: 'form-label' %>
+          <%= form.label :nome, "Name", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome.capitalize, required: true %>
         </div>
         <% @user.errors[:nome].each do |error| %>
@@ -74,7 +74,7 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
-          <%= form.label :cognome, "Cognome", class: 'form-label' %>
+          <%= form.label :cognome, "Surname", class: 'form-label' %>
           <%= form.text_field :cognome, value: @user.cognome.capitalize, required: true %>
         </div>
         <% @user.errors[:cognome].each do |error| %>
@@ -82,7 +82,7 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
-          <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
+          <%= form.label :current_password, "Current Password", class: 'form-label' %>
           <%= form.password_field :current_password, required: true %>
         </div>
         <% @user.errors[:current_password].each do |error| %>
@@ -90,23 +90,23 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
-          <%= form.label :password, "Nuova Password", class: 'form-label'%>
-          <%= form.password_field :password, placeholder: "Lascia vuoto se non vuoi cambiare" %>
+          <%= form.label :password, "New Password", class: 'form-label'%>
+          <%= form.password_field :password, placeholder: "Leave it blank if you don't want to change" %>
         </div>
         <% @user.errors[:password].each do |error| %>
           <div class="error-message"><%= @user.errors[:password].join(', ').html_safe %></div>
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
-          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
-          <%= form.password_field :password_confirmation, placeholder: "Lascia vuoto se non vuoi cambiare" %>
+          <%= form.label :password_confirmation, "Confirm the new password", class: 'form-label' %>
+          <%= form.password_field :password_confirmation, placeholder: "Leave it blank if you don't want to change" %>
         </div>
         <% @user.errors[:password_confirmation].each do |error| %>
           <div class="error-message"><%= error %></div>
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:address].any? %>">
-          <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
+          <%= form.label :address, "New Home Address", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
         </div>
         <% @user.errors[:address].each do |error| %>
@@ -114,8 +114,8 @@
         <% end %>
 
         <div class="profile-buttons">
-          <%= form.submit "Invia", class: "btn btn-primary" %>
-          <button id="cancel-edit-button" class="btn btn-secondary" type="button" onclick="cancelEdit()">Annulla</button>
+          <%= form.submit "Send", class: "btn btn-primary" %>
+          <button id="cancel-edit-button" class="btn btn-secondary" type="button" onclick="cancelEdit()">Discard</button>
         </div>
       <% end %>
     </div>
@@ -127,31 +127,31 @@
   </div>
 
   <div class="profile-nursery-details" style="<%= @nursery.errors.any? ? 'display: none;' : 'display: block;' %>">
-    <p><strong>Indirizzo:</strong> <span id="address-display"><%= @nursery.address %></span></p>
-    <p><strong>Telefono:</strong> <span id="number-display">+39 <%= @nursery.number.to_s %></span></p>
+    <p><strong>Address:</strong> <span id="address-display"><%= @nursery.address %></span></p>
+    <p><strong>Mobile Number:</strong> <span id="number-display">+39 <%= @nursery.number.to_s %></span></p>
     <p><strong>Email:</strong> <span id="email-display"><%= @nursery.email.to_s %></span></p>
-    <p><strong>Orario:</strong> 
+    <p><strong>Opening Closing Hours:</strong> 
       <span id="open_time-display"><%= @nursery.open_time %></span> - 
       <span id="close_time-display"><%= @nursery.close_time %></span>
     </p>
-    <p><strong>Descrizione:</strong> <span id="description-display"><%= @nursery.description.to_s %></span></p>
+    <p><strong>Description:</strong> <span id="description-display"><%= @nursery.description.to_s %></span></p>
 
     <div class="profile-buttons">
-      <button type="button" id="edit-button" class="btn btn-primary" style="font-size: 1em;" onclick="showNurseryEdit()">Modifica informazioni</button>
+      <button type="button" id="edit-button" class="btn btn-primary" style="font-size: 1em;" onclick="showNurseryEdit()">Edit information</button>
     </div>
   </div>
 
   <div class="profile-nursery-edit" style="<%= @nursery.errors.any? ? 'display: block;' : 'display: none;' %>">
     <%= form_with(model: @nursery, url: update_nursery_path(@nursery), method: :patch) do |form| %>
       <div>
-        <p><strong>Indirizzo:</strong> 
+        <p><strong>Address:</strong> 
           <%= form.text_field :address, value: @nursery.address, class: "edit-field small-input #{'has-error' if @nursery.errors[:address].present?}" %><br>
           <span class="error-message-nursery" id="address-error"><%= @nursery.errors[:address].join(', ') if @nursery.errors[:address].present? %></span>
         </p>
       </div>
 
       <div>
-        <p><strong>Telefono:</strong> 
+        <p><strong>Mobile Number:</strong> 
           <%= form.text_field :number, value: @nursery.number.to_s, class: "edit-field small-input #{'has-error' if @nursery.errors[:number].present?}" %><br>
           <span class="error-message-nursery" id="number-error"><%= @nursery.errors[:number].join(', ') if @nursery.errors[:number].present? %></span>
         </p>
@@ -165,7 +165,7 @@
       </div>
 
       <div>
-        <p><strong>Orario:</strong>
+        <p><strong>Opening Closing Hours:</strong>
           <%= form.text_field :open_time, value: @nursery.open_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}" %>
           -
           <%= form.text_field :close_time, value: @nursery.close_time.to_s, class: "edit-field-time #{'has-error' if @nursery.errors[:email].present?}"  %><br>
@@ -174,22 +174,22 @@
       </div>
 
       <div>
-        <p><strong>Descrizione:</strong> 
+        <p><strong>Description:</strong> 
           <%= form.text_area :description, value: @nursery.description.to_s, required: true, class: "edit-field #{'has-error' if @nursery.errors[:email].present?}"  %><br>
           <span class="error-message-nursery" id="description-error"><%= @nursery.errors[:description].join(', ') if @nursery.errors[:description].present? %></span>
         </p>
       </div>
 
       <div class="profile-buttons">
-        <%= form.submit "Salva modifiche", id: "save-button", class: "btn btn-primary", style: "font-size: 1em;", disabled: !form.object.valid? %>
-        <button type="button" class="btn btn-secondary" style="font-size: 1em;" id="annulla-btn" onclick="cancelNurseryEdit()">Annulla</button>
+        <%= form.submit "Save updates", id: "save-button", class: "btn btn-primary", style: "font-size: 1em;", disabled: !form.object.valid? %>
+        <button type="button" class="btn btn-secondary" style="font-size: 1em;" id="annulla-btn" onclick="cancelNurseryEdit()">Discard</button>
       </div>
     <% end %>
   </div>
 
 
   <div class="plant-message">
-    Le tue piante in vendita:
+    Your plants for sale:
   </div>
 
   <div class="nursery-plants-available <%= 'single-item' if @myplants.present? && @myplants.size == 1 %>">
@@ -202,18 +202,18 @@
 
             <div class="plant-info">
               <h3 class="nome" style="text-align: center; font-size: 2.5em;"><strong><%= plant.name %></strong></h3>
-              <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-              <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
-              <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
-              <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
-              <p><strong>Clima:</strong> <%= plant.climate %></p>
-              <p><strong>Uso:</strong> <%= plant.use %></p>
-              <p><strong>Descrizione:</strong> <%= plant.description %></p>
+              <p><strong>Typology:</strong> <%= plant.typology %></p>
+              <p><strong>Light:</strong> <%= ['complete shade', 'partial shade', 'indirect light', 'direct light'][plant.light - 1] %></p>
+              <p><strong>Irrigation:</strong> <%= ['rarely', 'often', 'frequently'][plant.irrigation - 1] %></p>
+              <p><strong>Dimension:</strong> <%= ['small', 'medium', 'large'][plant.size - 1] %></p>
+              <p><strong>Climate:</strong> <%= plant.climate %></p>
+              <p><strong>Usage:</strong> <%= plant.use %></p>
+              <p><strong>Description:</strong> <%= plant.description %></p>
             </div>
 
             <div class="plant-controls">
               <div class="plant-availability">
-                <p><strong>Disponibilità:</strong></p>
+                <p><strong>Availability:</strong></p>
                 <div class="availability-controls">
                   <p id="disp-<%= plant.id %>"><%= plant.disp %></p>
                   <span class="btn-incdisp" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">+</span>
@@ -221,11 +221,11 @@
                 </div>
               </div>
 
-              <p class="plant-reservations"><strong>Ordinazioni:</strong> <%= plant.res %></p>
+              <p class="plant-reservations"><strong>Reservations:</strong> <%= plant.res %></p>
             </div>
 
             <div class="btn-removenursplant" style="text-align:" data-plant-id="<%= plant.id %>" data-nursery-id="<%= @nursery.id %>">
-              <p>Rimuovi Dal Commercio</p>
+              <p>Remove From Sale</p>
             </div>
           </div>
 
@@ -233,7 +233,7 @@
       </div>
     <% else %>
       <div class="btn-nurs" style="margin-top: -10px;">
-        <p class="no-results">Non hai messo in vendita nessuna pianta ancora.<br> Aggiungile dal catalogo qui sotto</p>
+        <p class="no-results">You have not listed any plants yet.<br> Add them from the catalog below</p>
         <%= link_to 'catalogo', infoplants_path, class: 'nav-link btn-primary' %>
       </div>
     <% end %>
@@ -241,21 +241,21 @@
 
 
   <div class="table-reservations">
-    <h2 style="font-size: 2em;">Prenotazioni dei Clienti</h2>
+    <h2 style="font-size: 2em;">Customer Reservations</h2>
 
     <% if @reservations.present? && @reservations.empty? %>
       <div class="btn-nurs">
-        <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
+        <h2 style="font-size: 1.5em; color: black !important;">No reservations to fulfill</h2>
       </div>
     <% else %>
       <% if @reservations.present? %>
           <table>
             <thead>
               <tr>
-                <th>Pianta</th>
-                <th>Email Utente</th>
-                <th>Quantità</th>
-                <th>Soddisfa</th>
+                <th>Plant</th>
+                <th>User Email</th>
+                <th>Quantity</th>
+                <th>Fulfill</th>
               </tr>
             </thead>
             <tbody>
@@ -282,7 +282,7 @@
         
       <% else %>
         <div class="btn-nurs">
-          <h2 style="font-size: 1.5em; color: black !important;">Nessuna prenotazione da soddisfare</h2>
+          <h2 style="font-size: 1.5em; color: black !important;">No reservations to fulfill</h2>
         </div>
       <% end %>
     <% end %>
@@ -335,17 +335,17 @@
             .then(response => response.json())
             .then(data => {
               if (data.success) {
-                if (confirm('Sei sicuro di aver soddisfatto tutte le prenotazioni per questa pianta?')) {
+                if (confirm('Have you fulfilled all reservations for this plant?')) {
                   checkbox.closest('tr').remove();
                 }
               } else {
-                alert(data.message || "Errore nella soddisfazione dell'ordine.");
+                alert(data.message || "Order fulfillment error.");
                 checkbox.checked = false;
               }
             })
             .catch(error => {
-              console.error('Errore:', error);
-              alert('Errore: ' + error.message);
+              console.error('Error:', error);
+              alert('Error: ' + error.message);
               checkbox.checked = false;
             });
           }
@@ -383,17 +383,17 @@
             if (data.success) {
               plantBox.remove();
             } else {
-              alert(data.message || "Errore nella rimozione. Riprova.");
+              alert(data.message || "Error removing. Please try again.");
               button.style.pointerEvents = "auto";
             }
           })
           .catch(error => {
-            console.error('Errore:', error);
-            alert('Errore: ' + error.message);
+            console.error('Error:', error);
+            alert('Error: ' + error.message);
             button.style.pointerEvents = "auto";
           });
         } else {
-          console.error("Elemento non trovato.");
+          console.error("Item not found.");
         }
       });
     });
@@ -428,12 +428,12 @@
               disponibilityElement.textContent = currentDisponibility + 1;
             }
           } else {
-            alert(data.message || "Errore nell'incremento. Riprova.");
+            alert(data.message || "Error incrementing. Please try again.");
           }
         })
         .catch(error => {
-          console.error('Errore:', error);
-          alert('Errore: ' + error.message);
+          console.error('Error:', error);
+          alert('Error: ' + error.message);
         });
       });
     });
@@ -470,8 +470,8 @@
           }
         })
         .catch(error => {
-          console.error('Errore:', error);
-          alert('Errore: ' + error.message);
+          console.error('Error:', error);
+          alert('Error: ' + error.message);
         });
       });
     });

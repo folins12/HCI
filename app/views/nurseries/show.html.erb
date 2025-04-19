@@ -5,17 +5,17 @@
   </div>
 
   <div class="nursery-details">
-    <p><strong>Indirizzo:</strong> <%= @nursery.address %></p>
-    <p><strong>Telefono:</strong> +39 <%= @nursery.number %></p>
+    <p><strong>Address:</strong> <%= @nursery.address %></p>
+    <p><strong>Phone:</strong> +39 <%= @nursery.number %></p>
     <p><strong>Email:</strong> <%= @nursery.email %></p>
-    <p><strong>Orario:</strong> <%= @nursery.open_time %> - <%= @nursery.close_time %></p>
-    <p><strong>Descrizione:</strong> <%= @nursery.description %></p>
+    <p><strong>Opening Hours:</strong> <%= @nursery.open_time %> - <%= @nursery.close_time %></p>
+    <p><strong>Description:</strong> <%= @nursery.description %></p>
   </div>
 
-  <!-- Sezione Piante Disponibili -->
+  <!-- Available Plants Section -->
   <% if @nursery.nursery_plants.any? %>
     <div class="nursery-plants-available">
-      <h2>Piante In Vendita In Questo Vivaio</h2>
+      <h2>Plants for Sale at This Nursery</h2>
       <div class="nursery-plants-container">
         <% @nursery.nursery_plants.each do |nursery_plant| %>
           <div class="nursery-plant-box">
@@ -23,11 +23,11 @@
             <h3><%= nursery_plant.plant.name %></h3>
             <p><%= nursery_plant.plant.description %></p>
             <p class="availability" data-nursery-plant-id="<%= nursery_plant.id %>">
-              Disponibilità in negozio: <%= [nursery_plant.max_disponibility - nursery_plant.num_reservations, 0].max %>
+              In-store availability: <%= [nursery_plant.max_disponibility - nursery_plant.num_reservations, 0].max %>
             </p>
             <% if current_user.nursery == false %>
               <div class="btn-reserve" data-nursery-plant-id="<%= nursery_plant.id %>">
-                <p>PRENOTA</p>
+                <p>RESERVE</p>
               </div>
             <% end %>
           </div>
@@ -35,11 +35,12 @@
       </div>
     </div>
   <% else %>
-    <p>Nessuna pianta disponibile in questo vivaio.</p>
+    <p>No plants available at this nursery.</p>
   <% end %>
 
-  <%= link_to 'Torna alla lista completa dei vivai', nurseries_path, class: 'back-to-all' %>
+  <%= link_to 'Back to the full list of nurseries', nurseries_path, class: 'back-to-all' %>
 </div>
+
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {

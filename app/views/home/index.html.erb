@@ -2,14 +2,13 @@
   <div class="content">
     <h1>PlantTracker</h1>
     <p class="description">
-      PlantTracker è l'applicazione ideale per gli appassionati di giardinaggio. Esplora una vasta varietà di piante, crea la tua collezione personale di piante e impara le loro caratteristiche. Inoltre, puoi cercare i vivai più vicini a te per effettuare prenotazioni delle piante che più desideri.
+      PlantTracker is the perfect application for gardening enthusiasts. Explore a wide variety of plants, create your own personal plant collection, and learn about their characteristics. You can also search for nearby nurseries to book the plants you desire.
     </p>
     <p class="description description-separator">
-      Sei un fioraio? PlantTracker offre anche una sezione dedicata ai vivai, dove puoi creare il tuo profilo, inserire le piante in vendita e ricevere prenotazioni dagli utenti. Unisciti a noi per trasformare la tua passione per le piante in una comunità fiorente.
+      Are you a florist? PlantTracker also offers a dedicated nursery section where you can create your profile, list the plants for sale, and receive bookings from users. Join us to turn your passion for plants into a thriving community.
     </p>
   </div>
 </div>
-
 
 <!-- Video Background -->
 <div class="video-background">
@@ -25,49 +24,49 @@
   <div class="container">
     <div class="section">
       <%= link_to infoplants_path, class: 'section-link' do %>
-        <h2 class="section-title">ESPLORA PIANTE NUOVE</h2>
+        <h2 class="section-title">EXPLORE NEW PLANTS</h2>
         <div class="section-content">
           <img src="<%= asset_path('explore.jpg') %>" alt="Explore" class="section-image">
-          <p class="section-description">Scopri ed impara a conoscere la varietà di piante che ci circondano. Apprendi caratteristiche e particolarità che contraddistinguono le diverse tipologie di piante che abbiamo selezionato.</p>
+          <p class="section-description">Discover and learn about the variety of plants around us. Learn the characteristics and uniqueness of the different plant types we've selected.</p>
         </div>
       <% end %>
       <div class="home-divider-thin"></div>
     </div>
 
     <div class="section">
-      <% if current_user && current_user.nursery == true%>
+      <% if current_user && current_user.nursery == true %>
         <%= link_to (nursery_profile_path), class: 'section-link' do %>
-          <h2 class="section-title">IL MIO VIVAIO</h2>
+          <h2 class="section-title">MY NURSERY</h2>
           <div class="section-content">
             <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
-            <p class="section-description">Gestisci il tuo catalogo. Aggiungi le piante che vuoi mettere in vendita e visualizza le prenotazioni dei clienti.</p>
+            <p class="section-description">Manage your catalog. Add the plants you want to sell and view customer bookings.</p>
           </div>
         <% end %>
-      <%else%>
+      <% else %>
         <%= link_to (user_profile_path), class: 'section-link' do %>
-          <h2 class="section-title">LE MIE PIANTE</h2>
+          <h2 class="section-title">MY PLANTS</h2>
           <div class="section-content">
             <img src="<%= asset_path('myplants.jpg') %>" alt="My Plants" class="section-image">
-            <p class="section-description">Gestisci la tua collezione personale di piante. Divertiti ad aggiungere le tue piante nuove alla collezione e scopri i nostri consigli sul modo migliore per prendertene cura.</p>
+            <p class="section-description">Manage your personal plant collection. Have fun adding new plants to your collection and discover our tips on the best ways to take care of them.</p>
           </div>
         <% end %>
       <% end %>
       <div class="home-divider-thin"></div>
     </div>
 
-
     <div class="section">
       <% link_path = user_signed_in? ? nurseries_path : new_user_session_path %>
       <%= link_to link_path, class: 'section-link' do %>
-        <h2 class="section-title">VIVAI</h2>
+        <h2 class="section-title">NURSERIES</h2>
         <div class="section-content">
           <img src="<%= asset_path('nurseries.jpg') %>" alt="Nurseries" class="section-image">
-          <p class="section-description">Trova il vivaio a te più vicino e che più preferisci per prenotare piante da ritirare in negozio che andrai ad aggiungere alla tua fantastica collezione!</p>
+          <p class="section-description">Find the nursery closest to you and most to your liking to book plants for in-store pickup and add them to your amazing collection!</p>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
 
 <!-- Footer -->
 <div class="footer">

@@ -1,45 +1,45 @@
 <div class="plants-container">
   <p class="plant-title">PlantExplorer</p>
-  <p class="intro-text">Esplora e conosci le caratteristiche di queste piante e divertiti a selezionare i filtri per scoprire le piante che si addicono ai tuoi gusti.</p>
+  <p class="intro-text">Explore and discover the characteristics of these plants and have fun using filters to find the ones that suit your preferences.</p>
 
   <%= form_with url: infoplants_path, method: :get, local: true, class: "search-form" do |form| %>
     <div class="search-bar-container">
-      <%= text_field_tag :query, params[:query], placeholder: 'Cerca...', class: "search-bar" %>
-      <%= form.submit "Cerca", class: "search-button" %>
+      <%= text_field_tag :query, params[:query], placeholder: 'Search...', class: "search-bar" %>
+      <%= form.submit "Search", class: "search-button" %>
     </div>
   <% end %>
 
   <%= form_with url: infoplants_path, method: :get, local: true, class: "filters-form", id: "filters-form" do |form| %>
     <div class="filters-container">
       <div class="filter">
-        <%= label_tag :typology, 'Tipologia' %>
+        <%= label_tag :typology, 'Typology' %>
         <%= select_tag :typology, options_for_select([['', '', { style: 'color: lightgray;' }]] + Plant.pluck(:typology).uniq, params[:typology]), include_blank: false %>
       </div>
       <div class="filter">
-        <%= label_tag :climate, 'Clima' %>
+        <%= label_tag :climate, 'Climate' %>
         <%= select_tag :climate, options_for_select([['', '', { style: 'color: lightgray;' }]] + Plant.pluck(:climate).uniq, params[:climate]), include_blank: false %>
       </div>
-        <div class="filter">
-        <%= label_tag :use, 'Uso' %>
+      <div class="filter">
+        <%= label_tag :use, 'Use' %>
         <%= select_tag :use, options_for_select([['', '', { style: 'color: lightgray;' }]] + Plant.pluck(:use).uniq, params[:use]), include_blank: false %>
       </div>
       <div class="filter">
-        <%= label_tag :light, "Luce" %>
-        <%= select_tag :light, options_for_select([['', '', { style: 'color: lightgray;' }], ['Ombra completa', 1], ['Ombra Parziale', 2], ['Luce Indiretta', 3], ['Sole Diretto', 4]], params[:light]), include_blank: false %>
+        <%= label_tag :light, "Light" %>
+        <%= select_tag :light, options_for_select([['', '', { style: 'color: lightgray;' }], ['Full Shade', 1], ['Partial Shade', 2], ['Indirect Light', 3], ['Direct Sunlight', 4]], params[:light]), include_blank: false %>
       </div>
       <div class="filter">
-        <%= label_tag :size, "Dimensione" %>
-        <%= select_tag :size, options_for_select([['', '', { style: 'color: lightgray;' }], ['Piccola', 1], ['Media', 2], ['Grande', 3]], params[:size]), include_blank: false %>
+        <%= label_tag :size, "Size" %>
+        <%= select_tag :size, options_for_select([['', '', { style: 'color: lightgray;' }], ['Small', 1], ['Medium', 2], ['Large', 3]], params[:size]), include_blank: false %>
       </div>
       <div class="filter">
-        <%= label_tag :irrigation, "Irrigazione" %>
-        <%= select_tag :irrigation, options_for_select([['', '', { style: 'color: lightgray;' }], ['Raramente', 1], ['Ogni Tanto', 2], ['Frequentemente', 3]], params[:irrigation]), include_blank: false %>
+        <%= label_tag :irrigation, "Watering" %>
+        <%= select_tag :irrigation, options_for_select([['', '', { style: 'color: lightgray;' }], ['Rarely', 1], ['Occasionally', 2], ['Frequently', 3]], params[:irrigation]), include_blank: false %>
       </div>
       <div class="apply-filters">
-        <%= form.submit "Applica", class: "apply-button" %>
+        <%= form.submit "Apply", class: "apply-button" %>
       </div>
       <div class="clear-filters">
-        <%= button_tag "Cancella", type: 'button', class: "clear-button", onclick: "clearFilters()" %>
+        <%= button_tag "Clear", type: 'button', class: "clear-button", onclick: "clearFilters()" %>
       </div>
     </div>
   <%end%>
@@ -55,31 +55,31 @@
         
         <div class="plant-info">
           <p class="nome"><strong><%= plant.name %></strong></p>
-          <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-          <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
-          <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
-          <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
-          <p><strong>Clima:</strong> <%= plant.climate %></p>
-          <p><strong>Uso:</strong> <%= plant.use %></p>
-          <p><strong>Descrizione:</strong> <%= plant.description %></p>          
+          <p><strong>Typology:</strong> <%= plant.typology %></p>
+          <p><strong>Light:</strong> <%= ['full shade', 'partial shade', 'indirect light', 'direct sunlight'][plant.light - 1] %></p>
+          <p><strong>Watering:</strong> <%= ['rarely', 'occasionally', 'frequently'][plant.irrigation - 1] %></p>
+          <p><strong>Size:</strong> <%= ['small', 'medium', 'large'][plant.size - 1] %></p>
+          <p><strong>Climate:</strong> <%= plant.climate %></p>
+          <p><strong>Use:</strong> <%= plant.use %></p>
+          <p><strong>Description:</strong> <%= plant.description %></p>          
         </div>
 
         <% if current_user %>
 
           <% if current_user&.nursery? %>
             <% if @nursery_plants.present? && @nursery_plants.include?(plant.id) %>
-              <p class="added-message">Questa pianta è già nel tuo vivaio.</p>
+              <p class="added-message">This plant is already in your nursery.</p>
             <% else %>
               <div class="btn-addnurseryplant" data-plant-id="<%= plant.id %>">
-                <p>Aggiungi al mio vivaio</p>
+                <p>Add to my nursery</p>
               </div>
             <% end %>
           <% else %>
             <% if @myplants.present? && @myplants.include?(plant.id) %>
-              <p class="added-message">Questa pianta è già nella tua collezione.</p>
+              <p class="added-message">This plant is already in your collection.</p>
             <% else %>
               <div class="btn-addmyplant" data-plant-id="<%= plant.id %>">
-                <p>Aggiungi alla mia collezione</p>
+                <p>Add to my collection</p>
               </div>
             <% end %>
           
@@ -90,9 +90,10 @@
       </div>
     <% end %>
   <% else %>
-    <p class="no-results">Non ci sono piante con questi filtri</p>
+    <p class="no-results">There are no plants matching these filters</p>
   <% end %>
 </div>
+
 
 
 
