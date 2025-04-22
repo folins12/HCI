@@ -18,13 +18,13 @@
           <%= link_to 'Home', root_path, class: 'nav-link' %>
         </div>
         <div class="nav-item">
-          <%= link_to 'Piante', infoplants_path, class: 'nav-link' %>
+          <%= link_to 'Plants', infoplants_path, class: 'nav-link' %>
         </div>
         <div class="nav-item">
           <% if user_signed_in? %>
-            <%= link_to 'Vivai', nurseries_path, class: 'nav-link' %>
+            <%= link_to 'Nurseries', nurseries_path, class: 'nav-link' %>
           <% else %>
-            <%= link_to 'Vivai', new_user_session_path, class: 'nav-link' %>
+            <%= link_to 'Nurseries', new_user_session_path, class: 'nav-link' %>
           <% end %>
         </div>
         <% if user_signed_in? %>

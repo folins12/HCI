@@ -56,9 +56,9 @@
         <div class="plant-info">
           <p class="nome"><strong><%= plant.name %></strong></p>
           <p><strong>Typology:</strong> <%= plant.typology %></p>
-          <p><strong>Light:</strong> <%= ['full shade', 'partial shade', 'indirect light', 'direct sunlight'][plant.light - 1] %></p>
-          <p><strong>Watering:</strong> <%= ['rarely', 'occasionally', 'frequently'][plant.irrigation - 1] %></p>
-          <p><strong>Size:</strong> <%= ['small', 'medium', 'large'][plant.size - 1] %></p>
+          <p><strong>Light:</strong> <%= ['Full shade', 'Partial shade', 'Indirect light', 'Direct sunlight'][plant.light - 1] %></p>
+          <p><strong>Watering:</strong> <%= ['Rarely', 'Occasionally', 'Frequently'][plant.irrigation - 1] %></p>
+          <p><strong>Size:</strong> <%= ['Small', 'Medium', 'Large'][plant.size - 1] %></p>
           <p><strong>Climate:</strong> <%= plant.climate %></p>
           <p><strong>Use:</strong> <%= plant.use %></p>
           <p><strong>Description:</strong> <%= plant.description %></p>          
@@ -99,7 +99,7 @@
 
 <% if params[:query].present? || params[:typology].present? || params[:climate].present? || params[:use].present? || params[:light].present? || params[:size].present? || params[:irrigation].present? %>
   <div class="back-button-container">
-    <%= link_to 'Torna indietro', infoplants_path, class: 'back-button' %>
+    <%= link_to 'Go back', infoplants_path, class: 'back-button' %>
   </div>
 <% end %>
 
