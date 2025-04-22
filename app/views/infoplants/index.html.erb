@@ -149,15 +149,15 @@
             // Mostra il messaggio "Questa pianta è stata inserita nella tua collezione."
             const message = document.createElement("p");
             message.className = "added-message";
-            message.textContent = "Questa pianta è stata inserita nella tua collezione.";
+            message.textContent = "This plant has been added to your collection.";
             plantBox.appendChild(message);
           } else {
-            alert(data.message || "Errore nella aggiunta. Riprova.");
+            alert(data.message || "Error adding. Please try again.");
           }
         })
         .catch(error => {
-          console.error('Errore:', error);
-          alert('Errore: ' + error.message);
+          console.error('Error:', error);
+          alert('Error: ' + error.message);
         });
       });
     });
@@ -197,15 +197,15 @@
             // Mostra il messaggio "Questa pianta è stata inserita nel tuo vivaio."
             const message = document.createElement("p");
             message.className = "added-message";
-            message.textContent = "Questa pianta è stata inserita nel tuo vivaio.";
+            message.textContent = "This plant has been added to your collection.";
             plantBox.appendChild(message);
           } else {
-            alert(data.message || "Errore nella aggiunta. Riprova.");
+            alert(data.message || "Error adding. Please try again.");
           }
         })
         .catch(error => {
-          console.error('Errore:', error);
-          alert('Errore: ' + error.message);
+          console.error('Error:', error);
+          alert('Error: ' + error.message);
         });
       });
     });

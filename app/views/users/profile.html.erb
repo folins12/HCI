@@ -11,7 +11,7 @@
 <body>
   <div class="profile-container">
     <div class="welcome-message">
-      Benvenuto nel tuo profilo <%= @user.nome.capitalize %>!
+      Welcome to your profile <%= @user.nome.capitalize %>!
     </div>
 
 
@@ -19,11 +19,11 @@
       <div class="profile-table">
         <table>
           <tr>
-            <th>Nome</th>
+            <th>Name</th>
             <td><%= @user.nome %></td>
           </tr>
           <tr>
-            <th>Cognome</th>
+            <th>Surname</th>
             <td><%= @user.cognome %></td>
           </tr>
           <tr>
@@ -33,7 +33,7 @@
         </table>
       </div>
       <div class="profile-buttons">
-        <button id="edit-profile-button" class="btn btn-primary">Modifica profilo</button>
+        <button id="edit-profile-button" class="btn btn-primary">Edit profile</button>
         <%= link_to 'Logout', destroy_user_session_path, method: :delete, id: 'logout-button', class: 'btn btn-danger' %>
       </div>
     </div>
@@ -41,7 +41,7 @@
     <div id="profile-edit" style="<%= @user.errors.any? ? 'display: block;' : 'display: none;' %>">
       <%= form_with model: @user, url: user_profile_path, local: true do |form| %>
         <div class="input-group <%= 'has-error' if @user.errors[:nome].any? %>">
-          <%= form.label :nome, "Nome", class: 'form-label' %>
+          <%= form.label :nome, "Name", class: 'form-label' %>
           <%= form.text_field :nome, value: @user.nome.capitalize, required: true %>
         </div>
         <% @user.errors[:nome].each do |error| %>
@@ -49,7 +49,7 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
-          <%= form.label :cognome, "Cognome", class: 'form-label' %>
+          <%= form.label :cognome, "Surname", class: 'form-label' %>
           <%= form.text_field :cognome, value: @user.cognome.capitalize, required: true %>
         </div>
         <% @user.errors[:cognome].each do |error| %>
@@ -57,7 +57,7 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:current_password].any? %>">
-          <%= form.label :current_password, "Password Attuale", class: 'form-label' %>
+          <%= form.label :current_password, "Current Password", class: 'form-label' %>
           <%= form.password_field :current_password, required: true %>
         </div>
         <% @user.errors[:current_password].each do |error| %>
@@ -65,23 +65,23 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password].any? %>">
-          <%= form.label :password, "Nuova Password", class: 'form-label'%>
-          <%= form.password_field :password, placeholder: "Lascia vuoto se non vuoi cambiare" %>
+          <%= form.label :password, "New Password", class: 'form-label'%>
+          <%= form.password_field :password, placeholder: "Leave it blank if you do not want to change it" %>
         </div>
         <% @user.errors[:password].each do |error| %>
           <div class="error-message"><%= @user.errors[:password].join(', ').html_safe %></div>
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
-          <%= form.label :password_confirmation, "Conferma Nuova Password", class: 'form-label' %>
-          <%= form.password_field :password_confirmation, placeholder: "Lascia vuoto se non vuoi cambiare" %>
+          <%= form.label :password_confirmation, "Confirm Nuova Password", class: 'form-label' %>
+          <%= form.password_field :password_confirmation, placeholder: "Leave it blank if you do not want to change it" %>
         </div>
         <% @user.errors[:password_confirmation].each do |error| %>
           <div class="error-message"><%= error %></div>
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:address].any? %>">
-          <%= form.label :address, "Nuovo Indirizzo di Casa", class: 'form-label' %>
+          <%= form.label :address, "New Home Address", class: 'form-label' %>
           <%= form.text_field :address, value: @user.address, required: true %>
         </div>
         <% @user.errors[:address].each do |error| %>
@@ -89,8 +89,8 @@
         <% end %>
 
         <div class="profile-buttons">
-          <%= form.submit "Invia", class: "btn btn-primary" %>
-          <button id="cancel-edit-button" class="btn btn-secondary" type="button" onclick="cancelEdit()">Annulla</button>
+          <%= form.submit "Send", class: "btn btn-primary" %>
+          <button id="cancel-edit-button" class="btn btn-secondary" type="button" onclick="cancelEdit()">Discard</button>
         </div>
       <% end %>
     </div>
@@ -100,17 +100,17 @@
 
   
   <div class="weather-message">
-    Controlla il meteo nella tua zona per decidere se irrigare oggi
+    Check the weather in your area to decide whether to water today
   </div>
   <div class="weather-widget" id="weather-widget">
-    <p>Caricamento meteo...</p>
+    <p>Loading weather...</p>
   </div>
 
 
 
   <% if @myplants.present? && @myplants.any? %>
     <div class="plant-message">
-      La tua collezione di piante:
+      Your plant collection:
     </div>
     <div class="plants-grid <%= 'single-item' if @myplants.size == 1 %>">
       <% @myplants.each do |plant| %>
@@ -121,25 +121,25 @@
           
           <div class="plant-info">
             <p class="nome"><strong><%= plant.name %></strong></p>
-            <p><strong>Tipologia:</strong> <%= plant.typology %></p>
-            <p><strong>Luce:</strong> <%= ['ombra completa', 'ombra parziale', 'luce indiretta', 'sole diretto'][plant.light - 1] %></p>
-            <p><strong>Irrigazione:</strong> <%= ['raramente', 'ogni tanto', 'frequentemente'][plant.irrigation - 1] %></p>
-            <p><strong>Dimensione:</strong> <%= ['piccola', 'media', 'grande'][plant.size - 1] %></p>
-            <p><strong>Clima:</strong> <%= plant.climate %></p>
-            <p><strong>Uso:</strong> <%= plant.use %></p>
-            <p><strong>Descrizione:</strong> <%= plant.description %></p>
+            <p><strong>Typology:</strong> <%= plant.typology %></p>
+            <p><strong>Light:</strong> <%= ['Full shade', 'Partial shade', 'Indirect light', 'Direct sunlight'][plant.light - 1] %></p>
+            <p><strong>Watering:</strong> <%= ['Rarely', 'Occasionally', 'Frequently'][plant.irrigation - 1] %></p>
+            <p><strong>Size:</strong> <%= ['Small', 'Medium', 'Large'][plant.size - 1] %></p>
+            <p><strong>Climate:</strong> <%= plant.climate %></p>
+            <p><strong>Use:</strong> <%= plant.use %></p>
+            <p><strong>Description:</strong> <%= plant.description %></p>
           </div>
           
           <div class="btn-removemyplant" data-myplant-id="<%= plant.id %>">
-            <p>Rimuovi</p>
+            <p>Remove</p>
           </div>
         </div>
       <% end %>
     </div>
   <% else %>
     <div class="btn-nurs">
-      <p class="no-results">La tua collezione di piante è vuota.<br> Aggiungi le piante che hai a casa, cliccando qui</p>
-      <%= link_to 'catalogo', infoplants_path, class: 'nav-link btn-primary' %>
+      <p class="no-results">Your plant collection is empty.<br> Add the plants you have at home by clicking here</p>
+      <%= link_to 'catalog', infoplants_path, class: 'nav-link btn-primary' %>
     </div>
     
   <% end %>
@@ -147,12 +147,12 @@
 
   
   <div class="table-reservations">
-    <h2 style="font-size: 2em;">Le Tue Prenotazioni</h2>
+    <h2 style="font-size: 2em;">Your Reservations</h2>
 
     <% if @user_reservations.present? && @user_reservations.empty? %>
       <div class="btn-nurs">
-        <p style="font-size: 1.3em;">Non hai nessun ordine in sospeso al momento</p>
-        <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
+        <p style="font-size: 1.3em;">You have no pending orders at the moment</p>
+        <%= link_to 'Book From Nurseries', nurseries_path, class: 'nav-link btn-primary' %>
       </div>
 
     <% else %>
@@ -160,10 +160,10 @@
         <table>
           <thead>
             <tr>
-              <th>Pianta</th>
-              <th>Email Vivaio</th>
-              <th>Quantità</th>
-              <th>Riduci</th>
+              <th>Plant</th>
+              <th>Nursery Email</th>
+              <th>Quantity</th>
+              <th>Reduce</th>
             </tr>
           </thead>
           <tbody>
@@ -183,8 +183,8 @@
         </table>
       <% else %>
         <div class="btn-nurs">
-          <p style="font-size: 1.3em;">Non hai nessun ordine in sospeso al momento</p>
-          <%= link_to 'Prenota Dai Vivai', nurseries_path, class: 'nav-link btn-primary' %>
+          <p style="font-size: 1.3em;">You have no pending orders at the moment</p>
+          <%= link_to 'Book From Nurseries', nurseries_path, class: 'nav-link btn-primary' %>
         </div>
       <% end %>
     <%end%>
@@ -230,7 +230,7 @@
               return response.json();
             })
             .then(data => {
-              console.log("Risposta dal server:", data); 
+              console.log("Server response:", data); 
 
               if (data.success) {
                 const newQuantity = currentQuantity - 1;
@@ -241,12 +241,12 @@
                   updateQuantity(newQuantity);
                 }
               } else {
-                alert(data.message || "Errore nella modifica della prenotazione. Riprova.");
+                alert(data.message || "Error modifying reservation. Please try again.");
               }
             })
             .catch(error => {
-              console.error('Errore:', error);
-              alert('Errore: ' + error.message);
+              console.error('Error:', error);
+              alert('Error: ' + error.message);
             })
             .finally(() => {
               this.style.pointerEvents = "auto";
@@ -254,7 +254,7 @@
           };
 
           if (currentQuantity <= 1) {
-            if (confirm('Sei sicuro di voler rimuovere la prenotazione di questa pianta?')) {
+            if (confirm('Are you sure you want to remove the reservation for this plant?')) {
               handleDecrement();
             }
           } else {
@@ -291,13 +291,13 @@
                   if (data.success) {
                       plantBox.remove(); 
                   } else {
-                      alert(data.message || "Errore nella rimozione. Riprova.");
+                      alert(data.message || "Error removing. Please try again.");
                       this.style.pointerEvents = "auto"; 
                   }
               })
               .catch(error => {
-                  console.error('Errore:', error);
-                  alert('Errore: ' + error.message);
+                  console.error('Error:', error);
+                  alert('Error: ' + error.message);
                   this.style.pointerEvents = "auto";
               });
           });
@@ -322,7 +322,7 @@
         if (location) {
           fetchWeatherData(location.lat, location.lng);
         } else {
-          document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
+          document.getElementById('weather-widget').innerHTML = '<p>Weather not available.</p>';
         }
       });
     });
@@ -358,24 +358,24 @@
             const iconCode = weatherIconMapping[descriptionInEnglish] || "01d";
             const iconUrl = weatherIcons[iconCode];
 
-            const descriptionInItalian = weatherDescriptions[descriptionInEnglish] || descriptionInEnglish;
+            //const descriptionInItalian = weatherDescriptions[descriptionInEnglish] || descriptionInEnglish;
 
             const widgetContent = `
-              <h2 style="color: #004d00;">Meteo</h2>
+              <h2 style="color: #004d00;">Weather</h2>
               <img src="${iconUrl}" alt="Icona meteo" class="weather-icon" style="width: 100px; height: 100px;">
-              <p><strong style="color: #004d00;">Temperatura:</strong> ${weather.main.temp}°C</p>
-              <p><strong style="color: #004d00;">Condizioni:</strong> ${descriptionInItalian}</p>
-              <p><strong style="color: #004d00;">Umidità:</strong> ${weather.main.humidity}%</p>
-              <p><strong style="color: #004d00;">Vento:</strong> ${weather.wind.speed} m/s</p>
+              <p><strong style="color: #004d00;">Temperature:</strong> ${weather.main.temp}°C</p>
+              <p><strong style="color: #004d00;">Conditions:</strong> ${descriptionInEnglish}</p>
+              <p><strong style="color: #004d00;">Humidity:</strong> ${weather.main.humidity}%</p>
+              <p><strong style="color: #004d00;">Wind:</strong> ${weather.wind.speed} m/s</p>
             `;
             document.getElementById('weather-widget').innerHTML = widgetContent;
           } else {
-            document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
+            document.getElementById('weather-widget').innerHTML = '<p>Weather not available.</p>';
           }
         })
         .catch(error => {
-          console.error('Errore nel recupero dei dati meteo:', error);
-          document.getElementById('weather-widget').innerHTML = '<p>Meteo non disponibile.</p>';
+          console.error('Error retrieving weather data:', error);
+          document.getElementById('weather-widget').innerHTML = '<p>Weather not available.</p>';
         });
     }
 
@@ -389,7 +389,7 @@
       "11d": "<%= asset_path('weather-icons/11d.png') %>",
     };
 
-    const weatherDescriptions = {
+    /*const weatherDescriptions = {
       "clear sky": "cielo sereno",
       "few clouds": "poche nuvole",
       "scattered clouds": "nuvole sparse",
@@ -405,7 +405,7 @@
       "drizzle": "pioviggine",
       "dust": "polvere",
       "sand": "sabbia"
-    };
+    };*/
 
     const weatherIconMapping = {
       "clear sky": "01d",

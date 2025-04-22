@@ -66,15 +66,15 @@
           return response.json();
         }).then(function (data) {
           if (data.success) {
-            alert("Prenotazione effettuata con successo!");
+            alert("Booking successful!");
             var availabilityElement = document.querySelector(".availability[data-nursery-plant-id=\"".concat(nurseryPlantId, "\"]"));
             availabilityElement.textContent = "Disponibilit\xE0 in negozio: ".concat(data.new_availability);
           } else {
-            alert(data.message || "Errore nella prenotazione. Riprova.");
+            alert(data.message || "Booking error. Please try again.");
           }
         })["catch"](function (error) {
-          console.error('Errore:', error);
-          alert('Errore: ' + error.message);
+          console.error('Error:', error);
+          alert('Error: ' + error.message);
         });
       });
     });
