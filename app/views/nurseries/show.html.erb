@@ -68,7 +68,7 @@
           if (data.success) {
             alert("Booking successful!");
             var availabilityElement = document.querySelector(".availability[data-nursery-plant-id=\"".concat(nurseryPlantId, "\"]"));
-            availabilityElement.textContent = "Disponibilit\xE0 in negozio: ".concat(data.new_availability);
+            availabilityElement.textContent = "In-store availability: ".concat(data.new_availability);
           } else {
             alert(data.message || "Booking error. Please try again.");
           }
