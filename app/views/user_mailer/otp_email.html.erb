@@ -4,20 +4,20 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
 </head>
 <body>
-  <p>Ciao <%= @user.nome %>,</p>
+  <p>Hello <%= @user.nome %>,</p>
 
   <% if @purpose == 'registrazione' %>
-    <p>Grazie per esserti registrato! Ecco il tuo codice OTP per completare la registrazione:</p>
+    <p>Thank you for registering! Here is your OTP code to complete the registration:</p>
   <% elsif @purpose == 'login' %>
-    <p>Per completare il login, inserisci il seguente codice OTP:</p>
+    <p>To complete the login, please enter the following OTP code:</p>
   <% else %>
-    <p>Il tuo codice OTP è:</p>
+    <p>Your OTP code is:</p>
   <% end %>
 
   <h3><%= @otp_code %></h3>
 
-  <p>Inserisci questo codice nel modulo di verifica per continuare.</p>
+  <p>Enter this code in the verification form to continue.</p>
 
-  <p>Grazie,<br>Il team di PlantTracker</p>
+  <p>Thank you,<br>The PlantTracker Team</p>
 </body>
 </html>

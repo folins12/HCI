@@ -11,21 +11,21 @@
   <div class="register-background">
     <div class="register-formcontainer">
       <div class="weather-message">
-        Per completare la modifica del tuo profilo inserisci il codice OTP inviato alla tua email.
+        To complete the update insert the OTP code we've sent to your email.
       </div>
 
       <%= form_with url: login_verify_otp_path, method: :post do %>
         <div class="register-input-group <%= 'has-error' if flash[:alert] %>">
-          <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
+          <%= label_tag :otp_attempt, "Insert the OTP" %>
           <%= text_field_tag :otp_attempt, nil%>
         </div>
         <div class="register-button-container">
-          <%= submit_tag "Verifica", class: "register-button" %>
+          <%= submit_tag "Verify", class: "register-button" %>
         </div>
       <% end %>
 
       <div class="register-button-container">
-        <%= link_to "Richiedi un altro codice OTP.", login_verify_otp_path(resend_otp: true), method: :post, class: "register-link" %>
+        <%= link_to "Ask for a new OTP", login_verify_otp_path(resend_otp: true), method: :post, class: "register-link" %>
       </div>
 
       <% if flash[:alert] %>
@@ -35,7 +35,7 @@
       <% end %>
 
       <p style="text-align: center; font-size: 1.2em; color: #006400; margin-top: 15px;">
-        Il codice OTP scadrà tra: <span id="otp-timer">3:00</span>
+        The OTP will eexpire in: <span id="otp-timer">3:00</span>
       </p>
     </div>
   </div>

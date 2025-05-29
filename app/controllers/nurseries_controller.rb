@@ -9,7 +9,7 @@ class NurseriesController < ApplicationController
 
   def show
     rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Il vivaio richiesto non è stato trovato."
+    flash[:alert] = "Nursery not found."
     redirect_to nurseries_path
   end
 
@@ -27,8 +27,8 @@ class NurseriesController < ApplicationController
       redirect_to register_verify_otp_path
     else
       # Aggiungi il messaggio di errore specifico per l'email
-      if @nursery.errors[:email].include?("dominio non valido. Usa un dominio accettabile.")
-        @nursery.errors.add(:email, "Inserisci un indirizzo email con un dominio valido.")
+      if @nursery.errors[:email].include?("Invalid domain. Please use an acceptable domain.")
+        @nursery.errors.add(:email, "Please enter an email address with a valid domain.")
       end
       render :new
     end
@@ -45,7 +45,7 @@ class NurseriesController < ApplicationController
         redirect_to login_verify_otp_path and return
       else
         @nursery.update(nursery_params)
-        flash[:notice] = "Informazioni aggiornate con successo."
+        flash[:notice] = "Information updated successfully."
         redirect_to nursery_profile_path and return
       end
     else
@@ -61,12 +61,12 @@ class NurseriesController < ApplicationController
   def update_image
     @nursery = Nursery.find(params[:id])
     if params[:nursery].nil? || params[:nursery][:nursery_image].nil?
-      flash[:error] = "Parametri mancanti."
+      flash[:error] = "Missing parameters"
       redirect_to nursery_profile_path and return
     end
 
     if @nursery.update(nursery_image_params)
-      redirect_to nursery_profile_path, notice: 'Immagine aggiornata con successo.'
+      redirect_to nursery_profile_path, notice: 'Image updated successfully.'
     else
       render :edit_image
     end
@@ -82,29 +82,29 @@ class NurseriesController < ApplicationController
     number_str = nursery.number.to_s
 
     if number_str.blank? || number_str.length != 10
-      nursery.errors.add(:number, "Il numero di telefono inserito non è valido. Deve essere di 10 cifre.")
+      nursery.errors.add(:number, "The phone number entered is not valid. It must be 10 digits.")
       nursery.number = ''
     elsif Nursery.exists?(number: number_str)
-      nursery.errors.add(:number, "Questo numero appartiene già ad un altro vivaio, pertanto non può essere utilizzato!")
+      nursery.errors.add(:number, "This number already belongs to another nursery, therefore it cannot be used!")
       nursery.number = ''
     end
 
     if !valid_time?(nursery.open_time) || !valid_time?(nursery.close_time)
-      nursery.errors.add(:base, "L'ora inserita non è valida. Deve essere compresa tra 0 e 24.")
+      nursery.errors.add(:base, "The time entered is invalid. It must be between 0 and 24.")
       nursery.open_time = ''
       nursery.close_time = ''
     elsif nursery.open_time.to_i >= nursery.close_time.to_i
-      nursery.errors.add(:base, "La fascia oraria inserita non è accettabile.")
+      nursery.errors.add(:base, "The time slot entered is not acceptable.")
       nursery.open_time = ''
       nursery.close_time = ''
     end
 
     if nursery.address.blank?
-      nursery.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo")
+      nursery.errors.add(:address, "To continue you need to enter the address")
       nursery.address = ''
     else
       unless valid_address?(nursery.address)
-        nursery.errors.add(:address, "L'indirizzo inserito non è valido.")
+        nursery.errors.add(:address, "The address entered is not valid.")
         nursery.address = ''
       end
     end
@@ -127,7 +127,7 @@ class NurseriesController < ApplicationController
   def set_nursery
     @nursery = Nursery.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "Il vivaio richiesto non è stato trovato."
+    flash[:alert] = "The requested nursery was not found."
     redirect_to nurseries_path
   end
 
@@ -148,7 +148,7 @@ class NurseriesController < ApplicationController
     if results.present? && results.first.coordinates.present?
       true
     else
-      @nursery.errors.add(:address, 'L\'indirizzo inserito è errato!')
+      @nursery.errors.add(:address, 'The address entered is incorrect!')
       false
     end
   end
@@ -160,7 +160,7 @@ class NurseriesController < ApplicationController
   def nursery_update_valid?
     number = params[:nursery][:number].to_s.strip
     unless number.length == 10 && number.match?(/\A\d{10}\z/)
-      @nursery.errors.add(:number, 'Il numero di telefono deve essere composto esattamente da 10 cifre.')
+      @nursery.errors.add(:number, 'The phone number must be exactly 10 digits long.')
       return false
     end
 
@@ -168,17 +168,17 @@ class NurseriesController < ApplicationController
     close_time = params[:nursery][:close_time].to_i
 
     if open_time < 0 || open_time > 24 || close_time < 0 || close_time > 24
-      @nursery.errors.add(:base, 'L\'orario inserito non è valido. Deve essere compreso tra 0 e 24.')
+      @nursery.errors.add(:base, 'The time entered is invalid. Must be between 0 and 24.')
       return false
     end
 
     if open_time >= close_time
-      @nursery.errors.add(:base, 'La fascia oraria inserita non è valida.')
+      @nursery.errors.add(:base, 'The time slot entered is invalid.')
       return false
     end
 
     if @nursery.description.blank?
-      @nursery.errors.add(:description, 'La descrizione non può essere vuota.')
+      @nursery.errors.add(:description, 'Description cannot be empty.')
       return false
     end
 

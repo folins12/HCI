@@ -28,12 +28,12 @@ class UsersController < ApplicationController
 
       @user_reservations = Reservation.find_by_sql([sql_query, @user.email])
     else
-      redirect_to root_path, alert: 'Utente non trovato.'
+      redirect_to root_path, alert: 'User not found.'
     end
   end
 
   def decreserve
-    Rails.logger.debug "ID Prenotazione ricevuto: #{params[:reservation_id]}"
+    Rails.logger.debug "Reservation ID received: #{params[:reservation_id]}"
     reservation = Reservation.find_by(nursery_plant_id: params[:nurseryplant_id], user_email: params[:user_email])
 
     if reservation
@@ -44,18 +44,18 @@ class UsersController < ApplicationController
           new_value = [nursery_plant.num_reservations - 1, 0].max
 
           if nursery_plant.update(num_reservations: new_value)
-            render json: { success: true, message: "Rimozione prenotazione avvenuta con successo." }
+            render json: { success: true, message: "Reservation removal successful." }
           else
-            render json: { success: false, message: "Errore nell'aggiornamento del numero di prenotazioni.", errors: nursery_plant.errors.full_messages }, status: :unprocessable_entity
+            render json: { success: false, message: "Error updating number of reservations.", errors: nursery_plant.errors.full_messages }, status: :unprocessable_entity
           end
         else
-          render json: { success: false, message: "Pianta non trovata." }, status: :not_found
+          render json: { success: false, message: "Plant not found." }, status: :not_found
         end
       else
-        render json: { success: false, message: "Errore nella cancellazione della prenotazione.", errors: reservation.errors.full_messages }, status: :unprocessable_entity
+        render json: { success: false, message: "Error canceling reservation.", errors: reservation.errors.full_messages }, status: :unprocessable_entity
       end
     else
-      render json: { success: false, message: "Prenotazione non trovata." }, status: :not_found
+      render json: { success: false, message: "Reservation not found." }, status: :not_found
     end
   end
 
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
         redirect_to login_verify_otp_path and return
       else
         @user.update(user_params)
-        flash[:notice] = "Profilo aggiornato con successo."
+        flash[:notice] = "Profile updated successfully."
         user_profile_path
       end
     else
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: session[:otp_user_id])
 
     unless @user
-      flash[:alert] = "Utente non trovato. Per favore, riprova."
+      flash[:alert] = "User not found. Please try again."
       redirect_to new_user_registration_path and return
     end
 
@@ -106,11 +106,11 @@ class UsersController < ApplicationController
             @nursery = Nursery.find_by(id_owner: @user.id)
             @nursery.update(session[:pending_nursery_params])
             clear_temporary_session_data
-            flash[:notice] = "Vivaio aggiornato con successo!"
+            flash[:notice] = "Nursery successfully updated!"
             redirect_to nursery_profile_path
           else
             clear_temporary_session_data
-            flash[:alert] = "Nessuna modifica da applicare."
+            flash[:alert] = "No changes to apply."
             redirect_to nursery_profile_path
           end
         else
@@ -118,7 +118,7 @@ class UsersController < ApplicationController
           if session[:pending_user_params]
             @user.update(session[:pending_user_params])
             clear_temporary_session_data
-            flash[:notice] = "Profilo aggiornato con successo!"
+            flash[:notice] = "Profile updated successfully!"
             if @user.nursery==0
               redirect_to user_profile_path
             else
@@ -126,7 +126,7 @@ class UsersController < ApplicationController
             end
           else
             clear_temporary_session_data
-            flash[:alert] = "Nessuna modifica da applicare."
+            flash[:alert] = "No changes to apply."
             if @user.nursery==0
               redirect_to user_profile_path
             else
@@ -136,7 +136,7 @@ class UsersController < ApplicationController
         end
 
       else
-        flash.now[:alert] = "Codice OTP non valido o scaduto. Richiedine un altro per provare ad accedere."
+        flash.now[:alert] = "Invalid or expired OTP code. Request another one to try to log in."
         render 'sessions/verify_otp'
       end
     elsif request.get?
@@ -144,7 +144,7 @@ class UsersController < ApplicationController
         @user.invalidate_otp
         otp_code = @user.generate_otp
         UserMailer.otp_email(@user.email, @user.nome, otp_code, 'profilo').deliver_now
-        flash[:notice] = "Un nuovo codice OTP è stato inviato."
+        flash[:notice] = "A new OTP code has been sent."
       end
       render 'sessions/verify_otp'
     end
@@ -155,7 +155,7 @@ class UsersController < ApplicationController
     if results.present? && results.first.coordinates.present?
       true
     else
-      @user.errors.add(:address, 'L\'indirizzo inserito non esiste o è stato scritto in modo errato!')
+      @user.errors.add(:address, 'The address entered does not exist or was written incorrectly!')
       false
     end
   end
@@ -173,10 +173,10 @@ class UsersController < ApplicationController
       if weather_data
         render json: { weather: weather_data }
       else
-        render json: { error: 'Dati meteo non disponibili' }, status: :bad_request
+        render json: { error: 'Weather data not available' }, status: :bad_request
       end
     else
-      render json: { error: 'Coordinate non valide' }, status: :bad_request
+      render json: { error: 'Invalid coordinates' }, status: :bad_request
     end
   end
 
@@ -188,14 +188,14 @@ class UsersController < ApplicationController
     response = Net::HTTP.get(URI(url))
     JSON.parse(response)
   rescue StandardError => e
-    Rails.logger.error "Errore durante il recupero dei dati meteo: #{e.message}"
+    Rails.logger.error "Error retrieving weather data: #{e.message}"
     nil
   end
 
   def set_user
     @user = User.find_by(id: params[:id]) || current_user
     if @user.nil?
-      redirect_to root_path, alert: 'Utente non trovato.'
+      redirect_to root_path, alert: 'User not found.'
     end
   end
 
@@ -207,7 +207,7 @@ class UsersController < ApplicationController
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       if params[:user][:current_password].present?
         unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
-          @user.errors.add(:current_password, 'La password inserita è errata!')
+          @user.errors.add(:current_password, 'The password you entered is incorrect!')
           return false
         end
       end
@@ -215,32 +215,32 @@ class UsersController < ApplicationController
     end
 
     if params[:user][:current_password].blank?
-      @user.errors.add(:current_password, 'La password attuale è richiesta.')
+      @user.errors.add(:current_password, 'Current password is required.')
       return false
     end
 
     unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
-      @user.errors.add(:current_password, 'La password inserita è errata!')
+      @user.errors.add(:current_password, 'The password you entered is incorrect!')
       return false
     end
 
     if params[:user][:password] == params[:user][:current_password]
-      @user.errors.add(:password, 'La nuova password non può essere uguale alla precedente')
+      @user.errors.add(:password, 'The new password cannot be the same as the previous one')
       return false
     end
 
     unless valid_password?(params[:user][:password])
-      @user.errors.add(:password, 'La nuova password non rispetta i requisiti:<ul>
-                                    <li>deve avere almeno una lettera maiuscola;</li>
-                                    <li>deve avere almeno una lettera minuscola;</li>
-                                    <li>deve contenere almeno un numero;</li>
-                                    <li>deve contenere almeno un carattere speciale.</li>
+      @user.errors.add(:password, 'The new password does not meet the requirements:<ul>
+                                    <li>must have at least one capital letter;</li>
+                                    <li>must have at least one lowercase letter;</li>
+                                    <li>must contain at least one number;</li>
+                                    <li>must contain at least one special character.</li>
                                   </ul>'.html_safe)
       return false
     end
 
     unless params[:user][:password] == params[:user][:password_confirmation]
-      @user.errors.add(:password_confirmation, 'La password confermata deve essere uguale a quella nuova precedentemente inserita')
+      @user.errors.add(:password_confirmation, 'The confirmed password must be the same as the new one previously entered')
       return false
     end
 

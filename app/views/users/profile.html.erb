@@ -73,7 +73,7 @@
         <% end %>
 
         <div class="input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
-          <%= form.label :password_confirmation, "Confirm Nuova Password", class: 'form-label' %>
+          <%= form.label :password_confirmation, "Confirm The New Password", class: 'form-label' %>
           <%= form.password_field :password_confirmation, placeholder: "Leave it blank if you do not want to change it" %>
         </div>
         <% @user.errors[:password_confirmation].each do |error| %>

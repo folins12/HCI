@@ -1,16 +1,16 @@
-<p>Ciao <%= @user.nome %>,
+<p>Hello <%= @user.nome %>,
   <br>
-  Grazie per aver prenotato <strong><%= @quantity %></strong> <strong><%= @plant.name %></strong> dal vivaio <strong>"<%= @nursery.name %>"</strong>. 
+  Thank you for booking <strong><%= @quantity %></strong> <strong><%= @plant.name %></strong> from the nursery <strong>"<%= @nursery.name %>"</strong>.
   
   <% if @quantity == 1 %>
-    La tua pianta è pronta per essere ritirata! 
+    Your plant is ready for pickup!
   <% else %>
-    Le tue piante sono pronte per essere ritirate! 
-  <%end%>
+    Your plants are ready for pickup!
+  <% end %>
   <br>
-  Vieni a trovarci qui: <strong><%=@nursery.address%></strong> dalle ore <strong><%=@nursery.open_time%></strong> alle ore <strong><%=@nursery.close_time%></strong>.
+  Come visit us at: <strong><%= @nursery.address %></strong> from <strong><%= @nursery.open_time %></strong> to <strong><%= @nursery.close_time %></strong>.
   <br>
-  Per qualsiasi inconveniente riguardo la sua prenotazione contattare il vivaio <strong><%= @nursery.name %></strong> all'indirizzo <%= @nursery.email %>.
+  For any issues regarding your reservation, please contact the nursery <strong><%= @nursery.name %></strong> at <%= @nursery.email %>.
   <br>
-  Grazie per aver usufruito del nostro servizio, il team di PlantTracker.
-<p>
+  Thank you for using our service, the PlantTracker team.
+</p>

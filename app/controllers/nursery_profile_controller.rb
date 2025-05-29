@@ -23,19 +23,19 @@ class NurseryProfileController < ApplicationController
 
         begin
           UserMailer.order_satisfied_email(user, nursery, nursery_plant.plant, num_reservations_to_remove).deliver_now
-          Rails.logger.info "Email inviata con successo!"
+          Rails.logger.info "Email sent successfully!"
         rescue => e
-          Rails.logger.error "Errore durante l'invio dell'email: #{e.message}"
-          render json: { success: false, message: 'Errore durante l\'invio dell\'email.' }, status: :internal_server_error and return
+          Rails.logger.error "Error sending email: #{e.message}"
+          render json: { success: false, message: 'Error sending email.' }, status: :internal_server_error and return
         end
 
         render json: { success: true }
       else
-        Rails.logger.error "Dati mancanti: #{nursery_plant.nil? ? 'NurseryPlant' : ''} #{user.nil? ? 'User' : ''} #{nursery.nil? ? 'Nursery' : ''}"
-        render json: { success: false, message: 'Dati insufficienti per soddisfare la richiesta' }, status: :unprocessable_entity
+        Rails.logger.error "Missing Data: #{nursery_plant.nil? ? 'NurseryPlant' : ''} #{user.nil? ? 'User' : ''} #{nursery.nil? ? 'Nursery' : ''}"
+        render json: { success: false, message: 'Insufficient data to satisfy the request' }, status: :unprocessable_entity
       end
     else
-      render json: { success: false, message: 'Prenotazioni non trovate' }
+      render json: { success: false, message: 'Reservations not found' }
     end
   end
 
@@ -56,7 +56,7 @@ class NurseryProfileController < ApplicationController
 
       @user_reservations = Reservation.find_by_sql([sql_query, @user.email])
     else
-      redirect_to root_path, alert: 'Utente non trovato.'
+      redirect_to root_path, alert: 'User not found.'
     end
 
     load_nursery_data
@@ -82,7 +82,7 @@ class NurseryProfileController < ApplicationController
             redirect_to login_verify_otp_path and return
           else
             @user.update(user_params)
-            flash[:notice] = "Profilo aggiornato con successo."
+            flash[:notice] = "Profile updated successfully."
             redirect_to nursery_profile_path
           end
         else
@@ -138,7 +138,7 @@ class NurseryProfileController < ApplicationController
     if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
       if params[:user][:current_password].present?
         unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
-          @user.errors.add(:current_password, 'La password inserita è errata!')
+          @user.errors.add(:current_password, 'The password you entered is incorrect!')
           return false
         end
       end
@@ -146,32 +146,32 @@ class NurseryProfileController < ApplicationController
     end
 
     if params[:user][:current_password].blank?
-      @user.errors.add(:current_password, 'La password attuale è richiesta.')
+      @user.errors.add(:current_password, 'Current password is required.')
       return false
     end
 
     unless Devise::Encryptor.compare(User, @user.encrypted_password, params[:user][:current_password])
-      @user.errors.add(:current_password, 'La password inserita è errata!')
+      @user.errors.add(:current_password, 'The password you entered is incorrect!')
       return false
     end
 
     if params[:user][:password] == params[:user][:current_password]
-      @user.errors.add(:password, 'La nuova password non può essere uguale alla precedente')
+      @user.errors.add(:password, 'The new password cannot be the same as the previous one')
       return false
     end
 
     unless valid_password?(params[:user][:password])
-      @user.errors.add(:password, 'La nuova password non rispetta i requisiti:<ul>
-                                    <li>deve avere almeno una lettera maiuscola;</li>
-                                    <li>deve avere almeno una lettera minuscola;</li>
-                                    <li>deve contenere almeno un numero;</li>
-                                    <li>deve contenere almeno un carattere speciale.</li>
+      @user.errors.add(:password, 'The new password does not meet the requirements:<ul>
+                                    <li>must have at least one capital letter;</li>
+                                    <li>must have at least one lowercase letter;</li>
+                                    <li>must contain at least one number;</li>
+                                    <li>must contain at least one special character.</li>
                                   </ul>'.html_safe)
       return false
     end
 
     unless params[:user][:password] == params[:user][:password_confirmation]
-      @user.errors.add(:password_confirmation, 'La password confermata deve essere uguale a quella nuova precedentemente inserita')
+      @user.errors.add(:password_confirmation, 'The confirmed password must be the same as the new one previously entered')
       return false
     end
 
@@ -199,7 +199,7 @@ class NurseryProfileController < ApplicationController
     if results.present? && results.first.coordinates.present?
       true
     else
-      @user.errors.add(:address, 'L\'indirizzo inserito non esiste o è stato scritto in modo errato!')
+      @user.errors.add(:address, 'The address entered does not exist or was written incorrectly!')
       false
     end
   end

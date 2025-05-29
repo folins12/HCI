@@ -36,7 +36,7 @@ class RegistrationsController < Devise::RegistrationsController
   def verify_otp
     @user_data = session[:otp_user_data]
 
-    return redirect_to new_user_registration_path, alert: "Sessione scaduta o utente non trovato." unless @user_data
+    return redirect_to new_user_registration_path, alert: "Session expired or user not found." unless @user_data
 
     # Recupera il secret e l'OTP dalla sessione
     otp_secret = session[:otp_secret]
@@ -63,7 +63,7 @@ class RegistrationsController < Devise::RegistrationsController
         sign_in_and_redirect @user, event: :authentication
         redirect_to nursery_profile_path if @user.nursery == 1
       else
-        flash.now[:alert] = "Codice OTP non valido o scaduto. Riprova."
+        flash.now[:alert] = "Invalid or expired OTP code. Please try again."
         render :verify_otp
       end
     elsif request.get?
@@ -73,7 +73,7 @@ class RegistrationsController < Devise::RegistrationsController
         otp_code = totp.now
         session[:otp_code] = otp_code
         UserMailer.otp_email(@user_data['email'], @user_data['nome'], otp_code, 'registrazione').deliver_now
-        flash[:notice] = "Un nuovo codice OTP è stato inviato."
+        flash[:notice] = "A new OTP code has been sent."
       end
       render :verify_otp
     end
@@ -105,11 +105,11 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def validate_user(user)
-    user.errors.add(:nome, "Per proseguire è necessario inserire il nome") if user.nome.blank?
-    user.errors.add(:cognome, "Per proseguire è necessario inserire il cognome") if user.cognome.blank?
+    user.errors.add(:nome, "To continue you need to enter your name") if user.nome.blank?
+    user.errors.add(:cognome, "To continue you need to enter your surname") if user.cognome.blank?
 
     if User.exists?(email: user.email)
-      user.errors.add(:email, "Impossibile utilizzare questo indirizzo email per la registrazione. Qualcuno ha già effettuato l'iscrizione utilizzando questo indirizzo!")
+      user.errors.add(:email, "This email address cannot be used to register. Someone has already registered using this address!")
     end
 
     if user.password.present? && (
@@ -118,19 +118,19 @@ class RegistrationsController < Devise::RegistrationsController
       !user.password.match(/\d/) ||
       !user.password.match(/[\W_]/)
     )
-      user.errors.add(:password, "La password inserita non è valida, crearne una che rispetti i seguenti requisiti:
-        - Almeno 8 caratteri
-        - Deve contenere almeno una lettera maiuscola
-        - Deve contenere almeno un numero
-        - Deve contenere almeno un carattere speciale")
+      user.errors.add(:password, "The password entered is not valid, create one that meets the following requirements:
+        - At least 8 characters
+        - Must contain at least one capital letter
+        - Must contain at least one number
+        - Must contain at least one special character")
     end
-    user.errors.add(:password_confirmation, "La password confermata è diversa da quella inserita precedentemente") if user.password != user.password_confirmation
+    user.errors.add(:password_confirmation, "The confirmed password is different from the one previously entered") if user.password != user.password_confirmation
 
-    user.errors.add(:address, "Per proseguire è necessario inserire l'indirizzo") if user.address.blank?
-    user.errors.add(:address, "L'indirizzo inserito non è valido.") unless valid_address?(user.address)
+    user.errors.add(:address, "To continue you need to enter the address") if user.address.blank?
+    user.errors.add(:address, "The address entered is not valid.") unless valid_address?(user.address)
 
     if !valid_email_domain?(user.email)
-      user.errors.add(:email, "L'indirizzo email che hai inserito contiene un dominio inesistente!")
+      user.errors.add(:email, "The email address you entered contains a non-existent domain!")
     end
   end
 

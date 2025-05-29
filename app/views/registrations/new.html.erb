@@ -17,13 +17,13 @@
       </div>
       <%= form_with model: @user, url: new_user_registration_path, local: true do |form| %>
         <div class="register-input-group <%= 'has-error' if @user.errors[:nome].any? %>">
-          <%= form.text_field :nome, value: @user.nome, placeholder: 'Nome'%>
+          <%= form.text_field :nome, value: @user.nome, placeholder: 'Name'%>
           <% if @user.errors[:nome].any? %>
             <span class="register-error-message"><%= @user.errors[:nome].first %></span>
           <% end %>
         </div>
         <div class="register-input-group <%= 'has-error' if @user.errors[:cognome].any? %>">
-          <%= form.text_field :cognome, value: @user.cognome, placeholder: 'Cognome'%>
+          <%= form.text_field :cognome, value: @user.cognome, placeholder: 'Surname'%>
           <% if @user.errors[:cognome].any? %>
             <span class="register-error-message"><%= @user.errors[:cognome].first %></span>
           <% end %>
@@ -41,27 +41,27 @@
           <% end %>
         </div>
         <div class="register-input-group <%= 'has-error' if @user.errors[:password_confirmation].any? %>">
-          <%= form.password_field :password_confirmation, placeholder: 'Conferma Password', required: true %>
+          <%= form.password_field :password_confirmation, placeholder: 'Confirm Password', required: true %>
           <% if @user.errors[:password_confirmation].any? %>
             <span class="register-error-message"><%= @user.errors[:password_confirmation].first %></span>
           <% end %>
         </div>
         <div class="register-input-group <%= 'has-error' if @user.errors[:address].any? %>">
-          <%= form.text_field :address, value: @user.address, placeholder: 'Indirizzo', required: true %>
+          <%= form.text_field :address, value: @user.address, placeholder: 'Address', required: true %>
           <% if @user.errors[:address].any? %>
             <span class="register-error-message"><%= @user.errors[:address].first %></span>
           <% end %>
         </div>
         <div class="register-checkbox-container">
           <%= form.check_box :nursery, {}, 'true', 'false' %>
-          <%= form.label :nursery, "Vivaio" %>
+          <%= form.label :nursery, "Nursery" %>
         </div>
         <div class="register-button-container">
-          <button type="submit" class="register-button">Registrati</button>
+          <button type="submit" class="register-button">Sign Up</button>
         </div>
       <% end %>
       <div>
-        <a href="/login" class="register-link">Clicca qui per effettuare il login</a>
+        <a href="/login" class="register-link">Click here to Login</a>
       </div>
     </div>
   </div>

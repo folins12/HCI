@@ -14,7 +14,7 @@ class MyplantsController < ApplicationController
     if myplant.save
       render json: { success: true }
     else
-      render json: { success: false, message: "Errore nel salvataggio della prenotazione.", errors: myplant.errors.full_messages }, status: :unprocessable_entity
+      render json: { success: false, message: "Error saving booking.", errors: myplant.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +23,7 @@ class MyplantsController < ApplicationController
     if myplant && myplant.destroy
       render json: { success: true }
     else
-      render json: { success: false, message: "Errore nella rimozione della pianta.", errors: myplant ? myplant.errors.full_messages : ["Pianta non trovata"] }, status: :unprocessable_entity
+      render json: { success: false, message: "Error removing plant.", errors: myplant ? myplant.errors.full_messages : ["Plant not found"] }, status: :unprocessable_entity
     end
   end
 

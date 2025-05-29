@@ -2,21 +2,21 @@
   <div class="register-formcontainer">
 
     <div class="weather-message">
-      Per registrarti correttamente inserisci il codice OTP inviato alla tua email.
+      To register correctly, enter the OTP code sent to your email.
     </div>
 
     <%= form_with url: register_verify_otp_path, method: :post do %>
       <div class="register-input-group">
-        <%= label_tag :otp_attempt, "Inserisci il codice OTP" %>
+        <%= label_tag :otp_attempt, "Enter the OTP" %>
         <%= text_field_tag :otp_attempt %>
       </div>
       <div class="register-button-container">
-        <%= submit_tag "Verifica", class: "register-button" %>
+        <%= submit_tag "Verify", class: "register-button" %>
       </div>
     <% end %>
 
     <div class="register-button-container">
-      <%= link_to "Richiedi un altro codice OTP", register_verify_otp_path(resend_otp: true), method: :post, class: "register-link" %>
+      <%= link_to "Request another OTP code", register_verify_otp_path(resend_otp: true), method: :post, class: "register-link" %>
     </div>
 
     <% if flash[:alert] %>
@@ -26,7 +26,7 @@
     <% end %>
 
     <p style="text-align: center; font-size: 1.2em; color: #006400; margin-top: 15px;">
-      Il codice OTP scadrà tra: <span id="otp-timer">3:00</span>
+      The OTP code will expire in: <span id="otp-timer">3:00</span>
     </p>
   </div>
 </div>
